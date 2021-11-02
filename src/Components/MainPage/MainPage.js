@@ -46,9 +46,14 @@ function MainPage() {
 
   // Render
   useEffect(() => {
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getMainEvent"
-    ).then((response) => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getMainEvent", {
+      method: "GET",
+      mode: "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
       setMAIN_EVENT(response.data);
     });
   }, []);
