@@ -103,6 +103,7 @@
 }
 
 #_memberAnnouncementList_id_ {
+  display: none;
   background-color: #36a9e1;
   width: 100%;
   margin: auto;
