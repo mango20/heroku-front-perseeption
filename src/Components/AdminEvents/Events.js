@@ -112,52 +112,13 @@ function Events() {
   //       setEVENT_LIST(response.data);
   //     });
   //   };
+  const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
 
   const submit = () => {
-    const formdata_ = new FormData();
-    formdata_.append("image", eventInformation.file);
-    console.log(eventInformation.file);
-    formdata_.append("title", eventInformation.title);
-    formdata_.append("content", eventInformation.content);
-    if (
-      eventInformation.content === "" ||
-      eventInformation.file.length === 0 ||
-      eventInformation.content === ""
-    ) {
-      let timerId = setInterval(
-        () =>
-          (document.getElementById("titleMessage").innerHTML =
-            "Please fill out form completely!"),
-        0
-      );
-
-      // Timeout
-      setTimeout(() => {
-        clearInterval(timerId);
-        document.getElementById("titleMessage").innerHTML = "";
-      }, 3000);
-      return false;
-    } else
-      Axios.post(
-        "https://perseeption-tromagade.herokuapp.com/uploadEventImage",
-        formdata_,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      ).then((response) => {
-        console.log(response.data);
-      });
-    document.getElementById("messageEventPopUpouter").style.display = "block";
-    document.getElementById("messageEvent_Content").style.display = "block";
-
-    setTimeout(function () {
-      document.getElementById("messageEventPopUpouter").style.display = "none";
-      document.getElementById("messageEvent_Content").style.display = "none";
-    }, 3000);
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
-    ).then((response) => {
-      setEVENT_LIST(response.data);
+    Axios.post("https://perseeption-tromagade.herokuapp.com/uploadEventImage", {
+      EVENT_IMAGE: EVENT_IMAGE,
+      //   EVENT_CONTENT: EVENT_CONTENT,
+      //   EVENT_TITLE: EVENT_TITLE,
     });
   };
 
@@ -410,7 +371,7 @@ function Events() {
               type="file"
               className="fileBtn"
               name="upload_file"
-              onChange={handleInputChange}
+              onChange={(e) => setcontact_name(e.target.value)}
             />
             <button onClick={() => submit()} className="postEventBtn">
               Post Event
