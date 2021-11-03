@@ -8,3 +8,11 @@
 .fa {
   padding-right: 20px;
 }
+
+.profilePicture {
+  height: 35px;
+  width: 35px;
+  margin-right: 7px;
+  margin-top: 15px;
+  border-radius: 50%;
+}
