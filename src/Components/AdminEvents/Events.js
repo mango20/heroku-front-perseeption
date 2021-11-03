@@ -114,16 +114,12 @@ function Events() {
   //   };
   const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
 
-  const submit = async () => {
-    const formdata_ = new FormData();
-    formdata_.append("image", eventInformation.file);
-    Axios.post(
-      "https://perseeption-tromagade.herokuapp.com/uploadEventImage",
-      formdata_,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
+  const submit = () => {
+    Axios.post("https://perseeption-tromagade.herokuapp.com/uploadEventImage", {
+      EVENT_IMAGE: EVENT_IMAGE,
+      //   EVENT_CONTENT: EVENT_CONTENT,
+      //   EVENT_TITLE: EVENT_TITLE,
+    });
   };
 
   // useEffect(() => {
