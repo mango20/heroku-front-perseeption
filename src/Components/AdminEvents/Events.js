@@ -371,7 +371,7 @@ function Events() {
               type="file"
               className="fileBtn"
               name="upload_file"
-              onChange={(e) => setcontact_name(e.target.value)}
+              onChange={(e) => setEVENT_IMAGE(e.target.value)}
             />
             <button onClick={() => submit()} className="postEventBtn">
               Post Event
