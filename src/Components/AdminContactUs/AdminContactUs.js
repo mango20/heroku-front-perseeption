@@ -63,7 +63,7 @@ function AdminContactUs() {
       console.log(response);
       setcontact_usList(
         contact_usList.filter((val) => {
-          return val.contact_id !== contact_id;
+          return val.contact_id === contact_id;
         })
       );
     });
