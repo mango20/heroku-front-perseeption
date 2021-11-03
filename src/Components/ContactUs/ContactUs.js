@@ -12,7 +12,7 @@ function ContactUs() {
   // const [announcementContentList, setAnnouncementList] = useState([]);
   // const [newReview, setNewReview] = useState("");
   // const [newTitle, setNewTitle] = useState("");
-
+  Axios.defaults.withCredentials = true;
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
       (response) => {

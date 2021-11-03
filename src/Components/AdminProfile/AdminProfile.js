@@ -42,16 +42,16 @@ function AdminProfile() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSERNAME(response.data.user);
-        } else {
-          //   window.location = "/Login";
-        }
+    Axios.get("https://perseeption-tromagade.herokuapp.com/login", {
+      withCredentials: true,
+    }).then((response) => {
+      console.log(response.data.loggedIn);
+      if (response.data.loggedIn === true) {
+        setUSERNAME(response.data.user);
+      } else {
+        //   window.location = "/Login";
       }
-    );
+    });
   }, []);
 
   const logout = () => {
