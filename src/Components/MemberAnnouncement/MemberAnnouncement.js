@@ -213,7 +213,7 @@ function MemberAnnouncement() {
         </div>
         <div className="fbLogo">
           <a
-            href="https://db.skidax.com/www.facebook.com/PAVIC.ph"
+            href="www.facebook.com/PAVIC.ph"
             className="fa fa-facebook"
           >
             {}
