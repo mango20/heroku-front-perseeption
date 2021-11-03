@@ -54,7 +54,7 @@ function MemberAnnouncement() {
 
   const backAnnouncementReadMore = () => {
     Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/getMemberAnnouncement"
+      "https://perseeption-tromagade.herokuapp.com/api/getMemberAnnouncement"
     ).then((response) => {
       setMemberAnnouncementList(response.data);
       console.log(response.data);
