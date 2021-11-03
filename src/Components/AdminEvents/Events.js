@@ -113,7 +113,7 @@ function Events() {
   //     });
   //   };
 
-  const submit = async () => {
+  const submit = () => {
     const formdata_ = new FormData();
     formdata_.append("image", eventInformation.file);
     console.log(eventInformation.file);
