@@ -291,7 +291,7 @@ function AdminContactUs() {
                 >
                   <ul>
                     <li className="xBtn" onClick={hideReplyModal}>
-                      x
+                      x{val.contact_id}
                     </li>
                     <li className="replyTo">
                       <p>Name: {val.contact_name} </p>
