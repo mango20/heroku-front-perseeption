@@ -20,8 +20,7 @@ import TermsCondition from "./Components/TermsCondition/TermsCondition";
 import AdminContactUs from "./Components/AdminContactUs/AdminContactUs";
 import MemberProfile from "./Components/MemberProfile/MemberProfile";
 import resetpassword from "./Components/Login/Resetpassword";
-import Axios from "axios";
-Axios.defaults.withCredentials = true;
+
 function App() {
   return (
     <Router>

@@ -125,7 +125,7 @@ function AdminAnnouncement() {
         if (response.data.loggedIn === true) {
           setUSERNAME_(response.data.user);
         } else {
-          window.location = "/Login";
+          //   window.location = "/Login";
         }
       }
     );

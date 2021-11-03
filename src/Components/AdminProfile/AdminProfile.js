@@ -48,7 +48,7 @@ function AdminProfile() {
         if (response.data.loggedIn === true) {
           setUSERNAME(response.data.user);
         } else {
-          window.location = "/Login";
+          //   window.location = "/Login";
         }
       }
     );

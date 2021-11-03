@@ -13,17 +13,19 @@ function ContactUs() {
   // const [newReview, setNewReview] = useState("");
   // const [newTitle, setNewTitle] = useState("");
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //       document.getElementById("floatBtn").style.display = "none";
-  //       document.getElementById("LoginHeader").style.display = "none";
-  //       document.getElementById("loggedInImg").style.display = "block";
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
+      (response) => {
+        console.log(response.data.loggedIn);
+        if (response.data.loggedIn === true) {
+          setUSER_ID(response.data.user[0].USER_ID);
+          document.getElementById("floatBtn").style.display = "none";
+          document.getElementById("LoginHeader").style.display = "none";
+          document.getElementById("loggedInImg").style.display = "block";
+        }
+      }
+    );
+  }, []);
 
   const popup = () => {
     if (document.getElementById("dropdown-content").style.display !== "block") {

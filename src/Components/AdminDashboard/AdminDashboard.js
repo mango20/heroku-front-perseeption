@@ -16,17 +16,20 @@ function AdminDashboard() {
   Axios.defaults.withCredentials = true;
 
   const history = useHistory();
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSERNAME(response.data.user);
-  //     } else {
-  //       // window.location = "/Login";
-  //       history.push("/Login");
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
+      (response) => {
+        console.log(response.data.loggedIn);
+        if (response.data.loggedIn === true) {
+          setUSERNAME(response.data.user);
+        } else {
+          // window.location = "/Login";
+          // history.push("/Login");
+          console.log("lfalse");
+        }
+      }
+    );
+  }, []);
 
   const logout = () => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
