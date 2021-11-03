@@ -50,7 +50,7 @@ function Events() {
     file: [],
     filepreview: null,
   });
-
+  //dlvt2lnkh
   const handleInputChange = (event) => {
     setEventInformation({
       ...eventInformation,
@@ -66,6 +66,52 @@ function Events() {
       content: document.getElementById("inputEventContent").value,
     });
   };
+
+  //   const submit = async () => {
+  //     const formdata_ = new FormData();
+  //     formdata_.append("image", eventInformation.file);
+  //     console.log(eventInformation.file);
+  //     formdata_.append("title", eventInformation.title);
+  //     formdata_.append("content", eventInformation.content);
+  //     if (
+  //       eventInformation.content === "" ||
+  //       eventInformation.file.length === 0 ||
+  //       eventInformation.content === ""
+  //     ) {
+  //       let timerId = setInterval(
+  //         () =>
+  //           (document.getElementById("titleMessage").innerHTML =
+  //             "Please fill out form completely!"),
+  //         0
+  //       );
+
+  //       // Timeout
+  //       setTimeout(() => {
+  //         clearInterval(timerId);
+  //         document.getElementById("titleMessage").innerHTML = "";
+  //       }, 3000);
+  //       return false;
+  //     } else
+  //       Axios.post(
+  //         "https://perseeption-tromagade.herokuapp.com/uploadEvent",
+  //         formdata_,
+  //         {
+  //           headers: { "Content-Type": "multipart/form-data" },
+  //         }
+  //       );
+  //     document.getElementById("messageEventPopUpouter").style.display = "block";
+  //     document.getElementById("messageEvent_Content").style.display = "block";
+
+  //     setTimeout(function () {
+  //       document.getElementById("messageEventPopUpouter").style.display = "none";
+  //       document.getElementById("messageEvent_Content").style.display = "none";
+  //     }, 3000);
+  //     Axios.get(
+  //       "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+  //     ).then((response) => {
+  //       setEVENT_LIST(response.data);
+  //     });
+  //   };
 
   const submit = async () => {
     const formdata_ = new FormData();
@@ -93,7 +139,7 @@ function Events() {
       return false;
     } else
       Axios.post(
-        "https://perseeption-tromagade.herokuapp.com/uploadEvent",
+        "https://perseeption-tromagade.herokuapp.com/uploadEventImage",
         formdata_,
         {
           headers: { "Content-Type": "multipart/form-data" },
