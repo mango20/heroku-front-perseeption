@@ -71,7 +71,7 @@ function MemberAnnouncement() {
     document.getElementById("popUpReadmoreAnnouncement_id").style.display =
       "block";
     document.getElementById("memberAnnouncementList_id_").style.display =
-      "none";
+      "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID}`
     ).then((response) => {
@@ -212,10 +212,7 @@ function MemberAnnouncement() {
           </label>
         </div>
         <div className="fbLogo">
-          <a
-            href="www.facebook.com/PAVIC.ph"
-            className="fa fa-facebook"
-          >
+          <a href="www.facebook.com/PAVIC.ph" className="fa fa-facebook">
             {}
           </a>
         </div>
