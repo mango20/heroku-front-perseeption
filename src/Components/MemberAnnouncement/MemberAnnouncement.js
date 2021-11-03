@@ -61,6 +61,8 @@ function MemberAnnouncement() {
     });
     document.getElementById("popUpReadmoreAnnouncement_id").style.display =
       "none";
+    document.getElementById("_memberAnnouncementList_id_").style.display =
+      "none";
     // document.getElementById("memberEventList_id").style.display = "block";
     document.getElementById("memberAnnouncementList_id_").style.display =
       "grid";
