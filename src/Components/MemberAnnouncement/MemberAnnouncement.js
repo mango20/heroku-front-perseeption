@@ -70,8 +70,10 @@ function MemberAnnouncement() {
     console.log(ANNOUNCEMENT_ID);
     document.getElementById("popUpReadmoreAnnouncement_id").style.display =
       "block";
-    document.getElementById("memberAnnouncementList_id_").style.display =
+    document.getElementById("_memberAnnouncementList_id_").style.display =
       "block";
+    document.getElementById("memberAnnouncementList_id_").style.display =
+      "none";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID}`
     ).then((response) => {
