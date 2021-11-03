@@ -32,6 +32,7 @@ function AdminContactUs() {
 
   // Delete Announcement
   const deleteContactMessage = (contact_id) => {
+    console.log(contact_id);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteContactUsMsgt/${contact_id}`
     ).then((response) => {
@@ -68,6 +69,7 @@ function AdminContactUs() {
   };
 
   const sendEmail = (contact_id) => {
+    console.log(contact_id);
     const p = document.getElementById("email-id").value;
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
