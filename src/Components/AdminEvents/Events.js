@@ -144,7 +144,9 @@ function Events() {
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
-      );
+      ).then((response) => {
+        console.log(response);
+      });
     document.getElementById("messageEventPopUpouter").style.display = "block";
     document.getElementById("messageEvent_Content").style.display = "block";
 
