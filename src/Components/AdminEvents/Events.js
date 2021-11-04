@@ -502,7 +502,7 @@ function Events() {
                     <button
                       className="updateBtn"
                       onClick={() => {
-                        updateEventTitle(val.EVENT_ID);
+                        updateEventTitle(imageId.EVENT_ID);
                       }}
                     >
                       Update
@@ -520,7 +520,7 @@ function Events() {
                     <button
                       className="inpupdateEventContent"
                       onClick={() => {
-                        updateEventContent(val.EVENT_ID);
+                        updateEventContent(imageId.EVENT_ID);
                       }}
                     >
                       Update
@@ -528,7 +528,7 @@ function Events() {
                     <button
                       className="delAdminButton"
                       onClick={() => {
-                        deleteEvent(val.EVENT_ID);
+                        deleteEvent(imageId.EVENT_ID);
                       }}
                     >
                       DELETE
