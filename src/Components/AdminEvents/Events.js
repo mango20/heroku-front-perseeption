@@ -107,7 +107,7 @@ function Events() {
   };
 
   const [imagesIds, setImagesIds] = useState([]);
-  const loadImages = (async = () => {
+  const loadImages = async () => {
     try {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
@@ -117,7 +117,7 @@ function Events() {
     } catch (error) {
       console.log(error);
     }
-  });
+  };
 
   useEffect(() => {
     loadImages();
