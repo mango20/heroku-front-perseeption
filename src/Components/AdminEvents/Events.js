@@ -100,6 +100,8 @@ function Events() {
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
         data: base64EncodedImage,
+        EVENT_TITLE: EVENT_TITLE,
+        EVENT_CONTENT: EVENT_CONTENT,
       });
       //   console.log(EVENT_TITLE);
     } catch (error) {
@@ -439,15 +441,15 @@ function Events() {
         </div>
         <div className="form">
           <form onSubmit={handleSubmitFile}>
-            {/* <input
+            <input
               type="text"
-              
+              onChange={(e) => setEVENT_TITLE(e.target.value)}
             />
             <textarea
               cols="30"
               rows="10"
-              
-            ></textarea> */}
+              onChange={(e) => setEVENT_CONTENT(e.target.value)}
+            ></textarea>
             <input
               type="file"
               name="image"
