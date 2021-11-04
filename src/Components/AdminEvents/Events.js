@@ -450,8 +450,8 @@ function Events() {
             />
             <label className="contentEventAdminTxt">Content</label>
             <textarea
-              cols="30"
-              rows="10"
+              id="inputEventContent"
+              className="eventAdminContent"
               onChange={(e) => setEVENT_CONTENT(e.target.value)}
             ></textarea>
             <div className="containerBtnAnnouncement">
