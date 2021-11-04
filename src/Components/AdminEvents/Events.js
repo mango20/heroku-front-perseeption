@@ -482,6 +482,7 @@ function Events() {
                 <div className="eventAdminRender">
                   <Image
                     key={index}
+                    className="eventAdImg"
                     cloudName="dlvt2lnkh"
                     publicId={imageId.EVENT_IMAGE}
                   />
