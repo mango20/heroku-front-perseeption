@@ -124,8 +124,7 @@ function Events() {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        // "X-Requested-With": "XMLHttpRequest",
-        // "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "POST",
       },
     };
     const formData = new FormData();
@@ -135,7 +134,13 @@ function Events() {
     Axios.post(
       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
       formData,
-      config
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Methods": "POST",
+          'Access-Control-Allow-Origin': ['*']
+        },
+      }
     ).then((response) => {
       const fileName = response.data;
       console.log(fileName);
