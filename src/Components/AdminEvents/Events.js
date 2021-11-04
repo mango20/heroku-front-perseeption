@@ -124,14 +124,14 @@ function Events() {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        "X-Requested-With": "XMLHttpRequest",
+        // "X-Requested-With": "XMLHttpRequest",
         // "Access-Control-Allow-Credentials": "true",
       },
     };
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "jogvnb1m");
-
+    console.log(imageSelected);
     Axios.post(
       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
       formData,
