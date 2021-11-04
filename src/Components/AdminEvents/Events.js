@@ -109,7 +109,7 @@ function Events() {
     }
   };
 
-  const [imagesIds, setImagesIds] = useState([]);
+  const [imagesIds, setImagesIds] = useState();
   const loadImages = async () => {
     try {
       Axios.get(
@@ -464,9 +464,9 @@ function Events() {
           </form>
         </div>
         <div className="container">
-          {previewSource && (
+          {/* {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
-          )}
+          )} */}
           {/* {imagesIds &&
             imagesIds.map((imageId, index) => (
               <Image
@@ -476,65 +476,21 @@ function Events() {
               />
             ))} */}
 
-          {imagesIds.map((imageId, index) => {
-            return (
-              <div key={index} className="eventAdminRender">
-                <Image
-                  cloudName="dlvt2lnkh"
-                  publicId={imageId.EVENT_IMAGE}
-                  className="eventAdImg"
-                />
-                <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
-                <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
-                <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
-
-                {/* <div>
-                    <input
-                      type="text"
-                      className="updateEventTitle"
-                      placeholder="Enter Title"
-                      onChange={(e) => {
-                        setNEW_EVENT_TITLE(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="updateBtn"
-                      onClick={() => {
-                        updateEventTitle(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      className="updateEventContent"
-                      placeholder="Enter Updated Content"
-                      onChange={(e) => {
-                        setNEW_EVENT_REVIEW(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="inpupdateEventContent"
-                      onClick={() => {
-                        updateEventContent(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>{" "}
-                    <button
-                      className="delAdminButton"
-                      onClick={() => {
-                        deleteEvent(imageId.EVENT_ID);
-                      }}
-                    >
-                      DELETE
-                    </button>
-                  </div> */}
-              </div>
-            );
-          })}
+          {/* {imagesIds &&
+            imagesIds.map((imageId, index) => {
+              return (
+                <div className="eventAdminRender">
+                  <Image
+                    key={index}
+                    cloudName="dlvt2lnkh"
+                    publicId={imageId.EVENT_IMAGE}
+                  />
+                  <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
+                  <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
+                  <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+                </div>
+              );
+            })} */}
 
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
@@ -545,10 +501,15 @@ function Events() {
             </div>
             <Image publicId="sample" width="0.5" />
           </CloudinaryContext> */}
-          {/* {EVENT_LIST.map((val, key) => {
+          {EVENT_LIST.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
-                <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" />
+                <Image
+                  //   key={index}
+                  cloudName="dlvt2lnkh"
+                  publicId={imageId.EVENT_IMAGE}
+                />
+                {/* <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" /> */}
                 <p className="eventAdmin_Title">{val.EVENT_TITLE}</p>
                 <p className="eventAdmin_Date">{val.EVENT_DATE}</p>
                 <p className="eventAdmin_Content">{val.EVENT_CONTENT}</p>
@@ -599,7 +560,7 @@ function Events() {
                 </div>
               </div>
             );
-          })} */}
+          })}
         </div>
         {/* <h1>{loginStatus}</h1> */}
       </div>
