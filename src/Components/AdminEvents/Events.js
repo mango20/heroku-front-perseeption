@@ -384,13 +384,13 @@ function Events() {
             <input
               type="file"
               className="fileBtn"
-              name="image"
+              //   name="image"
               //   name="upload_file"
               onChange={(e) => {
                 setImageSelected(e.target.files[0]);
               }}
             />
-            <button onClick={() => submit()} className="postEventBtn">
+            <button onClick={submit} className="postEventBtn">
               Post Event
             </button>
           </div>
