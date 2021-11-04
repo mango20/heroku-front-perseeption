@@ -116,7 +116,6 @@ function Events() {
         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
       ).then((response) => {
         setImagesIds(response.data);
-        console.log(response.data);
       });
     } catch (error) {
       console.log(error);
@@ -480,7 +479,7 @@ function Events() {
           {imagesIds &&
             imagesIds.map((imageId, index) => {
               return (
-                <div className="eventAdminRender">
+                <div>
                   <Image
                     key={index}
                     cloudName="dlvt2lnkh"
