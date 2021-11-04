@@ -69,7 +69,7 @@ function Events() {
     });
   };
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
   const [previewSource, setPreviewSource] = useState();
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -83,6 +83,16 @@ function Events() {
     reader.onloadend = () => {
       setPreviewSource(reader.result);
     };
+  };
+
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if (!previewSource) return;
+    uploadImage(previewSource);
+  };
+
+  const uploadImage = (base64EncodedImage) => {
+    console.log(base64EncodedImage);
   };
   //   const submit = async () => {
   //     const formdata_ = new FormData();
@@ -399,7 +409,7 @@ function Events() {
           </div>
         </div>
         <div className="form">
-          <form>
+          <form onSubmit={handleSubmitFile}>
             <input
               type="file"
               name="image"
@@ -407,7 +417,7 @@ function Events() {
               value={fileInputState}
               className="form-input"
             />
-            <button className="submit_Event" type="button">
+            <button className="submit_Event" type="submit">
               {" "}
               Submit{" "}
             </button>
