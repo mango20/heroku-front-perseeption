@@ -507,7 +507,7 @@ function Events() {
                 <Image
                   //   key={index}
                   cloudName="dlvt2lnkh"
-                  publicId={imageId.EVENT_IMAGE}
+                  publicId={val.EVENT_IMAGE}
                 />
                 {/* <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" /> */}
                 <p className="eventAdmin_Title">{val.EVENT_TITLE}</p>
