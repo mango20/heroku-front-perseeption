@@ -86,6 +86,7 @@ function Events() {
   };
 
   const handleSubmitFile = (e) => {
+    console.log("sub");
     e.preventDefault();
     if (!previewSource) return;
     uploadImage(previewSource);
