@@ -453,9 +453,11 @@ function Events() {
         </div>
         <div className="container">
           {imagesIds &&
-            imagesIds.map((imageId, index) => (
-              <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
-            ))}
+            imagesIds.map((imageId, index) => {
+              return (
+                <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
+              );
+            })}
           {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
           )}
