@@ -441,12 +441,12 @@ function Events() {
           <form onSubmit={handleSubmitFile}>
             <input
               type="text"
-              onChange={(e) => setEVENT_TITLE(e.target.value)}
+              
             />
             <textarea
               cols="30"
               rows="10"
-              onChange={(e) => setEVENT_CONTENT(e.target.value)}
+              
             ></textarea>
             <input
               type="file"
