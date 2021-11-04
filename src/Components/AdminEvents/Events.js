@@ -120,6 +120,7 @@ function Events() {
   const submit = async () => {
     let formData = new FormData();
     formData.append("image", data.image);
+    console.log(data.image);
     formData.append("name", data.name);
     Axios.post(
       "https://perseeption-tromagade.herokuapp.com/uploadEventImage"
