@@ -464,9 +464,9 @@ function Events() {
           </form>
         </div>
         <div className="container">
-          {/* {previewSource && (
+          {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
-          )} */}
+          )}
           {/* {imagesIds &&
             imagesIds.map((imageId, index) => (
               <Image
@@ -476,7 +476,7 @@ function Events() {
               />
             ))} */}
 
-          {/* {imagesIds &&
+          {imagesIds &&
             imagesIds.map((imageId, index) => {
               return (
                 <div className="eventAdminRender">
@@ -490,7 +490,7 @@ function Events() {
                   <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
                 </div>
               );
-            })} */}
+            })}
 
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
@@ -504,12 +504,7 @@ function Events() {
           {EVENT_LIST.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
-                <Image
-                  //   key={index}
-                  cloudName="dlvt2lnkh"
-                  publicId={val.EVENT_IMAGE}
-                />
-                {/* <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" /> */}
+                <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" />
                 <p className="eventAdmin_Title">{val.EVENT_TITLE}</p>
                 <p className="eventAdmin_Date">{val.EVENT_DATE}</p>
                 <p className="eventAdmin_Content">{val.EVENT_CONTENT}</p>
