@@ -68,7 +68,22 @@ function Events() {
       content: document.getElementById("inputEventContent").value,
     });
   };
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState();
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
 
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
   //   const submit = async () => {
   //     const formdata_ = new FormData();
   //     formdata_.append("image", eventInformation.file);
@@ -119,43 +134,43 @@ function Events() {
   //     const value = name === "image" ? e.target.files[0] : e.target.value;
   //     setData({ ...data, [name]: value });
   //   };
-  const [imageSelected, setImageSelected] = useState("");
-  const submit = () => {
-    const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "Access-Control-Allow-Methods": "POST",
-      },
-    };
-    const formData = new FormData();
-    formData.append("file", imageSelected);
-    formData.append("upload_preset", "jogvnb1m");
-    console.log(imageSelected);
-    Axios.post(
-      "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Methods": "POST",
-          'Access-Control-Allow-Origin': ['*']
-        },
-      }
-    ).then((response) => {
-      const fileName = response.data;
-      console.log(fileName);
-      Axios.post(
-        "https://perseeption-tromagade.herokuapp.com/uploadEvent_Admin",
-        {
-          EVENT_TITLE: EVENT_TITLE,
-          EVENT_CONTENT: EVENT_CONTENT,
-          EVENT_IMAGE: fileName,
-        }
-      ).then((response) => {
-        console.log(EVENT_TITLE);
-      });
-    });
-  };
+  //   const [imageSelected, setImageSelected] = useState("");
+  //   const submit = () => {
+  //     const config = {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //         "Access-Control-Allow-Methods": "POST",
+  //       },
+  //     };
+  //     const formData = new FormData();
+  //     formData.append("file", imageSelected);
+  //     formData.append("upload_preset", "jogvnb1m");
+  //     console.log(imageSelected);
+  //     Axios.post(
+  //       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           "Access-Control-Allow-Methods": "POST",
+  //           "Access-Control-Allow-Origin": ["*"],
+  //         },
+  //       }
+  //     ).then((response) => {
+  //       const fileName = response.data;
+  //       console.log(fileName);
+  //       Axios.post(
+  //         "https://perseeption-tromagade.herokuapp.com/uploadEvent_Admin",
+  //         {
+  //           EVENT_TITLE: EVENT_TITLE,
+  //           EVENT_CONTENT: EVENT_CONTENT,
+  //           EVENT_IMAGE: fileName,
+  //         }
+  //       ).then((response) => {
+  //         console.log(EVENT_TITLE);
+  //       });
+  //     });
+  //   };
   //   const submit = () => {};
 
   // useEffect(() => {
@@ -383,46 +398,26 @@ function Events() {
             <p className="EventMsg">Event Successfully Posted</p>
           </div>
         </div>
-
         <div className="form">
-          <label className="eventAdminTitleTxt">Title </label>
-          <input
-            type="text"
-            placeholder="Enter Title"
-            id="inputEventTitle"
-            className="inputeventTitle"
-            onChange={(e) => setEVENT_TITLE(e.target.value)}
-            // name="name"
-            // value={data.name}
-            // onChange={handleChange("name")}
-          />
-
-          <label className="contentEventAdminTxt">Content</label>
-          <textarea
-            placeholder="Enter Content"
-            id="inputEventContent"
-            className="eventAdminContent"
-            onChange={(e) => setEVENT_CONTENT(e.target.value)}
-          />
-          <div className="containerBtnAnnouncement">
-            {/* <input type="file" className="fileBtn" name="image" /> */}
+          <form>
             <input
               type="file"
-              className="fileBtn"
-              //   name="image"
-              //   name="upload_file"
-              onChange={(e) => {
-                setImageSelected(e.target.files[0]);
-              }}
+              name="image"
+              onChange={handleFileInputChange}
+              value={fileInputState}
+              className="form-input"
             />
-            <button onClick={submit} className="postEventBtn">
-              Post Event
+            <button className="submit_Event" type="button">
+              {" "}
+              Submit{" "}
             </button>
-          </div>
-          <div id="titleMessage"></div>
+          </form>
         </div>
         <div className="container">
-          <CloudinaryContext cloudName="dlvt2lnkh">
+          {previewSource && (
+            <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+          )}
+          {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
               <Image
                 publicId="https://res.cloudinary.com/dlvt2lnkh/image/upload/v1636006027/tautp2n5oq1i4o2frn7x.png"
@@ -430,7 +425,7 @@ function Events() {
               />
             </div>
             <Image publicId="sample" width="0.5" />
-          </CloudinaryContext>
+          </CloudinaryContext> */}
           {EVENT_LIST.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
