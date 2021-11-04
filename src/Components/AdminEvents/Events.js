@@ -94,6 +94,13 @@ function Events() {
 
   const uploadImage = (base64EncodedImage) => {
     console.log(base64EncodedImage);
+    try {
+      Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
+        data: base64EncodedImage,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   //   const submit = async () => {
   //     const formdata_ = new FormData();
