@@ -123,7 +123,7 @@ function Events() {
   const submit = () => {
     const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-type": "multipart/form-data",
         "Access-Control-Allow-Origin": "true",
         "Access-Control-Allow-Credentials": "true",
       },
