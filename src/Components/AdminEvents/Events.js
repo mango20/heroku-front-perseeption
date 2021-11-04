@@ -100,10 +100,8 @@ function Events() {
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
         data: base64EncodedImage,
-        EVENT_TITLE: EVENT_TITLE,
-        EVENT_CONTENT: EVENT_CONTENT,
       });
-      console.log(EVENT_TITLE);
+      //   console.log(EVENT_TITLE);
     } catch (error) {
       console.log(error);
     }
