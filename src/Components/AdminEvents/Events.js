@@ -479,9 +479,8 @@ function Events() {
           {imagesIds &&
             imagesIds.map((imageId, index) => {
               return (
-                <div className="eventAdminRender">
+                <div key={index} className="eventAdminRender">
                   <Image
-                    key={index}
                     cloudName="dlvt2lnkh"
                     publicId={imageId.EVENT_IMAGE}
                     className="eventAdImg"
