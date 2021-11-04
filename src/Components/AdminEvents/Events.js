@@ -106,7 +106,7 @@ function Events() {
     }
   };
 
-  const [imagesIds, setImagesIds] = useState();
+  const [imagesIds, setImagesIds] = useState([]);
   //   const loadImages = async () => {
   //     try {
   //       Axios.get(
