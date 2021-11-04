@@ -407,7 +407,10 @@ function Events() {
         <div className="container">
           <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
-              <Image publicId="sample" width="50" />
+              <Image
+                publicId="https://res.cloudinary.com/dlvt2lnkh/image/upload/v1636003244/"
+                width="50"
+              />
             </div>
             <Image publicId="sample" width="0.5" />
           </CloudinaryContext>
