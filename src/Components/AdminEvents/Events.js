@@ -479,16 +479,61 @@ function Events() {
           {imagesIds &&
             imagesIds.map((imageId, index) => {
               return (
-                <div>
-                  {" "}
+                <div className="eventAdminRender">
                   <Image
                     key={index}
                     cloudName="dlvt2lnkh"
                     publicId={imageId.EVENT_IMAGE}
+                    className="eventAdImg"
                   />
                   <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
                   <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
                   <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+
+                  <div>
+                    <input
+                      type="text"
+                      className="updateEventTitle"
+                      placeholder="Enter Title"
+                      onChange={(e) => {
+                        setNEW_EVENT_TITLE(e.target.value);
+                      }}
+                    />
+                    <button
+                      className="updateBtn"
+                      onClick={() => {
+                        updateEventTitle(val.EVENT_ID);
+                      }}
+                    >
+                      Update
+                    </button>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      className="updateEventContent"
+                      placeholder="Enter Updated Content"
+                      onChange={(e) => {
+                        setNEW_EVENT_REVIEW(e.target.value);
+                      }}
+                    />
+                    <button
+                      className="inpupdateEventContent"
+                      onClick={() => {
+                        updateEventContent(val.EVENT_ID);
+                      }}
+                    >
+                      Update
+                    </button>{" "}
+                    <button
+                      className="delAdminButton"
+                      onClick={() => {
+                        deleteEvent(val.EVENT_ID);
+                      }}
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </div>
               );
             })}
@@ -502,7 +547,7 @@ function Events() {
             </div>
             <Image publicId="sample" width="0.5" />
           </CloudinaryContext> */}
-          {EVENT_LIST.map((val, key) => {
+          {/* {EVENT_LIST.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
                 <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" />
@@ -556,7 +601,7 @@ function Events() {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
         {/* <h1>{loginStatus}</h1> */}
       </div>
