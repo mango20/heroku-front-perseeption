@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./Events.css";
 import { Link } from "react-router-dom";
 
-import { CloudinaryContext } from "cloudinary-react";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
@@ -124,8 +124,8 @@ function Events() {
     const config = {
       headers: {
         "content-type": "multipart/form-data",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "*",
+        "Access-Control-Allow-Origin": "true",
+        "Access-Control-Allow-Credentials": "true",
       },
     };
     const formData = new FormData();
