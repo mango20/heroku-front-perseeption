@@ -112,22 +112,25 @@ function Events() {
   //       setEVENT_LIST(response.data);
   //     });
   //   };
-  const [data, setData] = useState({ name: "", image: "" });
-  const handleChange = (name) => (e) => {
-    const value = name === "image" ? e.target.files[0] : e.target.value;
-    setData({ ...data, [name]: value });
-  };
-  const submit = async () => {
-    let formData = new FormData();
-    formData.append("image", data.image);
-    console.log(data.image);
-    formData.append("name", data.name);
+  //   const [data, setData] = useState({ name: "", image: "" });
+  //   const handleChange = (name) => (e) => {
+  //     const value = name === "image" ? e.target.files[0] : e.target.value;
+  //     setData({ ...data, [name]: value });
+  //   };
+  const [imageSelected, setImageSelected] = useState("");
+  const submit = () => {
+    const formData = new FormData();
+    formData.append("file", imageSelected);
+    formData.append("upload_preset", "jogvnb1m");
+
     Axios.post(
-      "https://perseeption-tromagade.herokuapp.com/uploadEventImage"
-      //   EVENT_CONTENT: EVENT_CONTENT,
-      //   EVENT_TITLE: EVENT_TITLE,
-    );
+      "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
+      formData
+    ).then((response) => {
+      console.log(response);
+    });
   };
+  //   const submit = () => {};
 
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
@@ -379,10 +382,11 @@ function Events() {
             <input
               type="file"
               className="fileBtn"
-              accept="image/*"
               name="image"
               //   name="upload_file"
-              onChange={handleChange("image")}
+              onChange={(e) => {
+                setImageSelected(e.target.files);
+              }}
             />
             <button onClick={() => submit()} className="postEventBtn">
               Post Event
