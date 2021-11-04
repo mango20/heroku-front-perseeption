@@ -452,13 +452,14 @@ function Events() {
           </form>
         </div>
         <div className="container">
+          {previewSource && (
+            <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+          )}
           {imagesIds &&
             imagesIds.map((imageId, index) => (
               <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
             ))}
-          {previewSource && (
-            <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
-          )}
+
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
               <Image
