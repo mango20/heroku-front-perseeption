@@ -146,7 +146,9 @@ function Events() {
           EVENT_CONTENT: EVENT_CONTENT,
           EVENT_IMAGE: fileName,
         }
-      );
+      ).then((response) => {
+        console.log(EVENT_TITLE);
+      });
     });
   };
   //   const submit = () => {};
