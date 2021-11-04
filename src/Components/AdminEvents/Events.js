@@ -132,11 +132,11 @@ function Events() {
     formData.append("file", imageSelected);
     formData.append("upload_preset", "jogvnb1m");
 
-    Axios.post(
-      "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
+    Axios.post("https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload", {
       formData,
-      config
-    ).then((response) => {
+      config,
+      method: "POST",
+    }).then((response) => {
       const fileName = response.data.public_id;
       console.log(fileName);
       Axios.post(
