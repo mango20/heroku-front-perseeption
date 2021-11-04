@@ -489,7 +489,7 @@ function Events() {
                   <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
                   <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
 
-                  <div>
+                  {/* <div>
                     <input
                       type="text"
                       className="updateEventTitle"
@@ -532,7 +532,7 @@ function Events() {
                     >
                       DELETE
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               );
             })}
