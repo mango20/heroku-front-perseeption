@@ -411,16 +411,12 @@ function Events() {
               {" "}
               Submit{" "}
             </button>
-            {previewSource && (
-              <img
-                src={previewSource}
-                alt="chosen"
-                style={{ height: "300px" }}
-              />
-            )}
           </form>
         </div>
         <div className="container">
+          {previewSource && (
+            <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
+          )}
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
               <Image
