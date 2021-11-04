@@ -137,7 +137,16 @@ function Events() {
       formData,
       config
     ).then((response) => {
-      console.log(response.data);
+      const fileName = response.data.public_id;
+      console.log(fileName);
+      Axios.post(
+        "https://perseeption-tromagade.herokuapp.com/uploadEvent_Admin",
+        {
+          EVENT_TITLE: EVENT_TITLE,
+          EVENT_CONTENT: EVENT_CONTENT,
+          EVENT_IMAGE: fileName,
+        }
+      );
     });
   };
   //   const submit = () => {};
@@ -375,6 +384,7 @@ function Events() {
             placeholder="Enter Title"
             id="inputEventTitle"
             className="inputeventTitle"
+            onChange={(e) => setEVENT_TITLE(e.target.value)}
             // name="name"
             // value={data.name}
             // onChange={handleChange("name")}
@@ -385,7 +395,7 @@ function Events() {
             placeholder="Enter Content"
             id="inputEventContent"
             className="eventAdminContent"
-            onChange={handleInputChange_}
+            onChange={(e) => setEVENT_CONTENT(e.target.value)}
           />
           <div className="containerBtnAnnouncement">
             {/* <input type="file" className="fileBtn" name="image" /> */}
