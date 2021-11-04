@@ -112,14 +112,20 @@ function Events() {
   //       setEVENT_LIST(response.data);
   //     });
   //   };
-  const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
-
-  const submit = () => {
-    Axios.post("https://perseeption-tromagade.herokuapp.com/uploadEventImage", {
-      EVENT_IMAGE: EVENT_IMAGE,
+  const [data, setData] = useState({ name: "", image: "" });
+  const handleChange = (name) => (e) => {
+    const value = name === "image" ? e.target.files[0] : e.target.value;
+    setData({ ...data, [name]: value });
+  };
+  const submit = async () => {
+    let formData = new FormData();
+    formData.append("image", data.image);
+    formData.append("name", data.name);
+    Axios.post(
+      "https://perseeption-tromagade.herokuapp.com/uploadEventImage"
       //   EVENT_CONTENT: EVENT_CONTENT,
       //   EVENT_TITLE: EVENT_TITLE,
-    });
+    );
   };
 
   // useEffect(() => {
@@ -355,7 +361,9 @@ function Events() {
             placeholder="Enter Title"
             id="inputEventTitle"
             className="inputeventTitle"
-            onChange={handleInputChange_}
+            name="name"
+            value={data.name}
+            onChange={handleChange("name")}
           />
 
           <label className="contentEventAdminTxt">Content</label>
@@ -370,8 +378,10 @@ function Events() {
             <input
               type="file"
               className="fileBtn"
-              name="upload_file"
-              onChange={handleInputChange}
+              accept="image/*"
+              name="image"
+              //   name="upload_file"
+              onChange={handleChange("image")}
             />
             <button onClick={() => submit()} className="postEventBtn">
               Post Event
