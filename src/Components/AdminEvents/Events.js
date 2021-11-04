@@ -120,11 +120,10 @@ function Events() {
   //   };
 
   useEffect(() => {
-    Axios.get("http://http://localhost:3004/api/imagesEvent").then(
-      (response) => {
-        setImagesIds(response.data);
-      }
-    );
+    Axios.get("http://localhost:3004/api/imagesEvent").then((response) => {
+      setImagesIds(response.data);
+      console.log(response.data);
+    });
   }, []);
   //   const submit = async () => {
   //     const formdata_ = new FormData();
