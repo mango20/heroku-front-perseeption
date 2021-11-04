@@ -365,9 +365,9 @@ function Events() {
             placeholder="Enter Title"
             id="inputEventTitle"
             className="inputeventTitle"
-            name="name"
-            value={data.name}
-            onChange={handleChange("name")}
+            // name="name"
+            // value={data.name}
+            // onChange={handleChange("name")}
           />
 
           <label className="contentEventAdminTxt">Content</label>
