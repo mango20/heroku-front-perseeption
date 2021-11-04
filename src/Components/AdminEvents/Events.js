@@ -4,6 +4,7 @@ import "./Events.css";
 import { Link } from "react-router-dom";
 
 import { CloudinaryContext, Image } from "cloudinary-react";
+// import { response } from "express";
 
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
@@ -68,6 +69,8 @@ function Events() {
       content: document.getElementById("inputEventContent").value,
     });
   };
+
+  // --------------------------
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [previewSource, setPreviewSource] = useState();
@@ -102,6 +105,23 @@ function Events() {
       console.log(error);
     }
   };
+
+  const [imagesIds, setImagesIds] = useState([]);
+  const loadImages = (async = () => {
+    try {
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+      ).then((response) => {
+        setImagesIds(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  useEffect(() => {
+    loadImages();
+  }, []);
   //   const submit = async () => {
   //     const formdata_ = new FormData();
   //     formdata_.append("image", eventInformation.file);
@@ -432,6 +452,10 @@ function Events() {
           </form>
         </div>
         <div className="container">
+          {imagesIds &&
+            imagesIds.map((imageId, index) => (
+              <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
+            ))}
           {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
           )}
