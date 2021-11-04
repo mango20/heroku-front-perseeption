@@ -144,7 +144,7 @@ function Events() {
         {
           EVENT_TITLE: EVENT_TITLE,
           EVENT_CONTENT: EVENT_CONTENT,
-          EVENT_IMAGE: fileName,
+          //   EVENT_IMAGE: fileName,
         }
       );
     });
