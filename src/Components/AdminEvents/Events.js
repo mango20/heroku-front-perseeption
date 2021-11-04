@@ -123,10 +123,10 @@ function Events() {
   const submit = () => {
     const config = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "multipart/form-data",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Origin",
-        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Credentials": "true",
       },
     };
     const formData = new FormData();
@@ -421,7 +421,7 @@ function Events() {
           <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
               <Image
-                publicId="https://res.cloudinary.com/dlvt2lnkh/image/upload/v1636003244/"
+                publicId="https://res.cloudinary.com/dlvt2lnkh/image/upload/v1636003244/tautp2n5oq1i4o2frn7x.png"
                 width="50"
               />
             </div>
