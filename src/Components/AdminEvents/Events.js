@@ -467,10 +467,31 @@ function Events() {
           {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
           )}
-          {imagesIds &&
+          {/* {imagesIds &&
             imagesIds.map((imageId, index) => (
-              <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
-            ))}
+              <Image
+                key={index}
+                cloudName="dlvt2lnkh"
+                publicId={imageId.EVENT_IMAGE}
+              />
+            ))} */}
+
+          {imagesIds &&
+            imagesIds.map((imageId, index) => {
+              return (
+                <div>
+                  {" "}
+                  <Image
+                    key={index}
+                    cloudName="dlvt2lnkh"
+                    publicId={imageId.EVENT_IMAGE}
+                  />
+                  <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
+                  <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
+                  <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+                </div>
+              );
+            })}
 
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
