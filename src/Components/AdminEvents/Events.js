@@ -439,7 +439,7 @@ function Events() {
         </div>
         <div className="form">
           <form onSubmit={handleSubmitFile}>
-            <input
+            {/* <input
               type="text"
               
             />
@@ -447,7 +447,7 @@ function Events() {
               cols="30"
               rows="10"
               
-            ></textarea>
+            ></textarea> */}
             <input
               type="file"
               name="image"
