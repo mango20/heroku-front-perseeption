@@ -124,7 +124,8 @@ function Events() {
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        "Access-Control-Allow-Credentials": "true",
+        "X-Requested-With": "XMLHttpRequest",
+        // "Access-Control-Allow-Credentials": "true",
       },
     };
     const formData = new FormData();
