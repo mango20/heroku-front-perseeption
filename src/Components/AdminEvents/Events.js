@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./Events.css";
 import { Link } from "react-router-dom";
 
-import { Image } from "cloudinary-react";
+import { CloudinaryContext } from "cloudinary-react";
 
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
@@ -125,6 +125,7 @@ function Events() {
       headers: {
         "content-type": "multipart/form-data",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "*",
       },
     };
     const formData = new FormData();
@@ -404,6 +405,12 @@ function Events() {
           <div id="titleMessage"></div>
         </div>
         <div className="container">
+          <CloudinaryContext cloudName="dlvt2lnkh">
+            <div>
+              <Image publicId="sample" width="50" />
+            </div>
+            <Image publicId="sample" width="0.5" />
+          </CloudinaryContext>
           {EVENT_LIST.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
