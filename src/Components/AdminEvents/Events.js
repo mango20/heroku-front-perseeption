@@ -124,7 +124,7 @@ function Events() {
     const config = {
       headers: {
         "Content-type": "multipart/form-data",
-        "Access-Control-Allow-Origin": "true",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": "true",
       },
     };
