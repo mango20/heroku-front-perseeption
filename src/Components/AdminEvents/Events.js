@@ -124,7 +124,7 @@ function Events() {
     formData.append("upload_preset", "jogvnb1m");
 
     Axios.post(
-      "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
+      "https://api.cloudinary.com/v1_1/dlvt2lnkh/upload",
       formData
     ).then((response) => {
       console.log(response);
