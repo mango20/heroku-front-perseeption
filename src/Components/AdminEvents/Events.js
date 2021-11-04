@@ -3,6 +3,8 @@ import Axios from "axios";
 import "./Events.css";
 import { Link } from "react-router-dom";
 
+import { Image } from "cloudinary-react";
+
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
@@ -385,7 +387,7 @@ function Events() {
               name="image"
               //   name="upload_file"
               onChange={(e) => {
-                setImageSelected(e.target.files);
+                setImageSelected(e.target.files[0]);
               }}
             />
             <button onClick={() => submit()} className="postEventBtn">
