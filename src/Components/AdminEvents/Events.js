@@ -476,20 +476,19 @@ function Events() {
               />
             ))} */}
 
-          {imagesIds &&
-            imagesIds.map((imageId, index) => {
-              return (
-                <div key={index} className="eventAdminRender">
-                  <Image
-                    cloudName="dlvt2lnkh"
-                    publicId={imageId.EVENT_IMAGE}
-                    className="eventAdImg"
-                  />
-                  <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
-                  <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
-                  <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+          {imagesIds.map((imageId, index) => {
+            return (
+              <div key={index} className="eventAdminRender">
+                <Image
+                  cloudName="dlvt2lnkh"
+                  publicId={imageId.EVENT_IMAGE}
+                  className="eventAdImg"
+                />
+                <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
+                <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
+                <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
 
-                  {/* <div>
+                {/* <div>
                     <input
                       type="text"
                       className="updateEventTitle"
@@ -533,9 +532,9 @@ function Events() {
                       DELETE
                     </button>
                   </div> */}
-                </div>
-              );
-            })}
+              </div>
+            );
+          })}
 
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
