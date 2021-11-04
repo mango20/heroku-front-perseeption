@@ -441,26 +441,33 @@ function Events() {
         </div>
         <div className="form">
           <form onSubmit={handleSubmitFile}>
+            <label className="eventAdminTitleTxt">Title </label>
             <input
               type="text"
+              id="inputEventTitle"
+              className="inputeventTitle"
               onChange={(e) => setEVENT_TITLE(e.target.value)}
             />
+            <label className="contentEventAdminTxt">Content</label>
             <textarea
               cols="30"
               rows="10"
               onChange={(e) => setEVENT_CONTENT(e.target.value)}
             ></textarea>
-            <input
-              type="file"
-              name="image"
-              onChange={handleFileInputChange}
-              value={fileInputState}
-              className="form-input"
-            />
-            <button className="submit_Event" type="submit">
-              {" "}
-              Submit{" "}
-            </button>
+            <div className="containerBtnAnnouncement">
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileInputChange}
+                value={fileInputState}
+                className="fileBtn"
+              />
+              <button className="postEventBtn" type="submit">
+                {" "}
+                Submit{" "}
+              </button>
+            </div>
+            <div id="titleMessage"></div>
           </form>
         </div>
         <div className="container">
