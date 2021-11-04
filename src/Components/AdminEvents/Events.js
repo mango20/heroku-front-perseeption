@@ -95,7 +95,7 @@ function Events() {
     uploadImage(previewSource);
   };
 
-  const uploadImage = (base64EncodedImage) => {
+  const uploadImage = async (base64EncodedImage) => {
     console.log(base64EncodedImage);
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
@@ -106,24 +106,21 @@ function Events() {
     }
   };
 
-  const [imagesIds, setImagesIds] = useState([]);
-  //   const loadImages = async () => {
-  //     try {
-  //       Axios.get(
-  //         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-  //       ).then((response) => {
-  //         setImagesIds(response.data);
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  const [imagesIds, setImagesIds] = useState();
+  const loadImages = async () => {
+    try {
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+      ).then((response) => {
+        setImagesIds(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    Axios.get("http://localhost:3004/api/imagesEvent").then((response) => {
-      setImagesIds(response.data);
-      console.log(response.data);
-    });
+    loadImages();
   }, []);
   //   const submit = async () => {
   //     const formdata_ = new FormData();
@@ -456,11 +453,9 @@ function Events() {
         </div>
         <div className="container">
           {imagesIds &&
-            imagesIds.map((imageId, index) => {
-              return (
-                <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
-              );
-            })}
+            imagesIds.map((imageId, index) => (
+              <Image key={index} cloudName="dlvt2lnkh" publicId={imageId} />
+            ))}
           {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
           )}
