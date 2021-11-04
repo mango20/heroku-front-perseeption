@@ -121,13 +121,20 @@ function Events() {
   //   };
   const [imageSelected, setImageSelected] = useState("");
   const submit = () => {
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
     const formData = new FormData();
     formData.append("file", imageSelected);
     formData.append("upload_preset", "jogvnb1m");
 
     Axios.post(
       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
-      formData
+      formData,
+      config
     ).then((response) => {
       console.log(response);
     });
