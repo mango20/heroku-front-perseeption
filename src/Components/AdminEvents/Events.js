@@ -137,7 +137,7 @@ function Events() {
       formData,
       config
     ).then((response) => {
-      console.log(response);
+      console.log(response.data);
     });
   };
   //   const submit = () => {};
