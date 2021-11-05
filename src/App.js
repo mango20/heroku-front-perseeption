@@ -20,7 +20,7 @@ import TermsCondition from "./Components/TermsCondition/TermsCondition";
 import AdminContactUs from "./Components/AdminContactUs/AdminContactUs";
 import MemberProfile from "./Components/MemberProfile/MemberProfile";
 import resetpassword from "./Components/Login/Resetpassword";
-
+import React, { useEffect, useState } from "react";
 function App() {
   const [user, setLoginUser] = useState([]);
 
