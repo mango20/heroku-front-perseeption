@@ -16,7 +16,7 @@ function ContactUs() {
   Axios.defaults.withCredentials = true;
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
-      history.push("/");
+      // history.push("/");
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
