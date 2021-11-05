@@ -70,6 +70,7 @@ function MemberForum() {
       console.log(response.data);
     });
   }, []);
+  
 
   useEffect(() => {
     Axios.get(

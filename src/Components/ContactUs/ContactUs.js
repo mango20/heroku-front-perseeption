@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./ContactUs.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function ContactUs() {
   const [USER_ID, setUSER_ID] = useState("");
@@ -9,22 +9,26 @@ function ContactUs() {
   const [contact_number, setcontact_number] = useState("");
   const [contact_email, setcontact_email] = useState("");
   const [contact_message, setcontact_message] = useState("");
+  const history = useHistory();
   // const [announcementContentList, setAnnouncementList] = useState([]);
   // const [newReview, setNewReview] = useState("");
   // const [newTitle, setNewTitle] = useState("");
   Axios.defaults.withCredentials = true;
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSER_ID(response.data.user[0].USER_ID);
-          document.getElementById("floatBtn").style.display = "none";
-          document.getElementById("LoginHeader").style.display = "none";
-          document.getElementById("loggedInImg").style.display = "block";
-        }
+    if (localStorage.getItem("Client") === null) {
+      history.push("/");
+    } else {
+      var name1 = JSON.parse(localStorage.getItem("Client"));
+      if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("portalDash").style.display = "block";
+        document.getElementById("profileGo").style.display = "none";
+      } else {
+        document.getElementById("portalDash").style.display = "none";
       }
-    );
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("loggedInImg").style.display = "block";
+    }
   }, []);
 
   const popup = () => {
@@ -36,15 +40,13 @@ function ContactUs() {
   };
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {}
-    );
+    alert("logout");
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
-    // window.location.reload();
+    window.location.reload();
   };
 
   const insertContactUsMsg = () => {
@@ -139,7 +141,12 @@ function ContactUs() {
                 onClick={popup}
               />
               <div className="dropdown-content" id="dropdown-content">
-                <Link to="/MemberProfile">Profile</Link>
+                <Link to="/MemberProfile" id="profileGo">
+                  Profile
+                </Link>
+                <Link to="/AdminDashboard" id="portalDash">
+                  Dashboard
+                </Link>
                 <p onClick={logout}>Logout</p>
                 {/* <a href="#">Sign In other Account</a> */}
               </div>
