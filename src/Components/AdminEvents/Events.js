@@ -471,9 +471,9 @@ function Events() {
           </form>
         </div>
         <div className="container">
-          {previewSource && (
+          {/* {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
-          )}
+          )} */}
           {/* {imagesIds &&
             imagesIds.map((imageId, index) => (
               <Image

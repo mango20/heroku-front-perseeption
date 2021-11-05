@@ -9,7 +9,7 @@ function AdminAnnouncement() {
   const [ANNOUNCEMENT_IMAGE, setANNOUNCEMENT_IMAGE] = useState("");
   const [ANNOUNCEMENT_LIST, setANNOUNCEMENT_LIST] = useState([]);
   const [NEW_ANNOUNCEMENT_CONTENT, setNewCONTENT] = useState("");
-  const [NEW_ANNOUNCEMENT_TITLE, setNEW_EVENT_TITLE] = useState("");
+  const [NEW_ANNOUNCEMENT_TITLE, setNEW_ANNOUNCEMENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
   // const [loginStatus, setLoginStatus] = useState("");
   // const [userList, setuserList] = useState([]);
@@ -89,6 +89,64 @@ function AdminAnnouncement() {
   };
 
   Axios.defaults.withCredentials = true;
+
+  const [fileInputState1, setFileInputState1] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource1, setPreviewSource1] = useState();
+  const handleFileInputChange1 = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    // reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource1(reader.result);
+    };
+  };
+
+  const handleSubmitFile1 = (e) => {
+    console.log("subs");
+    e.preventDefault();
+    if (!previewSource1) return;
+    uploadImage1(previewSource1);
+  };
+
+  const uploadImage1 = async (base64EncodedImage) => {
+    console.log(base64EncodedImage);
+    try {
+      Axios.post(
+        "https://perseeption-tromagade.herokuapp.com/api/uploadImageAnnouncement",
+        {
+          data: base64EncodedImage,
+          ANNOUNCEMENT_TITLE: ANNOUNCEMENT_TITLE,
+          EVENT_CONTENT: ANNOUNCEMENT_CONTENT,
+        }
+      );
+      //   console.log(EVENT_TITLE);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [imagesIds1, setImagesIds1] = useState();
+  const loadImages = async () => {
+    try {
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/imagesAnnouncement"
+      ).then((response) => {
+        setImagesIds1(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadImages();
+  }, []);
 
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/api/login").then((response) => {
@@ -354,52 +412,114 @@ function AdminAnnouncement() {
           </p>
         </div>
         <div className="form1">
-          <label className="announcementTitleTxt">Title </label>
-          <input
-            type="text"
-            placeholder="Enter Title"
-            id="inputAnnouncementTitle"
-            className="inputAnnTitle"
-            onChange={handleInputChange_}
-            // onChange={(e) => setANNOUNCEMENT_TITLE(e.target.value)}
-          />
-
-          <label className="contentTxtAnnouncement">Content</label>
-          <textarea
-            placeholder="Enter Content"
-            id="inputAnnouncementContent"
-            className="announcementAdminContent"
-            onChange={handleInputChange_}
-            // onChange={(e) => setAnnouncement_Content(e.target.value)}
-          />
-          <div className="containerBtnAnnouncement">
-            {/* <input type="file" className="fileBtnAnnouncement" /> */}
+          <form onSubmit={handleSubmitFile1}>
+            <label className="announcementTitleTxt">Title </label>
             <input
-              type="file"
-              className="fileBtnAnnouncement"
-              name="upload_file"
-              onChange={handleInputChange}
+              type="text"
+              id="inputAnnouncementTitle"
+              className="inputAnnTitle"
+              onChange={(e) => setANNOUNCEMENT_TITLE(e.target.value)}
             />
-            {/* <button
-              onClick={createAnnouncement}
-              className="postAnnouncementBtn"
-            >
-              Post Event
-            </button> */}
-            <button onClick={() => submit()} className="postAnnouncementBtn">
-              Post Event
-            </button>
-          </div>
-          <div id="titleAnnouncementMsg"></div>
+            <label className="contentTxtAnnouncement">Content</label>
+            <textarea
+              id="inputAnnouncementContent"
+              className="announcementAdminContent"
+              onChange={(e) => setAnnouncement_Content(e.target.value)}
+            ></textarea>
+            <div className="containerBtnAnnouncement">
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileInputChange1}
+                value={fileInputState1}
+                className="fileBtnAnnouncement"
+              />
+              <button className="postAnnouncementBtn" type="submit">
+                {" "}
+                Submit{" "}
+              </button>
+            </div>
+            <div id="titleAnnouncementMsg"></div>
+          </form>
         </div>
+
+        {previewSource1 && (
+          <img src={previewSource1} alt="chosen" style={{ height: "300px" }} />
+        )}
+
         <div className="announcementListContainer">
           {/* {announcementInformation.filepreview !== null ? (
             <img
               className="previewimg"
               src={announcementInformation.filepreview}
-              alt="UploadImage"
+              alt="UploadImage1"
             />
           ) : null} */}
+          {imagesIds1 &&
+            imagesIds1.map((imageId, index) => {
+              return (
+                <div className="eventAdminRender">
+                  <Image
+                    key={index}
+                    className="eventAdImg"
+                    cloudName="dlvt2lnkh"
+                    publicId={imageId.ANNOUNCEMENT_IMAGE}
+                  />
+                  <p className="eventAdmin_Title">
+                    {imageId.ANNOUNCEMENT_TITLE}
+                  </p>
+                  <p className="eventAdmin_Date">{imageId.ANNOUNCEMENT_DATE}</p>
+                  <p className="eventAdmin_Content">
+                    {imageId.ANNOUNCEMENT_CONTENT}
+                  </p>
+
+                  <div>
+                    <input
+                      type="text"
+                      className="updateEventTitle"
+                      placeholder="Enter Title"
+                      onChange={(e) => {
+                        setNEW_ANNOUNCEMENT_TITLE(e.target.value);
+                      }}
+                    />
+                    <button
+                      className="updateBtn"
+                      onClick={() => {
+                        updateAnnouncementTitle(imageId.EVENT_ID);
+                      }}
+                    >
+                      Update
+                    </button>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      className="updateEventContent"
+                      placeholder="Enter Updated Content"
+                      onChange={(e) => {
+                        setNewCONTENT(e.target.value);
+                      }}
+                    />
+                    <button
+                      className="inpupdateEventContent"
+                      onClick={() => {
+                        updateAnnouncementContent(imageId.EVENT_ID);
+                      }}
+                    >
+                      Update
+                    </button>{" "}
+                    <button
+                      className="deleteAnnouncementBtn"
+                      onClick={() => {
+                        deletAnnouncementButton(imageId.EVENT_ID);
+                      }}
+                    >
+                      DELETE
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           {ANNOUNCEMENT_LIST.map((val, key) => {
             return (
               <div key={key} className="announcementAdminRender">
@@ -424,7 +544,7 @@ function AdminAnnouncement() {
                     className="updateAnnouncementTitle"
                     placeholder="Enter Title"
                     onChange={(e) => {
-                      setNEW_EVENT_TITLE(e.target.value);
+                      setNEW_ANNOUNCEMENT_TITLE(e.target.value);
                     }}
                   />
                   <button
