@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminContactUs.css";
 // import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function AdminContactUs() {
+  const history = useHistory();
   const [USER_ID, setUSER_ID] = useState("");
   const [contact_id, setcontact_id] = useState("");
   const [Subject, setSubject] = useState("");
@@ -140,7 +141,7 @@ function AdminContactUs() {
   };
   const [USERNAME_, setUSERNAME] = useState([]);
   Axios.defaults.withCredentials = true;
-  const history = useHistory();
+
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
     if (

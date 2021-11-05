@@ -388,9 +388,7 @@ function Events() {
         <Link to="/AdminProfile" className="profileIcon">
           <img src="/images/events1.jpg" alt="img" className="profilePicture" />
 
-          <p key={key} className="profileNameHeader">
-            {USERNAME_}
-          </p>
+          <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
       <div className="eventCont">

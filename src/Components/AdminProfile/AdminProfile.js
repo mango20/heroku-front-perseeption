@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminProfile.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 function AdminProfile() {
+  const history = useHistory();
   const [USER_ID, setUSER_ID] = useState("");
   const [ADMIN_INFO_PASSWORD, setADMIN_INFO_PASSWORD] = useState("");
   const [ADMIN_INFO_USERNAME, setADMIN_INFO_USERNAME] = useState("");
@@ -136,10 +137,10 @@ function AdminProfile() {
               <i className="fa fa-user-circle-o " id="iconDummy"></i>
             </div>
             <div className="adminInfoTexts">
-              <p className="adminName">Name: {ADMIN_NAME}</p>
-              <p className="adminContact">Contact: {ADMIN_CONTACT}</p>
-              <p className="adminAddress">Address: {ADMIN_ADDRESS}</p>
-              <p className="adminEmail">Email Address: {ADMIN_EMAIL}</p>
+              <p className="adminName">Name: {ADMIN_INFO_NAME}</p>
+              <p className="adminContact">Contact: {ADMIN_INFO_CONTACT}</p>
+              <p className="adminAddress">Address: {ADMIN_INFO_ADDRESS}</p>
+              <p className="adminEmail">Email Address: {ADMIN_INFO_EMAIL}</p>
               <p className="adminPassword">Password: ************</p>
             </div>
           </div>
