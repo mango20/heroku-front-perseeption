@@ -17,19 +17,27 @@ function AdminDashboard() {
 
   const history = useHistory();
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data);
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSERNAME(response.data.user);
-        } else {
-          // history.push("/Login");
-          console.log("lfalse");
-        }
-      }
-    );
+    if (localStorage.getItem("Client") === null) {
+      history.push("/");
+    } else {
+      var name = JSON.parse(localStorage.getItem("Client")).ADMIN_NAME;
+      console.log(name);
+    }
   }, []);
+  // useEffect(() => {
+  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
+  //     (response) => {
+  //       console.log(response.data);
+  //       console.log(response.data.loggedIn);
+  //       if (response.data.loggedIn === true) {
+  //         setUSERNAME(response.data.user);
+  //       } else {
+  //         // history.push("/Login");
+  //         console.log("lfalse");
+  //       }
+  //     }
+  //   );
+  // }, []);
 
   const logout = () => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
