@@ -25,7 +25,7 @@ function MainPage() {
 
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
-      history.push("/Login");
+      history.push("/");
     } else {
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
@@ -91,25 +91,13 @@ function MainPage() {
 
   const history = useHistory();
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          // window.location = "/Login";
-          history.push("/Login");
-        } else {
-          alert("not logout");
-        }
-      }
-    );
-
-    // document.getElementById("floatBtn").style.display = "block";
-    // document.getElementById("LoginHeader").style.display = "block";
-    // document.getElementById("loggedInImg").style.display = "none";
-    // document.getElementById("dropdown-content").style.display = "none";
-    // window.location.reload();
-    // window.location = "/Login";
+    alert("logout");
+    localStorage.clear();
+    document.getElementById("floatBtn").style.display = "block";
+    document.getElementById("LoginHeader").style.display = "block";
+    document.getElementById("loggedInImg").style.display = "none";
+    document.getElementById("dropdown-content").style.display = "none";
+    window.location.reload();
   };
 
   return (
