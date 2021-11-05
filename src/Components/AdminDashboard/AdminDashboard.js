@@ -27,7 +27,11 @@ function AdminDashboard() {
       console.log(key);
       console.log(sample);
       console.log(name);
-      console.log(name1[2]);
+      console.log(name1[0].USER_ID);
+
+      JSON.parse(localStorage.getItem("Client")).forEach((element) => {
+        console.log(element.USERNAME);
+      });
     }
   }, []);
   // useEffect(() => {
