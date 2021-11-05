@@ -123,7 +123,7 @@ function AdminAnnouncement() {
         {
           data: base64EncodedImage,
           ANNOUNCEMENT_TITLE: ANNOUNCEMENT_TITLE,
-          EVENT_CONTENT: ANNOUNCEMENT_CONTENT,
+          ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
         }
       );
       console.log(ANNOUNCEMENT_TITLE);
