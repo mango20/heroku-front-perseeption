@@ -152,7 +152,7 @@ function AdminDashboard() {
               return <p className="profileNameHeader">{val.ADMIN_NAME}</p>;
             })} */}
 
-            <p className="profileNameHeader">{USERNAME}</p>
+            <p className="profileNameHeader">{USERNAME_}</p>
           </Link>
         </div>
         <div className="eventCont">
