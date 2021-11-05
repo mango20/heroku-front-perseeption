@@ -23,8 +23,9 @@ function Login() {
     }).then((response) => {
       alert(response.data.message);
       console.log(response.data);
-      localStorage.setItem("Client", response.data.result[0].USERNAME);
-
+      console.log(response.data.result);
+      var userDetails = response.data.result;
+      localStorage.setItem("Client", JSON.stringify(userDetails));
       if (response.data.result[0].USER_TYPE === "Admin") {
         history.push("/AdminDashboard");
       } else {
