@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberAbout.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function MemberAbout() {
   const [USER_ID, setUSER_ID] = useState("");
-
+  const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
       history.push("/");

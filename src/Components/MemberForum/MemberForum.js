@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberForum.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function MemberForum() {
   const [FORUM_TITLE, setFORUM_TITLE] = useState("");
@@ -14,7 +14,7 @@ function MemberForum() {
   const [FORUM_REPLY_LIST, setFORUM_REPLY_LIST] = useState([]);
   const [USER_ID, setUSER_ID] = useState("");
   Axios.defaults.withCredentials = true;
-
+  const history = useHistory();
   // const [USER_ID, setUSER_ID] = useState("");
 
   useEffect(() => {

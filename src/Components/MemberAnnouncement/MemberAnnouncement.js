@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberAnnouncement.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CloudinaryContext, Image } from "cloudinary-react";
 function MemberAnnouncement() {
+  const history = useHistory();
   const [memberAnnouncementList, setMemberAnnouncementList] = useState([]);
   useEffect(() => {
     Axios.get(
