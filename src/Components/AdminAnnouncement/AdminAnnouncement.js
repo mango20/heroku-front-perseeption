@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 // import "./Events.css";
 import { Link } from "react-router-dom";
-
+import { CloudinaryContext, Image } from "cloudinary-react";
 function AdminAnnouncement() {
   const [ANNOUNCEMENT_TITLE, setANNOUNCEMENT_TITLE] = useState("");
   const [ANNOUNCEMENT_CONTENT, setAnnouncement_Content] = useState("");
@@ -11,7 +11,7 @@ function AdminAnnouncement() {
   const [NEW_ANNOUNCEMENT_CONTENT, setNewCONTENT] = useState("");
   const [NEW_ANNOUNCEMENT_TITLE, setNEW_ANNOUNCEMENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
-  import { CloudinaryContext, Image } from "cloudinary-react";
+  
   // const [loginStatus, setLoginStatus] = useState("");
   // const [userList, setuserList] = useState([]);
   const [announcementInformation, setAnnouncementInformation] = useState({
