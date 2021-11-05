@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { response } from "express";
 // import { useHistory } from "react-router-dom";
 
-function Login() {
+function Login({ updateUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
@@ -15,76 +15,98 @@ function Login() {
 
   const history = useHistory();
 
-  Axios.defaults.withCredentials = true;
-  console.log((Axios.defaults.withCredentials = true));
-  const Login = () => {
-    Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
-      USERNAME: username,
-      USER_PASSWORD: password,
-    }).then((response) => {
-      console.log(response);
-      // setLoginStatus(response);
-      if (!response.data.auth) {
-        setLoginStatus(false);
-        setloginMessage(response.data.message);
-        const errorMgs = (document.getElementById("errorMsg").style.display =
-          "block");
-        setTimeout(function () {
-          document.getElementById("errorMsg").style.display = "none";
-        }, 3000);
-        // const errorMgs =
-        //   ((document.getElementById("errorMsg").style.display = "block"), 1000);
-      } else {
-        console.log(response.data);
-        // localStorage.setItem("USER_ID", response.data.token);
-        localStorage.setItem("USER_ID", response.data.result[0].USER_TYPE);
-        localStorage.getItem(response.data.result);
-        setLoginStatus(true);
-        setloginMessage(response.data.message);
-        const l =
-          ((document.getElementById("bgLoginStats").style.display = "block"),
-          10000);
-        // document.getElementsById("bgLoginStats").style.display = "block";
-        console.log(response.data.result[0].message);
-        if (response.data.result[0].USER_TYPE === "Admin") {
-          console.log(response.data.result[0].USER_TYPE);
-          Axios.defaults.withCredentials = true;
-          // history.pushState("")
-          // history.push("/AdminDashboard");
-          setTimeout(function () {
-            // window.location = "https://perseeption.com/AdminDashboard";
-            history.push("/AdminDashboard");
-          }, 1800);
-          // window.location = "/AdminDashboard";
-        } else {
-          Axios.defaults.withCredentials = true;
-          // document.getElementsById("LoginHeader").style.visibility = "hidden";
-          history.push("/");
-        }
-      }
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({
+      ...user,
+      [name]: value,
     });
   };
 
-  // const userAuthentication = () => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/isUserAuth", {
-  //     headers: {
-  //       "x-access-token": localStorage.getItem("token"),
-  //     },
+  const login = () => {
+    Axios.post("https://perseeption-tromagade.herokuapp.com/login", user).then(
+      (res) => {
+        alert(res.data.message);
+        updateUser(res.data.user);
+        history.push("/");
+      }
+    );
+  };
+  // Axios.defaults.withCredentials = true;
+  // console.log((Axios.defaults.withCredentials = true));
+  // const Login = ({updateUser}) => {
+  //   Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
+  //     USERNAME: username,
+  //     USER_PASSWORD: password,
   //   }).then((response) => {
   //     console.log(response);
+  //     // setLoginStatus(response);
+  //     if (!response.data.auth) {
+  //       setLoginStatus(false);
+  //       setloginMessage(response.data.message);
+  //       const errorMgs = (document.getElementById("errorMsg").style.display =
+  //         "block");
+  //       setTimeout(function () {
+  //         document.getElementById("errorMsg").style.display = "none";
+  //       }, 3000);
+  //       // const errorMgs =
+  //       //   ((document.getElementById("errorMsg").style.display = "block"), 1000);
+  //     } else {
+  //       console.log(response.data);
+  //       // localStorage.setItem("USER_ID", response.data.token);
+  //       localStorage.setItem("USER_ID", response.data.result[0].USER_TYPE);
+  //       localStorage.getItem(response.data.result);
+  //       setLoginStatus(true);
+  //       setloginMessage(response.data.message);
+  //       const l =
+  //         ((document.getElementById("bgLoginStats").style.display = "block"),
+  //         10000);
+  //       // document.getElementsById("bgLoginStats").style.display = "block";
+  //       console.log(response.data.result[0].message);
+  //       if (response.data.result[0].USER_TYPE === "Admin") {
+  //         console.log(response.data.result[0].USER_TYPE);
+  //         Axios.defaults.withCredentials = true;
+  //         // history.pushState("")
+  //         // history.push("/AdminDashboard");
+  //         setTimeout(function () {
+  //           // window.location = "https://perseeption.com/AdminDashboard";
+  //           history.push("/AdminDashboard");
+  //         }, 1800);
+  //         // window.location = "/AdminDashboard";
+  //       } else {
+  //         Axios.defaults.withCredentials = true;
+  //         // document.getElementsById("LoginHeader").style.visibility = "hidden";
+  //         history.push("/");
+  //       }
+  //     }
   //   });
   // };
 
-  useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        if (response.data.loggedIn === true) {
-          setLoginStatus(response.data.user[0].USERNAME);
-          console.log(response.data.user[0].USERNAME);
-        }
-      }
-    );
-  }, []);
+  // // const userAuthentication = () => {
+  // //   Axios.get("https://perseeption-tromagade.herokuapp.com/isUserAuth", {
+  // //     headers: {
+  // //       "x-access-token": localStorage.getItem("token"),
+  // //     },
+  // //   }).then((response) => {
+  // //     console.log(response);
+  // //   });
+  // // };
+
+  // useEffect(() => {
+  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
+  //     (response) => {
+  //       if (response.data.loggedIn === true) {
+  //         setLoginStatus(response.data.user[0].USERNAME);
+  //         console.log(response.data.user[0].USERNAME);
+  //       }
+  //     }
+  //   );
+  // }, []);
 
   const forgotPass = () => {
     document.getElementById("popForgot").style.display = "block";
@@ -188,23 +210,27 @@ function Login() {
                 type="text"
                 placeholder="Enter username"
                 className="inputUsernameLogin"
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
+                value={user.email}
+                // onChange={(e) => {
+                //   setUsername(e.target.value);
+                // }}
+                onChange={handleChange}
               />
             </div>
             <input
               type="password"
               placeholder="Enter password"
               className="inputPasswordLogin"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              value={user.password}
+              onChange={handleChange}
+              // onChange={(e) => {
+              //   setPassword(e.target.value);
+              // }}
             />
             <p id="forgotPass" onClick={forgotPass}>
               Forgot password?
             </p>
-            <p onClick={Login} className="loginUserBtn">
+            <p onClick={login} className="loginUserBtn">
               Sign In
             </p>
 
@@ -233,6 +259,3 @@ function Login() {
 }
 
 export default Login;
-// && (
-//           <button onClick={userAuthentication}>Check if Auth</button>
-//         )
