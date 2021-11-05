@@ -20,18 +20,11 @@ function AdminDashboard() {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
     } else {
-      var key = localStorage.key(0);
-      var sample = localStorage.getItem("Client");
       var name = JSON.parse(localStorage.getItem("Client"));
-      var name1 = JSON.parse(localStorage.getItem("Client"));
-      console.log(key);
-      console.log(sample);
-      console.log(name);
-      console.log(name1[0].USER_ID);
 
-      JSON.parse(localStorage.getItem("Client")).forEach((element) => {
-        console.log(element.USERNAME);
-      });
+      console.log(name);
+      console.log(name[0].ADMIN_NAME);
+      setUSERNAME(name[0].ADMIN_NAME);
     }
   }, []);
   // useEffect(() => {
