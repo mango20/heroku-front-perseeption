@@ -525,10 +525,16 @@ function AdminAnnouncement() {
           {ANNOUNCEMENT_LIST.map((val, key) => {
             return (
               <div key={key} className="announcementAdminRender">
-                <img
+                {/* <img
                   src={val.ANNOUNCEMENT_IMAGE}
                   alt="img"
                   className="announcementDummyIng"
+                /> */}
+
+                <Image
+                  className="announcementDummyIng"
+                  cloudName="dlvt2lnkh"
+                  publicId={val.ANNOUNCEMENT_TITLE}
                 />
                 <p className="announcement_title_inner">
                   {val.ANNOUNCEMENT_TITLE}

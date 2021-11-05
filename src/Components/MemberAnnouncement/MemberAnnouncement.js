@@ -185,10 +185,15 @@ function MemberAnnouncement() {
               >
                 back
               </p>
-              <img
+              {/* <img
                 src={val.ANNOUNCEMENT_IMAGE}
                 alt="img"
                 className="announcement_Img_"
+              /> */}
+              <Image
+                className="announcement_Img"
+                cloudName="dlvt2lnkh"
+                publicId={val.ANNOUNCEMENT_IMAGE}
               />
               <p className="announcement_TitleRM">{val.ANNOUNCEMENT_TITLE}</p>
               <p className="announcement_DateRM">{val.ANNOUNCEMENT_DATE}</p>
