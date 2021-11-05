@@ -11,7 +11,7 @@ function AdminDashboard() {
   const [numCountApprove1, setnumCountApprove1] = useState([]);
 
   const [USER_ID, setUSER_ID] = useState("");
-  const [USERNAME_, setUSERNAME] = useState([]);
+  const [USERNAME_, setUSERNAME] = useState("");
 
   Axios.defaults.withCredentials = true;
 
