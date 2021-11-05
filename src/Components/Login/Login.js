@@ -34,7 +34,8 @@ function Login() {
       USER_PASSWORD: password,
     }).then((response) => {
       alert(response.data.message);
-      localStorage.setItem("MyUser", response.data.result);
+      console.log(response.data);
+      localStorage.setItem("MyUser", response.data.result[0].USERNAME);
     });
   };
   // Axios.defaults.withCredentials = true;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberEvent.css";
 import { Link } from "react-router-dom";
-
+import { CloudinaryContext, Image } from "cloudinary-react";
 function MemberEvents() {
   const [USER_ID, setUSER_ID] = useState("");
   const [EVENT_LIST, setEVENT_LIST] = useState([]);
@@ -137,10 +137,11 @@ function MemberEvents() {
         {EVENT_LIST.map((val, key) => {
           return (
             <div key={key} className="eventRender" id="eventRender_id">
-              <img
-                src={val.EVENT_IMAGE}
-                alt="img"
+              <Image
+                key={index}
                 className="announcement_Img"
+                cloudName="dlvt2lnkh"
+                publicId={val.EVENT_IMAGE}
               />
               <p className="event_Title">{val.EVENT_TITLE}</p>
               <p className="event_Date">{val.EVENT_DATE}</p>

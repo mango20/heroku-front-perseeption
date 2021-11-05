@@ -146,11 +146,17 @@ function MemberAnnouncement() {
           return (
             <div key={key} className="announcementRender">
               {/* <h1>{val.USER_ID}</h1> */}
-              <img
+              <Image
+                key={index}
+                className="announcement_Img"
+                cloudName="dlvt2lnkh"
+                publicId={val.ANNOUNCEMENT_IMAGE}
+              />
+              {/* <img
                 src={val.ANNOUNCEMENT_IMAGE}
                 alt="img"
                 className="announcement_Img"
-              />
+              /> */}
               <p className="announcement_Title">{val.ANNOUNCEMENT_TITLE}</p>
               <p className="announcement_Date">{val.ANNOUNCEMENT_DATE}</p>
               <p className="announcement_Content">{val.ANNOUNCEMENT_CONTENT}</p>
