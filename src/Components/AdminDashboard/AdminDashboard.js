@@ -43,18 +43,9 @@ function AdminDashboard() {
   // }, []);
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          // window.location = "/Login";
-          history.push("/Login");
-        } else {
-          alert("not logout");
-        }
-      }
-    );
+    alert("logout");
+    localStorage.clear();
+    window.location.reload();
   };
 
   // useEffect(() => {
