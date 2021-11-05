@@ -18,25 +18,20 @@ function MemberForum() {
   // const [USER_ID, setUSER_ID] = useState("");
 
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        console.log(response.data);
-        if (response.data.loggedIn === true) {
-          const p = response.data.user[0].USER_TYPE;
-          if (p === "Admin") {
-            document.getElementById("portalDash").style.display = "block";
-            document.getElementById("profileGo").style.display = "none";
-          } else {
-            document.getElementById("portalDash").style.display = "none";
-          }
-          setUSER_ID(response.data.user[0].USER_ID);
-          document.getElementById("floatBtn").style.display = "none";
-          document.getElementById("LoginHeader").style.display = "none";
-          document.getElementById("loggedInImg").style.display = "block";
-        }
+    if (localStorage.getItem("Client") === null) {
+      history.push("/");
+    } else {
+      var name1 = JSON.parse(localStorage.getItem("Client"));
+      if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("portalDash").style.display = "block";
+        document.getElementById("profileGo").style.display = "none";
+      } else {
+        document.getElementById("portalDash").style.display = "none";
       }
-    );
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("loggedInImg").style.display = "block";
+    }
   }, []);
 
   const popup = () => {
@@ -48,18 +43,13 @@ function MemberForum() {
   };
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        // alert("sdf");
-        window.location.reload();
-      }
-    );
+    alert("logout");
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
-    // window.location.reload();
+    window.location.reload();
   };
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
@@ -98,114 +88,95 @@ function MemberForum() {
   }, []);
 
   const deletForumQuestion = (FORUM_ID) => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          Axios.delete(
-            `https://perseeption-tromagade.herokuapp.com/api/deleteQuestion/${FORUM_ID}`
-          ).then((response) => {
-            console.log(response);
-            setFORUM_LIST(
-              FORUM_LIST.filter((val) => {
-                return val.FORUM_ID !== FORUM_ID; // Filter/remove if it not equals to id
-              })
-            );
+    if (localStorage.getItem("Client") !== null) {
+      Axios.delete(
+        `https://perseeption-tromagade.herokuapp.com/api/deleteQuestion/${FORUM_ID}`
+      ).then((response) => {
+        console.log(response);
+        setFORUM_LIST(
+          FORUM_LIST.filter((val) => {
+            return val.FORUM_ID !== FORUM_ID; // Filter/remove if it not equals to id
+          })
+        );
 
-            Axios.get(
-              "https://perseeption-tromagade.herokuapp.com/api/getForum"
-            ).then((response) => {
-              setFORUM_LIST(response.data);
-              console.log(response.data);
-            });
-            window.location.reload();
-          });
-        } else {
-          document.getElementById("floatYouNeedLoginBg").style.display =
-            "block";
-          document.getElementById("floatYouNeedContainer").style.display =
-            "block";
-        }
-      }
-    );
-  };
-
-  const createForumReply = (FORUM_ID) => {
-    console.log(FORUM_ID);
-
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          const USER_ID_ = response.data.user[0].USER_ID;
-          const ADMIN_NAME = response.data.user[0].ADMIN_NAME;
-          console.log(USER_ID_);
-          console.log(ADMIN_NAME);
-          setUSER_ID(response.data.user[0].USER_ID);
-          // document.getElementById("inputReplyForum").value = null;
-          Axios.post(
-            `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
-            {
-              FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
-              FORUM_ID: FORUM_ID,
-              USER_ID: USER_ID_,
-            }
-          );
-          console.log(FORUM_REPLY_CONTENT);
-          console.log(FORUM_ID);
-          console.log(USER_ID_);
-
-          Axios.get(
-            `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
-          ).then((response) => {
-            console.log(response.data);
-
-            setFORUM_REPLY_LIST(response.data);
-          });
-
-          // Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForumTop").then((response) => {
-          //   setFORUM_REPLY_LIST(response.data);
-          // });
-        } else {
-          document.getElementById("floatYouNeedLoginBg").style.display =
-            "block";
-          document.getElementById("floatYouNeedContainer").style.display =
-            "block";
-        }
-      }
-    );
-  };
-
-  const createForum = () => {
-    // Insert Announcement
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        const USER_ID_ = response.data.user[0].USER_ID;
-        console.log(USER_ID_);
-        Axios.post("https://perseeption-tromagade.herokuapp.com/insertForum", {
-          USER_ID_: USER_ID_,
-          FORUM_ID: FORUM_ID,
-          FORUM_TITLE: FORUM_TITLE,
-          FORUM_CONTENT: FORUM_CONTENT,
-        });
-        console.log(USER_ID_);
         Axios.get(
           "https://perseeption-tromagade.herokuapp.com/api/getForum"
         ).then((response) => {
           setFORUM_LIST(response.data);
-          console.log(response.data[0].FORUM_ID);
+          console.log(response.data);
         });
-        // setFORUM_TITLE(" sd");
-        // document.getElementById("floatForumAskQuestionBg").style.display = "none";
-        document.getElementById("floatForumAskQuestionBg").style.display =
-          "none";
-        document.getElementById("floatForumAskQuestion").style.display = "none";
-        // window.location.reload();
-        // var form = document.getElementById("inputAnnouncementTitle");
-        // form.target.reset();
-        // document.getElementById("inputForumContentQuestion").innerHTML = "";
+        window.location.reload();
+      });
+    } else {
+      document.getElementById("floatYouNeedLoginBg").style.display = "block";
+      document.getElementById("floatYouNeedContainer").style.display = "block";
+    }
+  };
+
+  const createForumReply = (FORUM_ID) => {
+    if (localStorage.getItem("Client") !== null) {
+      const name = JSON.parse(localStorage.getItem("Client"));
+      const USER_ID_ = name[0].USER_ID;
+      const ADMIN_NAME = name[0].ADMIN_NAME;
+      console.log(USER_ID_);
+      console.log(ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
+
+      Axios.post(
+        `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
+        {
+          FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
+          FORUM_ID: FORUM_ID,
+          USER_ID: USER_ID_,
+        }
+      );
+      console.log(FORUM_REPLY_CONTENT);
+      console.log(FORUM_ID);
+      console.log(USER_ID_);
+
+      Axios.get(
+        `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
+      ).then((response) => {
+        console.log(response.data);
+
+        setFORUM_REPLY_LIST(response.data);
+      });
+
+      // Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForumTop").then((response) => {
+      //   setFORUM_REPLY_LIST(response.data);
+      // });
+    } else {
+      document.getElementById("floatYouNeedLoginBg").style.display = "block";
+      document.getElementById("floatYouNeedContainer").style.display = "block";
+    }
+  };
+
+  const createForum = () => {
+    // Insert Announcement
+    const name = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID_ = name[0].USER_ID;
+    console.log(USER_ID_);
+    Axios.post("https://perseeption-tromagade.herokuapp.com/insertForum", {
+      USER_ID_: USER_ID_,
+      FORUM_ID: FORUM_ID,
+      FORUM_TITLE: FORUM_TITLE,
+      FORUM_CONTENT: FORUM_CONTENT,
+    });
+    console.log(USER_ID_);
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForum").then(
+      (response) => {
+        setFORUM_LIST(response.data);
+        console.log(response.data[0].FORUM_ID);
       }
     );
+    // setFORUM_TITLE(" sd");
+    // document.getElementById("floatForumAskQuestionBg").style.display = "none";
+    document.getElementById("floatForumAskQuestionBg").style.display = "none";
+    document.getElementById("floatForumAskQuestion").style.display = "none";
+    // window.location.reload();
+    // var form = document.getElementById("inputAnnouncementTitle");
+    // form.target.reset();
+    // document.getElementById("inputForumContentQuestion").innerHTML = "";
   };
 
   const hidePopupForumAsk = () => {
@@ -220,38 +191,23 @@ function MemberForum() {
   };
 
   const askPopup = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSER_ID(response.data.user[0].USER_ID);
-          document.getElementById("floatForumAskQuestionBg").style.display =
-            "block";
-          document.getElementById("floatForumAskQuestion").style.display =
-            "block";
-        } else {
-          document.getElementById("floatYouNeedLoginBg").style.display =
-            "block";
-          document.getElementById("floatYouNeedContainer").style.display =
-            "block";
-        }
-      }
-    );
+    if (localStorage.getItem("Client") !== null) {
+      const name = JSON.parse(localStorage.getItem("Client"));
+      setUSER_ID(name[0].USER_ID);
+      document.getElementById("floatForumAskQuestionBg").style.display =
+        "block";
+      document.getElementById("floatForumAskQuestion").style.display = "block";
+    } else {
+      document.getElementById("floatYouNeedLoginBg").style.display = "block";
+      document.getElementById("floatYouNeedContainer").style.display = "block";
+    }
   };
 
   const clickInput = (FORUM_ID) => {
-    console.log(FORUM_ID);
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === false) {
-          document.getElementById("floatYouNeedLoginBg").style.display =
-            "block";
-          document.getElementById("floatYouNeedContainer").style.display =
-            "block";
-        }
-      }
-    );
+    if (localStorage.getItem("Client") === null) {
+      document.getElementById("floatYouNeedLoginBg").style.display = "block";
+      document.getElementById("floatYouNeedContainer").style.display = "block";
+    }
   };
 
   const loadComment = (FORUM_ID) => {
