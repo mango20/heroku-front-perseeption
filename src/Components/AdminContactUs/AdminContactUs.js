@@ -54,7 +54,7 @@ function AdminContactUs() {
   // const showDetails = (contact_id) => {
   //   console.log(contact_id);
   // };
-  const replyBtn = (contact_id) => {
+  const replyBtn = async (contact_id) => {
     console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
     document.getElementById("floatContactUsMessage").style.display = "block";
