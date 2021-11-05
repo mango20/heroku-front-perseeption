@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MainPage.css";
 import { Link, useHistory } from "react-router-dom";
-
+import { Image } from "cloudinary-react";
 // import cookieParser from "cookie-parser";
 
 function MainPage() {
@@ -171,7 +171,12 @@ function MainPage() {
           {MAIN_EVENT.map((val, key) => {
             return (
               <div key={key} className="eventMain_List">
-                <img src={val.EVENT_IMAGE} alt="img" className="eventImgMain" />
+                <Image
+                  className="eventImgMain"
+                  cloudName="dlvt2lnkh"
+                  publicId={val.EVENT_IMAGE}
+                />
+
                 <p className="eventTitleMain">{val.EVENT_TITLE}</p>
                 <p className="eventDateMain">{val.EVENT_DATE}</p>
                 <p className="eventContentMain">{val.EVENT_CONTENT}</p>

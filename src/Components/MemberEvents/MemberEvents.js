@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberEvent.css";
 import { Link } from "react-router-dom";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import { ImageReadmore, Image } from "cloudinary-react";
 function MemberEvents() {
   const [USER_ID, setUSER_ID] = useState("");
   const [EVENT_LIST, setEVENT_LIST] = useState([]);
@@ -168,10 +168,11 @@ function MemberEvents() {
               <p onClick={backEventReadMore} id="xbtnReadMore">
                 back
               </p>
-              <img
-                src={val.EVENT_IMAGE}
-                alt="img"
+
+              <ImageReadmore
                 className="announcement_Img_"
+                cloudName="dlvt2lnkh"
+                publicId={val.EVENT_IMAGE}
               />
               <p className="event_TitleRM">{val.EVENT_TITLE}</p>
               <p className="event_DateRM">{val.EVENT_DATE}</p>

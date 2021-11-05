@@ -15,18 +15,6 @@ function Login() {
 
   const history = useHistory();
   Axios.defaults.withCredentials = true;
-  // const [user, setUser] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({
-  //     ...user,
-  //     [name]: value,
-  //   });
-  // };
 
   const login = () => {
     Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
@@ -36,6 +24,7 @@ function Login() {
       alert(response.data.message);
       console.log(response.data);
       localStorage.setItem("Client", response.data.result[0].USERNAME);
+
       if (response.data.result[0].USER_TYPE === "Admin") {
         history.push("/AdminDashboard");
       } else {
