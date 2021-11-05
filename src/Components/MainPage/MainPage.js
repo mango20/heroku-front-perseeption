@@ -150,7 +150,9 @@ function MainPage() {
                   onClick={popup}
                 />
                 <div className="dropdown-content" id="dropdown-content">
-                  <Link to="/MemberProfile">Profile</Link>
+                  <Link to="/MemberProfile" id="profileGo">
+                    Profile
+                  </Link>
                   <Link to="/AdminDashboard" id="portalDash">
                     Dashboard
                   </Link>
