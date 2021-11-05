@@ -22,12 +22,12 @@ function AdminDashboard() {
     } else {
       var key = localStorage.key(0);
       var sample = localStorage.getItem("Client");
-      var name = JSON.parse(localStorage.getItem("Client").at(1));
+      var name = JSON.parse(localStorage.getItem("Client"));
       var name1 = JSON.parse(localStorage.getItem("Client"));
       console.log(key);
       console.log(sample);
       console.log(name);
-      console.log(name1);
+      console.log(name1[2]);
     }
   }, []);
   // useEffect(() => {
