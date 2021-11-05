@@ -14,7 +14,7 @@ function Login() {
   const [ForgotEmail, setForgotEmail] = useState("");
 
   const history = useHistory();
-
+  Axios.defaults.withCredentials = true;
   // const [user, setUser] = useState({
   //   email: "",
   //   password: "",
