@@ -11,6 +11,7 @@ function AdminAnnouncement() {
   const [NEW_ANNOUNCEMENT_CONTENT, setNewCONTENT] = useState("");
   const [NEW_ANNOUNCEMENT_TITLE, setNEW_ANNOUNCEMENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
+  import { CloudinaryContext, Image } from "cloudinary-react";
   // const [loginStatus, setLoginStatus] = useState("");
   // const [userList, setuserList] = useState([]);
   const [announcementInformation, setAnnouncementInformation] = useState({
