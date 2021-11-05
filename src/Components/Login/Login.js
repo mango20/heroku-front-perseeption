@@ -35,7 +35,12 @@ function Login() {
     }).then((response) => {
       alert(response.data.message);
       console.log(response.data);
-      localStorage.setItem("MyUser", response.data.result[0].USERNAME);
+      localStorage.setItem("Client", response.data.result[0].USERNAME);
+      if (response.data.result[0].USER_TYPE === "Admin") {
+        history.push("/AdminDashboard");
+      } else {
+        history.push("/");
+      }
     });
   };
   // Axios.defaults.withCredentials = true;
