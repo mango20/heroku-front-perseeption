@@ -20,12 +20,14 @@ function AdminDashboard() {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
     } else {
-      var key = localStorage.key(2);
+      var key = localStorage.key(0);
       var sample = localStorage.getItem("Client");
-      var name = JSON.parse(localStorage.getItem("Client"));
+      var name = JSON.parse(localStorage.getItem("Client").at(1));
+      var name1 = JSON.parse(localStorage.getItem("Client"));
       console.log(key);
       console.log(sample);
       console.log(name);
+      console.log(name1);
     }
   }, []);
   // useEffect(() => {
