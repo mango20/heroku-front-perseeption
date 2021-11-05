@@ -151,13 +151,8 @@ function AdminDashboard() {
             {/* {USERNAME.map((val, key) => {
               return <p className="profileNameHeader">{val.ADMIN_NAME}</p>;
             })} */}
-            {USERNAME_.map((val, key) => {
-              return (
-                <p key={key} className="profileNameHeader">
-                  {val.USERNAME}
-                </p>
-              );
-            })}
+
+            <p className="profileNameHeader">{USERNAME}</p>
           </Link>
         </div>
         <div className="eventCont">
