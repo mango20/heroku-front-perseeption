@@ -17,7 +17,11 @@ function AdminDashboard() {
 
   const history = useHistory();
   useEffect(() => {
-    if (localStorage.getItem("Client") === null) {
+    var name1 = JSON.parse(localStorage.getItem("Client"));
+    if (
+      localStorage.getItem("Client") === null ||
+      name1[0].USER_TYPE === "Member"
+    ) {
       history.push("/");
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
