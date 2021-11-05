@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./Events.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { CloudinaryContext, Image } from "cloudinary-react";
 // import { response } from "express";
@@ -16,35 +16,30 @@ function Events() {
   // const [loginStatus, setLoginStatus] = useState("");
   // const [userList, setuserList] = useState([]);
   const [USERNAME_, setUSERNAME] = useState([]);
-
+  const history = useHistory();
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSERNAME(response.data.user);
-        } else {
-          //   window.location = "/Login";
-          console.log("lFalse");
-        }
-      }
-    );
+    var name1 = JSON.parse(localStorage.getItem("Client"));
+    if (
+      localStorage.getItem("Client") === null ||
+      name1[0].USER_TYPE === "Member"
+    ) {
+      history.push("/");
+    } else {
+      var name = JSON.parse(localStorage.getItem("Client"));
+
+      console.log(name);
+      console.log(name[0].ADMIN_NAME);
+      setUSERNAME(name[0].ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
+    }
   }, []);
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          window.location = "/Login";
-        } else {
-          alert("not logout");
-        }
-      }
-    );
+    alert("logout");
+    localStorage.clear();
+    window.location.reload();
   };
 
   const [eventInformation, setEventInformation] = useState({
@@ -392,13 +387,10 @@ function Events() {
         </div>
         <Link to="/AdminProfile" className="profileIcon">
           <img src="/images/events1.jpg" alt="img" className="profilePicture" />
-          {USERNAME_.map((val, key) => {
-            return (
-              <p key={key} className="profileNameHeader">
-                {val.USERNAME}
-              </p>
-            );
-          })}
+
+          <p key={key} className="profileNameHeader">
+            {USERNAME_}
+          </p>
         </Link>
       </div>
       <div className="eventCont">

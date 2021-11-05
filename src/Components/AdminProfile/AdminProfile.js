@@ -13,16 +13,38 @@ function AdminProfile() {
 
   const [ADMIN_INFO, setADMIN_INFO] = useState([]);
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //     } else {
-  //       window.location = "/Login";
-  //     }
-  //   });
-  // }, []);
+  const [USERNAME_, setUSERNAME] = useState("");
+
+  Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    var name1 = JSON.parse(localStorage.getItem("Client"));
+    if (
+      localStorage.getItem("Client") === null ||
+      name1[0].USER_TYPE === "Member"
+    ) {
+      history.push("/");
+    } else {
+      var name = JSON.parse(localStorage.getItem("Client"));
+
+      console.log(name);
+      console.log(name[0].ADMIN_NAME);
+      setUSERNAME(name[0].ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
+      setADMIN_INFO_EMAIL(name[0].ADMIN_EMAIL);
+      setADMIN_INFO_NAME(name[0].ADMIN_NAME);
+      setADMIN_INFO_ADDRESS(name[0].ADMIN_ADDRESS);
+      setADMIN_INFO_CONTACT(name[0].ADMIN_CONTACT);
+      setADMIN_INFO_USERNAME(name[0].USERNAME);
+      setADMIN_INFO_PASSWORD(name[0].USER_PASSWORD);
+    }
+  }, []);
+
+  const logout = () => {
+    alert("logout");
+    localStorage.clear();
+    window.location.reload();
+  };
 
   const hideUpdateProfile = () => {
     document.getElementById("popupProfileCont").style.display = "none";
@@ -35,37 +57,6 @@ function AdminProfile() {
     document.getElementById("profileBg").style.display = "block";
     // document.getElementById("profileBg").style.backgroundcolor = "red";
     // popupProfileBox; showUpdateProfile
-  };
-
-  const [USERNAME_, setUSERNAME] = useState([]);
-
-  Axios.defaults.withCredentials = true;
-
-  useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login", {
-      withCredentials: true,
-    }).then((response) => {
-      console.log(response.data.loggedIn);
-      if (response.data.loggedIn === true) {
-        setUSERNAME(response.data.user);
-      } else {
-        //   window.location = "/Login";
-      }
-    });
-  }, []);
-
-  const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          window.location = "/Login";
-        } else {
-          alert("not logout");
-        }
-      }
-    );
   };
 
   const updateAdmin = (USER_ID) => {
@@ -106,13 +97,7 @@ function AdminProfile() {
         </div>
         <Link to="/AdminProfile" className="profileIcon">
           <img src="/images/events1.jpg" alt="img" className="profilePicture" />
-          {USERNAME_.map((val, key) => {
-            return (
-              <p key={key} className="profileNameHeader">
-                {val.USERNAME}
-              </p>
-            );
-          })}
+          <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
       <div className="eventCont">
@@ -150,23 +135,19 @@ function AdminProfile() {
             <div className="adminDummyImage">
               <i className="fa fa-user-circle-o " id="iconDummy"></i>
             </div>
-            {USERNAME_.map((val, key) => {
-              return (
-                <div key={key} className="adminInfoTexts">
-                  <p className="adminName">Name: {val.ADMIN_NAME}</p>
-                  <p className="adminContact">Contact: {val.ADMIN_CONTACT}</p>
-                  <p className="adminAddress">Address: {val.ADMIN_ADDRESS}</p>
-                  <p className="adminEmail">Email Address: {val.ADMIN_EMAIL}</p>
-                  <p className="adminPassword">Password: ************</p>
-                </div>
-              );
-            })}
+            <div className="adminInfoTexts">
+              <p className="adminName">Name: {ADMIN_NAME}</p>
+              <p className="adminContact">Contact: {ADMIN_CONTACT}</p>
+              <p className="adminAddress">Address: {ADMIN_ADDRESS}</p>
+              <p className="adminEmail">Email Address: {ADMIN_EMAIL}</p>
+              <p className="adminPassword">Password: ************</p>
+            </div>
           </div>
           <button className="updateInfo" onClick={showUpdateProfile}>
             Update Information
           </button>
         </div>
-        {USERNAME_.map((val, key) => {
+        {/* {USERNAME_.map((val, key) => {
           return (
             <div className="popupProfile" id="profileBg">
               <div className="popupProfileBox" id="popupProfileCont">
@@ -176,7 +157,6 @@ function AdminProfile() {
                   type="text"
                   placeholder={val.ADMIN_NAME}
                   defaultValue={val.ADMIN_NAME}
-                  // contentEditable="true"
                   onChange={(e) => {
                     setADMIN_INFO_NAME(e.target.value);
                   }}
@@ -186,7 +166,6 @@ function AdminProfile() {
                   <input
                     type="text"
                     placeholder={val.ADMIN_CONTACT}
-                    // defaultValue={val.ADMIN_CONTACT || ""}
                     onChange={(e) => {
                       setADMIN_INFO_CONTACT(e.target.value);
                     }}
@@ -197,7 +176,6 @@ function AdminProfile() {
                   <input
                     type="text"
                     placeholder={val.ADMIN_ADDRESS}
-                    // defaultValue={val.ADMIN_ADDRESS || ""}
                     onChange={(e) => {
                       setADMIN_INFO_ADDRESS(e.target.value);
                     }}
@@ -208,7 +186,6 @@ function AdminProfile() {
                   <input
                     type="email"
                     placeholder={val.ADMIN_EMAIL}
-                    // defaultValue={val.ADMIN_EMAIL || ""}
                     onChange={(e) => {
                       setADMIN_INFO_EMAIL(e.target.value);
                     }}
@@ -219,7 +196,6 @@ function AdminProfile() {
                   <input
                     type="text"
                     placeholder={val.USERNAME}
-                    // defaultValue={val.USERNAME || ""}
                     onChange={(e) => {
                       setADMIN_INFO_USERNAME(e.target.value);
                     }}
@@ -252,7 +228,7 @@ function AdminProfile() {
               </div>
             </div>
           );
-        })}
+        })} */}
         Form
       </div>
     </div>

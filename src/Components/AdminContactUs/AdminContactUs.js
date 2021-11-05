@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminContactUs.css";
 // import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function AdminContactUs() {
   const [USER_ID, setUSER_ID] = useState("");
@@ -50,9 +50,9 @@ function AdminContactUs() {
     });
   };
 
-  const showDetails = (contact_id) => {
-    console.log(contact_id);
-  };
+  // const showDetails = (contact_id) => {
+  //   console.log(contact_id);
+  // };
   const replyBtn = (contact_id) => {
     console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
@@ -140,32 +140,27 @@ function AdminContactUs() {
   };
   const [USERNAME_, setUSERNAME] = useState([]);
   Axios.defaults.withCredentials = true;
-
+  const history = useHistory();
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSERNAME(response.data.user);
-        } else {
-          //   window.location = "/Login";
-        }
-      }
-    );
+    var name1 = JSON.parse(localStorage.getItem("Client"));
+    if (
+      localStorage.getItem("Client") === null ||
+      name1[0].USER_TYPE === "Member"
+    ) {
+      history.push("/");
+    } else {
+      var name = JSON.parse(localStorage.getItem("Client"));
+
+      console.log(name);
+      console.log(name[0].ADMIN_NAME);
+      setUSERNAME(name[0].ADMIN_NAME);
+    }
   }, []);
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          window.location = "/Login";
-        } else {
-          alert("not logout");
-        }
-      }
-    );
+    alert("logout");
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -176,13 +171,8 @@ function AdminContactUs() {
         </div>
         <Link to="/AdminProfile" className="profileIcon">
           <img src="/images/events1.jpg" alt="img" className="profilePicture" />
-          {USERNAME_.map((val, key) => {
-            return (
-              <p key={key} className="profileNameHeader">
-                {val.USERNAME}
-              </p>
-            );
-          })}
+
+          <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
       <div className="adminContactUsCont">

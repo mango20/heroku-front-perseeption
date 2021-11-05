@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 // import "./Events.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CloudinaryContext, Image } from "cloudinary-react";
 function AdminAnnouncement() {
   const [ANNOUNCEMENT_TITLE, setANNOUNCEMENT_TITLE] = useState("");
@@ -11,9 +11,8 @@ function AdminAnnouncement() {
   const [NEW_ANNOUNCEMENT_CONTENT, setNewCONTENT] = useState("");
   const [NEW_ANNOUNCEMENT_TITLE, setNEW_ANNOUNCEMENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
+  const history = useHistory();
 
-  // const [loginStatus, setLoginStatus] = useState("");
-  // const [userList, setuserList] = useState([]);
   const [announcementInformation, setAnnouncementInformation] = useState({
     title: "",
     content: "",
@@ -150,17 +149,6 @@ function AdminAnnouncement() {
     loadImages();
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/api/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //     } else {
-  //       window.location = "/Login";
-  //     }
-  //   });
-  // }, []);
-
   // Render
   useEffect(() => {
     Axios.get(
@@ -171,24 +159,23 @@ function AdminAnnouncement() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/api/getUser").then((response) => {
-  //     setuserList(response.data);
-  //   });
-  // }, []);
-
   //Get User ID
+  const [USERNAME_, setUSERNAME_] = useState("");
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        if (response.data.loggedIn === true) {
-          setUSERNAME_(response.data.user);
-        } else {
-          //   window.location = "/Login";
-        }
-      }
-    );
+    var name1 = JSON.parse(localStorage.getItem("Client"));
+    if (
+      localStorage.getItem("Client") === null ||
+      name1[0].USER_TYPE === "Member"
+    ) {
+      history.push("/");
+    } else {
+      var name = JSON.parse(localStorage.getItem("Client"));
+
+      console.log(name);
+      console.log(name[0].ADMIN_NAME);
+      setUSERNAME_(name[0].ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
+    }
   }, []);
 
   // Create Announcement
@@ -332,26 +319,10 @@ function AdminAnnouncement() {
   };
 
   const logout = () => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
-      (response) => {
-        console.log(response.data);
-        if (response.data.loggedIn === false) {
-          alert("logout");
-          window.location = "/Login";
-        } else {
-          alert("not logout");
-        }
-      }
-    );
+    alert("logout");
+    localStorage.clear();
+    window.location.reload();
   };
-
-  const [USERNAME_, setUSERNAME_] = useState([]);
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data);
-  //     setUSERNAME_(response.data.user);
-  //   });
-  // }, []);
 
   return (
     <div className="EventsAdminBg">
@@ -361,13 +332,8 @@ function AdminAnnouncement() {
         </div>
         <Link to="/AdminProfile" className="profileIcon">
           <img src="/images/events1.jpg" alt="img" className="profilePicture" />
-          {USERNAME_.map((val, key) => {
-            return (
-              <p key={key} className="profileNameHeader">
-                {val.USERNAME}
-              </p>
-            );
-          })}
+
+          <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
       <div
