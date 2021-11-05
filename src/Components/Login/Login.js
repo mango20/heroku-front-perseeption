@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 // import { response } from "express";
 // import { useHistory } from "react-router-dom";
 
-function Login({ updateUser }) {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
@@ -15,27 +15,27 @@ function Login({ updateUser }) {
 
   const history = useHistory();
 
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  // const [user, setUser] = useState({
+  //   email: "",
+  //   password: "",
+  // });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUser({
+  //     ...user,
+  //     [name]: value,
+  //   });
+  // };
 
   const login = () => {
-    Axios.post("https://perseeption-tromagade.herokuapp.com/login", user).then(
-      (res) => {
-        alert(res.data.message);
-        updateUser(res.data.user);
-        history.push("/");
-      }
-    );
+    Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
+      USERNAME: username,
+      USER_PASSWORD: password,
+    }).then((response) => {
+      alert(response.data.message);
+      localStorage.setItem("MyUser", response.data.result);
+    });
   };
   // Axios.defaults.withCredentials = true;
   // console.log((Axios.defaults.withCredentials = true));
@@ -210,22 +210,18 @@ function Login({ updateUser }) {
                 type="text"
                 placeholder="Enter username"
                 className="inputUsernameLogin"
-                value={user.email}
-                // onChange={(e) => {
-                //   setUsername(e.target.value);
-                // }}
-                onChange={handleChange}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
             </div>
             <input
               type="password"
               placeholder="Enter password"
               className="inputPasswordLogin"
-              value={user.password}
-              onChange={handleChange}
-              // onChange={(e) => {
-              //   setPassword(e.target.value);
-              // }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
             <p id="forgotPass" onClick={forgotPass}>
               Forgot password?

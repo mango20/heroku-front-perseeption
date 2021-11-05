@@ -20,18 +20,18 @@ import TermsCondition from "./Components/TermsCondition/TermsCondition";
 import AdminContactUs from "./Components/AdminContactUs/AdminContactUs";
 import MemberProfile from "./Components/MemberProfile/MemberProfile";
 import resetpassword from "./Components/Login/Resetpassword";
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 function App() {
-  const [user, setLoginUser] = useState([]);
+  // const [user, setLoginUser] = useState([]);
 
-  useEffect(() => {
-    setLoginUser(JSON.parse(localStorage.getItem("MyUser")));
-  }, []);
+  // useEffect(() => {
+  //   setLoginUser(JSON.parse(localStorage.getItem("MyUser")));
+  // }, []);
 
-  const updateUser = (user) => {
-    localStorage.setItem("MyUser", JSON.stringify(user));
-    setLoginUser(user);
-  };
+  // const updateUser = (user) => {
+  //   localStorage.setItem("MyUser", JSON.stringify(user));
+  //   setLoginUser(user);
+  // };
 
   return (
     <Router>
@@ -42,11 +42,11 @@ function App() {
           component={AdminAnnouncement}
         ></Route>
         <Route path="/" exact component={MainPage}>
-          {user && user._id ? (
+          {/* {user && user._id ? (
             <MainPage updateUser={updateUser} />
           ) : (
             <Login updateUser={updateUser} />
-          )}
+          )} */}
         </Route>
         {/* <Route path="/ReadMoreEvent" exact component={ReadMoreEvent}></Route> */}
         <Route path="/MemberProfile" exact component={MemberProfile}></Route>
