@@ -259,15 +259,15 @@ function AdminAnnouncement() {
       `https://perseeption-tromagade.herokuapp.com/api/delete/${ANNOUNCEMENT_ID}`
     ).then((response) => {
       console.log(response);
-      setANNOUNCEMENT_LIST(
-        ANNOUNCEMENT_LIST.filter((val) => {
+      setImagesIds1(
+        imagesIds1.filter((val) => {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
         })
       );
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
+        setImagesIds1(response.data);
       });
     });
   };
@@ -281,8 +281,8 @@ function AdminAnnouncement() {
         ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
       }
     ).then((response) => {
-      setANNOUNCEMENT_LIST(
-        ANNOUNCEMENT_LIST.map((val) => {
+      setImagesIds1(
+        imagesIds1.map((val) => {
           return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
             ? {
                 ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
@@ -295,7 +295,7 @@ function AdminAnnouncement() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
+        setImagesIds1(response.data);
       });
     });
   };
@@ -309,8 +309,8 @@ function AdminAnnouncement() {
         ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
       }
     ).then((response) => {
-      setANNOUNCEMENT_LIST(
-        ANNOUNCEMENT_LIST.map((val) => {
+      setImagesIds1(
+        imagesIds1.map((val) => {
           return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
             ? {
                 ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
@@ -326,7 +326,7 @@ function AdminAnnouncement() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
+        setImagesIds1(response.data);
       });
     });
   };
