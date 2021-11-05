@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberAnnouncement.css";
 import { Link } from "react-router-dom";
-
+import { CloudinaryContext, Image } from "cloudinary-react";
 function MemberAnnouncement() {
   const [memberAnnouncementList, setMemberAnnouncementList] = useState([]);
   useEffect(() => {
@@ -147,7 +147,6 @@ function MemberAnnouncement() {
             <div key={key} className="announcementRender">
               {/* <h1>{val.USER_ID}</h1> */}
               <Image
-                key={index}
                 className="announcement_Img"
                 cloudName="dlvt2lnkh"
                 publicId={val.ANNOUNCEMENT_IMAGE}

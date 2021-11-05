@@ -138,7 +138,6 @@ function MemberEvents() {
           return (
             <div key={key} className="eventRender" id="eventRender_id">
               <Image
-                key={index}
                 className="announcement_Img"
                 cloudName="dlvt2lnkh"
                 publicId={val.EVENT_IMAGE}
