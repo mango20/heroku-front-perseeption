@@ -20,7 +20,11 @@ function AdminDashboard() {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
     } else {
-      var name = JSON.parse(localStorage.getItem("Client")).ADMIN_NAME;
+      var key = localStorage.key(2);
+      var sample = localStorage.getItem("Client");
+      var name = JSON.parse(localStorage.getItem("Client"));
+      console.log(key);
+      console.log(sample);
       console.log(name);
     }
   }, []);
