@@ -27,9 +27,16 @@ function MainPage() {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
     } else {
-      document.getElementById("floatBtn").style.display = "none";
-      document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("loggedInImg").style.display = "block";
+      var name1 = JSON.parse(localStorage.getItem("Client"));
+      if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("portalDash").style.display = "block";
+        document.getElementById("profileGo").style.display = "none";
+      } else {
+        document.getElementById("portalDash").style.display = "none";
+        document.getElementById("floatBtn").style.display = "none";
+        document.getElementById("LoginHeader").style.display = "none";
+        document.getElementById("loggedInImg").style.display = "block";
+      }
     }
   }, []);
 
@@ -144,6 +151,9 @@ function MainPage() {
                 />
                 <div className="dropdown-content" id="dropdown-content">
                   <Link to="/MemberProfile">Profile</Link>
+                  <Link to="/AdminDashboard" id="portalDash">
+                    Dashboard
+                  </Link>
                   <p onClick={logout}>Logout</p>
                 </div>
               </div>
