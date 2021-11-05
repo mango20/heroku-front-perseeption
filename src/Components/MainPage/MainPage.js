@@ -33,10 +33,10 @@ function MainPage() {
         document.getElementById("profileGo").style.display = "none";
       } else {
         document.getElementById("portalDash").style.display = "none";
-        document.getElementById("floatBtn").style.display = "none";
-        document.getElementById("LoginHeader").style.display = "none";
-        document.getElementById("loggedInImg").style.display = "block";
       }
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("loggedInImg").style.display = "block";
     }
   }, []);
 
