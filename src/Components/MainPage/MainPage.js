@@ -24,25 +24,35 @@ function MainPage() {
   // }, []);
 
   useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-      (response) => {
-        console.log(response.data.loggedIn);
-        console.log(response.data.user);
-        if (response.data.loggedIn === true) {
-          setUSER_ID(response.data.user[0].USER_ID);
-          // setUSERNAME(response.data);
-          document.getElementById("floatBtn").style.display = "none";
-          document.getElementById("LoginHeader").style.display = "none";
-          document.getElementById("loggedInImg").style.display = "block";
-          // document.getElementById("loggedInImg").style.display = "none";
-          // document.getElementById("dropdown-content").style.display = "block";
-        }
-        // else {
-        //   document.getElementById("loggedInImg").style.display = "none";
-        // }
-      }
-    );
+    if (localStorage.getItem("Client") === null) {
+      history.push("/Login");
+    } else {
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("loggedInImg").style.display = "block";
+    }
   }, []);
+
+  // useEffect(() => {
+  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
+  //     (response) => {
+  //       console.log(response.data.loggedIn);
+  //       console.log(response.data.user);
+  //       if (response.data.loggedIn === true) {
+  //         setUSER_ID(response.data.user[0].USER_ID);
+  //         // setUSERNAME(response.data);
+  //         document.getElementById("floatBtn").style.display = "none";
+  //         document.getElementById("LoginHeader").style.display = "none";
+  //         document.getElementById("loggedInImg").style.display = "block";
+  //         // document.getElementById("loggedInImg").style.display = "none";
+  //         // document.getElementById("dropdown-content").style.display = "block";
+  //       }
+  //       // else {
+  //       //   document.getElementById("loggedInImg").style.display = "none";
+  //       // }
+  //     }
+  //   );
+  // }, []);
 
   // Render
   useEffect(() => {
