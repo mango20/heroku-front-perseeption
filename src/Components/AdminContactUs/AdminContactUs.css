@@ -130,7 +130,7 @@
 }
 
 .floatContactUsMessage_bg {
-  display: none;
+  /* display: none; */
   position: fixed;
   background-color: rgba(0, 0, 0, 0.575);
   width: 100%;
@@ -218,4 +218,8 @@
   word-break: break-all;
   height: 20px;
   overflow: hidden;
+}
+
+#outerEdit {
+  display: none;
 }

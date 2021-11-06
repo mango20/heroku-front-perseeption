@@ -66,8 +66,7 @@ function AdminContactUs() {
   }, []);
   const replyBtn = async (contact_id) => {
     console.log(contact_id);
-    document.getElementById("floatContactUsMessage_bg").style.display = "block";
-    document.getElementById("floatContactUsMessage").style.display = "block";
+    document.getElementById("outerEdit").style.display = "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
@@ -105,8 +104,8 @@ function AdminContactUs() {
     const p = (document.getElementById("email-id").value = "");
     console.log(p);
     document.getElementById("messagesText").value = "";
-    document.getElementById("floatContactUsMessage_bg").style.display = "none";
-    document.getElementById("floatContactUsMessage").style.display = "none";
+    document.getElementById("outerEdit").style.display = "none";
+    // document.getElementById("floatContactUsMessage").style.display = "none";
     Axios.get(
       "https://perseeption-tromagade.herokuapp.com/getContactUsMsg"
     ).then((response) => {
@@ -279,74 +278,76 @@ function AdminContactUs() {
               })}
             </tbody>
           </table>
-          {contact_usList_.map((val, key) => {
-            return (
-              <div
-                className="floatContactUsMessage_bg"
-                id="floatContactUsMessage_bg"
-                key={key}
-              >
+          <div id="outerEdit">
+            {contact_usList_.map((val, key) => {
+              return (
                 <div
-                  className="floatContactUsMessage"
-                  id="floatContactUsMessage"
+                  className="floatContactUsMessage_bg"
+                  id="floatContactUsMessage_bg"
+                  key={key}
                 >
-                  <ul>
-                    <li className="xBtn" onClick={hideReplyModal}>
-                      x{val.contact_id}
-                    </li>
-                    <li className="replyTo">
-                      <p>Name: {val.contact_name} </p>
-                    </li>
-                    <li className="replyTo">
-                      <p>Reply to: {val.contact_email} </p>
-                    </li>
-                    <li className="replyTo">
-                      <p>Contact Number: {val.contact_number} </p>
-                    </li>
-                    <li className="replyTomess">
-                      <p>Message: {val.contact_message}</p>
-                    </li>
-                    <li>
-                      <input
-                        type="text"
-                        className="nameAdmin"
-                        id="nameAdmin-id"
-                        placeholder="Subject"
-                        onChange={(e) => {
-                          setSubject(e.target.value);
-                        }}
-                      />
-                    </li>
-                    <li>
-                      <input
-                        type="text"
-                        className="email"
-                        id="email-id"
-                        placeholder="Email"
-                        readOnly={true}
-                        value={val.contact_email}
-                      />
-                    </li>
-                    <li>
-                      <textarea
-                        name=""
-                        id="messagesText"
-                        cols="30"
-                        rows="10"
-                        placeholder="Enter messages ..."
-                        onChange={(e) => {
-                          setContactUsMsg(e.target.value);
-                        }}
-                      ></textarea>
-                    </li>
-                    <li>
-                      <button onClick={sendEmail}>Send</button>
-                    </li>
-                  </ul>
+                  <div
+                    className="floatContactUsMessage"
+                    id="floatContactUsMessage"
+                  >
+                    <ul>
+                      <li className="xBtn" onClick={hideReplyModal}>
+                        x{val.contact_id}
+                      </li>
+                      <li className="replyTo">
+                        <p>Name: {val.contact_name} </p>
+                      </li>
+                      <li className="replyTo">
+                        <p>Reply to: {val.contact_email} </p>
+                      </li>
+                      <li className="replyTo">
+                        <p>Contact Number: {val.contact_number} </p>
+                      </li>
+                      <li className="replyTomess">
+                        <p>Message: {val.contact_message}</p>
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="nameAdmin"
+                          id="nameAdmin-id"
+                          placeholder="Subject"
+                          onChange={(e) => {
+                            setSubject(e.target.value);
+                          }}
+                        />
+                      </li>
+                      <li>
+                        <input
+                          type="text"
+                          className="email"
+                          id="email-id"
+                          placeholder="Email"
+                          readOnly={true}
+                          value={val.contact_email}
+                        />
+                      </li>
+                      <li>
+                        <textarea
+                          name=""
+                          id="messagesText"
+                          cols="30"
+                          rows="10"
+                          placeholder="Enter messages ..."
+                          onChange={(e) => {
+                            setContactUsMsg(e.target.value);
+                          }}
+                        ></textarea>
+                      </li>
+                      <li>
+                        <button onClick={sendEmail}>Send</button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
