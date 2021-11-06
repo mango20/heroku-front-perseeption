@@ -14,33 +14,29 @@ function AdminAdminList() {
   const [USERNAME, setUSERNAME] = useState("");
   const [USER_PASSWORD, setUSER_PASSWORD] = useState("");
   // const [ADMIN_NAME, setADMIN_NAME] = useState("");
-  const [NEW_ADMIN_NAME, setNEW_ADMIN_NAME] = useState("");
-  const [NEW_USERNAME, setNEW_USERNAME] = useState("");
-  const [NEW_USER_PASSWORD, setNEW_USER_PASSWORD] = useState("");
-  const [NEW_ADMIN_ADDRESS, setNEW_ADMIN_ADDRESS] = useState("");
-  const [NEW_ADMIN_CONTACT, setNEW_ADMIN_CONTACT] = useState("");
-  const [NEW_ADMIN_EMAIL, setNEW_ADMIN_EMAIL] = useState("");
+
   Axios.defaults.withCredentials = true;
 
-  const [updateAdminInformation, setUpdateAdminInformation] = useState({
-    ADMIN_NAME: "",
-    ADMIN_CONTACT: "",
-    ADMIN_ADDRESS: "",
-    ADMIN_EMAIL: "",
-    USERNAME: "",
-    USER_PASSWORD: "",
-  });
+  // const [updateAdminInformation, setUpdateAdminInformation] = useState({
+  //   ADMIN_NAME: "",
+  //   ADMIN_CONTACT: "",
+  //   ADMIN_ADDRESS: "",
+  //   ADMIN_EMAIL: "",
+  //   USERNAME: "",
+  //   USER_PASSWORD: "",
+  // });
 
   const handleChange = (e) => {
-    setUpdateAdminInformation({
-      ...updateAdminInformation,
-      ADMIN_NAME: document.getElementById("updateADMIN_NAME_").value,
-      ADMIN_CONTACT: document.getElementById("updateADMIN_CONTACT_").value,
-      ADMIN_ADDRESS: document.getElementById("updateADMIN_ADDRESS_").value,
-      ADMIN_EMAIL: document.getElementById("updateADMIN_EMAIL_").value,
-      USERNAME: document.getElementById("updateUSERNAME_").value,
-      USER_PASSWORD: document.getElementById("updateUSER_PASSWORD_").value,
-    });
+    console.log("hey");
+    // setUpdateAdminInformation({
+    //   ...updateAdminInformation,
+    //   ADMIN_NAME: document.getElementById("updateADMIN_NAME_").value,
+    //   ADMIN_CONTACT: document.getElementById("updateADMIN_CONTACT_").value,
+    //   ADMIN_ADDRESS: document.getElementById("updateADMIN_ADDRESS_").value,
+    //   ADMIN_EMAIL: document.getElementById("updateADMIN_EMAIL_").value,
+    //   USERNAME: document.getElementById("updateUSERNAME_").value,
+    //   USER_PASSWORD: document.getElementById("updateUSER_PASSWORD_").value,
+    // });
   };
 
   // Render
@@ -137,6 +133,13 @@ function AdminAdminList() {
     );
   };
 
+  const [NEW_ADMIN_NAME, setNEW_ADMIN_NAME] = useState("");
+  const [NEW_USERNAME, setNEW_USERNAME] = useState("");
+  const [NEW_USER_PASSWORD, setNEW_USER_PASSWORD] = useState("");
+  const [NEW_ADMIN_ADDRESS, setNEW_ADMIN_ADDRESS] = useState("");
+  const [NEW_ADMIN_CONTACT, setNEW_ADMIN_CONTACT] = useState("");
+  const [NEW_ADMIN_EMAIL, setNEW_ADMIN_EMAIL] = useState("");
+
   const showEditAdmin = (USER_ID) => {
     document.getElementById("formEditAdminOuter").style.display = "block";
     document.getElementById("editAdminBoxContainer").style.display = "block";
@@ -145,6 +148,11 @@ function AdminAdminList() {
       `https://perseeption-tromagade.herokuapp.com/getAdminInformation_/${USER_ID}`
     ).then((response) => {
       console.log(response.data);
+      setNEW_ADMIN_NAME(response.data[0].ADMIN_NAME);
+      setNEW_ADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
+      setNEW_ADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
+      setNEW_ADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
+
       // setADMIN_LIST(
       //   ADMIN_LIST.filter((val) => {
       //     return val.USER_ID === USER_ID;
@@ -159,26 +167,26 @@ function AdminAdminList() {
 
   const updateAdminInformationBtn = (USER_ID) => {
     console.log(USER_ID);
-    const formdata_ = new FormData();
-    formdata_.append("ADMIN_NAME", updateAdminInformation.ADMIN_NAME);
-    formdata_.append("ADMIN_CONTACT", updateAdminInformation.ADMIN_CONTACT);
-    formdata_.append("ADMIN_ADDRESS", updateAdminInformation.ADMIN_ADDRESS);
-    formdata_.append("ADMIN_EMAIL", updateAdminInformation.ADMIN_EMAIL);
-    formdata_.append("USERNAME", updateAdminInformation.USERNAME);
-    formdata_.append("USER_PASSWORD", updateAdminInformation.USER_PASSWORD);
+    // const formdata_ = new FormData();
+    // formdata_.append("ADMIN_NAME", updateAdminInformation.ADMIN_NAME);
+    // formdata_.append("ADMIN_CONTACT", updateAdminInformation.ADMIN_CONTACT);
+    // formdata_.append("ADMIN_ADDRESS", updateAdminInformation.ADMIN_ADDRESS);
+    // formdata_.append("ADMIN_EMAIL", updateAdminInformation.ADMIN_EMAIL);
+    // formdata_.append("USERNAME", updateAdminInformation.USERNAME);
+    // formdata_.append("USER_PASSWORD", updateAdminInformation.USER_PASSWORD);
 
-    console.log(updateAdminInformation.ADMIN_NAME);
-    console.log(updateAdminInformation.ADMIN_CONTACT);
-    console.log(updateAdminInformation.ADMIN_ADDRESS);
-    console.log(updateAdminInformation.ADMIN_EMAIL);
-    console.log(updateAdminInformation.USERNAME);
-    console.log(updateAdminInformation.USER_PASSWORD);
+    // console.log(updateAdminInformation.ADMIN_NAME);
+    // console.log(updateAdminInformation.ADMIN_CONTACT);
+    // console.log(updateAdminInformation.ADMIN_ADDRESS);
+    // console.log(updateAdminInformation.ADMIN_EMAIL);
+    // console.log(updateAdminInformation.USERNAME);
+    // console.log(updateAdminInformation.USER_PASSWORD);
 
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${USER_ID}`,
-      formdata_,
       {
-        headers: { "Content-Type": "multipart/form-data" },
+        ADMIN_NAME: NEW_ADMIN_NAME,
+        ADMIN_ADDRESS: NEW_ADMIN_ADDRESS,
       }
     ).then((response) => {
       console.log(response.data);
@@ -188,11 +196,7 @@ function AdminAdminList() {
             ? {
                 USER_ID: val.USER_ID,
                 ADMIN_NAME: val.NEW_ADMIN_NAME,
-                USERNAME: val.NEW_USERNAME,
-                USER_PASSWORD: val.NEW_USER_PASSWORD,
-                ADMIN_ADDRESS: val.NEW_ADMIN_ADDRESS,
-                ADMIN_CONTACT: NEW_ADMIN_CONTACT,
-                ADMIN_EMAIL: val.NEW_ADMIN_EMAIL,
+                ADMIN_CONTACT: val.NEW_ADMIN_CONTACT,
               }
             : val;
         })
@@ -400,88 +404,87 @@ function AdminAdminList() {
             Add New Admin
           </button>
         </div>
-        {ADMIN_LIST.map((val, key) => {
-          return (
-            <div key={key} className="formEditAdmin" id="formEditAdminOuter">
-              <div className="editAdminBox" id="editAdminBoxContainer">
-                <p className="editAdminInfo">Edit Admin Information</p>
-                {/* <label>Name: {val.USER_ID}</label> */}
-                <label>Name: {val.ADMIN_NAME}</label>
-                <input
-                  type="text"
-                  id="updateADMIN_NAME_"
-                  value={ADMIN_NAME}
-                  onChange={handleChange}
-                  // value={val.ADMIN_NAME}
-                  // onChange={(e) => {
-                  //   setNEW_ADMIN_NAME(e.target.value);
-                  // }}
-                />
-                <label>Contact: {val.ADMIN_CONTACT}</label>
-                <input
-                  type="text"
-                  id="updateADMIN_CONTACT_"
-                  value={updateAdminInformation.ADMIN_CONTACT}
-                  onChange={handleChange}
-                  // value={updateAdminInformation.ADMIN_CONTACT}
-                  // onChange={(e) => {
-                  //   setNEW_ADMIN_CONTACT(e.target.value);
-                  // }}
-                />
-                <label>Address:</label>
-                <input
-                  type="text"
-                  id="updateADMIN_ADDRESS_"
-                  value={updateAdminInformation.ADMIN_ADDRESS}
-                  onChange={handleChange}
-                  // onChange={(e) => {
-                  //   setNEW_ADMIN_ADDRESS(e.target.value);
-                  // }}
-                />
-                <label>Email:</label>
-                <input
-                  type="text"
-                  id="updateADMIN_EMAIL_"
-                  value={updateAdminInformation.ADMIN_EMAIL}
-                  onChange={handleChange}
-                  // onChange={(e) => {
-                  //   setNEW_ADMIN_EMAIL(e.target.value);
-                  // }}
-                />
-                <label>Username:{val.USERNAME}</label>
-                <input
-                  type="text"
-                  id="updateUSERNAME_"
-                  value={updateAdminInformation.USERNAME}
-                  onChange={handleChange}
-                  // onChange={(e) => {
-                  //   setNEW_USERNAME(e.target.value);
-                  // }}
-                />
-                <label>Password:</label>
-                <input
-                  type="password"
-                  id="updateUSER_PASSWORD_"
-                  value={updateAdminInformation.USER_PASSWORD}
-                  onChange={handleChange}
-                />
-                <div className="editAdminBtns">
-                  <p className="editAdminCancelBtn" onClick={hideEditAdmin}>
-                    Cancel
-                  </p>
-                  <p
-                    className="editAdminConfirm"
-                    onClick={() => {
-                      updateAdminInformationBtn(val.USER_ID);
-                    }}
-                  >
-                    Submit
-                  </p>
-                </div>
-              </div>
+        {/* {ADMIN_LIST.map((val, key) => {
+          return ( */}
+        <div className="formEditAdmin" id="formEditAdminOuter">
+          <div className="editAdminBox" id="editAdminBoxContainer">
+            <p className="editAdminInfo">Edit Admin Information</p>
+            {/* <label>Name: {val.USER_ID}</label> */}
+            <label>Name: {NEW_ADMIN_NAME}</label>
+            <input
+              type="text"
+              id="updateADMIN_NAME_"
+              value={NEW_ADMIN_NAME}
+              // onChange={handleChange}
+              // value={val.ADMIN_NAME}
+              onChange={(e) => {
+                setNEW_ADMIN_NAME(e.target.value);
+              }}
+            />
+            <label>Contact: {val.ADMIN_CONTACT}</label>
+            <input
+              type="text"
+              // id="updateADMIN_CONTACT_"
+              // value={updateAdminInformation.ADMIN_CONTACT}
+              // onChange={handleChange}
+              // value={updateAdminInformation.ADMIN_CONTACT}
+              // onChange={(e) => {
+              //   setNEW_ADMIN_CONTACT(e.target.value);
+              // }}
+            />
+            <label>Address: {NEW_ADMIN_ADDRESS}</label>
+            <input
+              type="text"
+              id="updateADMIN_ADDRESS_"
+              value={NEW_ADMIN_ADDRESS}
+              // onChange={handleChange}
+              onChange={(e) => {
+                setNEW_ADMIN_ADDRESS(e.target.value);
+              }}
+            />
+            <label>Email:</label>
+            <input
+              type="text"
+              id="updateADMIN_EMAIL_"
+              value={updateAdminInformation.ADMIN_EMAIL}
+              onChange={handleChange}
+              // onChange={(e) => {
+              //   setNEW_ADMIN_EMAIL(e.target.value);
+              // }}
+            />
+            <label>Username:{val.USERNAME}</label>
+            <input
+              type="text"
+              id="updateUSERNAME_"
+              value={updateAdminInformation.USERNAME}
+              onChange={handleChange}
+              // onChange={(e) => {
+              //   setNEW_USERNAME(e.target.value);
+              // }}
+            />
+            <label>Password:</label>
+            <input
+              type="password"
+              id="updateUSER_PASSWORD_"
+              value={updateAdminInformation.USER_PASSWORD}
+              onChange={handleChange}
+            />
+            <div className="editAdminBtns">
+              <p className="editAdminCancelBtn" onClick={hideEditAdmin}>
+                Cancel
+              </p>
+              <p
+                className="editAdminConfirm"
+                onClick={() => {
+                  updateAdminInformationBtn(val.USER_ID);
+                }}
+              >
+                Submit
+              </p>
             </div>
-          );
-        })}
+          </div>
+        </div>
+        {/* ); })} */}
         <div className="form2" id="adminNewOuter">
           <div className="AddNewAdminForm" id="adminNewBox">
             <p className="addAdminInfo">Add Admin Information</p>
