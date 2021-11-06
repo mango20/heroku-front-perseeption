@@ -12,6 +12,7 @@ function AdminContactUs() {
   const [EmailContact, setEmailContact] = useState("");
   const [ContactUsMsg, setContactUsMsg] = useState("");
   const [contact_usList, setcontact_usList] = useState([]);
+  Axios.defaults.withCredentials = true;
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
   //     console.log(response.data.loggedIn);
@@ -56,8 +57,7 @@ function AdminContactUs() {
   // };
   const replyBtn = async (contact_id) => {
     console.log(contact_id);
-    document.getElementById("floatContactUsMessage_bg").style.display = "block";
-    document.getElementById("floatContactUsMessage").style.display = "block";
+
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
@@ -69,6 +69,8 @@ function AdminContactUs() {
       //   })
       // );
     });
+    document.getElementById("floatContactUsMessage_bg").style.display = "block";
+    document.getElementById("floatContactUsMessage").style.display = "block";
   };
 
   const sendEmail = (contact_id) => {
@@ -141,7 +143,6 @@ function AdminContactUs() {
     }
   };
   const [USERNAME_, setUSERNAME] = useState([]);
-  Axios.defaults.withCredentials = true;
 
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
