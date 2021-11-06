@@ -218,7 +218,6 @@ function AdminContactUs() {
               onKeyUp={filterInboxMessages}
             />
           </div>
-
           <table className="inboxList" id="tableContactUs">
             <tbody className="inboxListBody">
               <tr>
@@ -271,12 +270,12 @@ function AdminContactUs() {
               })}
             </tbody>
           </table>
-          <div
-            className="floatContactUsMessage_bg"
-            id="floatContactUsMessage_bg"
-          >
-            {contact_usList_.map((val, key) => {
-              return (
+          {contact_usList_.map((val, key) => {
+            return (
+              <div
+                className="floatContactUsMessage_bg"
+                id="floatContactUsMessage_bg"
+              >
                 <div
                   className="floatContactUsMessage"
                   id="floatContactUsMessage"
@@ -336,9 +335,9 @@ function AdminContactUs() {
                     </li>
                   </ul>
                 </div>
-              );
-            })}{" "}
-          </div>
+              </div>
+            );
+          })}{" "}
         </div>
       </div>
     </div>
