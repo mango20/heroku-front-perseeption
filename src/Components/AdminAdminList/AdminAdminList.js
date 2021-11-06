@@ -135,8 +135,6 @@ function AdminAdminList() {
 
   const [NEW_ADMIN_ID, setNEW_ADMIN_ID] = useState("");
   const [NEW_ADMIN_NAME, setNEW_ADMIN_NAME] = useState("");
-  const [NEW_USERNAME, setNEW_USERNAME] = useState("");
-  const [NEW_USER_PASSWORD, setNEW_USER_PASSWORD] = useState("");
   const [NEW_ADMIN_ADDRESS, setNEW_ADMIN_ADDRESS] = useState("");
   const [NEW_ADMIN_CONTACT, setNEW_ADMIN_CONTACT] = useState("");
   const [NEW_ADMIN_EMAIL, setNEW_ADMIN_EMAIL] = useState("");
@@ -191,6 +189,8 @@ function AdminAdminList() {
       {
         ADMIN_NAME: NEW_ADMIN_NAME,
         ADMIN_ADDRESS: NEW_ADMIN_ADDRESS,
+        ADMIN_CONTACT: NEW_ADMIN_CONTACT,
+        ADMIN_EMAIL: NEW_ADMIN_EMAIL,
       }
     ).then((response) => {
       console.log(response.data);
@@ -201,6 +201,8 @@ function AdminAdminList() {
                 USER_ID: val.NEW_ADMIN_ID,
                 ADMIN_NAME: val.NEW_ADMIN_NAME,
                 ADMIN_CONTACT: val.NEW_ADMIN_CONTACT,
+                ADMIN_ADDRESS: val.NEW_ADMIN_ADDRESS,
+                ADMIN_EMAIL: val.NEW_ADMIN_EMAIL,
               }
             : val;
         })
@@ -414,7 +416,7 @@ function AdminAdminList() {
           <div className="editAdminBox" id="editAdminBoxContainer">
             <p className="editAdminInfo">Edit Admin Information</p>
             {/* <label>Name: {val.USER_ID}</label> */}
-            <label>Name: {NEW_ADMIN_NAME}</label>
+            <label>Name: </label>
             <input
               type="text"
               id="updateADMIN_NAME_"
@@ -425,18 +427,16 @@ function AdminAdminList() {
                 setNEW_ADMIN_NAME(e.target.value);
               }}
             />
-            <label>Contact: {ADMIN_CONTACT}</label>
+            <label>Contact: </label>
             <input
               type="text"
-              // id="updateADMIN_CONTACT_"
-              // value={updateAdminInformation.ADMIN_CONTACT}
-              // onChange={handleChange}
-              // value={updateAdminInformation.ADMIN_CONTACT}
-              // onChange={(e) => {
-              //   setNEW_ADMIN_CONTACT(e.target.value);
-              // }}
+              id="updateADMIN_CONTACT_"
+              value={NEW_ADMIN_CONTACT}
+              onChange={(e) => {
+                setNEW_ADMIN_CONTACT(e.target.value);
+              }}
             />
-            <label>Address: {NEW_ADMIN_ADDRESS}</label>
+            <label>Address: </label>
             <input
               type="text"
               id="updateADMIN_ADDRESS_"
@@ -450,28 +450,10 @@ function AdminAdminList() {
             <input
               type="text"
               id="updateADMIN_EMAIL_"
-              value={ADMIN_EMAIL}
-              onChange={handleChange}
-              // onChange={(e) => {
-              //   setNEW_ADMIN_EMAIL(e.target.value);
-              // }}
-            />
-            <label>Username:{USERNAME}</label>
-            <input
-              type="text"
-              id="updateUSERNAME_"
-              value={USERNAME}
-              onChange={handleChange}
-              // onChange={(e) => {
-              //   setNEW_USERNAME(e.target.value);
-              // }}
-            />
-            <label>Password:</label>
-            <input
-              type="password"
-              id="updateUSER_PASSWORD_"
-              value={USER_PASSWORD}
-              onChange={handleChange}
+              value={NEW_ADMIN_EMAIL}
+              onChange={(e) => {
+                setNEW_ADMIN_EMAIL(e.target.value);
+              }}
             />
             <div className="editAdminBtns">
               <p className="editAdminCancelBtn" onClick={hideEditAdmin}>
