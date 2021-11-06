@@ -41,6 +41,7 @@ function AdminAdminList() {
 
   // Render
   const [INFOLIST, setINFOLIST] = useState([]);
+  const [ADD_ADMIN, setADD_ADMIN] = useState("");
   const insertNewAdmin = () => {
     const addAdminName = document.getElementById("addAdminName").value;
     const addAdminContact = document.getElementById("addAdminContact").value;
@@ -93,7 +94,7 @@ function AdminAdminList() {
     }
     Axios.post("https://perseeption-tromagade.herokuapp.com/insertNewAdmin", {
       USERNAME: USERNAME,
-      ADMIN_NAME: ADMIN_NAME,
+      ADMIN_NAME: ADD_ADMIN,
       ADMIN_CONTACT: ADMIN_CONTACT,
       ADMIN_EMAIL: ADMIN_EMAIL,
       ADMIN_ADDRESS: ADMIN_ADDRESS,
@@ -478,7 +479,7 @@ function AdminAdminList() {
             <input
               type="text"
               id="addAdminName"
-              onChange={(e) => setADMIN_NAME(e.target.value)}
+              onChange={(e) => setADD_ADMIN(e.target.value)}
             />
             <label>Contact:</label>
             <input
