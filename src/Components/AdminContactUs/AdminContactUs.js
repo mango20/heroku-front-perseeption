@@ -239,7 +239,7 @@ function AdminContactUs() {
                 <th>Reply</th>
                 <th>Delete</th>
               </tr>
-              {contact_usList_.map((val, key) => {
+              {contact_usList.map((val, key) => {
                 return (
                   <tr key={key}>
                     <td>
@@ -279,7 +279,7 @@ function AdminContactUs() {
               })}
             </tbody>
           </table>
-          {contact_usList.map((val, key) => {
+          {contact_usList_.map((val, key) => {
             return (
               <div
                 className="floatContactUsMessage_bg"
