@@ -9,7 +9,7 @@ import { CloudinaryContext, Image } from "cloudinary-react";
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
-  const [imagesIds, setImagesIds] = useState([]);
+  // const [imagesIds, setImagesIds] = useState([]);
   const [NEW_EVENT_REVIEW, setNEW_EVENT_REVIEW] = useState("");
   const [NEW_EVENT_TITLE, setNEW_EVENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
