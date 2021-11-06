@@ -90,14 +90,6 @@ function AdminAdminList() {
     );
   };
 
-  useEffect(() => {
-    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
-      (response) => {
-        setADMIN_LIST(response.data);
-      }
-    );
-  }, []);
-
   const showAddNewAdmin = () => {
     document.getElementById("adminNewBox").style.display = "block";
     document.getElementById("adminNewOuter").style.display = "block";
@@ -206,6 +198,15 @@ function AdminAdminList() {
   // Update Content
 
   // Delete Announcement
+  useEffect(() => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+      (response) => {
+        setADMIN_LIST(response.data);
+        console.log(response.data);
+      }
+    );
+  }, []);
+
   const deleteAdmin = (USER_ID) => {
     console.log(USER_ID);
     Axios.delete(
