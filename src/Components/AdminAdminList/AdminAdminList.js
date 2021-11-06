@@ -207,6 +207,7 @@ function AdminAdminList() {
 
   // Delete Announcement
   const deleteAdmin = (USER_ID) => {
+    console.log(USER_ID);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteAdmin/${USER_ID}`
     ).then((response) => {
