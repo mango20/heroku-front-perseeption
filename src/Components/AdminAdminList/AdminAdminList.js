@@ -167,7 +167,7 @@ function AdminAdminList() {
     });
   };
 
-  const updateAdminInformationBtn = (USER_ID) => {
+  const updateAdminInformationBtn = (NEW_ADMIN_ID) => {
     console.log(USER_ID);
     // const formdata_ = new FormData();
     // formdata_.append("ADMIN_NAME", updateAdminInformation.ADMIN_NAME);
@@ -183,10 +183,11 @@ function AdminAdminList() {
     // console.log(updateAdminInformation.ADMIN_EMAIL);
     // console.log(updateAdminInformation.USERNAME);
     // console.log(updateAdminInformation.USER_PASSWORD);
+    console.log(NEW_ADMIN_ID);
     console.log(NEW_ADMIN_NAME);
     console.log(NEW_ADMIN_ADDRESS);
     Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${USER_ID}`,
+      `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${NEW_ADMIN_ID}`,
       {
         ADMIN_NAME: NEW_ADMIN_NAME,
         ADMIN_ADDRESS: NEW_ADMIN_ADDRESS,
@@ -195,9 +196,9 @@ function AdminAdminList() {
       console.log(response.data);
       setADMIN_LIST(
         ADMIN_LIST.map((val) => {
-          return val.USER_ID === USER_ID
+          return val.NEW_ADMIN_ID === NEW_ADMIN_ID
             ? {
-                USER_ID: val.USER_ID,
+                USER_ID: val.NEW_ADMIN_ID,
                 ADMIN_NAME: val.NEW_ADMIN_NAME,
                 ADMIN_CONTACT: val.NEW_ADMIN_CONTACT,
               }
@@ -479,7 +480,7 @@ function AdminAdminList() {
               <p
                 className="editAdminConfirm"
                 onClick={() => {
-                  updateAdminInformationBtn(USER_ID);
+                  updateAdminInformationBtn(NEW_ADMIN_ID);
                 }}
               >
                 Submit
