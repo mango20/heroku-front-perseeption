@@ -61,12 +61,12 @@ function AdminContactUs() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
-      console.log(response);
-      setcontact_usList(
-        contact_usList.filter((val) => {
-          return val.contact_id === contact_id;
-        })
-      );
+      console.log(response.data);
+      // setcontact_usList(
+      //   contact_usList.filter((val) => {
+      //     return val.contact_id === contact_id;
+      //   })
+      // );
     });
   };
 
