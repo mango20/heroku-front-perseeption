@@ -98,13 +98,19 @@ function Events() {
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
+
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+      ).then((response) => {
+        setImagesIds(response.data);
+      });
       //   console.log(EVENT_TITLE);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const [imagesIds, setImagesIds] = useState();
+  const [imagesIds, setImagesIds] = useState([]);
   const loadImages = async () => {
     try {
       Axios.get(
