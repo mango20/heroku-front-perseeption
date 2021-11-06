@@ -60,7 +60,7 @@ function AdminContactUs() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
-      setFORUM_REPLY_LIST(response.data);
+      setcontact_usList_(response.data);
       console.log(response.data);
     });
   }, []);
