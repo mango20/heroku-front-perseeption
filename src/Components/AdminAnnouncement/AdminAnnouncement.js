@@ -132,13 +132,13 @@ function AdminAnnouncement() {
     }
   };
 
-  const [imagesIds1, setImagesIds1] = useState();
+  // const [ANNOUNCEMENT_LIST, setANNOUNCEMENT_LIST] = useState();
   const loadImages = async () => {
     try {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/imagesAnnouncement"
       ).then((response) => {
-        setImagesIds1(response.data);
+        setANNOUNCEMENT_LIST(response.data);
       });
     } catch (error) {
       console.log(error);
@@ -246,15 +246,15 @@ function AdminAnnouncement() {
       `https://perseeption-tromagade.herokuapp.com/api/delete/${ANNOUNCEMENT_ID}`
     ).then((response) => {
       console.log(response);
-      setImagesIds1(
-        imagesIds1.filter((val) => {
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.filter((val) => {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
         })
       );
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setImagesIds1(response.data);
+        setANNOUNCEMENT_LIST(response.data);
       });
     });
   };
@@ -268,8 +268,8 @@ function AdminAnnouncement() {
         ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
       }
     ).then((response) => {
-      setImagesIds1(
-        imagesIds1.map((val) => {
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.map((val) => {
           return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
             ? {
                 ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
@@ -282,7 +282,7 @@ function AdminAnnouncement() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setImagesIds1(response.data);
+        setANNOUNCEMENT_LIST(response.data);
       });
     });
   };
@@ -296,8 +296,8 @@ function AdminAnnouncement() {
         ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
       }
     ).then((response) => {
-      setImagesIds1(
-        imagesIds1.map((val) => {
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.map((val) => {
           return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
             ? {
                 ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
@@ -313,7 +313,7 @@ function AdminAnnouncement() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
-        setImagesIds1(response.data);
+        setANNOUNCEMENT_LIST(response.data);
       });
     });
   };
@@ -411,9 +411,9 @@ function AdminAnnouncement() {
           </form>
         </div>
 
-        {previewSource1 && (
+        {/* {previewSource1 && (
           <img src={previewSource1} alt="chosen" style={{ height: "300px" }} />
-        )}
+        )} */}
 
         <div className="announcementListContainer">
           {/* {announcementInformation.filepreview !== null ? (
@@ -423,8 +423,8 @@ function AdminAnnouncement() {
               alt="UploadImage1"
             />
           ) : null} */}
-          {imagesIds1 &&
-            imagesIds1.map((imageId, index) => {
+          {/* {ANNOUNCEMENT_LIST &&
+            ANNOUNCEMENT_LIST.map((imageId, index) => {
               return (
                 <div className="eventAdminRender">
                   <Image
@@ -487,7 +487,7 @@ function AdminAnnouncement() {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           {ANNOUNCEMENT_LIST.map((val, key) => {
             return (
               <div key={key} className="announcementAdminRender">
@@ -500,7 +500,7 @@ function AdminAnnouncement() {
                 <Image
                   className="announcementDummyIng"
                   cloudName="dlvt2lnkh"
-                  publicId={val.ANNOUNCEMENT_TITLE}
+                  publicId={val.ANNOUNCEMENT_IMAGE}
                 />
                 <p className="announcement_title_inner">
                   {val.ANNOUNCEMENT_TITLE}
