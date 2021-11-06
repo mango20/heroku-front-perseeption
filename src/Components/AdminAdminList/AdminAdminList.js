@@ -96,6 +96,11 @@ function AdminAdminList() {
   };
 
   const hideAddNewAdmin = () => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+      (response) => {
+        setADMIN_LIST(response.data);
+      }
+    );
     document.getElementById("adminNewBox").style.display = "none";
     document.getElementById("adminNewOuter").style.display = "none";
   };
@@ -103,6 +108,11 @@ function AdminAdminList() {
   const hideEditAdmin = () => {
     document.getElementById("formEditAdminOuter").style.display = "none";
     document.getElementById("editAdminBoxContainer").style.display = "none";
+    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+      (response) => {
+        setADMIN_LIST(response.data);
+      }
+    );
   };
 
   const showEditAdmin = (USER_ID) => {
@@ -367,6 +377,7 @@ function AdminAdminList() {
                 <label>Name: {val.ADMIN_NAME}</label>
                 <input
                   type="text"
+                  value={val.ADMIN_NAME}
                   onChange={(e) => {
                     setNEW_ADMIN_NAME(e.target.value);
                   }}
@@ -374,6 +385,7 @@ function AdminAdminList() {
                 <label>Contact: {val.ADMIN_CONTACT}</label>
                 <input
                   type="text"
+                  value={val.ADMIN_CONTACT}
                   onChange={(e) => {
                     setNEW_ADMIN_CONTACT(e.target.value);
                   }}
