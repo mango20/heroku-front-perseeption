@@ -111,21 +111,29 @@ function Events() {
   };
 
   const [imagesIds, setImagesIds] = useState([]);
-  const loadImages = async () => {
-    try {
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-      ).then((response) => {
-        setImagesIds(response.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    loadImages();
+  // const loadImages = async () => {
+  //   try {
+  //     Axios.get(
+  //       "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+  //     ).then((response) => {
+  //       setImagesIds(response.data);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  useEffect(async () => {
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+    ).then((response) => {
+      setImagesIds(response.data);
+      console.log(response.data);
+    });
   }, []);
+
+  // useEffect(() => {
+  //   loadImages();
+  // }, []);
   //   const submit = async () => {
   //     const formdata_ = new FormData();
   //     formdata_.append("image", eventInformation.file);
