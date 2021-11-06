@@ -421,7 +421,7 @@ function AdminAdminList() {
                 setNEW_ADMIN_NAME(e.target.value);
               }}
             />
-            <label>Contact: {val.ADMIN_CONTACT}</label>
+            <label>Contact: {ADMIN_CONTACT}</label>
             <input
               type="text"
               // id="updateADMIN_CONTACT_"
@@ -446,17 +446,17 @@ function AdminAdminList() {
             <input
               type="text"
               id="updateADMIN_EMAIL_"
-              value={updateAdminInformation.ADMIN_EMAIL}
+              value={ADMIN_EMAIL}
               onChange={handleChange}
               // onChange={(e) => {
               //   setNEW_ADMIN_EMAIL(e.target.value);
               // }}
             />
-            <label>Username:{val.USERNAME}</label>
+            <label>Username:{USERNAME}</label>
             <input
               type="text"
               id="updateUSERNAME_"
-              value={updateAdminInformation.USERNAME}
+              value={USERNAME}
               onChange={handleChange}
               // onChange={(e) => {
               //   setNEW_USERNAME(e.target.value);
@@ -466,7 +466,7 @@ function AdminAdminList() {
             <input
               type="password"
               id="updateUSER_PASSWORD_"
-              value={updateAdminInformation.USER_PASSWORD}
+              value={USER_PASSWORD}
               onChange={handleChange}
             />
             <div className="editAdminBtns">
@@ -476,7 +476,7 @@ function AdminAdminList() {
               <p
                 className="editAdminConfirm"
                 onClick={() => {
-                  updateAdminInformationBtn(val.USER_ID);
+                  updateAdminInformationBtn(USER_ID);
                 }}
               >
                 Submit
