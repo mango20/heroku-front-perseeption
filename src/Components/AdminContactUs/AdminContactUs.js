@@ -59,7 +59,7 @@ function AdminContactUs() {
   const replyBtn = async (contact_id) => {
     console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
-    // document.getElementById("floatContactUsMessage").style.display = "block";
+    document.getElementById("floatContactUsMessage").style.display = "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
