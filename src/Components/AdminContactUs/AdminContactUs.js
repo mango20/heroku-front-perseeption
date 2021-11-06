@@ -59,7 +59,7 @@ function AdminContactUs() {
   const replyBtn = async (contact_id) => {
     console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
-    document.getElementById("floatContactUsMessage").style.display = "block";
+    // document.getElementById("floatContactUsMessage").style.display = "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
@@ -271,16 +271,16 @@ function AdminContactUs() {
               })}
             </tbody>
           </table>
-          {contact_usList_.map((val, key) => {
-            return (
-              <div
-                className="floatContactUsMessage_bg"
-                id="floatContactUsMessage_bg"
-                key={key}
-              >
+          <div
+            className="floatContactUsMessage_bg"
+            id="floatContactUsMessage_bg"
+          >
+            {contact_usList_.map((val, key) => {
+              return (
                 <div
                   className="floatContactUsMessage"
                   id="floatContactUsMessage"
+                  key={key}
                 >
                   <ul>
                     <li className="xBtn" onClick={hideReplyModal}>
@@ -336,9 +336,9 @@ function AdminContactUs() {
                     </li>
                   </ul>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}{" "}
+          </div>
         </div>
       </div>
     </div>
