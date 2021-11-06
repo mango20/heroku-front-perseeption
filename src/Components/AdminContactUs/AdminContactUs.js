@@ -64,6 +64,7 @@ function AdminContactUs() {
       console.log(response.data);
     });
   }, []);
+
   const replyBtn = async (contact_id) => {
     console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
@@ -283,11 +284,11 @@ function AdminContactUs() {
               <div
                 className="floatContactUsMessage_bg"
                 id="floatContactUsMessage_bg"
+                key={key}
               >
                 <div
                   className="floatContactUsMessage"
                   id="floatContactUsMessage"
-                  key={key}
                 >
                   <ul>
                     <li className="xBtn" onClick={hideReplyModal}>
