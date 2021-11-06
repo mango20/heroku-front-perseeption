@@ -144,12 +144,12 @@ function AdminAdminList() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformation_/${USER_ID}`
     ).then((response) => {
-      console.log(response);
-      setADMIN_LIST(
-        ADMIN_LIST.filter((val) => {
-          return val.USER_ID === USER_ID;
-        })
-      );
+      console.log(response.data);
+      // setADMIN_LIST(
+      //   ADMIN_LIST.filter((val) => {
+      //     return val.USER_ID === USER_ID;
+      //   })
+      // );
       // Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then((response) => {
       //   setADMIN_LIST(response.data);
       //   console.log(response.data);
