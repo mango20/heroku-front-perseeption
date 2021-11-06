@@ -9,7 +9,7 @@ import { CloudinaryContext, Image } from "cloudinary-react";
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
-  const [EVENT_LIST, setEVENT_LIST] = useState([]);
+  const [imagesIds, setImagesIds] = useState([]);
   const [NEW_EVENT_REVIEW, setNEW_EVENT_REVIEW] = useState("");
   const [NEW_EVENT_TITLE, setNEW_EVENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
@@ -162,7 +162,7 @@ function Events() {
   //     Axios.get(
   //       "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
   //     ).then((response) => {
-  //       setEVENT_LIST(response.data);
+  //       setImagesIds(response.data);
   //     });
   //   };
   //   const [data, setData] = useState({ name: "", image: "" });
@@ -223,7 +223,7 @@ function Events() {
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
       (response) => {
-        setEVENT_LIST(response.data);
+        setImagesIds(response.data);
       }
     );
   }, []);
@@ -296,7 +296,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAdminEvent"
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setImagesIds(response.data);
       });
     }
   };
@@ -307,15 +307,15 @@ function Events() {
       `https://perseeption-tromagade.herokuapp.com/api/deleteEvent/${EVENT_ID}`
     ).then((response) => {
       console.log(response);
-      setEVENT_LIST(
-        EVENT_LIST.filter((val) => {
+      setImagesIds(
+        imagesIds.filter((val) => {
           return val.EVENT_ID !== EVENT_ID; // Filter/remove if it not equals to id
         })
       );
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setImagesIds(response.data);
       });
     });
   };
@@ -329,8 +329,8 @@ function Events() {
         EVENT_TITLE: NEW_EVENT_TITLE,
       }
     ).then((response) => {
-      setEVENT_LIST(
-        EVENT_LIST.map((val) => {
+      setImagesIds(
+        imagesIds.map((val) => {
           return val.EVENT_ID === EVENT_ID
             ? {
                 EVENT_ID: val.EVENT_ID,
@@ -343,7 +343,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setImagesIds(response.data);
       });
     });
   };
@@ -357,8 +357,8 @@ function Events() {
         EVENT_CONTENT: NEW_EVENT_REVIEW,
       }
     ).then((response) => {
-      setEVENT_LIST(
-        EVENT_LIST.map((val) => {
+      setImagesIds(
+        imagesIds.map((val) => {
           return val.EVENT_ID === EVENT_ID
             ? {
                 EVENT_ID: val.EVENT_ID,
@@ -374,7 +374,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setImagesIds(response.data);
       });
     });
   };
@@ -544,7 +544,7 @@ function Events() {
             </div>
             <Image publicId="sample" width="0.5" />
           </CloudinaryContext> */}
-          {/* {EVENT_LIST.map((val, key) => {
+          {/* {imagesIds.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
                 <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" />
