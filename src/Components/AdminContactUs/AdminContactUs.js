@@ -62,6 +62,7 @@ function AdminContactUs() {
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
       console.log(response.data);
+      setcontact_usList(response.data);
       // setcontact_usList(
       //   contact_usList.filter((val) => {
       //     return val.contact_id === contact_id;
