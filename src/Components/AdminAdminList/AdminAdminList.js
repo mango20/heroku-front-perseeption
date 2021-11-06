@@ -133,6 +133,7 @@ function AdminAdminList() {
     );
   };
 
+  const [NEW_ADMIN_ID, setNEW_ADMIN_ID] = useState("");
   const [NEW_ADMIN_NAME, setNEW_ADMIN_NAME] = useState("");
   const [NEW_USERNAME, setNEW_USERNAME] = useState("");
   const [NEW_USER_PASSWORD, setNEW_USER_PASSWORD] = useState("");
@@ -152,6 +153,7 @@ function AdminAdminList() {
       setNEW_ADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setNEW_ADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
       setNEW_ADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
+      setNEW_ADMIN_ID(response.data[0].USER_ID);
 
       // setADMIN_LIST(
       //   ADMIN_LIST.filter((val) => {
@@ -181,7 +183,8 @@ function AdminAdminList() {
     // console.log(updateAdminInformation.ADMIN_EMAIL);
     // console.log(updateAdminInformation.USERNAME);
     // console.log(updateAdminInformation.USER_PASSWORD);
-
+    console.log(NEW_ADMIN_NAME);
+    console.log(NEW_ADMIN_ADDRESS);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${USER_ID}`,
       {
