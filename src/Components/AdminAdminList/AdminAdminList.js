@@ -175,7 +175,7 @@ function AdminAdminList() {
     console.log(updateAdminInformation.USER_PASSWORD);
 
     Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/:USER_ID`,
+      `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${USER_ID}`,
       formdata_,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -410,7 +410,7 @@ function AdminAdminList() {
                 <input
                   type="text"
                   id="updateADMIN_NAME_"
-                  value={updateAdminInformation.ADMIN_NAME}
+                  value={ADMIN_NAME}
                   onChange={handleChange}
                   // value={val.ADMIN_NAME}
                   // onChange={(e) => {
