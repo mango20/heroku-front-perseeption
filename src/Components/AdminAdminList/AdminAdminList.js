@@ -243,7 +243,7 @@ function AdminAdminList() {
       console.log(name);
       console.log(name[0].ADMIN_NAME);
       setADMIN_NAME(name[0].ADMIN_NAME);
-      setUSER_ID(name[0].USER_ID);
+      // setUSER_ID(name[0].USER_ID);
     }
   }, []);
 
