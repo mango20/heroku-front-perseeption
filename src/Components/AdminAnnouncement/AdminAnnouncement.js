@@ -14,55 +14,55 @@ function AdminAnnouncement() {
   const [USER_ID, setUSER_ID] = useState("");
   const history = useHistory();
 
-  const submit = async () => {
-    const formdata = new FormData();
-    formdata.append("image", announcementInformation.file);
-    console.log(announcementInformation.file);
-    formdata.append("title", announcementInformation.title);
-    formdata.append("content", announcementInformation.content);
-    if (
-      announcementInformation.content === "" ||
-      announcementInformation.file.length === 0 ||
-      announcementInformation.content === ""
-    ) {
-      let timerId = setInterval(
-        () =>
-          (document.getElementById("titleAnnouncementMsg").innerHTML =
-            "Please fill out form completely!"),
-        0
-      );
+  // const submit = async () => {
+  //   const formdata = new FormData();
+  //   formdata.append("image", announcementInformation.file);
+  //   console.log(announcementInformation.file);
+  //   formdata.append("title", announcementInformation.title);
+  //   formdata.append("content", announcementInformation.content);
+  //   if (
+  //     announcementInformation.content === "" ||
+  //     announcementInformation.file.length === 0 ||
+  //     announcementInformation.content === ""
+  //   ) {
+  //     let timerId = setInterval(
+  //       () =>
+  //         (document.getElementById("titleAnnouncementMsg").innerHTML =
+  //           "Please fill out form completely!"),
+  //       0
+  //     );
 
-      // Timeout
-      setTimeout(() => {
-        clearInterval(timerId);
-        document.getElementById("titleAnnouncementMsg").innerHTML = "";
-      }, 3000);
-      return false;
-    } else
-      Axios.post(
-        "https://perseeption-tromagade.herokuapp.com/imageupload",
-        formdata,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-    document.getElementById("messageAnnouncementPopUpouter").style.display =
-      "block";
-    document.getElementById("messageAnnouncement_Content").style.display =
-      "block";
+  //     // Timeout
+  //     setTimeout(() => {
+  //       clearInterval(timerId);
+  //       document.getElementById("titleAnnouncementMsg").innerHTML = "";
+  //     }, 3000);
+  //     return false;
+  //   } else
+  //     Axios.post(
+  //       "https://perseeption-tromagade.herokuapp.com/imageupload",
+  //       formdata,
+  //       {
+  //         headers: { "Content-Type": "multipart/form-data" },
+  //       }
+  //     );
+  //   document.getElementById("messageAnnouncementPopUpouter").style.display =
+  //     "block";
+  //   document.getElementById("messageAnnouncement_Content").style.display =
+  //     "block";
 
-    setTimeout(function () {
-      document.getElementById("messageAnnouncementPopUpouter").style.display =
-        "none";
-      document.getElementById("messageAnnouncement_Content").style.display =
-        "none";
-    }, 3000);
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
-    ).then((response) => {
-      setANNOUNCEMENT_LIST(response.data);
-    });
-  };
+  //   setTimeout(function () {
+  //     document.getElementById("messageAnnouncementPopUpouter").style.display =
+  //       "none";
+  //     document.getElementById("messageAnnouncement_Content").style.display =
+  //       "none";
+  //   }, 3000);
+  //   Axios.get(
+  //     "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+  //   ).then((response) => {
+  //     setANNOUNCEMENT_LIST(response.data);
+  //   });
+  // };
 
   const [fileInputState1, setFileInputState1] = useState("");
   const [selectedFile1, setSelectedFile1] = useState("");
