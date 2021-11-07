@@ -67,8 +67,8 @@ function Events() {
 
   // --------------------------
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
-  const [previewSource, setPreviewSource] = useState();
+  const [selectedFile, setSelectedFile] = useState();
+  const [previewSource, setPreviewSource] = useState("");
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -88,8 +88,9 @@ function Events() {
   const handleSubmitFile = (e) => {
     console.log("sub");
     e.preventDefault();
-    if (!previewSource) return;
+    if (!selectedFile) return;
     const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
       uploadImage(reader.result);
     };
