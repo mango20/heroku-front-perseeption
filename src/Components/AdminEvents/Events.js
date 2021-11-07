@@ -92,9 +92,11 @@ function Events() {
 
   const uploadImage = async (base64EncodedImage) => {
     console.log(base64EncodedImage);
+    const image_ev = JSON.stringify(base64EncodedImage);
+    console.log(image_ev);
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
-        data: base64EncodedImage,
+        data: image_ev,
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
