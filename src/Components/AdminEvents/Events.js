@@ -43,7 +43,7 @@ function Events() {
 
   // --------------------------
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile, setSelectedFile] = useState([]);
   const [previewSource, setPreviewSource] = useState("");
 
   const handleFileInputChange = (e) => {
@@ -111,21 +111,26 @@ function Events() {
   //   });
   // });
   const [imagesIds, setImagesIds] = useState([]);
-  const loadImages = () => {
-    try {
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
-      ).then((response) => {
+  // const loadImages = async () => {
+  //   try {
+  //     Axios.get(
+  //       "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+  //     ).then((response) => {
+  //       // console.log(response.data);
+  //       setImagesIds(response.data);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  useEffect(async () => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+      (response) => {
         // console.log(response.data);
         setImagesIds(response.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    loadImages();
+      }
+    );
   }, []);
 
   // useEffect(() => {
