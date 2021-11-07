@@ -113,16 +113,19 @@ function Events() {
       setPreviewSource("");
       setEVENT_TITLE("");
       setEVENT_CONTENT("");
+      document.getElementById("fileBtnId").value = "";
+      document.getElementById("inputEventTitle").value = "";
+      document.getElementById("inputEventContent").value = "";
 
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-      ).then((response) => {
-        setImagesIds(response.data);
-      });
       //   console.log(EVENT_TITLE);
     } catch (error) {
       console.log(error);
     }
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+    ).then((response) => {
+      setImagesIds(response.data);
+    });
   };
 
   useEffect(() => {
@@ -484,6 +487,7 @@ function Events() {
                 onChange={handleFileInputChange}
                 value={fileInputState}
                 className="fileBtn"
+                id="fileBtnId"
               />
               <button className="postEventBtn" type="submit">
                 {" "}
