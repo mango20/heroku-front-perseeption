@@ -98,8 +98,44 @@ function Registration() {
 
   const [Msg, setMsg] = useState("");
 
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    // reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const Register = (e) => {
+    console.log("sub");
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      console.log("AAAAAAAAAAAAAAAAH");
+    };
+  };
+
   // REGISTER
-  const Register = () => {
+  const uploadImage = (base64EncodedImage) => {
+    console.log(base64EncodedImage);
     var borderUserName = document.getElementById("regUsername");
     var borderRegUserId = document.getElementById("regPass");
     var letters = /^[A-Za-z]+$/;
@@ -340,6 +376,7 @@ function Registration() {
       (brailler[0].checked === true || brailler[1].checked === true)
     ) {
       Axios.post("https://perseeption-tromagade.herokuapp.com/register", {
+        data: base64EncodedImage,
         USERNAME: usernameReg,
         USER_PASSWORD: passwordReg,
 
@@ -2028,7 +2065,13 @@ function Registration() {
                         <p className="proofPaymentTxt">
                           Upload proof of Payment
                         </p>
-                        <input type="file" className="uploadPayment" />
+                        <input
+                          type="file"
+                          className="uploadPayment"
+                          onChange={handleFileInputChange}
+                          value={fileInputState}
+                          id="gcashImg"
+                        />
                         <p className="uploadMessage">
                           Please Upload a Proof of Payment
                         </p>
