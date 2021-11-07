@@ -93,6 +93,7 @@ function Events() {
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
+      alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
       setFileInputState("");
       setPreviewSource("");
       setEVENT_TITLE("");
@@ -107,7 +108,7 @@ function Events() {
       });
       //   console.log(EVENT_TITLE);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -128,7 +129,7 @@ function Events() {
         setImagesIds(response.data);
       });
     } catch (error) {
-      console.error(err);
+      console.error(error);
     }
   };
 
