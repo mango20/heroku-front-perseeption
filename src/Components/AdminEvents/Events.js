@@ -97,11 +97,11 @@ function Events() {
     } catch (error) {
       console.log(error);
     }
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getAdminEvent"
-    ).then((response) => {
-      setImagesIds(response.data);
-    });
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+      (response) => {
+        setImagesIds(response.data);
+      }
+    );
   };
 
   // useEffect(() => {
