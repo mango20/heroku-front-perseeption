@@ -4,6 +4,7 @@ import "./TermsCondition.css";
 import { Link } from "react-router-dom";
 
 function TermsCondition() {
+  Axios.defaults.withCredentials = true;
   const logout = () => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then(
       (response) => {

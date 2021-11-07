@@ -4,6 +4,7 @@ import "./MemberAbout.css";
 import { Link, useHistory } from "react-router-dom";
 
 function MemberAbout() {
+  Axios.defaults.withCredentials = true;
   const [USER_ID, setUSER_ID] = useState("");
   const history = useHistory();
   useEffect(() => {

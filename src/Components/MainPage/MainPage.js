@@ -6,6 +6,7 @@ import { Image } from "cloudinary-react";
 // import cookieParser from "cookie-parser";
 
 function MainPage() {
+  Axios.defaults.withCredentials = true;
   const [MAIN_EVENT, setMAIN_EVENT] = useState([]);
 
   const [USER_ID, setUSER_ID] = useState("");

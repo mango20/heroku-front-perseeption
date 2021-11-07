@@ -4,6 +4,7 @@ import "./MemberProfile.css";
 import { Link } from "react-router-dom";
 
 function MemberProfile() {
+  Axios.defaults.withCredentials = true;
   const [USERNAME_, setUSERNAME] = useState([]);
 
   useEffect(() => {

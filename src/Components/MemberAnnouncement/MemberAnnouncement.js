@@ -4,6 +4,7 @@ import "./MemberAnnouncement.css";
 import { Link, useHistory } from "react-router-dom";
 import { CloudinaryContext, Image } from "cloudinary-react";
 function MemberAnnouncement() {
+  Axios.defaults.withCredentials = true;
   const history = useHistory();
   const [memberAnnouncementList, setMemberAnnouncementList] = useState([]);
   useEffect(() => {

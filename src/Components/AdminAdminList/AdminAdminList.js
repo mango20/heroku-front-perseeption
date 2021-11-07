@@ -4,6 +4,7 @@ import "./AdminList.css";
 import { Link, useHistory } from "react-router-dom";
 
 function AdminAdminList() {
+  Axios.defaults.withCredentials = true;
   const history = useHistory();
   const [ADMIN_LIST, setADMIN_LIST] = useState([]);
   const [ADMIN_NAME, setADMIN_NAME] = useState("");

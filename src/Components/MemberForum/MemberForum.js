@@ -4,6 +4,7 @@ import "./MemberForum.css";
 import { Link, useHistory } from "react-router-dom";
 
 function MemberForum() {
+  Axios.defaults.withCredentials = true;
   const [FORUM_TITLE, setFORUM_TITLE] = useState("");
   const [ADMIN_NAME, setADMIN_NAME] = useState("");
   const [FORUM_CONTENT, setFORUM_CONTENT] = useState("");

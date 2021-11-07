@@ -4,6 +4,7 @@ import "./Login.css";
 import Axios from "axios";
 
 function Resetpassword() {
+  Axios.defaults.withCredentials = true;
   const { USER_ID } = useParams();
   const { TOKEN } = useParams();
   const [forgotPass, setforgotPass] = useState("");

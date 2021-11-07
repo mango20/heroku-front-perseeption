@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
 
 function AdminDashboard() {
+  Axios.defaults.withCredentials = true;
   const [NumCountReq, seNumCountReq] = useState([]);
   const [numCountApprove, setnumCountApprove] = useState([]);
 

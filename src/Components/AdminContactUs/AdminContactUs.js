@@ -5,6 +5,7 @@ import "./AdminContactUs.css";
 import { Link, useHistory } from "react-router-dom";
 
 function AdminContactUs() {
+  Axios.defaults.withCredentials = true;
   const history = useHistory();
   const [USER_ID, setUSER_ID] = useState("");
   const [contact_id, setcontact_id] = useState("");

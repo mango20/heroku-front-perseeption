@@ -4,6 +4,7 @@ import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { CloudinaryContext, Image } from "cloudinary-react";
 function AdminAnnouncement() {
+  Axios.defaults.withCredentials = true;
   const [ANNOUNCEMENT_TITLE, setANNOUNCEMENT_TITLE] = useState("");
   const [ANNOUNCEMENT_CONTENT, setAnnouncement_Content] = useState("");
   const [ANNOUNCEMENT_IMAGE, setANNOUNCEMENT_IMAGE] = useState("");

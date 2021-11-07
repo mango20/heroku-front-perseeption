@@ -4,6 +4,7 @@ import "./Registration.css";
 import { Link } from "react-router-dom";
 
 function Registration() {
+  Axios.defaults.withCredentials = true;
   const [LastMember, setLastMember] = useState([]);
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");

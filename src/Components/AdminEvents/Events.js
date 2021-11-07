@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Image } from "cloudinary-react";
 
 function Events() {
+  Axios.defaults.withCredentials = true;
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
   // const [imagesIds, setImagesIds] = useState([]);
@@ -490,66 +491,65 @@ function Events() {
               />
             ))} */}
 
-          {imagesIds &&
-            imagesIds.map((imageId, index) => {
-              return (
-                <div key={index} className="eventAdminRender">
-                  <Image
-                    className="eventAdImg"
-                    cloudName="dlvt2lnkh"
-                    publicId={imageId.EVENT_IMAGE}
-                  />
-                  <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
-                  <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
-                  <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+          {imagesIds.map((imageId, index) => {
+            return (
+              <div key={index} className="eventAdminRender">
+                <Image
+                  className="eventAdImg"
+                  cloudName="dlvt2lnkh"
+                  publicId={imageId.EVENT_IMAGE}
+                />
+                <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
+                <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
+                <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
 
-                  <div>
-                    <input
-                      type="text"
-                      className="updateEventTitle"
-                      placeholder="Enter Title"
-                      onChange={(e) => {
-                        setNEW_EVENT_TITLE(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="updateBtn"
-                      onClick={() => {
-                        updateEventTitle(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      className="updateEventContent"
-                      placeholder="Enter Updated Content"
-                      onChange={(e) => {
-                        setNEW_EVENT_REVIEW(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="inpupdateEventContent"
-                      onClick={() => {
-                        updateEventContent(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>{" "}
-                    <button
-                      className="delAdminButton"
-                      onClick={() => {
-                        deleteEvent(imageId.EVENT_ID);
-                      }}
-                    >
-                      DELETE
-                    </button>
-                  </div>
+                <div>
+                  <input
+                    type="text"
+                    className="updateEventTitle"
+                    placeholder="Enter Title"
+                    onChange={(e) => {
+                      setNEW_EVENT_TITLE(e.target.value);
+                    }}
+                  />
+                  <button
+                    className="updateBtn"
+                    onClick={() => {
+                      updateEventTitle(imageId.EVENT_ID);
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
-              );
-            })}
+                <div>
+                  <input
+                    type="text"
+                    className="updateEventContent"
+                    placeholder="Enter Updated Content"
+                    onChange={(e) => {
+                      setNEW_EVENT_REVIEW(e.target.value);
+                    }}
+                  />
+                  <button
+                    className="inpupdateEventContent"
+                    onClick={() => {
+                      updateEventContent(imageId.EVENT_ID);
+                    }}
+                  >
+                    Update
+                  </button>{" "}
+                  <button
+                    className="delAdminButton"
+                    onClick={() => {
+                      deleteEvent(imageId.EVENT_ID);
+                    }}
+                  >
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            );
+          })}
 
           {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>

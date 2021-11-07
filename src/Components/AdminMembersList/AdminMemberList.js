@@ -4,6 +4,7 @@ import "./AdminMemberList.css";
 import { Link, useHistory } from "react-router-dom";
 
 function AdminMemberList() {
+  Axios.defaults.withCredentials = true;
   const [MEMBER_PENDING_LIST, setMEMBER_PENDING_LIST] = useState([]);
   const [MEMBER_APPROVE_LIST, setMEMBER_APPROVE_LIST] = useState([]);
   const [NEW_REQUEST_TYPE] = useState("");

@@ -3,6 +3,7 @@ import Axios from "axios";
 import "./AdminProfile.css";
 import { Link, useHistory } from "react-router-dom";
 function AdminProfile() {
+  Axios.defaults.withCredentials = true;
   const history = useHistory();
   const [USER_ID, setUSER_ID] = useState("");
   const [ADMIN_INFO_PASSWORD, setADMIN_INFO_PASSWORD] = useState("");

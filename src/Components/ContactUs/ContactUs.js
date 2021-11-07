@@ -4,6 +4,7 @@ import "./ContactUs.css";
 import { Link, useHistory } from "react-router-dom";
 
 function ContactUs() {
+  Axios.defaults.withCredentials = true;
   const [USER_ID, setUSER_ID] = useState("");
   const [contact_name, setcontact_name] = useState("");
   const [contact_number, setcontact_number] = useState("");
