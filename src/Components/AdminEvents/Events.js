@@ -119,7 +119,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
       ).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setImagesIds(response.data);
       });
     } catch (error) {
