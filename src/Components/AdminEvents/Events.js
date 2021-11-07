@@ -78,8 +78,7 @@ function Events() {
 
   const uploadImage = async (base64EncodedImage) => {
     console.log(base64EncodedImage);
-    // const image_ev = JSON.stringify(base64EncodedImage);
-    // console.log(image_ev);
+
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
         data: base64EncodedImage,
@@ -90,9 +89,9 @@ function Events() {
       setPreviewSource("");
       setEVENT_TITLE("");
       setEVENT_CONTENT("");
-      // document.getElementById("fileBtnId").value = "";
-      // document.getElementById("inputEventTitle").value = "";
-      // document.getElementById("inputEventContent").value = "";
+      document.getElementById("fileBtnId").value = "";
+      document.getElementById("inputEventTitle").value = "";
+      document.getElementById("inputEventContent").value = "";
 
       //   console.log(EVENT_TITLE);
     } catch (error) {
