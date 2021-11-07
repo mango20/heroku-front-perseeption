@@ -13,7 +13,7 @@ function ContactUs() {
   // const [announcementContentList, setAnnouncementList] = useState([]);
   // const [newReview, setNewReview] = useState("");
   // const [newTitle, setNewTitle] = useState("");
-  Axios.defaults.withCredentials = true;
+
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
       // history.push("/");

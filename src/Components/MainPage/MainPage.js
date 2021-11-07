@@ -7,7 +7,7 @@ import { Image } from "cloudinary-react";
 
 function MainPage() {
   const [MAIN_EVENT, setMAIN_EVENT] = useState([]);
-  Axios.defaults.withCredentials = true;
+
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME, setUSERNAME] = useState([]);
 

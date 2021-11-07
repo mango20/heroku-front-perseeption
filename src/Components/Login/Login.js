@@ -14,7 +14,6 @@ function Login() {
   const [ForgotEmail, setForgotEmail] = useState("");
 
   const history = useHistory();
-  Axios.defaults.withCredentials = true;
 
   const login = () => {
     Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
@@ -33,7 +32,7 @@ function Login() {
       }
     });
   };
-  // Axios.defaults.withCredentials = true;
+  //
   // console.log((Axios.defaults.withCredentials = true));
   // const Login = ({updateUser}) => {
   //   Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
@@ -66,7 +65,7 @@ function Login() {
   //       console.log(response.data.result[0].message);
   //       if (response.data.result[0].USER_TYPE === "Admin") {
   //         console.log(response.data.result[0].USER_TYPE);
-  //         Axios.defaults.withCredentials = true;
+  //
   //         // history.pushState("")
   //         // history.push("/AdminDashboard");
   //         setTimeout(function () {
@@ -75,7 +74,7 @@ function Login() {
   //         }, 1800);
   //         // window.location = "/AdminDashboard";
   //       } else {
-  //         Axios.defaults.withCredentials = true;
+  //
   //         // document.getElementsById("LoginHeader").style.visibility = "hidden";
   //         history.push("/");
   //       }
@@ -139,7 +138,6 @@ function Login() {
   };
   return (
     <div className="LoginBg">
-  
       <div id="popForgot">
         <div id="modalForgot">
           <h1>Forgot your password?</h1>

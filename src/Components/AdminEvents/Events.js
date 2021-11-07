@@ -16,7 +16,6 @@ function Events() {
   // const [userList, setuserList] = useState([]);
   const [USERNAME_, setUSERNAME] = useState([]);
   const history = useHistory();
-  Axios.defaults.withCredentials = true;
 
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));

@@ -140,7 +140,6 @@ function AdminContactUs() {
     }
   };
   const [USERNAME_, setUSERNAME] = useState([]);
-  Axios.defaults.withCredentials = true;
 
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));

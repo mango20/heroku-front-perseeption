@@ -88,8 +88,6 @@ function AdminAnnouncement() {
     });
   };
 
-  Axios.defaults.withCredentials = true;
-
   const [fileInputState1, setFileInputState1] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [previewSource1, setPreviewSource1] = useState();

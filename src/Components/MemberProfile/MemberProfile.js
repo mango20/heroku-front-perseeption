@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 function MemberProfile() {
   const [USERNAME_, setUSERNAME] = useState([]);
-  Axios.defaults.withCredentials = true;
 
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(

@@ -13,8 +13,6 @@ function AdminDashboard() {
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME_, setUSERNAME] = useState("");
 
-  Axios.defaults.withCredentials = true;
-
   const history = useHistory();
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));

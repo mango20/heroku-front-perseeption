@@ -96,7 +96,6 @@ function Registration() {
   const [OTHER_CONDITION, setOTHER_CONDITION] = useState("");
 
   const [Msg, setMsg] = useState("");
-  Axios.defaults.withCredentials = true;
 
   // REGISTER
   const Register = () => {
