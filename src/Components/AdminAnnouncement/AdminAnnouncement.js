@@ -114,8 +114,8 @@ function AdminAnnouncement() {
       );
       setFileInputState1("");
       setPreviewSource1("");
-      ANNOUNCEMENT_TITLE("");
-      ANNOUNCEMENT_CONTENT("");
+      setANNOUNCEMENT_TITLE("");
+      setAnnouncement_Content("");
       document.getElementById("inputAnnouncementTitle").value = "";
       document.getElementById("inputAnnouncementContent").value = "";
       document.getElementById("fileBtnAnnouncement").value = "";
