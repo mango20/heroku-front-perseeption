@@ -139,37 +139,7 @@ function Login() {
   };
   return (
     <div className="LoginBg">
-      {/* <div className="MainHeader">
-        <div className="imgContainer">
-          <Link className="imgHeader" to="/">
-            <img src="/images/logoIcon.png" alt="img" className="imgIcon" />
-            <img src="/images/logotext.png" alt="img" className="imgtxt" />
-          </Link>
-        </div>
-        <div className="headerText">
-          <Link className="homeHeader" to="/">
-            Home
-          </Link>
-          <Link className="announcementHeader" to="/MemberAnnouncement">
-            Announcement
-          </Link>
-          <Link className="eventHeader" to="/MemberEvents">
-            Event
-          </Link>
-          <Link className="forumHeader" to="/">
-            Forum
-          </Link>
-          <Link className="aboutHeader" to="/MemberAbout">
-            About
-          </Link>
-          <Link className="contactHeader" to="/ContactUs">
-            Contact
-          </Link>
-          <Link className="signinHeader" to="/Login">
-            Log in
-          </Link>
-        </div>
-      </div> */}
+  
       <div id="popForgot">
         <div id="modalForgot">
           <h1>Forgot your password?</h1>

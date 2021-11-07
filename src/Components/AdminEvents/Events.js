@@ -113,9 +113,9 @@ function Events() {
       setPreviewSource("");
       setEVENT_TITLE("");
       setEVENT_CONTENT("");
-      // document.getElementById("fileBtnId").value = "";
-      // document.getElementById("inputEventTitle").value = "";
-      // document.getElementById("inputEventContent").value = "";
+      document.getElementById("fileBtnId").value = "";
+      document.getElementById("inputEventTitle").value = "";
+      document.getElementById("inputEventContent").value = "";
 
       //   console.log(EVENT_TITLE);
     } catch (error) {
