@@ -9,6 +9,7 @@ function Events() {
   Axios.defaults.withCredentials = true;
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
+  const [EVENT_LIST, setEVENT_LIST] = useState([]);
   // const [imagesIds, setImagesIds] = useState([]);
   const [NEW_EVENT_REVIEW, setNEW_EVENT_REVIEW] = useState("");
   const [NEW_EVENT_TITLE, setNEW_EVENT_TITLE] = useState("");
@@ -104,7 +105,8 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
+        console.log(response.data);
       });
       //   console.log(EVENT_TITLE);
     } catch (error) {
@@ -126,24 +128,24 @@ function Events() {
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
         // console.log(response.data);
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
-  //     (response) => {
-  //       // console.log(response.data);
-  //       setImagesIds(response.data);
-  //     }
-  //   );
-  // }, []);
-
   useEffect(() => {
     loadImages();
+  }, []);
+
+  useEffect(() => {
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+      (response) => {
+        console.log(response.data);
+        setEVENT_LIST(response.data);
+      }
+    );
   }, []);
   //   const submit = async () => {
   //     const formdata_ = new FormData();
@@ -325,15 +327,15 @@ function Events() {
       `https://perseeption-tromagade.herokuapp.com/api/deleteEvent/${EVENT_ID}`
     ).then((response) => {
       console.log(response);
-      setImagesIds(
-        imagesIds.filter((val) => {
+      setEVENT_LIST(
+        EVENT_LIST.filter((val) => {
           return val.EVENT_ID !== EVENT_ID; // Filter/remove if it not equals to id
         })
       );
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
       });
     });
   };
@@ -347,8 +349,8 @@ function Events() {
         EVENT_TITLE: NEW_EVENT_TITLE,
       }
     ).then((response) => {
-      setImagesIds(
-        imagesIds.map((val) => {
+      setEVENT_LIST(
+        EVENT_LIST.map((val) => {
           return val.EVENT_ID === EVENT_ID
             ? {
                 EVENT_ID: val.EVENT_ID,
@@ -361,7 +363,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
       });
     });
   };
@@ -375,8 +377,8 @@ function Events() {
         EVENT_CONTENT: NEW_EVENT_REVIEW,
       }
     ).then((response) => {
-      setImagesIds(
-        imagesIds.map((val) => {
+      setEVENT_LIST(
+        EVENT_LIST.map((val) => {
           return val.EVENT_ID === EVENT_ID
             ? {
                 EVENT_ID: val.EVENT_ID,
@@ -392,7 +394,7 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
       });
     });
   };
@@ -492,7 +494,7 @@ function Events() {
               />
             ))} */}
 
-          {imagesIds.map((imageId, index) => {
+          {EVENT_LIST.map((imageId, index) => {
             return (
               <div key={index} className="eventAdminRender">
                 <Image
