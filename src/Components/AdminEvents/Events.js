@@ -46,6 +46,7 @@ function Events() {
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [previewSource, setPreviewSource] = useState("");
+
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -79,9 +80,11 @@ function Events() {
   const uploadImage = async (base64EncodedImage) => {
     console.log(base64EncodedImage);
 
+    const base = JSON.stringify(base64EncodedImage);
+
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
-        data: base64EncodedImage,
+        data: base,
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
@@ -110,7 +113,7 @@ function Events() {
   //     setImagesIds(response.data);
   //   });
   // });
-  const [imagesIds, setImagesIds] = useState();
+  const [imagesIds, setImagesIds] = useState([]);
   const loadImages = () => {
     try {
       Axios.get(
