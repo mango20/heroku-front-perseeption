@@ -42,29 +42,6 @@ function Events() {
     window.location.reload();
   };
 
-  const [eventInformation, setEventInformation] = useState({
-    title: "",
-    content: "",
-    file: [],
-    filepreview: null,
-  });
-  //dlvt2lnkh
-  const handleInputChange = (event) => {
-    setEventInformation({
-      ...eventInformation,
-      file: event.target.files[0],
-      filepreview: URL.createObjectURL(event.target.files[0]),
-    });
-  };
-
-  const handleInputChange_ = (event) => {
-    setEventInformation({
-      ...eventInformation,
-      title: document.getElementById("inputEventTitle").value,
-      content: document.getElementById("inputEventContent").value,
-    });
-  };
-
   // --------------------------
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState();
@@ -113,9 +90,9 @@ function Events() {
       setPreviewSource("");
       setEVENT_TITLE("");
       setEVENT_CONTENT("");
-      document.getElementById("fileBtnId").value = "";
-      document.getElementById("inputEventTitle").value = "";
-      document.getElementById("inputEventContent").value = "";
+      // document.getElementById("fileBtnId").value = "";
+      // document.getElementById("inputEventTitle").value = "";
+      // document.getElementById("inputEventContent").value = "";
 
       //   console.log(EVENT_TITLE);
     } catch (error) {
