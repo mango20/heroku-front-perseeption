@@ -111,24 +111,20 @@ function Events() {
   };
 
   const [imagesIds, setImagesIds] = useState([]);
-  // const loadImages = async () => {
-  //   try {
-  //     Axios.get(
-  //       "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-  //     ).then((response) => {
-  //       setImagesIds(response.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  useEffect(async () => {
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-    ).then((response) => {
-      setImagesIds(response.data);
-      console.log(response.data);
-    });
+  const loadImages = async () => {
+    try {
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+      ).then((response) => {
+        setImagesIds(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadImages();
   }, []);
 
   // useEffect(() => {
@@ -463,7 +459,7 @@ function Events() {
                 type="file"
                 name="image"
                 onChange={handleFileInputChange}
-                value={fileInputState}
+                // value={fileInputState}
                 className="fileBtn"
               />
               <button className="postEventBtn" type="submit">
