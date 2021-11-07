@@ -72,6 +72,8 @@ function Events() {
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
   };
 
   const previewFile = (file) => {
@@ -87,7 +89,13 @@ function Events() {
     console.log("sub");
     e.preventDefault();
     if (!previewSource) return;
-    uploadImage(previewSource);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.log("AAAAAAAAAAAAAAAAH");
+    };
   };
 
   const uploadImage = async (base64EncodedImage) => {
@@ -100,6 +108,10 @@ function Events() {
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
+      setFileInputState("");
+      setPreviewSource("");
+      setEVENT_TITLE("");
+      setEVENT_CONTENT("");
 
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
@@ -112,7 +124,7 @@ function Events() {
     }
   };
 
-  const [imagesIds, setImagesIds] = useState([]);
+  const [imagesIds, setImagesIds] = useState();
   const loadImages = async () => {
     try {
       Axios.get(
@@ -461,7 +473,7 @@ function Events() {
                 type="file"
                 name="image"
                 onChange={handleFileInputChange}
-                // value={fileInputState}
+                value={fileInputState}
                 className="fileBtn"
               />
               <button className="postEventBtn" type="submit">
