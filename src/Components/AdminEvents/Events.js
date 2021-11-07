@@ -128,13 +128,13 @@ function Events() {
     });
   };
 
-  useEffect(() => {
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
-    ).then((response) => {
-      setImagesIds(response.data);
-    });
-  });
+  // useEffect(() => {
+  //   Axios.get(
+  //     "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+  //   ).then((response) => {
+  //     setImagesIds(response.data);
+  //   });
+  // });
   const [imagesIds, setImagesIds] = useState();
   const loadImages = () => {
     try {
@@ -466,7 +466,7 @@ function Events() {
           </div>
         </div>
         <div className="form">
-          <form onSubmit={handleSubmitFile}>
+          <form onSubmit={handleSubmitFile} encType="multipart/form-data">
             <label className="eventAdminTitleTxt">Title </label>
             <input
               type="text"
