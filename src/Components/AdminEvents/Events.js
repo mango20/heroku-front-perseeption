@@ -93,7 +93,7 @@ function Events() {
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
-      alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
+      // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
       setFileInputState("");
       setPreviewSource("");
       setEVENT_TITLE("");
