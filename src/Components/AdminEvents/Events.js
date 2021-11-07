@@ -125,12 +125,20 @@ function Events() {
     }
   };
 
+  useEffect(() => {
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+    ).then((response) => {
+      setImagesIds(response.data);
+    });
+  });
   const [imagesIds, setImagesIds] = useState();
-  const loadImages = async () => {
+  const loadImages = () => {
     try {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
       ).then((response) => {
+        console.log(response.data);
         setImagesIds(response.data);
       });
     } catch (error) {
