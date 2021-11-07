@@ -92,16 +92,16 @@ function Events() {
       document.getElementById("fileBtnId").value = "";
       document.getElementById("inputEventTitle").value = "";
       document.getElementById("inputEventContent").value = "";
-
-      //   console.log(EVENT_TITLE);
-    } catch (error) {
-      console.log(error);
-    }
-    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
       (response) => {
         setImagesIds(response.data);
       }
     );
+      //   console.log(EVENT_TITLE);
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
 
   // useEffect(() => {
