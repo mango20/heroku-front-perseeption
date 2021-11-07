@@ -125,6 +125,9 @@ function AdminProfile() {
           <Link to="/AdminProfile" className="dash">
             <i className="fa fa-user"></i>Profile
           </Link>
+          <Link to="/MemberForum" className="dash">
+            <i className="fa fa-comments"></i>Forum
+          </Link>
           <div className="line"></div>
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout

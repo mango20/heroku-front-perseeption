@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 // import "./Events.css";
 import { Link, useHistory } from "react-router-dom";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import { Image } from "cloudinary-react";
 function AdminAnnouncement() {
   Axios.defaults.withCredentials = true;
   const [ANNOUNCEMENT_TITLE, setANNOUNCEMENT_TITLE] = useState("");
@@ -100,31 +100,60 @@ function AdminAnnouncement() {
   };
 
   const uploadImage1 = (base64EncodedImage) => {
-    console.log(ANNOUNCEMENT_TITLE);
-    console.log(ANNOUNCEMENT_CONTENT);
-    console.log(base64EncodedImage);
     try {
-      Axios.post(
-        "https://perseeption-tromagade.herokuapp.com/api/uploadImageAnnouncement",
-        {
-          data: base64EncodedImage,
-          ANNOUNCEMENT_TITLE: ANNOUNCEMENT_TITLE,
-          ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
-        }
-      );
-      setFileInputState1("");
-      setPreviewSource1("");
-      setANNOUNCEMENT_TITLE("");
-      setAnnouncement_Content("");
-      document.getElementById("inputAnnouncementTitle").value = "";
-      document.getElementById("inputAnnouncementContent").value = "";
-      document.getElementById("fileBtnAnnouncement").value = "";
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
-      ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
-        console.log(response.data);
-      });
+      const title = document.getElementById("inputAnnouncementTitle").value;
+      const content = document.getElementById("inputAnnouncementContent").value;
+      const img = document.getElementById("fileBtnAnnouncement").value;
+      if (title === "" || img === 0 || content === "") {
+        // Error message
+        let timerId = setInterval(
+          () =>
+            (document.getElementById("titleMessage").innerHTML =
+              "Please fill out form completely!"),
+          0
+        );
+
+        // Timeout
+        setTimeout(() => {
+          clearInterval(timerId);
+          document.getElementById("titleMessage").innerHTML = "";
+        }, 3000);
+        return false;
+      } else {
+        Axios.post(
+          "https://perseeption-tromagade.herokuapp.com/api/uploadImageAnnouncement",
+          {
+            data: base64EncodedImage,
+            ANNOUNCEMENT_TITLE: ANNOUNCEMENT_TITLE,
+            ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
+          }
+        );
+        setFileInputState1("");
+        setPreviewSource1("");
+        setANNOUNCEMENT_TITLE("");
+        setAnnouncement_Content("");
+        document.getElementById("inputAnnouncementTitle").value = "";
+        document.getElementById("inputAnnouncementContent").value = "";
+        document.getElementById("fileBtnAnnouncement").value = "";
+        document.getElementById("messageAnnouncementPopUpouter").style.display =
+          "block";
+        document.getElementById("messageAnnouncement_Content").style.display =
+          "block";
+
+        setTimeout(function () {
+          document.getElementById(
+            "messageAnnouncementPopUpouter"
+          ).style.display = "none";
+          document.getElementById("messageAnnouncement_Content").style.display =
+            "none";
+        }, 3000);
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+        ).then((response) => {
+          setANNOUNCEMENT_LIST(response.data);
+          console.log(response.data);
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -371,6 +400,9 @@ function AdminAnnouncement() {
           </Link>
           <Link to="/AdminProfile" className="dash">
             <i className="fa fa-user"></i>Profile
+          </Link>
+          <Link to="/MemberForum" className="dash">
+            <i className="fa fa-comments"></i>Forum
           </Link>
           <div className="line"></div>
           <p className="logout_Admin" onClick={logout}>

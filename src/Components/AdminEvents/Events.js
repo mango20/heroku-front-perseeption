@@ -89,25 +89,44 @@ function Events() {
     console.log(base64EncodedImage);
 
     try {
-      Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
-        data: base64EncodedImage,
-        EVENT_TITLE: EVENT_TITLE,
-        EVENT_CONTENT: EVENT_CONTENT,
-      });
-      // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
-      setFileInputState("");
-      setPreviewSource("");
-      setEVENT_TITLE("");
-      setEVENT_CONTENT("");
-      document.getElementById("fileBtnId").value = "";
-      document.getElementById("inputEventTitle").value = "";
-      document.getElementById("inputEventContent").value = "";
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
-      ).then((response) => {
-        setEVENT_LIST(response.data);
-        console.log(response.data);
-      });
+      const title = document.getElementById("inputEventTitle").value;
+      const content = document.getElementById("inputEventContent").value;
+      const img = document.getElementById("fileBtnId").value;
+      if (title === "" || img === 0 || content === "") {
+        let timerId = setInterval(
+          () =>
+            (document.getElementById("titleMessage").innerHTML =
+              "Please fill out form completely!"),
+          0
+        );
+
+        // Timeout
+        setTimeout(() => {
+          clearInterval(timerId);
+          document.getElementById("titleMessage").innerHTML = "";
+        }, 3000);
+        return false;
+      } else {
+        Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
+          data: base64EncodedImage,
+          EVENT_TITLE: EVENT_TITLE,
+          EVENT_CONTENT: EVENT_CONTENT,
+        });
+        // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
+        setFileInputState("");
+        setPreviewSource("");
+        setEVENT_TITLE("");
+        setEVENT_CONTENT("");
+        document.getElementById("fileBtnId").value = "";
+        document.getElementById("inputEventTitle").value = "";
+        document.getElementById("inputEventContent").value = "";
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+        ).then((response) => {
+          setEVENT_LIST(response.data);
+          console.log(response.data);
+        });
+      }
       //   console.log(EVENT_TITLE);
     } catch (error) {
       console.error(error);
@@ -435,6 +454,9 @@ function Events() {
           </Link>
           <Link to="/AdminProfile" className="dash">
             <i className="fa fa-user"></i>Profile
+          </Link>
+          <Link to="/MemberForum" className="dash">
+            <i className="fa fa-comments"></i>Forum
           </Link>
           <div className="line"></div>
           <p className="logout_Admin" onClick={logout}>
