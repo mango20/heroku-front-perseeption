@@ -14,31 +14,6 @@ function AdminAnnouncement() {
   const [USER_ID, setUSER_ID] = useState("");
   const history = useHistory();
 
-  const [announcementInformation, setAnnouncementInformation] = useState({
-    title: "",
-    content: "",
-    file: [],
-    filepreview: null,
-  });
-
-  const handleInputChange = (event) => {
-    setAnnouncementInformation({
-      ...announcementInformation,
-      file: event.target.files[0],
-      filepreview: URL.createObjectURL(event.target.files[0]),
-    });
-  };
-
-  const handleInputChange_ = (event) => {
-    setAnnouncementInformation({
-      ...announcementInformation,
-      title: document.getElementById("inputAnnouncementTitle").value,
-      content: document.getElementById("inputAnnouncementContent").value,
-    });
-  };
-
-  const [isSucces, setSuccess] = useState(null);
-
   const submit = async () => {
     const formdata = new FormData();
     formdata.append("image", announcementInformation.file);
@@ -90,14 +65,17 @@ function AdminAnnouncement() {
   };
 
   const [fileInputState1, setFileInputState1] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
-  const [previewSource1, setPreviewSource1] = useState();
+  const [selectedFile1, setSelectedFile1] = useState("");
+  const [previewSource1, setPreviewSource1] = useState("");
+
   const handleFileInputChange1 = (e) => {
     const file = e.target.files[0];
-    previewFile(file);
+    previewFile1(file);
+    setSelectedFile1(file);
+    setFileInputState1(e.target.value);
   };
 
-  const previewFile = (file) => {
+  const previewFile1 = (file) => {
     const reader = new FileReader();
     // reader.readAsArrayBuffer(file);
     reader.readAsDataURL(file);
@@ -107,13 +85,23 @@ function AdminAnnouncement() {
   };
 
   const handleSubmitFile1 = (e) => {
-    console.log("subs");
+    console.log("submarine");
     e.preventDefault();
-    if (!previewSource1) return;
-    uploadImage1(previewSource1);
+    if (!selectedFile1) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile1);
+    reader.onloadend = () => {
+      uploadImage1(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      console.log("AAAAAAAAAAAAAAAAH");
+    };
   };
 
-  const uploadImage1 = async (base64EncodedImage) => {
+  const uploadImage1 = (base64EncodedImage) => {
+    console.log(ANNOUNCEMENT_TITLE);
+    console.log(ANNOUNCEMENT_CONTENT);
     console.log(base64EncodedImage);
     try {
       Axios.post(
@@ -124,10 +112,21 @@ function AdminAnnouncement() {
           ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
         }
       );
-      console.log(ANNOUNCEMENT_TITLE);
-      console.log(ANNOUNCEMENT_CONTENT);
+      setFileInputState1("");
+      setPreviewSource1("");
+      ANNOUNCEMENT_TITLE("");
+      ANNOUNCEMENT_CONTENT("");
+      document.getElementById("inputAnnouncementTitle").value = "";
+      document.getElementById("inputAnnouncementContent").value = "";
+      document.getElementById("fileBtnAnnouncement").value = "";
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+      ).then((response) => {
+        setANNOUNCEMENT_LIST(response.data);
+        console.log(response.data);
+      });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -140,7 +139,7 @@ function AdminAnnouncement() {
         setANNOUNCEMENT_LIST(response.data);
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -400,6 +399,7 @@ function AdminAnnouncement() {
                 onChange={handleFileInputChange1}
                 value={fileInputState1}
                 className="fileBtnAnnouncement"
+                id="fileBtnAnnouncement"
               />
               <button className="postAnnouncementBtn" type="submit">
                 {" "}
