@@ -76,7 +76,7 @@ function Events() {
     };
   };
 
-  const uploadImage = async (base64EncodedImage) => {
+  const uploadImage = (base64EncodedImage) => {
     console.log(base64EncodedImage);
 
     try {
@@ -124,7 +124,7 @@ function Events() {
   //   }
   // };
 
-  useEffect(async () => {
+  useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
       (response) => {
         // console.log(response.data);
