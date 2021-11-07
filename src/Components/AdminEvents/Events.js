@@ -98,7 +98,7 @@ function Events() {
       console.log(error);
     }
     Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+      "https://perseeption-tromagade.herokuapp.com/api/getAdminEvent"
     ).then((response) => {
       setImagesIds(response.data);
     });
