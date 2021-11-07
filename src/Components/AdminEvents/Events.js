@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 
 import { Image } from "cloudinary-react";
 
-
 function Events() {
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
@@ -80,11 +79,9 @@ function Events() {
   const uploadImage = async (base64EncodedImage) => {
     console.log(base64EncodedImage);
 
-    const base = JSON.stringify(base64EncodedImage);
-
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
-        data: base,
+        data: base64EncodedImage,
         EVENT_TITLE: EVENT_TITLE,
         EVENT_CONTENT: EVENT_CONTENT,
       });
@@ -117,7 +114,7 @@ function Events() {
   const loadImages = () => {
     try {
       Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/imagesEvent"
+        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
         // console.log(response.data);
         setImagesIds(response.data);
