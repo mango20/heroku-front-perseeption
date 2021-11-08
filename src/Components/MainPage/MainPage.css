@@ -615,6 +615,7 @@
   grid-template-areas: "orgImg orgImg1 orgImg2 orgImg3 orgImg4";
   animation: 30s slider infinite;
   object-fit: cover;
+  height: 100vh;
 }
 
 .orgImg {
