@@ -37,7 +37,7 @@ function MemberProfile() {
   const [REGION_ADDRESS, setREGION_ADDRESS] = useState("");
   const [PROVINCE_ADDRESS, setPROVINCE_ADDRESS] = useState("");
 
-  const [CHILD_SURNAME, CHILD_SURNAME] = useState("");
+  const [CHILD_SURNAME, setCHILD_SURNAME] = useState("");
   const [CHILD_GIVEN_NAME, setCHILD_GIVEN_NAME] = useState("");
   const [CHILD_MIDDLE_NAME, setCHILD_MIDDLE_NAME] = useState("");
   const [CHILD_BIRTHDAY, setCHILD_BIRTHDAY] = useState("");

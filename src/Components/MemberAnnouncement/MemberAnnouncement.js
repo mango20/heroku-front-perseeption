@@ -179,7 +179,7 @@ function MemberAnnouncement() {
               <p
                 className="readMoreAnnouncement"
                 onClick={() => {
-                  readMoreAnnouncement(ANNOUNCEMENT_ID);
+                  readMoreAnnouncement(ANNOUNCEMENT_ID_);
                 }}
               >
                 Read More
