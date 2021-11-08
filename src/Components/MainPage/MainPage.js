@@ -179,7 +179,7 @@ function MainPage() {
         </Link>
         <div className="mainEventContainerList">
           <h1 className="eventTitleHead">Perseeption Events</h1>
-          <div className="mainEventList_Cont">
+  
             <div className="mainEventList">
               {MAIN_EVENT.map((val, key) => {
                 return (
@@ -199,7 +199,7 @@ function MainPage() {
                   </div>
                 );
               })}
-            </div>
+ 
           </div>
         </div>
         <div className="outerFoot">
