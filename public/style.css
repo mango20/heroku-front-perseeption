@@ -170,7 +170,8 @@
 
 @media only screen and (max-width: 952px) {
   .mainEventList {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     overflow: scroll;
   }
 
