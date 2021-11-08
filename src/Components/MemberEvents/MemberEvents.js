@@ -10,6 +10,11 @@ function MemberEvents() {
   const [EVENT_LIST, setEVENT_LIST] = useState([]);
   const [EVENT_LIST_, setEVENT_LIST_] = useState([]);
 
+  const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
+  const [EVENT_TITLE, setEVENT_TITLE] = useState("");
+  const [EVENT_DATE, setEVENT_DATE] = useState("");
+  const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
+
   const readMoreEvents_ = (EVENT_ID) => {
     console.log(EVENT_ID);
     document.getElementById("popUpReadmoreEvent_id").style.display = "block";
@@ -17,13 +22,18 @@ function MemberEvents() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreEvent/${EVENT_ID}`
     ).then((response) => {
-      console.log(response);
-      setEVENT_LIST(
-        EVENT_LIST.filter((val) => {
-          // console.log(response);
-          return val.EVENT_ID === EVENT_ID;
-        })
-      );
+      console.log(response.data);
+
+      setEVENT_IMAGE(response.data[0].EVENT_IMAGE);
+      setEVENT_TITLE(response.data[0].EVENT_TITLE);
+      setEVENT_DATE(response.data[0].EVENT_DATE);
+      setEVENT_CONTENT(response.data[0].EVENT_CONTENT);
+
+      // setEVENT_LIST(
+      //   EVENT_LIST.filter((val) => {
+      //     return val.EVENT_ID === EVENT_ID;
+      //   })
+      // );
       // Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then((response) => {
       //   setADMIN_LIST(response.data);
       //   console.log(response.data);
@@ -162,28 +172,20 @@ function MemberEvents() {
         })}
       </div>
       <div className="memberEventList_" id="memberEventList_id_">
-        {EVENT_LIST.map((val, key) => {
-          return (
-            <div
-              key={key}
-              className="popUpReadmoreEvent"
-              id="popUpReadmoreEvent_id"
-            >
-              <p onClick={backEventReadMore} id="xbtnReadMore">
-                back
-              </p>
+        <div className="popUpReadmoreEvent" id="popUpReadmoreEvent_id">
+          <p onClick={backEventReadMore} id="xbtnReadMore">
+            back
+          </p>
 
-              <Image
-                className="announcement_Img_"
-                cloudName="dlvt2lnkh"
-                publicId={val.EVENT_IMAGE}
-              />
-              <p className="event_TitleRM">{val.EVENT_TITLE}</p>
-              <p className="event_DateRM">{val.EVENT_DATE}</p>
-              <p className="event_ContentRM">{val.EVENT_CONTENT}</p>
-            </div>
-          );
-        })}
+          <Image
+            className="announcement_Img_"
+            cloudName="dlvt2lnkh"
+            publicId={EVENT_IMAGE}
+          />
+          <p className="event_TitleRM">{EVENT_TITLE}</p>
+          <p className="event_DateRM">{EVENT_DATE}</p>
+          <p className="event_ContentRM">{EVENT_CONTENT}</p>
+        </div>
       </div>
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
