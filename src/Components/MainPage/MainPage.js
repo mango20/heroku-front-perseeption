@@ -119,76 +119,49 @@ function MainPage() {
             </Link>
           </div>
           <div className="headerText">
-            <ul>
-              <li>
-                <Link className="homeHeader" to="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className="announcementHeader" to="/MemberAnnouncement">
-                  Announcement
-                </Link>
-              </li>
-              <li>
-                <Link className="eventHeader" to="/MemberEvents">
-                  Event
-                </Link>
-              </li>
-              <li>
-                <Link className="forumHeader" to="/MemberForum">
-                  Forum
-                </Link>
-              </li>
-              <li>
-                <Link className="aboutHeader" to="/MemberAbout">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link className="contactHeader" to="/ContactUs">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link className="signinHeader" id="LoginHeader" to="/Login">
-                  Log in
-                </Link>
-              </li>
-              <li>
-                <div className="memberDiv" id="memberDiv">
-                  <div>
-                    <img
-                      src="/images/events1.jpg"
-                      alt="sdf"
-                      className="loggedInImg"
-                      id="loggedInImg"
-                      onClick={popup}
-                    />
-                    <ul>
-                      <div className="dropdown-content" id="dropdown-content">
-                        <li>
-                          <Link to="/MemberProfile" id="profileGo">
-                            Profile
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/AdminDashboard" id="portalDash">
-                            Dashboard
-                          </Link>
-                        </li>
-                        <li>
-                          <p onClick={logout}>Logout</p>
-                        </li>
-                      </div>
-                    </ul>
-                  </div>
+            <Link className="homeHeader" to="/">
+              Home {USER_ID}
+            </Link>
+
+            <Link className="announcementHeader" to="/MemberAnnouncement">
+              Announcement
+            </Link>
+            <Link className="eventHeader" to="/MemberEvents">
+              Event
+            </Link>
+            <Link className="forumHeader" to="/MemberForum">
+              Forum
+            </Link>
+            <Link className="aboutHeader" to="/MemberAbout">
+              About
+            </Link>
+            <Link className="contactHeader" to="/ContactUs">
+              Contact
+            </Link>
+            <Link className="signinHeader" id="LoginHeader" to="/Login">
+              Log in
+            </Link>
+            <div className="memberDiv" id="memberDiv">
+              <div>
+                <img
+                  src="/images/events1.jpg"
+                  alt="sdf"
+                  className="loggedInImg"
+                  id="loggedInImg"
+                  onClick={popup}
+                />
+                <div className="dropdown-content" id="dropdown-content">
+                  <Link to="/MemberProfile" id="profileGo">
+                    Profile
+                  </Link>
+                  <Link to="/AdminDashboard" id="portalDash">
+                    Dashboard
+                  </Link>
+                  <p onClick={logout}>Logout</p>
                 </div>
-              </li>
-              <li>
-                <i className="fa fa-bars"></i>
-              </li>
-            </ul>
+              </div>
+            </div>
+            <i className="fa fa-bars"></i>
           </div>
         </div>
 
@@ -225,39 +198,41 @@ function MainPage() {
             );
           })}
         </div>
-        <div className="footer">
-          <div className="footIcon">
-            <img
-              src="/images/logoIcon.png"
-              alt="img"
-              className="imgfooterIcon"
-            />
+        <div className="outerFoot">
+          <div className="footer">
+            <div className="footIcon">
+              <img
+                src="/images/logoIcon.png"
+                alt="img"
+                className="imgfooterIcon"
+              />
+            </div>
+            <div className="locMain">
+              <label className="mainInfoFooter">
+                <p className="fa fa-map-marker"></p>Cubao Philippines
+              </label>
+              <label className="mainInfoFooter">
+                <p className="fa fa-phone"></p>+63978965896
+              </label>
+              <label className="mainInfoFooter">
+                <Link to="/TermsCondition" className="terms">
+                  <p className="fa fa-file"></p>
+                  Terms & Conditions
+                </Link>
+              </label>
+            </div>
+            <div className="fbLogo">
+              <a
+                href="https://db.skidax.com/www.facebook.com/PAVIC.ph"
+                className="fa fa-facebook"
+              >
+                {}
+              </a>
+            </div>
           </div>
-          <div className="locMain">
-            <label className="mainInfoFooter">
-              <p className="fa fa-map-marker"></p>Cubao Philippines
-            </label>
-            <label className="mainInfoFooter">
-              <p className="fa fa-phone"></p>+63978965896
-            </label>
-            <label className="mainInfoFooter">
-              <Link to="/TermsCondition" className="terms">
-                <p className="fa fa-file"></p>
-                Terms & Conditions
-              </Link>
-            </label>
+          <div className="copyrightText">
+            <p className="copyright">Copyright © 2021 | Perseeption</p>
           </div>
-          <div className="fbLogo">
-            <a
-              href="https://db.skidax.com/www.facebook.com/PAVIC.ph"
-              className="fa fa-facebook"
-            >
-              {}
-            </a>
-          </div>
-        </div>
-        <div className="copyrightText">
-          <p className="copyright">Copyright © 2021 | Perseeption</p>
         </div>
       </div>
     </>

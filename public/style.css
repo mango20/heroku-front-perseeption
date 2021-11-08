@@ -156,7 +156,7 @@
   color: black;
 }
 
-.footer {
+.outerFoot {
   overflow: hidden;
   position: fixed;
   bottom: 0;
