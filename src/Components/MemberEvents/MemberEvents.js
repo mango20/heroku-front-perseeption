@@ -198,35 +198,41 @@ function MemberEvents() {
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
       </Link>
-      <div className="footer">
-        <div className="footIcon">
-          <img src="/images/logoIcon.png" alt="img" className="imgfooterIcon" />
+      <div className="outerFoot">
+        <div className="footer">
+          <div className="footIcon">
+            <img
+              src="/images/logoIcon.png"
+              alt="img"
+              className="imgfooterIcon"
+            />
+          </div>
+          <div className="locMain">
+            <label className="mainInfoFooter">
+              <p className="fa fa-map-marker"></p>Cubao Philippines
+            </label>
+            <label className="mainInfoFooter">
+              <p className="fa fa-phone"></p>+63978965896
+            </label>
+            <label className="mainInfoFooter">
+              <Link to="/TermsCondition" className="terms">
+                <p className="fa fa-file"></p>
+                Terms & Conditions
+              </Link>
+            </label>
+          </div>
+          <div className="fbLogo">
+            <a
+              href="https://www.facebook.com/PAVIC.ph"
+              className="fa fa-facebook"
+            >
+              {}
+            </a>
+          </div>
         </div>
-        <div className="locMain">
-          <label className="mainInfoFooter">
-            <p className="fa fa-map-marker"></p>Cubao Philippines
-          </label>
-          <label className="mainInfoFooter">
-            <p className="fa fa-phone"></p>+63978965896
-          </label>
-          <label className="mainInfoFooter">
-            <Link to="/TermsCondition" className="terms">
-              <p className="fa fa-file"></p>
-              Terms & Conditions
-            </Link>
-          </label>
+        <div className="copyrightText">
+          <p className="copyright">Copyright © 2021 | Perseeption</p>
         </div>
-        <div className="fbLogo">
-          <a
-            href="https://www.facebook.com/PAVIC.ph"
-            className="fa fa-facebook"
-          >
-            {}
-          </a>
-        </div>
-      </div>
-      <div className="copyrightText">
-        <p className="copyright">Copyright © 2021 | Perseeption</p>
       </div>
     </div>
   );

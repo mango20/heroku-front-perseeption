@@ -162,3 +162,8 @@
   bottom: 0;
   width: 100%;
 }
+
+.mainEventContainerList {
+  height: 100vh;
+  background-color: #36a9e1;
+}
