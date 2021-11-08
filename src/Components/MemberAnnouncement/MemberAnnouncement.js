@@ -51,7 +51,24 @@ function MemberAnnouncement() {
     window.location.reload();
   };
 
-  const backAnnouncementReadMore = () => {
+  const [ANNOUNCEMENT_ID_, setANNOUNCEMENT_ID_] = useState("");
+  const [ANNOUNCEMENT_IMAGE, setANNOUNCEMENT_IMAGE] = useState("");
+  const [ANNOUNCEMENT_TITLE, setANNOUNCEMENT_TITLE] = useState("");
+  const [ANNOUNCEMENT_DATE, setANNOUNCEMENT_DATE] = useState("");
+  const [ANNOUNCEMENT_CONTENT, setANNOUNCEMENT_CONTENT] = useState("");
+
+  const backAnnouncementReadMore = (ANNOUNCEMENT_ID_) => {
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID_}`
+    ).then((response) => {
+      console.log(response.data);
+
+      setANNOUNCEMENT_IMAGE("");
+      setANNOUNCEMENT_TITLE("");
+      setANNOUNCEMENT_DATE("");
+      setANNOUNCEMENT_CONTENT("");
+      setANNOUNCEMENT_ID_("");
+    });
     Axios.get(
       "https://perseeption-tromagade.herokuapp.com/api/getMemberAnnouncement"
     ).then((response) => {
@@ -78,17 +95,13 @@ function MemberAnnouncement() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID}`
     ).then((response) => {
-      console.log(response);
-      setMemberAnnouncementList(
-        memberAnnouncementList.filter((val) => {
-          // console.log(response);
-          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID;
-        })
-      );
-      // Axios.get("https://perseeption-tromagade.herokuapp.com:3306/AdminList").then((response) => {
-      //   setADMIN_LIST(response.data);
-      //   console.log(response.data);
-      // });
+      console.log(response.data);
+
+      setANNOUNCEMENT_IMAGE(response.data[0].ANNOUNCEMENT_IMAGE);
+      setANNOUNCEMENT_TITLE(response.data[0].ANNOUNCEMENT_TITLE);
+      setANNOUNCEMENT_DATE(response.data[0].ANNOUNCEMENT_DATE);
+      setANNOUNCEMENT_CONTENT(response.data[0].ANNOUNCEMENT_CONTENT);
+      setANNOUNCEMENT_ID_(response.data[0].ANNOUNCEMENT_ID);
     });
   };
 
@@ -149,24 +162,24 @@ function MemberAnnouncement() {
         {memberAnnouncementList.map((val, key) => {
           return (
             <div key={key} className="announcementRender">
-              {/* <h1>{val.USER_ID}</h1> */}
+              {/* <h1>{USER_ID}</h1> */}
               <Image
                 className="announcement_Img"
                 cloudName="dlvt2lnkh"
-                publicId={val.ANNOUNCEMENT_IMAGE}
+                publicId={ANNOUNCEMENT_IMAGE}
               />
               {/* <img
-                src={val.ANNOUNCEMENT_IMAGE}
+                src={ANNOUNCEMENT_IMAGE}
                 alt="img"
                 className="announcement_Img"
               /> */}
-              <p className="announcement_Title">{val.ANNOUNCEMENT_TITLE}</p>
-              <p className="announcement_Date">{val.ANNOUNCEMENT_DATE}</p>
-              <p className="announcement_Content">{val.ANNOUNCEMENT_CONTENT}</p>
+              <p className="announcement_Title">{ANNOUNCEMENT_TITLE}</p>
+              <p className="announcement_Date">{ANNOUNCEMENT_DATE}</p>
+              <p className="announcement_Content">{ANNOUNCEMENT_CONTENT}</p>
               <p
                 className="readMoreAnnouncement"
                 onClick={() => {
-                  readMoreAnnouncement(val.ANNOUNCEMENT_ID);
+                  readMoreAnnouncement(ANNOUNCEMENT_ID);
                 }}
               >
                 Read More
@@ -176,37 +189,27 @@ function MemberAnnouncement() {
         })}
       </div>
       <div className="memberAnnouncementList_" id="_memberAnnouncementList_id_">
-        {memberAnnouncementList.map((val, key) => {
-          return (
-            <div
-              key={key}
-              className="popUpReadmoreAnnouncement"
-              id="popUpReadmoreAnnouncement_id"
-            >
-              <p
-                onClick={backAnnouncementReadMore}
-                id="xbtnReadMoreAnnouncement"
-              >
-                back
-              </p>
-              {/* <img
-                src={val.ANNOUNCEMENT_IMAGE}
-                alt="img"
-                className="announcement_Img_"
-              /> */}
-              <Image
-                className="announcement_Img"
-                cloudName="dlvt2lnkh"
-                publicId={val.ANNOUNCEMENT_IMAGE}
-              />
-              <p className="announcement_TitleRM">{val.ANNOUNCEMENT_TITLE}</p>
-              <p className="announcement_DateRM">{val.ANNOUNCEMENT_DATE}</p>
-              <p className="announcement_ContentRM">
-                {val.ANNOUNCEMENT_CONTENT}
-              </p>
-            </div>
-          );
-        })}
+        <div
+          className="popUpReadmoreAnnouncement"
+          id="popUpReadmoreAnnouncement_id"
+        >
+          <p
+            onClick={() => {
+              backAnnouncementReadMore(ANNOUNCEMENT_ID_);
+            }}
+            id="xbtnReadMoreAnnouncement"
+          >
+            back
+          </p>
+          <Image
+            className="announcement_Img"
+            cloudName="dlvt2lnkh"
+            publicId={ANNOUNCEMENT_IMAGE}
+          />
+          <p className="announcement_TitleRM">{ANNOUNCEMENT_TITLE}</p>
+          <p className="announcement_DateRM">{ANNOUNCEMENT_DATE}</p>
+          <p className="announcement_ContentRM">{ANNOUNCEMENT_CONTENT}</p>
+        </div>
       </div>
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
