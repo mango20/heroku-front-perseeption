@@ -167,3 +167,15 @@
   height: 100vh;
   background-color: #36a9e1;
 }
+
+@media (max-width: 952px) {
+  .mainEventList {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: scroll;
+  }
+
+  .mainEventList_Cont {
+    height: 500px;
+  }
+}
