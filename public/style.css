@@ -172,6 +172,9 @@
   .mainEventList {
     display: grid;
     grid-template-columns: 1fr;
+    padding: 10 px 150 px 50 px;
+    grid-gap: 20 px;
+    margin-top: 50 px;
     overflow: scroll;
   }
 
