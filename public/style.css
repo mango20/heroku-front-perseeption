@@ -168,7 +168,7 @@
   background-color: #36a9e1;
 }
 
-@media (max-width: 952px) {
+@media only screen and (max-width: 952px) {
   .mainEventList {
     grid-template-columns: repeat(1, 1fr);
     overflow: scroll;
