@@ -93,12 +93,24 @@
     display: block;
   }
 }
+
 @media only screen and (max-width: 900px) {
   .MainHeader {
     grid-template-columns: 1fr 0fr 1.1fr;
     border: 0;
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .mainEventList {
+    grid-template-rows: 50vh;
+  }
+
+  .eventImgMain {
+    height: 500px;
+  }
+}
+
 .memberDiv {
   display: none;
   grid-area: memberDiv;
