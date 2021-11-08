@@ -168,12 +168,12 @@
   background-color: #36a9e1;
 } */
 
-@media only screen and (max-width: 952px) {
+@media only screen and (max-width: 900px) {
   .mainEventList {
-    height: 100vh;
+    grid-template-rows: 100vh;
   }
 
   .eventImgMain {
-    height: 400px;
+    height: 450px;
   }
 }
