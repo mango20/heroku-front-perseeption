@@ -159,7 +159,7 @@ function MemberAnnouncement() {
       </div>
       <h1 className="announcementTitleHead">Announcement</h1>
       <div className="memberAnnouncementList" id="memberAnnouncementList_id_">
-        <div key={key} className="announcementRender">
+        <div className="announcementRender">
           {/* <h1>{USER_ID}</h1> */}
           <Image
             className="announcement_Img"
