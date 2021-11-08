@@ -162,3 +162,21 @@
   bottom: 0;
   width: 100%;
 }
+
+.mainEventContainerList {
+  /* height: 100vh; */
+  background-color: #36a9e1;
+}
+
+/* @media only screen and (max-width: 952px) {
+  .mainEventList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    overflow: scroll;
+  }
+
+  .mainEventList_Cont {
+    height: 500px;
+    overflow: scroll;
+  }
+} */
