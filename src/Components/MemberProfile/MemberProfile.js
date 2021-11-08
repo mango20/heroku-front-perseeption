@@ -109,7 +109,7 @@ function MemberProfile() {
 
         setREGION_ADDRESS(name[0].REGION_ADDRESS);
         setPROVINCE_ADDRESS(name[0].PROVINCE_ADDRESS);
-        CHILD_SURNAME(name[0].CHILD_SURNAME);
+        setCHILD_SURNAME(name[0].CHILD_SURNAME);
         setCHILD_GIVEN_NAME(name[0].CHILD_GIVEN_NAME);
         setCHILD_MIDDLE_NAME(name[0].CHILD_MIDDLE_NAME);
 
