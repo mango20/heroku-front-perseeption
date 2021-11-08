@@ -177,30 +177,26 @@ function MainPage() {
         <Link to="/Registration" className="floatBtn" id="floatBtn">
           <p className="JoinUs"> Join Us!</p>
         </Link>
-        <div className="mainEventContainerList">
-          <h1 className="eventTitleHead">Perseeption Events</h1>
-  
-            <div className="mainEventList">
-              {MAIN_EVENT.map((val, key) => {
-                return (
-                  <div key={key} className="eventMain_List">
-                    <Image
-                      className="eventImgMain"
-                      cloudName="dlvt2lnkh"
-                      publicId={val.EVENT_IMAGE}
-                    />
+        <h1 className="eventTitleHead">Perseeption Events</h1>
+        <div className="mainEventList">
+          {MAIN_EVENT.map((val, key) => {
+            return (
+              <div key={key} className="eventMain_List">
+                <Image
+                  className="eventImgMain"
+                  cloudName="dlvt2lnkh"
+                  publicId={val.EVENT_IMAGE}
+                />
 
-                    <p className="eventTitleMain">{val.EVENT_TITLE}</p>
-                    <p className="eventDateMain">{val.EVENT_DATE}</p>
-                    <p className="eventContentMain">{val.EVENT_CONTENT}</p>
-                    <Link to="/MemberEvents" className="readMoreMain">
-                      Read More
-                    </Link>
-                  </div>
-                );
-              })}
- 
-          </div>
+                <p className="eventTitleMain">{val.EVENT_TITLE}</p>
+                <p className="eventDateMain">{val.EVENT_DATE}</p>
+                <p className="eventContentMain">{val.EVENT_CONTENT}</p>
+                <Link to="/MemberEvents" className="readMoreMain">
+                  Read More
+                </Link>
+              </div>
+            );
+          })}
         </div>
         <div className="outerFoot">
           <div className="footer">
