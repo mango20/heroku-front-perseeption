@@ -757,11 +757,11 @@ function Registration() {
   };
 
   const checkForm = () => {
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getLastMember"
-    ).then((response) => {
-      setLastMember(response.data);
-    });
+    // Axios.get(
+    //   "https://perseeption-tromagade.herokuapp.com/api/getLastMember"
+    // ).then((response) => {
+    //   setLastMember(response.data);
+    // });
     document.getElementById("Registered_MemberOuter").style.display = "none";
     document.getElementById("Registered_Member").style.display = "none";
     document.getElementById("floatReg_form").style.display = "block";
@@ -851,128 +851,117 @@ function Registration() {
       <div className="floatReg_form" id="floatReg_form">
         <div className="Reg_formContent" id="Reg_formContent">
           <p className="title_reg_form_">Check Your Form</p>
-          {LastMember.map((val, key) => {
-            return (
-              <div key={key} className="reg_form_Cont">
-                {/* <p className="reg_info_title">Check Your Form</p> */}
-                <p className="reg_form_list_info">Username:</p>
-                <p className="rf_data">{val.USERNAME}</p>
-                <p className="reg_form_list_info">Child's Name:</p>
-                <p className="rf_data">
-                  {val.CHILD_GIVEN_NAME} {val.CHILD_MIDDLE_NAME}{" "}
-                  {val.CHILD_SURNAME}
-                </p>
-                <p className="reg_form_list_info">Father's Name:</p>
-                <p className="rf_data">
-                  {val.FATHER_GIVEN_NAME} {val.FATHER_MIDDLE_NAME}{" "}
-                  {val.FATHER_SURNAME}
-                </p>
-                <p className="reg_form_list_info">Father's Birthday:</p>
-                <p className="rf_data">{val.FATHER_BIRTHDAY}</p>
 
-                <p className="reg_form_list_info">Father's Birthday:</p>
-                <p className="rf_data">
-                  {val.MOTHER_GIVEN_NAME} {val.MOTHER_MIDDLE_NAME}{" "}
-                  {val.MOTHER_SURNAME}
-                </p>
-                <p className="reg_form_list_info">Father's Birthday:</p>
-                <p className="rf_data">{val.FATHER_BIRTHDAY}</p>
-                <p className="reg_form_list_info">Guardian's Name:</p>
-                <p className="rf_data">
-                  {val.GUARDIAN_GIVEN_NAME} {val.GUARDIAN_MIDDLE_NAME}{" "}
-                  {val.GUARDIAN_SURNAME}
-                </p>
-                <p className="reg_form_list_info">Guardian Contact:</p>
-                <p className="rf_data">{val.GUARDIAN_CONTACT}</p>
-                <p className="reg_form_list_info">First Sibling:</p>
-                <p className="rf_data">{val.FIRST_SIBLING}</p>
-                <p className="reg_form_list_info">Second Sibling:</p>
-                <p className="rf_data">{val.SECOND_SIBLING}</p>
-                <p className="reg_form_list_info">Third Sibling:</p>
-                <p className="rf_data">{val.THIRD_SIBLING}</p>
-                <p className="reg_form_list_info">Address:</p>
-                <p className="rf_data">
-                  {val.CITY_ADDRESS} {val.REGION_ADDRESS} {val.PROVINCE_ADDRESS}
-                </p>
-                <p className="reg_form_list_info">
-                  Father's Contact/ Landline:
-                </p>
-                <p className="rf_data">
-                  {val.FATHER_CONTACT} {val.FATHER_LANDLINE}
-                </p>
-                <p className="reg_form_list_info">
-                  Mother's Contact/ Landline:
-                </p>
-                <p className="rf_data">
-                  {val.MOTHER_CONTACT} {val.MOTHER_LANDLINE}
-                </p>
-                <p className="reg_form_list_info">Father's Email:</p>
-                <p className="rf_data">{val.FATHER_EMAIL}</p>
-                <p className="reg_form_list_info">Mother's Email:</p>
-                <p className="rf_data">{val.MOTHER_EMAIL}</p>
-                <p className="reg_form_list_info">Monthly Income:</p>
-                <p className="rf_data">{val.MONTHLY_INCOME}</p>
-                <p className="reg_form_list_info">Father's Occupation:</p>
-                <p className="rf_data">{val.FATHER_OCCUPATION}</p>
-                <p className="reg_form_list_info">Mother Occupation:</p>
-                <p className="rf_data">{val.MOTHER_OCCUPATION}</p>
-                <p className="reg_form_list_info">Childs's Birthday:</p>
-                <p className="rf_data">{val.CHILD_BIRTHDAY}</p>
-                <p className="reg_form_list_info">Sex:</p>
-                <p className="rf_data">{val.SEX}</p>
-                <p className="reg_form_list_info">School Name:</p>
-                <p className="rf_data">{val.SCHOOL_NAME}</p>
-                <p className="reg_form_list_info">Year/ Grade Level:</p>
-                <p className="rf_data">{val.YEAR_GRADE_LEVEL}</p>
-                <p className="reg_form_list_info">School Address:</p>
-                <p className="rf_data">{val.SCHOOL_ADDRESS}</p>
-                <p className="reg_form_list_info">Cause of Blindness:</p>
-                <p className="rf_data">{val.CAUSE_OF_BLINDNESS}</p>
-                <p className="reg_form_list_info">Totaly Blind Eyes:</p>
-                <p className="rf_data">{val.TOTALY_BLIND_EYES}</p>
-                <p className="reg_form_list_info">
-                  Totally Blind Additional Disability:
-                </p>
-                <p className="rf_data">{val.TB_ADD_DISABILITY}</p>
-                <p className="reg_form_list_info">Low Vision Eyes:</p>
-                <p className="rf_data">{val.LOW_VISION_EYES}</p>
-                <p className="reg_form_list_info">
-                  Low Vision Additional Disability:
-                </p>
-                <p className="rf_data">{val.LV_ADD_DISABILITY}</p>
-                <p className="reg_form_list_info">Adaptive Lens:</p>
-                <p className="rf_data">{val.ADAPTIVE_LENS}</p>
-                <p className="reg_form_list_info">Stylus:</p>
-                <p className="rf_data">{val.STYLUS}</p>
-                <p className="reg_form_list_info">Artificial Eyes:</p>
-                <p className="rf_data">{val.ARTIFICIAL_EYES}</p>
-                <p className="reg_form_list_info">Computer Screen:</p>
-                <p className="rf_data">{val.COMPUTER_SCREEN}</p>
-                <p className="reg_form_list_info">White Cane:</p>
-                <p className="rf_data">{val.WHITE_CANE}</p>
-                <p className="reg_form_list_info">CCTV:</p>
-                <p className="rf_data">{val.CCTV}</p>
-                <p className="reg_form_list_info">Wheel Chair:</p>
-                <p className="rf_data">{val.WHEEL_CHAIR}</p>
-                <p className="reg_form_list_info">Large Prints:</p>
-                <p className="rf_data">{val.LARGE_PRINTS}</p>
-                <p className="reg_form_list_info">Hearing Aid:</p>
-                <p className="rf_data">{val.HEARING_AID}</p>
-                <p className="reg_form_list_info">Abacus:</p>
-                <p className="rf_data">{val.ABACUS}</p>
-                <p className="reg_form_list_info">Brailler:</p>
-                <p className="rf_data">{val.BRAILLER}</p>
-                <p className="reg_form_list_info">Physical Theraphy:</p>
-                <p className="rf_data">{val.PHYSICAL_THERAPHY}</p>
-                <p className="reg_form_list_info">Otccupational Theraphy:</p>
-                <p className="rf_data">{val.OCCUPATIONAL_THERAPHY}</p>
-                <p className="reg_form_list_info">Speech Theraphy:</p>
-                <p className="rf_data">{val.SPEECH_THERAPHY}</p>
-                <p className="reg_form_list_info">Other Condition:</p>
-                <p className="rf_data">{val.OTHER_CONDITION}</p>
-              </div>
-            );
-          })}
+          <div className="reg_form_Cont">
+            {/* <p className="reg_info_title">Check Your Form</p> */}
+            <p className="reg_form_list_info">Username:</p>
+            <p className="rf_data">{usernameReg}</p>
+            <p className="reg_form_list_info">Child's Name:</p>
+            <p className="rf_data">
+              {CHILD_GIVEN_NAME} {CHILD_MIDDLE_NAME} {CHILD_SURNAME}
+            </p>
+            <p className="reg_form_list_info">Father's Name:</p>
+            <p className="rf_data">
+              {FATHER_GIVEN_NAME} {FATHER_MIDDLE_NAME} {FATHER_SURNAME}
+            </p>
+            <p className="reg_form_list_info">Father's Birthday:</p>
+            <p className="rf_data">{FATHER_BIRTHDAY}</p>
+
+            <p className="reg_form_list_info">Father's Birthday:</p>
+            <p className="rf_data">
+              {MOTHER_GIVEN_NAME} {MOTHER_MIDDLE_NAME} {MOTHER_SURNAME}
+            </p>
+            <p className="reg_form_list_info">Father's Birthday:</p>
+            <p className="rf_data">{FATHER_BIRTHDAY}</p>
+            <p className="reg_form_list_info">Guardian's Name:</p>
+            <p className="rf_data">
+              {GUARDIAN_GIVEN_NAME} {GUARDIAN_MIDDLE_NAME} {GUARDIAN_SURNAME}
+            </p>
+            <p className="reg_form_list_info">Guardian Contact:</p>
+            <p className="rf_data">{GUARDIAN_CONTACT}</p>
+            <p className="reg_form_list_info">First Sibling:</p>
+            <p className="rf_data">{FIRST_SIBLING}</p>
+            <p className="reg_form_list_info">Second Sibling:</p>
+            <p className="rf_data">{SECOND_SIBLING}</p>
+            <p className="reg_form_list_info">Third Sibling:</p>
+            <p className="rf_data">{THIRD_SIBLING}</p>
+            <p className="reg_form_list_info">Address:</p>
+            <p className="rf_data">
+              {CITY_ADDRESS} {REGION_ADDRESS} {PROVINCE_ADDRESS}
+            </p>
+            <p className="reg_form_list_info">Father's Contact/ Landline:</p>
+            <p className="rf_data">
+              {FATHER_CONTACT} {FATHER_LANDLINE}
+            </p>
+            <p className="reg_form_list_info">Mother's Contact/ Landline:</p>
+            <p className="rf_data">
+              {MOTHER_CONTACT} {MOTHER_LANDLINE}
+            </p>
+            <p className="reg_form_list_info">Father's Email:</p>
+            <p className="rf_data">{FATHER_EMAIL}</p>
+            <p className="reg_form_list_info">Mother's Email:</p>
+            <p className="rf_data">{MOTHER_EMAIL}</p>
+            <p className="reg_form_list_info">Monthly Income:</p>
+            <p className="rf_data">{MONTHLY_INCOME}</p>
+            <p className="reg_form_list_info">Father's Occupation:</p>
+            <p className="rf_data">{FATHER_OCCUPATION}</p>
+            <p className="reg_form_list_info">Mother Occupation:</p>
+            <p className="rf_data">{MOTHER_OCCUPATION}</p>
+            <p className="reg_form_list_info">Childs's Birthday:</p>
+            <p className="rf_data">{CHILD_BIRTHDAY}</p>
+            <p className="reg_form_list_info">Sex:</p>
+            <p className="rf_data">{SEX}</p>
+            <p className="reg_form_list_info">School Name:</p>
+            <p className="rf_data">{SCHOOL_NAME}</p>
+            <p className="reg_form_list_info">Year/ Grade Level:</p>
+            <p className="rf_data">{YEAR_GRADE_LEVEL}</p>
+            <p className="reg_form_list_info">School Address:</p>
+            <p className="rf_data">{SCHOOL_ADDRESS}</p>
+            <p className="reg_form_list_info">Cause of Blindness:</p>
+            <p className="rf_data">{CAUSE_OF_BLINDNESS}</p>
+            <p className="reg_form_list_info">Totaly Blind Eyes:</p>
+            <p className="rf_data">{TOTALY_BLIND_EYES}</p>
+            <p className="reg_form_list_info">
+              Totally Blind Additional Disability:
+            </p>
+            <p className="rf_data">{TB_ADD_DISABILITY}</p>
+            <p className="reg_form_list_info">Low Vision Eyes:</p>
+            <p className="rf_data">{LOW_VISION_EYES}</p>
+            <p className="reg_form_list_info">
+              Low Vision Additional Disability:
+            </p>
+            <p className="rf_data">{LV_ADD_DISABILITY}</p>
+            <p className="reg_form_list_info">Adaptive Lens:</p>
+            <p className="rf_data">{ADAPTIVE_LENS}</p>
+            <p className="reg_form_list_info">Stylus:</p>
+            <p className="rf_data">{STYLUS}</p>
+            <p className="reg_form_list_info">Artificial Eyes:</p>
+            <p className="rf_data">{ARTIFICIAL_EYES}</p>
+            <p className="reg_form_list_info">Computer Screen:</p>
+            <p className="rf_data">{COMPUTER_SCREEN}</p>
+            <p className="reg_form_list_info">White Cane:</p>
+            <p className="rf_data">{WHITE_CANE}</p>
+            <p className="reg_form_list_info">CCTV:</p>
+            <p className="rf_data">{CCTV}</p>
+            <p className="reg_form_list_info">Wheel Chair:</p>
+            <p className="rf_data">{WHEEL_CHAIR}</p>
+            <p className="reg_form_list_info">Large Prints:</p>
+            <p className="rf_data">{LARGE_PRINTS}</p>
+            <p className="reg_form_list_info">Hearing Aid:</p>
+            <p className="rf_data">{HEARING_AID}</p>
+            <p className="reg_form_list_info">Abacus:</p>
+            <p className="rf_data">{ABACUS}</p>
+            <p className="reg_form_list_info">Brailler:</p>
+            <p className="rf_data">{BRAILLER}</p>
+            <p className="reg_form_list_info">Physical Theraphy:</p>
+            <p className="rf_data">{PHYSICAL_THERAPHY}</p>
+            <p className="reg_form_list_info">Otccupational Theraphy:</p>
+            <p className="rf_data">{OCCUPATIONAL_THERAPHY}</p>
+            <p className="reg_form_list_info">Speech Theraphy:</p>
+            <p className="rf_data">{SPEECH_THERAPHY}</p>
+            <p className="reg_form_list_info">Other Condition:</p>
+            <p className="rf_data">{OTHER_CONDITION}</p>
+          </div>
           <Link to="/" className="form_reg_btn">
             Go Back to Homepage
           </Link>
