@@ -10,6 +10,7 @@ function MemberEvents() {
   const [EVENT_LIST, setEVENT_LIST] = useState([]);
   const [EVENT_LIST_, setEVENT_LIST_] = useState([]);
 
+  const [EVENT_ID_, setEVENT_ID_] = useState("");
   const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");
   const [EVENT_DATE, setEVENT_DATE] = useState("");
@@ -28,20 +29,22 @@ function MemberEvents() {
       setEVENT_TITLE(response.data[0].EVENT_TITLE);
       setEVENT_DATE(response.data[0].EVENT_DATE);
       setEVENT_CONTENT(response.data[0].EVENT_CONTENT);
-
-      // setEVENT_LIST(
-      //   EVENT_LIST.filter((val) => {
-      //     return val.EVENT_ID === EVENT_ID;
-      //   })
-      // );
-      // Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then((response) => {
-      //   setADMIN_LIST(response.data);
-      //   console.log(response.data);
-      // });
+      setEVENT_ID_(response.data[0].EVENT_ID);
     });
   };
 
-  const backEventReadMore = () => {
+  const backEventReadMore = (EVENT_ID_) => {
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/readMoreEvent/${EVENT_ID_}`
+    ).then((response) => {
+      console.log(response.data);
+
+      setEVENT_IMAGE("");
+      setEVENT_TITLE("");
+      setEVENT_DATE("");
+      setEVENT_CONTENT("");
+      setEVENT_ID_("");
+    });
     Axios.get(
       "https://perseeption-tromagade.herokuapp.com/api/getMemberEvent"
     ).then((response) => {
@@ -173,7 +176,12 @@ function MemberEvents() {
       </div>
       <div className="memberEventList_" id="memberEventList_id_">
         <div className="popUpReadmoreEvent" id="popUpReadmoreEvent_id">
-          <p onClick={backEventReadMore} id="xbtnReadMore">
+          <p
+            onClick={() => {
+              backEventReadMore(EVENT_ID_);
+            }}
+            id="xbtnReadMore"
+          >
             back
           </p>
 
