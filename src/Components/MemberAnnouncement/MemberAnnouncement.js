@@ -159,30 +159,34 @@ function MemberAnnouncement() {
       </div>
       <h1 className="announcementTitleHead">Announcement</h1>
       <div className="memberAnnouncementList" id="memberAnnouncementList_id_">
-        <div className="announcementRender">
-          {/* <h1>{USER_ID}</h1> */}
-          <Image
-            className="announcement_Img"
-            cloudName="dlvt2lnkh"
-            publicId={ANNOUNCEMENT_IMAGE}
-          />
-          {/* <img
+        {memberAnnouncementList.map((val, key) => {
+          return (
+            <div key={key} className="announcementRender">
+              {/* <h1>{USER_ID}</h1> */}
+              <Image
+                className="announcement_Img"
+                cloudName="dlvt2lnkh"
+                publicId={val.ANNOUNCEMENT_IMAGE}
+              />
+              {/* <img
                 src={ANNOUNCEMENT_IMAGE}
                 alt="img"
                 className="announcement_Img"
               /> */}
-          <p className="announcement_Title">{ANNOUNCEMENT_TITLE}</p>
-          <p className="announcement_Date">{ANNOUNCEMENT_DATE}</p>
-          <p className="announcement_Content">{ANNOUNCEMENT_CONTENT}</p>
-          <p
-            className="readMoreAnnouncement"
-            onClick={() => {
-              readMoreAnnouncement(ANNOUNCEMENT_ID_);
-            }}
-          >
-            Read More
-          </p>
-        </div>
+              <p className="announcement_Title">{val.ANNOUNCEMENT_TITLE}</p>
+              <p className="announcement_Date">{val.ANNOUNCEMENT_DATE}</p>
+              <p className="announcement_Content">{val.ANNOUNCEMENT_CONTENT}</p>
+              <p
+                className="readMoreAnnouncement"
+                onClick={() => {
+                  readMoreAnnouncement(val.ANNOUNCEMENT_ID);
+                }}
+              >
+                Read More
+              </p>
+            </div>
+          );
+        })}
       </div>
       <div className="memberAnnouncementList_" id="_memberAnnouncementList_id_">
         <div
