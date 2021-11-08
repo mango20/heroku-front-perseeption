@@ -119,49 +119,76 @@ function MainPage() {
             </Link>
           </div>
           <div className="headerText">
-            <Link className="homeHeader" to="/">
-              Home {USER_ID}
-            </Link>
-
-            <Link className="announcementHeader" to="/MemberAnnouncement">
-              Announcement
-            </Link>
-            <Link className="eventHeader" to="/MemberEvents">
-              Event
-            </Link>
-            <Link className="forumHeader" to="/MemberForum">
-              Forum
-            </Link>
-            <Link className="aboutHeader" to="/MemberAbout">
-              About
-            </Link>
-            <Link className="contactHeader" to="/ContactUs">
-              Contact
-            </Link>
-            <Link className="signinHeader" id="LoginHeader" to="/Login">
-              Log in
-            </Link>
-            <div className="memberDiv" id="memberDiv">
-              <div>
-                <img
-                  src="/images/events1.jpg"
-                  alt="sdf"
-                  className="loggedInImg"
-                  id="loggedInImg"
-                  onClick={popup}
-                />
-                <div className="dropdown-content" id="dropdown-content">
-                  <Link to="/MemberProfile" id="profileGo">
-                    Profile
-                  </Link>
-                  <Link to="/AdminDashboard" id="portalDash">
-                    Dashboard
-                  </Link>
-                  <p onClick={logout}>Logout</p>
+            <ul>
+              <li>
+                <Link className="homeHeader" to="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className="announcementHeader" to="/MemberAnnouncement">
+                  Announcement
+                </Link>
+              </li>
+              <li>
+                <Link className="eventHeader" to="/MemberEvents">
+                  Event
+                </Link>
+              </li>
+              <li>
+                <Link className="forumHeader" to="/MemberForum">
+                  Forum
+                </Link>
+              </li>
+              <li>
+                <Link className="aboutHeader" to="/MemberAbout">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link className="contactHeader" to="/ContactUs">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link className="signinHeader" id="LoginHeader" to="/Login">
+                  Log in
+                </Link>
+              </li>
+              <li>
+                <div className="memberDiv" id="memberDiv">
+                  <div>
+                    <img
+                      src="/images/events1.jpg"
+                      alt="sdf"
+                      className="loggedInImg"
+                      id="loggedInImg"
+                      onClick={popup}
+                    />
+                    <ul>
+                      <div className="dropdown-content" id="dropdown-content">
+                        <li>
+                          <Link to="/MemberProfile" id="profileGo">
+                            Profile
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/AdminDashboard" id="portalDash">
+                            Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <p onClick={logout}>Logout</p>
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <i className="fa fa-bars"></i>
+              </li>
+              <li>
+                <i className="fa fa-bars"></i>
+              </li>
+            </ul>
           </div>
         </div>
 

@@ -155,3 +155,10 @@
   background-color: rgb(240, 240, 240);
   color: black;
 }
+
+.footer {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

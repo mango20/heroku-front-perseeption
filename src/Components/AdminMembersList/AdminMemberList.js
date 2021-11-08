@@ -441,16 +441,6 @@ function AdminMemberList() {
     );
   };
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //     } else {
-  //       window.location = "/Login";
-  //     }
-  //   });
-  // }, []);
   // Render
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getUser").then(
@@ -630,6 +620,13 @@ function AdminMemberList() {
 
   const addNewMember = () => {
     document.getElementById("editApproveMember__").style.display = "block";
+    // document.getElementById("editApproveMemberContainer1").style.display =
+    //   "block";
+  };
+
+  const hideAddMember = () => {
+    document.getElementById("outerAddNewMember_").style.display = "none";
+    document.getElementById("innerAddNewMember_").style.display = "none";
     // document.getElementById("editApproveMemberContainer1").style.display =
     //   "block";
   };
@@ -1568,7 +1565,9 @@ function AdminMemberList() {
               </div>
             </div>
             <div className="editApproveMemberBtns">
-              <p className="cancelApproveMember">Cancel</p>
+              <p className="cancelApproveMember" onClick={hideAddMember}>
+                Cancel
+              </p>
               <p
                 className="confirmUpdateApproveMembers"
                 onClick={addMember_submit}
