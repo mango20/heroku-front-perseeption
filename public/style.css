@@ -168,15 +168,8 @@
   background-color: #36a9e1;
 } */
 
-/* @media only screen and (max-width: 952px) {
+@media only screen and (max-width: 952px) {
   .mainEventList {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    overflow: scroll;
+    padding: 50px 150px 50px 150px;
   }
-
-  .mainEventList_Cont {
-    height: 500px;
-    overflow: scroll;
-  }
-} */
+}
