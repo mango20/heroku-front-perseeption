@@ -176,22 +176,22 @@ function MainPage() {
 
         <div id="menuBar_bground_">
           <div id="menuBar_inside">
-            <Link className="homeHeader" to="/">
+            <Link className="homeHeader_" to="/">
               Home
             </Link>
-            <Link className="announcementHeader" to="/MemberAnnouncement">
+            <Link className="announcementHeader_" to="/MemberAnnouncement">
               Announcement
             </Link>
-            <Link className="eventHeader" to="/MemberEvents">
+            <Link className="eventHeader_" to="/MemberEvents">
               Event
             </Link>
-            <Link className="forumHeader" to="/MemberForum">
+            <Link className="forumHeader_" to="/MemberForum">
               Forum
             </Link>
-            <Link className="aboutHeader" to="/MemberAbout">
+            <Link className="aboutHeader_" to="/MemberAbout">
               About
             </Link>
-            <Link className="contactHeader" to="/ContactUs">
+            <Link className="contactHeader_" to="/ContactUs">
               Contact
             </Link>
             <Link className="signinHeader" id="LoginHeader" to="/Login">
@@ -200,13 +200,6 @@ function MainPage() {
 
             <div className="memberDiv" id="memberDiv">
               <div>
-                <img
-                  src="/images/events1.jpg"
-                  alt="sdf"
-                  className="loggedInImg"
-                  id="loggedInImg"
-                  onClick={popup}
-                />
                 <div className="dropdown-content" id="dropdown-content">
                   <Link to="/MemberProfile" id="profileGo">
                     Profile
