@@ -40,11 +40,12 @@
   object-fit: cover;
 }
 @media only screen and (max-width: 1262px) {
-  .announcement_Img {
-    height: 600px;
-  }
-  .memberAnnouncementList {
+  #_memberAnnouncementList_id_ {
     height: 100vh;
+  }
+
+  .announcement_Img {
+    height: 650px;
   }
 }
 .event_Title {
