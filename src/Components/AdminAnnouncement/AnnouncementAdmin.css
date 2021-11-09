@@ -172,16 +172,16 @@
 }
 
 .form1 {
-  margin-left: 170px; /* Same as the width of the sidenav */
-
-  /* padding: 0px 10px; */
+  margin-left: 180px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }
 
 .announcementTitleTxt {
   font-size: 30px;
   font-weight: 700;
 }
-.inputAnnTitle {
+#inputAnnouncementTitle {
   margin-top: 5px;
   padding: 10px 20px 10px 20px;
   width: 100% !important;
