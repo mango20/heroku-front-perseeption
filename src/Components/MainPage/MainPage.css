@@ -81,6 +81,14 @@
     grid-template-columns: 0.3fr 0fr 1.1fr;
   }
 
+  .eventMain_List {
+    height: 800px;
+  }
+
+  .eventImgMain {
+    height: 600px;
+  }
+
   /* .imgIcon {
     display: none;
   } */

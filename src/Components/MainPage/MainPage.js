@@ -108,6 +108,9 @@ function MainPage() {
     window.location.reload();
   };
 
+  const showMenuBar = () => {};
+  document.getElementById("menuBar_bground").style.display = "block";
+  document.getElementById("menuBar_inside").style.display = "block";
   return (
     <>
       <div className="MainBg">
@@ -120,7 +123,7 @@ function MainPage() {
           </div>
           <div className="headerText">
             <Link className="homeHeader" to="/">
-              Home {USER_ID}
+              Home
             </Link>
 
             <Link className="announcementHeader" to="/MemberAnnouncement">
@@ -161,7 +164,55 @@ function MainPage() {
                 </div>
               </div>
             </div>
-            <i className="fa fa-bars"></i>
+            <i className="fa fa-bars" onClick={showMenuBar}></i>
+          </div>
+        </div>
+
+        <div id="menuBar_bground">
+          <div id="menuBar_inside">
+            <Link className="homeHeader" to="/">
+              Home
+            </Link>
+            <Link className="announcementHeader" to="/MemberAnnouncement">
+              Announcement
+            </Link>
+            <Link className="eventHeader" to="/MemberEvents">
+              Event
+            </Link>
+            <Link className="forumHeader" to="/MemberForum">
+              Forum
+            </Link>
+            <Link className="aboutHeader" to="/MemberAbout">
+              About
+            </Link>
+            <Link className="contactHeader" to="/ContactUs">
+              Contact
+            </Link>
+            <Link className="signinHeader" id="LoginHeader" to="/Login">
+              Log in
+            </Link>
+
+            <div className="memberDiv" id="memberDiv">
+              <div>
+                <img
+                  src="/images/events1.jpg"
+                  alt="sdf"
+                  className="loggedInImg"
+                  id="loggedInImg"
+                  onClick={popup}
+                />
+                <div className="dropdown-content" id="dropdown-content">
+                  <Link to="/MemberProfile" id="profileGo">
+                    Profile
+                  </Link>
+                  <Link to="/AdminDashboard" id="portalDash">
+                    Dashboard
+                  </Link>
+                  <p onClick={logout}>Logout</p>
+                </div>
+              </div>
+            </div>
+            {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
           </div>
         </div>
 
