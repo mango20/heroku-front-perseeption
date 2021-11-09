@@ -148,11 +148,10 @@
   background-color: #36a9e1;
   display: grid;
   grid-template-columns: 0.3fr 1fr;
-  grid-template-rows: 0.1fr 1fr;
-  grid-template-areas:
-    "navForum navForum"
-    "forumTitleList forumMainContent";
+  grid-template-rows: 1fr;
+  grid-template-areas: "forumTitleList forumMainContent";
   grid-gap: 10px;
+  padding-top: 90px;
   /* overflow: hidden; */
 
   /* margin-bottom: 10px; */
