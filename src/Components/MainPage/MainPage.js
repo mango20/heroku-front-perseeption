@@ -27,6 +27,9 @@ function MainPage() {
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
+      document.getElementById("profileGo_").style.display = "none";
+      document.getElementById("memberLogout").style.display = "none";
+      document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
@@ -42,7 +45,8 @@ function MainPage() {
       document.getElementById("loggedInImg").style.display = "block";
       document.getElementById("LoginHeader_").style.display = "none";
       document.getElementById("profileGo_").style.display = "block";
-      document.getElementById("memberLogout").style.display = "block";
+      // document.getElementById("memberLogout").style.display = "none";
+      // document.getElementById("portalDash_").style.display = "none";
     }
   }, []);
 
