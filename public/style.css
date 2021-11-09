@@ -215,7 +215,7 @@
 .containerBtnAnnouncement {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "fileBtnAnnouncement postAnnouncementBtn";
+  grid-template-areas: "fileBtnAnnouncement none postAnnouncementBtn";
 }
 
 .fileBtnAnnouncement {
