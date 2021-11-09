@@ -368,16 +368,18 @@
 
 .profileIcon {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: "profilePicture profileNameHeader";
   right: 0;
   top: 0;
   position: absolute;
   text-decoration: none;
-  /* background-color: #009744; */
   height: 100%;
-  /* width: 100%; */
+  text-decoration: none;
+  color: #fff;
 }
 .profilePicture {
+  grid-area: profilePicture;
   height: 35px;
   width: 35px;
   margin-right: 7px;
@@ -391,6 +393,7 @@
     border-radius: 50%; */
 }
 .profileNameHeader {
+  grid-area: profileNameHeader;
   font-size: 16px;
   font-weight: 700;
   margin-right: 20px;
