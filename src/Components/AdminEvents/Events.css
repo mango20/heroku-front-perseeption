@@ -255,7 +255,7 @@
 
 .containerBtnAnnouncement {
   display: grid;
-  grid-template-areas: "fileBtn postEventBtn";
+  /* grid-template-areas: "fileBtn postEventBtn"; */
   /* background-color: aqua; */
 }
 .fileBtn {

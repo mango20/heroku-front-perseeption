@@ -220,7 +220,7 @@
 
 .containerBtnAnnouncement {
   display: grid;
-  grid-template-areas: "fileBtnAnnouncement postAnnouncementBtn";
+  /* grid-template-areas: "fileBtnAnnouncement postAnnouncementBtn"; */
   /* background-color: aqua; */
 }
 .fileBtnAnnouncement {
