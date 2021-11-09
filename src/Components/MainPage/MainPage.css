@@ -388,7 +388,9 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 3px black;
 }
-
+#menuBar_bground {
+  background-color: #00142a;
+}
 .loginBtn {
   background-color: #00142a;
   color: #fff;

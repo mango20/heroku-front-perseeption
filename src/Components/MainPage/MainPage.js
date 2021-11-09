@@ -108,9 +108,11 @@ function MainPage() {
     window.location.reload();
   };
 
-  const showMenuBar = () => {};
-  document.getElementById("menuBar_bground").style.display = "block";
-  document.getElementById("menuBar_inside").style.display = "block";
+  const showMenuBar = () => {
+    document.getElementById("menuBar_bground").style.display = "block";
+    document.getElementById("menuBar_inside").style.display = "block";
+  };
+
   return (
     <>
       <div className="MainBg">
