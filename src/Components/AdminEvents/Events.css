@@ -1,7 +1,7 @@
 .eventCont {
   padding: 90px 50px 150px 120px;
   background-color: rgb(240, 240, 240);
-  height: 100vh;
+  /* height: 100vh; */
 }
 .AdminHeaderTitle {
   grid-area: AdminHeaderTitle;
