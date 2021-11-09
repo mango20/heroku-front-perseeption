@@ -253,7 +253,7 @@
   grid-gap: 10px;
   grid-template-areas: "btnAskQuestion searchFilterForum";
   /* background-color: #36a9e1; */
-  margin-bottom: 10px;
+  margin-bottom: 60px;
 }
 .searchFilterForum {
   grid-area: searchFilterForum;
