@@ -89,6 +89,10 @@
     height: 600px;
   }
 
+  #profileGo {
+    display: none;
+  }
+
   .imgCont_ {
     height: 600px;
     background-color: #009744;
