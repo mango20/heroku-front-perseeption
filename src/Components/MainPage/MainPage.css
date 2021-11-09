@@ -101,7 +101,7 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
   .mainEventList {
     grid-template-rows: 50vh;
   }
@@ -109,7 +109,7 @@
   .eventImgMain {
     height: 500px;
   }
-}
+} */
 
 .memberDiv {
   display: none;
