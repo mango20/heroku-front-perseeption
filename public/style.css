@@ -428,6 +428,6 @@
   margin-bottom: 60px;
 }
 
-.tableApprovedAdminList td {
+#tableApprovedAdminList td {
   overflow: hidden;
 }
