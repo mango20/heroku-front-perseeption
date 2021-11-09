@@ -430,85 +430,84 @@ function Events() {
           <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
-      <div className="eventCont_backG">
-        <div className="eventCont">
-          <div className="sidebar">
-            <img src="/images/logoIcon.png" alt="img" className="imgAdIcon" />
-            <img src="/images/logotext.png" alt="img" className="imgAdTxt" />
-            <Link to="/AdminDashboard" className="dash">
-              <i className="fa fa-bar-chart"></i>Dashboard
-            </Link>
-            <Link to="/AdminAdminList" className="dash">
-              <i className="fa fa-list-ul"></i>Admin List
-            </Link>
-            <Link to="/AdminAnnouncement" className="dash">
-              <i className="fa fa-bullhorn"></i>Announcement
-            </Link>
-            <Link to="/AdminContactUs" className="dash">
-              <i className="fa fa-envelope"></i>Contact Us
-            </Link>
-            <Link to="/Events" className="dash">
-              <i className="fa fa-calendar-o"></i>Event
-            </Link>
-            <Link to="/AdminMemberList" className="dash">
-              <i className="fa fa-users"></i>Member List
-            </Link>
-            <Link to="/AdminProfile" className="dash">
-              <i className="fa fa-user"></i>Profile
-            </Link>
-            <Link to="/MemberForum" className="dash">
-              <i className="fa fa-comments"></i>Forum
-            </Link>
-            <div className="line"></div>
-            <p className="logout_Admin" onClick={logout}>
-              <i className="fa fa-sign-out" id="adminLogout"></i> Logout
-            </p>
-          </div>
+      <div className="eventCont">
+        <div className="sidebar">
+          <img src="/images/logoIcon.png" alt="img" className="imgAdIcon" />
+          <img src="/images/logotext.png" alt="img" className="imgAdTxt" />
+          <Link to="/AdminDashboard" className="dash">
+            <i className="fa fa-bar-chart"></i>Dashboard
+          </Link>
+          <Link to="/AdminAdminList" className="dash">
+            <i className="fa fa-list-ul"></i>Admin List
+          </Link>
+          <Link to="/AdminAnnouncement" className="dash">
+            <i className="fa fa-bullhorn"></i>Announcement
+          </Link>
+          <Link to="/AdminContactUs" className="dash">
+            <i className="fa fa-envelope"></i>Contact Us
+          </Link>
+          <Link to="/Events" className="dash">
+            <i className="fa fa-calendar-o"></i>Event
+          </Link>
+          <Link to="/AdminMemberList" className="dash">
+            <i className="fa fa-users"></i>Member List
+          </Link>
+          <Link to="/AdminProfile" className="dash">
+            <i className="fa fa-user"></i>Profile
+          </Link>
+          <Link to="/MemberForum" className="dash">
+            <i className="fa fa-comments"></i>Forum
+          </Link>
+          <div className="line"></div>
+          <p className="logout_Admin" onClick={logout}>
+            <i className="fa fa-sign-out" id="adminLogout"></i> Logout
+          </p>
+        </div>
 
-          <div className="messageEventPopUpouter" id="messageEventPopUpouter">
-            <div className="messageEvent_Content" id="messageEvent_Content">
-              <h4 className="EventMsgTitle">Message</h4>
-              {/* <i className="fa fa-times" id="announcementX"></i> */}
-              <p className="EventMsg">Event Successfully Posted</p>
-            </div>
+        <div className="messageEventPopUpouter" id="messageEventPopUpouter">
+          <div className="messageEvent_Content" id="messageEvent_Content">
+            <h4 className="EventMsgTitle">Message</h4>
+            {/* <i className="fa fa-times" id="announcementX"></i> */}
+            <p className="EventMsg">Event Successfully Posted</p>
           </div>
-          <div className="form">
-            <form onSubmit={handleSubmitFile} encType="multipart/form-data">
-              <label className="eventAdminTitleTxt">Title </label>
+        </div>
+        <div className="form">
+          <form onSubmit={handleSubmitFile} encType="multipart/form-data">
+            <label className="eventAdminTitleTxt">Title </label>
+            <input
+              type="text"
+              id="inputEventTitle"
+              className="inputeventTitle"
+              onChange={(e) => setEVENT_TITLE(e.target.value)}
+            />
+            <label className="contentEventAdminTxt">Content</label>
+            <textarea
+              id="inputEventContent"
+              className="eventAdminContent"
+              onChange={(e) => setEVENT_CONTENT(e.target.value)}
+            ></textarea>
+            <div className="containerBtnAnnouncement">
               <input
-                type="text"
-                id="inputEventTitle"
-                className="inputeventTitle"
-                onChange={(e) => setEVENT_TITLE(e.target.value)}
+                type="file"
+                name="image"
+                onChange={handleFileInputChange}
+                value={fileInputState}
+                className="fileBtn"
+                id="fileBtnId"
               />
-              <label className="contentEventAdminTxt">Content</label>
-              <textarea
-                id="inputEventContent"
-                className="eventAdminContent"
-                onChange={(e) => setEVENT_CONTENT(e.target.value)}
-              ></textarea>
-              <div className="containerBtnAnnouncement">
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleFileInputChange}
-                  value={fileInputState}
-                  className="fileBtn"
-                  id="fileBtnId"
-                />
-                <button className="postEventBtn" type="submit">
-                  {" "}
-                  Submit{" "}
-                </button>
-              </div>
-              <div id="titleMessage"></div>
-            </form>
-          </div>
-          <div className="container">
-            {/* {previewSource && (
+              <button className="postEventBtn" type="submit">
+                {" "}
+                Submit{" "}
+              </button>
+            </div>
+            <div id="titleMessage"></div>
+          </form>
+        </div>
+        <div className="container">
+          {/* {previewSource && (
             <img src={previewSource} alt="chosen" style={{ height: "300px" }} />
           )} */}
-            {/* {imagesIds &&
+          {/* {imagesIds &&
             imagesIds.map((imageId, index) => (
               <Image
                 key={index}
@@ -517,67 +516,67 @@ function Events() {
               />
             ))} */}
 
-            {EVENT_LIST.map((imageId, index) => {
-              return (
-                <div key={index} className="eventAdminRender">
-                  <Image
-                    className="eventAdImg"
-                    cloudName="dlvt2lnkh"
-                    publicId={imageId.EVENT_IMAGE}
+          {EVENT_LIST.map((imageId, index) => {
+            return (
+              <div key={index} className="eventAdminRender">
+                <Image
+                  className="eventAdImg"
+                  cloudName="dlvt2lnkh"
+                  publicId={imageId.EVENT_IMAGE}
+                />
+                <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
+                <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
+                <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
+
+                <div>
+                  <input
+                    type="text"
+                    className="updateEventTitle"
+                    placeholder="Enter Title"
+                    onChange={(e) => {
+                      setNEW_EVENT_TITLE(e.target.value);
+                    }}
                   />
-                  <p className="eventAdmin_Title">{imageId.EVENT_TITLE}</p>
-                  <p className="eventAdmin_Date">{imageId.EVENT_DATE}</p>
-                  <p className="eventAdmin_Content">{imageId.EVENT_CONTENT}</p>
-
-                  <div>
-                    <input
-                      type="text"
-                      className="updateEventTitle"
-                      placeholder="Enter Title"
-                      onChange={(e) => {
-                        setNEW_EVENT_TITLE(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="updateBtn"
-                      onClick={() => {
-                        updateEventTitle(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      className="updateEventContent"
-                      placeholder="Enter Updated Content"
-                      onChange={(e) => {
-                        setNEW_EVENT_REVIEW(e.target.value);
-                      }}
-                    />
-                    <button
-                      className="inpupdateEventContent"
-                      onClick={() => {
-                        updateEventContent(imageId.EVENT_ID);
-                      }}
-                    >
-                      Update
-                    </button>{" "}
-                    <button
-                      className="delAdminButton"
-                      onClick={() => {
-                        deleteEvent(imageId.EVENT_ID);
-                      }}
-                    >
-                      DELETE
-                    </button>
-                  </div>
+                  <button
+                    className="updateBtn"
+                    onClick={() => {
+                      updateEventTitle(imageId.EVENT_ID);
+                    }}
+                  >
+                    Update
+                  </button>
                 </div>
-              );
-            })}
+                <div>
+                  <input
+                    type="text"
+                    className="updateEventContent"
+                    placeholder="Enter Updated Content"
+                    onChange={(e) => {
+                      setNEW_EVENT_REVIEW(e.target.value);
+                    }}
+                  />
+                  <button
+                    className="inpupdateEventContent"
+                    onClick={() => {
+                      updateEventContent(imageId.EVENT_ID);
+                    }}
+                  >
+                    Update
+                  </button>{" "}
+                  <button
+                    className="delAdminButton"
+                    onClick={() => {
+                      deleteEvent(imageId.EVENT_ID);
+                    }}
+                  >
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            );
+          })}
 
-            {/* <CloudinaryContext cloudName="dlvt2lnkh">
+          {/* <CloudinaryContext cloudName="dlvt2lnkh">
             <div>
               <Image
                 publicId="https://res.cloudinary.com/dlvt2lnkh/image/upload/v1636006027/tautp2n5oq1i4o2frn7x.png"
@@ -586,7 +585,7 @@ function Events() {
             </div>
             <Image publicId="sample" width="0.5" />
           </CloudinaryContext> */}
-            {/* {imagesIds.map((val, key) => {
+          {/* {imagesIds.map((val, key) => {
             return (
               <div key={key} className="eventAdminRender">
                 <img src={val.EVENT_IMAGE} alt="img" className="eventAdImg" />
@@ -641,9 +640,8 @@ function Events() {
               </div>
             );
           })} */}
-          </div>
-          {/* <h1>{loginStatus}</h1> */}
         </div>
+        {/* <h1>{loginStatus}</h1> */}
       </div>
     </div>
   );
