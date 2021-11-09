@@ -65,6 +65,12 @@
   cursor: pointer;
   display: none;
 }
+
+#menuBar_bground {
+  display: none;
+  height: 100vh;
+  background-color: #009744;
+}
 @media only screen and (max-width: 1262px) {
   .homeHeader,
   .announcementHeader,
@@ -89,13 +95,8 @@
     height: 600px;
   }
 
-  #dropdown-content {
+  .memberDic #dropdown-content {
     display: none;
-  }
-
-  #menuBar_bground {
-    height: 100vh;
-    background-color: #009744;
   }
 
   .imgCont_ {
