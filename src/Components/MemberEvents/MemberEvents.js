@@ -18,6 +18,7 @@ function MemberEvents() {
 
   const readMoreEvents_ = (EVENT_ID) => {
     console.log(EVENT_ID);
+    document.getElementById("memberEventList_id_").style.display = "block";
     document.getElementById("popUpReadmoreEvent_id").style.display = "block";
     document.getElementById("memberEventList_id").style.display = "none";
     Axios.get(
@@ -51,6 +52,7 @@ function MemberEvents() {
       setEVENT_LIST(response.data);
       console.log(response.data);
     });
+    document.getElementById("memberEventList_id_").style.display = "none";
     document.getElementById("popUpReadmoreEvent_id").style.display = "none";
     // document.getElementById("memberEventList_id").style.display = "block";
     document.getElementById("memberEventList_id").style.display = "grid";

@@ -151,3 +151,7 @@
   background-color: rgb(240, 240, 240);
   color: black;
 }
+
+#memberEventList_id_ {
+  display: none;
+}
