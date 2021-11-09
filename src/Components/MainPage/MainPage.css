@@ -774,12 +774,12 @@
 }
 
 .fa-bars {
-  margin-top: -30px;
+  margin-top: -20px;
 }
 
-.menuBar_inside {
+#menuBar_inside {
   display: block;
-  padding-top: 100px;
+  padding-top: 150px;
   text-align: center;
 }
 
