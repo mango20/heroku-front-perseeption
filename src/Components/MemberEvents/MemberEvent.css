@@ -40,13 +40,14 @@
   object-fit: cover;
 }
 @media only screen and (max-width: 1262px) {
-  #_memberAnnouncementList_id_ {
+  #_memberAnnouncementList_id_,
+  #memberEventList_id_ {
     height: 100vh;
   }
 
-  .announcement_Img {
+  /* .announcement_Img {
     height: 650px;
-  }
+  } */
 }
 .event_Title {
   text-align: left;
