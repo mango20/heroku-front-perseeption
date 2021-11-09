@@ -93,24 +93,12 @@
     display: block;
   }
 }
-
 @media only screen and (max-width: 900px) {
   .MainHeader {
     grid-template-columns: 1fr 0fr 1.1fr;
     border: 0;
   }
 }
-
-/* @media only screen and (max-width: 900px) {
-  .mainEventList {
-    grid-template-rows: 50vh;
-  }
-
-  .eventImgMain {
-    height: 500px;
-  }
-} */
-
 .memberDiv {
   display: none;
   grid-area: memberDiv;
@@ -438,9 +426,6 @@
   grid-gap: 20px;
   height: 100%;
   text-align: center;
-  justify-content: center;
-  grid-template-rows: 100vh;
-  /* flex-direction: column;
 }
 
 .eventTitleHead {
@@ -629,7 +614,6 @@
   grid-template-areas: "orgImg orgImg1 orgImg2 orgImg3 orgImg4";
   animation: 30s slider infinite;
   object-fit: cover;
-  /* height: 100vh; */
 }
 
 .orgImg {
