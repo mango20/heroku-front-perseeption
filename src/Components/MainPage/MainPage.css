@@ -461,10 +461,10 @@
     "readMoreMain";
   box-shadow: 1px 1px 10px black;
 }
-/* .imgCont_ {
-  grid-area: imgCont_;
+.imgCont_ {
+  /* grid-area: imgCont_; */
   height: 200px;
-} */
+}
 
 /* Values Event */
 .eventImgMain {
@@ -739,8 +739,4 @@
   width: 100%;
   height: 100vh;
   background-color: #36a9e1;
-}
-
-.containerInfo_Event {
-  height: 500px;
 }
