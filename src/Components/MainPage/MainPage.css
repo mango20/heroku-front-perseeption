@@ -90,10 +90,15 @@
     background-color: #009744;
   }
 
+  .imageOrg .slideshow {
+    height: 1000px;
+  }
   /* .imgIcon {
     display: none;
   } */
-
+  .slideshow img {
+    height: 100%;
+  }
   .imgIcon {
     width: 60px !important;
     margin-left: 5px;
@@ -462,7 +467,7 @@
   box-shadow: 1px 1px 10px black;
 }
 .imgCont_ {
-  /* grid-area: imgCont_; */
+  grid-area: imgCont_;
   height: 200px;
 }
 
