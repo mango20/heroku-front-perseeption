@@ -794,14 +794,33 @@
 }
 
 #menuBar_bground_ .signinHeader {
-  font-size: 50px;
+  font-size: 60px;
   text-decoration: none;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 #profileGo_,
 #portalDash_,
 #memberLogout {
   display: none;
+}
+
+.mobOptions {
+  bottom: 0;
+  width: 100%;
+}
+
+#backtoWeb {
+  border: 2px solid #ffff;
+  border-radius: 8px;
+  padding: 5px;
+  color: #ffff;
+}
+
+#memberLogout {
+  border: 2px solid yellow;
+  border-radius: 8px;
+  padding: 15px;
+  color: yellow;
 }

@@ -221,10 +221,14 @@ function MainPage() {
             <Link to="/AdminDashboard" id="portalDash_">
               Dashboard
             </Link>
-            <a id="memberLogout" onClick={logout}>
-              Logout
-            </a>
-            <a onClick={backMain}>Back</a>
+            <div className="mobOptions">
+              <a id="backtoWeb" onClick={backMain}>
+                Back
+              </a>
+              <a id="memberLogout" onClick={logout}>
+                Logout
+              </a>
+            </div>
             {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
           </div>
         </div>
