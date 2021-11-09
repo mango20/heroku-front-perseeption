@@ -214,6 +214,7 @@
 
 .containerBtnAnnouncement {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "fileBtnAnnouncement postAnnouncementBtn";
 }
 
@@ -341,4 +342,83 @@
   background-color: #00142a;
   color: #fff;
   margin: 20px auto auto;
+}
+
+#inputAnnouncementTitle {
+  margin-top: 5px;
+  padding: 10px 20px;
+  width: 100% !important;
+  border-radius: 5px;
+  border: 1px solid #c6c6c6;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.announcementTitleTxt,
+.contentTxtAnnouncement {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#fileBtnAnnouncement {
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+#inputAnnouncementTitle {
+  margin-top: 5px;
+  padding: 10px 20px 10px 20px;
+  width: 100% !important;
+
+  border-radius: 5px;
+  border: 1px solid #c6c6c6;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.contentTxtAnnouncement {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+#inputAnnouncementContent {
+  margin-top: 5px;
+  padding: 10px 20px 10px 20px;
+  width: 100% !important;
+  height: 200px !important;
+  border-radius: 5px;
+  border: 1px solid #c6c6c6;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  font-size: 20px;
+}
+
+.containerBtnAnnouncement {
+  display: grid;
+  grid-template-areas: "fileBtnAnnouncement postAnnouncementBtn";
+}
+
+.fileBtnAnnouncement {
+  margin-top: 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.postAnnouncementBtn {
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 15px 0px 15px 0px;
+  background-color: #009744;
+  color: #fff;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  /* margin-top: -300px; */
+  cursor: pointer;
+  /* margin-left: 50%; */
 }
