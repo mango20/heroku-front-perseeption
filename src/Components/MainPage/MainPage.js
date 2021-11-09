@@ -109,7 +109,7 @@ function MainPage() {
   };
 
   const showMenuBar = () => {
-    document.getElementById("menuBar_bground").style.display = "block";
+    document.getElementById("menuBar_bground_").style.display = "block";
     document.getElementById("menuBar_inside").style.display = "block";
   };
 
@@ -170,7 +170,7 @@ function MainPage() {
           </div>
         </div>
 
-        <div id="menuBar_bground">
+        <div id="menuBar_bground_">
           <div id="menuBar_inside">
             <Link className="homeHeader" to="/">
               Home

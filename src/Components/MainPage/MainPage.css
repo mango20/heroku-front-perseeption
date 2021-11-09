@@ -98,7 +98,11 @@
     height: 600px;
   }
 
-  .memberDiv #dropdown-content {
+  .memberDiv {
+    display: none;
+  }
+
+  .loggedInImg {
     display: none;
   }
 
@@ -411,7 +415,7 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 3px black;
 }
-#menuBar_bground {
+#menuBar_bground_ {
   background-color: #00142a;
   color: #fff;
 }
