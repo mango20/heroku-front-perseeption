@@ -89,8 +89,13 @@
     height: 600px;
   }
 
-  #profileGo {
+  #dropdown-content {
     display: none;
+  }
+
+  #menuBar_bground {
+    height: 100vh;
+    background-color: #009744;
   }
 
   .imgCont_ {
