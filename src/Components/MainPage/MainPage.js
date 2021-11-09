@@ -32,12 +32,17 @@ function MainPage() {
       if (name1[0].USER_TYPE === "Admin") {
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
+        document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("portalDash").style.display = "none";
+        document.getElementById("portalDash_").style.display = "none";
       }
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
       document.getElementById("loggedInImg").style.display = "block";
+      document.getElementById("LoginHeader_").style.display = "none";
+      document.getElementById("profileGo_").style.display = "block";
+      document.getElementById("memberLogout").style.display = "block";
     }
   }, []);
 
@@ -117,6 +122,15 @@ function MainPage() {
     document.getElementById("outerFoot").style.display = "none";
   };
 
+  const backMain = () => {
+    document.getElementById("menuBar_bground_").style.display = "none";
+    document.getElementById("menuBar_inside").style.display = "none";
+    document.getElementById("imageOrg").style.display = "block";
+    document.getElementById("eventTitleHead").style.display = "block";
+    document.getElementById("mainEventList").style.display = "block";
+    document.getElementById("outerFoot").style.display = "block";
+  };
+
   return (
     <>
       <div className="MainBg">
@@ -194,23 +208,19 @@ function MainPage() {
             <Link className="contactHeader_" to="/ContactUs">
               Contact
             </Link>
-            <Link className="signinHeader" id="LoginHeader" to="/Login">
+            <Link className="signinHeader_" id="LoginHeader_" to="/Login">
               Log in
             </Link>
-
-            <div className="memberDiv" id="memberDiv">
-              <div>
-                <div className="dropdown-content" id="dropdown-content">
-                  <Link to="/MemberProfile" id="profileGo">
-                    Profile
-                  </Link>
-                  <Link to="/AdminDashboard" id="portalDash">
-                    Dashboard
-                  </Link>
-                  <p onClick={logout}>Logout</p>
-                </div>
-              </div>
-            </div>
+            <Link to="/MemberProfile" id="profileGo_">
+              Profile
+            </Link>
+            <Link to="/AdminDashboard" id="portalDash_">
+              Dashboard
+            </Link>
+            <a id="memberLogout" onClick={logout}>
+              Logout
+            </a>
+            <a onClick={backMain}>Back</a>
             {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
           </div>
         </div>

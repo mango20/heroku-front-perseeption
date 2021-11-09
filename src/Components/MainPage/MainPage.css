@@ -781,6 +781,7 @@
   display: block;
   padding-top: 150px;
   text-align: center;
+  height: 100%;
 }
 
 #menuBar_bground_ a {
