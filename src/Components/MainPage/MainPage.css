@@ -788,5 +788,13 @@
   display: block;
   font-size: 50px;
   text-decoration: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#menuBar_bground_ .signinHeader {
+  font-size: 50px;
+  text-decoration: none;
+  text-align: center;
   margin-bottom: 30px;
 }
