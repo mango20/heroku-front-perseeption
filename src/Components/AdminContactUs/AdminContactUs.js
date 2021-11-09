@@ -89,6 +89,11 @@ function AdminContactUs() {
     document.getElementById("nameAdmin-id").value = "";
     // document.getElementById("email-id").value = "";
     document.getElementById("messagesText").value = "";
+    document.getElementById("popUpGetMsgSent").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgSent").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
   };
   const hideReplyModal = () => {
     document.getElementById("nameAdmin-id").value = "";
@@ -209,6 +214,13 @@ function AdminContactUs() {
           </p>
         </div>
 
+        <div id="popUpGetMsgSent">
+          <div id="popUpGetMsgInSent">
+            <h2>PerSEEption Message</h2>
+            <h1>Message Sent!</h1>
+          </div>
+        </div>
+
         <div className="inboxContent">
           <div className="input-wrapperContactUs">
             <input
@@ -285,7 +297,7 @@ function AdminContactUs() {
                 >
                   <ul>
                     <li className="xBtn" onClick={hideReplyModal}>
-                      x{val.contact_id}
+                      x
                     </li>
                     <li className="replyTo">
                       <p>Name: {val.contact_name} </p>
