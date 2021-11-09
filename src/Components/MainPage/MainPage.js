@@ -235,12 +235,13 @@ function MainPage() {
           {MAIN_EVENT.map((val, key) => {
             return (
               <div key={key} className="eventMain_List">
-                <Image
-                  className="eventImgMain"
-                  cloudName="dlvt2lnkh"
-                  publicId={val.EVENT_IMAGE}
-                />
-
+                <div className="imgCont_">
+                  <Image
+                    className="eventImgMain"
+                    cloudName="dlvt2lnkh"
+                    publicId={val.EVENT_IMAGE}
+                  />
+                </div>
                 <p className="eventTitleMain">{val.EVENT_TITLE}</p>
                 <p className="eventDateMain">{val.EVENT_DATE}</p>
                 <p className="eventContentMain">{val.EVENT_CONTENT}</p>
