@@ -427,3 +427,7 @@
 .upperForum {
   margin-bottom: 60px;
 }
+
+.tableApprovedAdminList td {
+  overflow: hidden;
+}
