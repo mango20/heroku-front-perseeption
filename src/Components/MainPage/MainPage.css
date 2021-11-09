@@ -66,7 +66,7 @@
   display: none;
 }
 
-#menuBar_bground {
+#menuBar_bground_ {
   display: none;
   height: 100vh;
   background-color: #009744;
@@ -103,7 +103,8 @@
   }
 
   .loggedInImg {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
   }
 
   .imgCont_ {

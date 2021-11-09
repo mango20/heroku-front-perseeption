@@ -111,6 +111,10 @@ function MainPage() {
   const showMenuBar = () => {
     document.getElementById("menuBar_bground_").style.display = "block";
     document.getElementById("menuBar_inside").style.display = "block";
+    document.getElementById("imageOrg").style.display = "none";
+    document.getElementById("eventTitleHead").style.display = "none";
+    document.getElementById("mainEventList").style.display = "none";
+    document.getElementById("outerFoot").style.display = "none";
   };
 
   return (
@@ -218,7 +222,7 @@ function MainPage() {
           </div>
         </div>
 
-        <div className="imageOrg">
+        <div className="imageOrg" id="imageOrg">
           <div className="slideshow">
             <img src="/images/pavic.jpg" alt="img" className="orgImg" />
             <img src="/images/events1.jpg" alt="img" className="orgImg1" />
@@ -230,8 +234,10 @@ function MainPage() {
         <Link to="/Registration" className="floatBtn" id="floatBtn">
           <p className="JoinUs"> Join Us!</p>
         </Link>
-        <h1 className="eventTitleHead">Perseeption Events</h1>
-        <div className="mainEventList">
+        <h1 className="eventTitleHead" id="eventTitleHead">
+          Perseeption Events
+        </h1>
+        <div className="mainEventList" id="mainEventList">
           {MAIN_EVENT.map((val, key) => {
             return (
               <div key={key} className="eventMain_List">
@@ -253,7 +259,7 @@ function MainPage() {
             );
           })}
         </div>
-        <div className="outerFoot">
+        <div className="outerFoot" id="outerFoot">
           <div className="footer">
             <div className="footIcon">
               <img
