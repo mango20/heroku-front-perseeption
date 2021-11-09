@@ -93,7 +93,7 @@ function AdminContactUs() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgSent").style.display = "none";
       // document.getElementById("popUpGetMsgInCont").style.display = "none";
-    }, 3000);
+    }, 5000);
   };
   const hideReplyModal = () => {
     document.getElementById("nameAdmin-id").value = "";

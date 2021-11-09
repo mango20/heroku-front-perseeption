@@ -250,6 +250,9 @@
   left: 0;
   bottom: 50;
   right: 0;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
   /* height: 500px; */
   /* display: none; */
 }
