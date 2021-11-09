@@ -242,12 +242,14 @@ function MainPage() {
                     publicId={val.EVENT_IMAGE}
                   />
                 </div>
-                <p className="eventTitleMain">{val.EVENT_TITLE}</p>
-                <p className="eventDateMain">{val.EVENT_DATE}</p>
-                <p className="eventContentMain">{val.EVENT_CONTENT}</p>
-                <Link to="/MemberEvents" className="readMoreMain">
-                  Read More
-                </Link>
+                <div className="containerInfo_Event">
+                  <p className="eventTitleMain">{val.EVENT_TITLE}</p>
+                  <p className="eventDateMain">{val.EVENT_DATE}</p>
+                  <p className="eventContentMain">{val.EVENT_CONTENT}</p>
+                  <Link to="/MemberEvents" className="readMoreMain">
+                    Read More
+                  </Link>
+                </div>
               </div>
             );
           })}
