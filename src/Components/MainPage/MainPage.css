@@ -85,6 +85,10 @@
     height: 800px;
   }
 
+  .eventMain_List .imgCont_ {
+    height: 600px;
+  }
+
   .imgCont_ {
     height: 600px;
     background-color: #009744;
