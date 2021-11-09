@@ -393,3 +393,7 @@
   .monthly_Income_1 {
     grid-area: monthly_Income_1;
   } */
+
+.outerAddNewMember_ {
+  display: none;
+}

@@ -619,7 +619,7 @@ function AdminMemberList() {
   };
 
   const addNewMember = () => {
-    document.getElementById("editApproveMember__").style.display = "block";
+    document.getElementById("outerAddNewMember_").style.display = "block";
     // document.getElementById("editApproveMemberContainer1").style.display =
     //   "block";
   };
