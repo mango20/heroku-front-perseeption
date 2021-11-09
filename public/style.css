@@ -403,6 +403,7 @@
 }
 
 .fileBtnAnnouncement {
+  grid-area: fileBtnAnnouncement;
   margin-top: 20px;
   font-size: 20px;
   border-radius: 5px;
@@ -410,6 +411,7 @@
 }
 
 .postAnnouncementBtn {
+  grid-area: postAnnouncementBtn;
   font-size: 20px;
   border-radius: 5px;
   border: none;
