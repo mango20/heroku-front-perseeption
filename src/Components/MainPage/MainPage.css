@@ -772,3 +772,21 @@
 #menuBar_bground_ a {
   color: #fff;
 }
+
+.fa-bars {
+  margin-top: -40px;
+}
+
+.menuBar_inside {
+  display: block;
+  padding-top: 100px;
+  text-align: center;
+}
+
+#menuBar_bground_ a {
+  color: #fff;
+  display: block;
+  font-size: 50px;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
