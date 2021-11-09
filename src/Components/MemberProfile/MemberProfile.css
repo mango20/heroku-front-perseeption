@@ -288,3 +288,18 @@
   /* float: left; */
   width: 150px;
 }
+.member_Profile_info_ {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  text-align: justify;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  padding: 30px 50px;
+  border: none;
+  border-radius: 5px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
