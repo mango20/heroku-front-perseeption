@@ -799,3 +799,9 @@
   text-align: center;
   margin-bottom: 30px;
 }
+
+#profileGo_,
+#portalDash_,
+#memberLogout {
+  display: none;
+}

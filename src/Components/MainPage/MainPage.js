@@ -127,7 +127,7 @@ function MainPage() {
     document.getElementById("menuBar_inside").style.display = "none";
     document.getElementById("imageOrg").style.display = "block";
     document.getElementById("eventTitleHead").style.display = "block";
-    document.getElementById("mainEventList").style.display = "block";
+    document.getElementById("mainEventList").style.display = "grid";
     document.getElementById("outerFoot").style.display = "block";
   };
 
