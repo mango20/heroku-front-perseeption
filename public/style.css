@@ -168,3 +168,22 @@
   background-color: #36a9e1;
 } */
 
+.profileIcon {
+  text-decoration: none;
+  color: #fff;
+  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.profileNameHeader {
+  margin-left: 50px;
+  margin-top: -35px;
+  margin-right: 20px;
+}
+
+.logout_Admin {
+  margin-left: 6px;
+  margin-top: 30px;
+}
