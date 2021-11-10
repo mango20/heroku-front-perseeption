@@ -983,23 +983,24 @@ function Registration() {
                     (Gumawa ng account)
                   </p>
                   <div className="userInpPassUser">
-                    <div className="inputUsernameBox">
-                      <p className="usernameTxt_name">Name:</p>
+                    <div className="inputNameBox">
+                      <p class="usernameTxt_name">Name:</p>
                       <input
                         type="text"
-                        id="regName"
+                        id="regUsername"
                         className="regInputName"
                         placeholder="Enter Name"
-                        // onKeyUp={usernameKeyUp}
                         onChange={(e) => {
                           setUsernameReg_Name(e.target.value);
                         }}
                         required
                       />
-                      <p className="usernameTxt_email">Email:</p>
+                    </div>
+                    <div className="inputEmailBox">
+                      <p className="usernameTxt">Email:</p>
                       <input
                         type="text"
-                        id="regEmail"
+                        id="regUsername"
                         className="regInputEmail"
                         placeholder="Enter Email"
                         // onKeyUp={usernameKeyUp}
@@ -1008,6 +1009,8 @@ function Registration() {
                         }}
                         required
                       />
+                    </div>
+                    <div className="inputUsernameBox">
                       <p className="usernameTxt">Username:</p>
                       <input
                         type="text"

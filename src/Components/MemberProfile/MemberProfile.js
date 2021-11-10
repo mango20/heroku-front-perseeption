@@ -64,6 +64,7 @@ function MemberProfile() {
   const [PHYSICAL_THERAPHY, setPHYSICAL_THERAPHY] = useState("");
   const [OCCUPATIONAL_THERAPHY, setOCCUPATIONAL_THERAPHY] = useState("");
   const [SPEECH_THERAPHY, setSPEECH_THERAPHY] = useState("");
+  const [NAME, setNAME] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
@@ -76,8 +77,8 @@ function MemberProfile() {
         var name = JSON.parse(localStorage.getItem("Client"));
 
         console.log(name);
-        console.log(name[0].ADMIN_NAME);
-
+        console.log(name[0].NAME);
+        setNAME(name[0].ADMIN_NAME);
         setADMIN_NAME(name[0].ADMIN_NAME);
         setUSERNAME(name[0].USERNAME);
         setFATHER_SURNAME(name[0].FATHER_SURNAME);
@@ -162,7 +163,7 @@ function MemberProfile() {
               <h2>Account Details</h2>
               <p>
                 Name:
-                <span> {ADMIN_NAME}</span>
+                <span> {NAME}</span>
               </p>
               <p>
                 Username:
