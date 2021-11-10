@@ -179,7 +179,8 @@ function MemberProfile() {
           USER_PASSWORD: USER_PASSWORD,
         }
       );
-      // window.location.reload();
+      localStorage.clear();
+      history.push("/");
     }
   };
   return (
