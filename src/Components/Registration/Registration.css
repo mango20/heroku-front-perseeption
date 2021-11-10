@@ -1012,9 +1012,22 @@
 
 .userInpPassUser {
   display: grid;
-  grid-template-areas: "inputUsernameBox" "inputPassBox";
+  grid-template-areas: "inputNameBox" "inputEmailBox" "inputUsernameBox" "inputPassBox";
   /* background-color: #36a9e1; */
 }
+
+.inputNameBox {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-areas: "usernameTxt_name regInputName";
+}
+
+.inputEmailBox {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-areas: "usernameTxt regInputEmail";
+}
+
 .inputUsernameBox {
   display: grid;
   grid-template-columns: 0.3fr 1fr;
