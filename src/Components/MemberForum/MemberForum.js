@@ -388,10 +388,16 @@ function MemberForum() {
                 return (
                   <div key={key} className="questionBox">
                     <div className="forumQuestionHead">
-                      <img
+                      {/* <img
                         src="/images/avatar.png"
                         alt="img"
                         className="iconForum"
+                      /> */}
+                      <Image
+                        className="iconForum"
+                        cloudName="dlvt2lnkh"
+                        alt="img"
+                        publicId={val.AVATAR}
                       />
                       <p className="iconForumName">{val.NAME}</p>
                       <i

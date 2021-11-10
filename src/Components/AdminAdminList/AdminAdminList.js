@@ -312,8 +312,7 @@ function AdminAdminList() {
         <Link to="/AdminProfile" className="profileIcon">
           {/* {ADMIN_LIST.map((imageId, index) => {
             return ( */}
-          <Image
-            
+          <Image 
             className="profilePicture"
             cloudName="dlvt2lnkh"
             alt="img"

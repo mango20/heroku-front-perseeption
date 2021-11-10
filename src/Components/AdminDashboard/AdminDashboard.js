@@ -10,7 +10,7 @@ function AdminDashboard() {
   const [numCountApprove, setnumCountApprove] = useState([]);
 
   const [numCountApprove1, setnumCountApprove1] = useState([]);
-
+  const [AVATAR, setAVATAR] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME_, setUSERNAME] = useState("");
 
@@ -28,6 +28,7 @@ function AdminDashboard() {
       console.log(name);
       console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
+      setAVATAR(name[0].AVATAR);
     }
   }, []);
   // useEffect(() => {
@@ -137,10 +138,11 @@ function AdminDashboard() {
             <p className="AdminHeaderTitle">Dashboard</p>
           </div>
           <Link to="/AdminProfile" className="profileIcon">
-            <img
-              src="/images/events1.jpg"
-              alt="img"
+            <Image
               className="profilePicture"
+              cloudName="dlvt2lnkh"
+              alt="img"
+              publicId={AVATAR}
             />
             {/* {USERNAME.map((val, key) => {
               return <p className="profileNameHeader">{val.ADMIN_NAME}</p>;

@@ -10,7 +10,7 @@ function AdminMemberList() {
   const [NEW_REQUEST_TYPE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME_, setUSERNAME] = useState("");
-
+  const [AVATAR, setAVATAR] = useState("");
   const history = useHistory();
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
@@ -26,6 +26,7 @@ function AdminMemberList() {
       console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setUSER_ID(name[0].USER_ID);
+      setAVATAR(name[0].AVATAR);
     }
   }, []);
 
@@ -652,7 +653,12 @@ function AdminMemberList() {
           <p className="AdminHeaderTitle">Manage Members</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
-          <img src="/images/events1.jpg" alt="img" className="profilePicture" />
+          <Image
+            className="profilePicture"
+            cloudName="dlvt2lnkh"
+            alt="img"
+            publicId={AVATAR}
+          />
 
           <p className="profileNameHeader">{USERNAME_}</p>
         </Link>

@@ -16,7 +16,7 @@ function AdminProfile() {
   const [ADMIN_INFO, setADMIN_INFO] = useState([]);
 
   const [USERNAME_, setUSERNAME] = useState("");
-
+  const [AVATAR, setAVATAR] = useState("");
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
     if (
@@ -37,6 +37,7 @@ function AdminProfile() {
       setADMIN_INFO_CONTACT(name[0].ADMIN_CONTACT);
       setADMIN_INFO_USERNAME(name[0].USERNAME);
       setADMIN_INFO_PASSWORD(name[0].USER_PASSWORD);
+      setAVATAR(name[0].AVATAR);
     }
   }, []);
 
@@ -96,7 +97,12 @@ function AdminProfile() {
           <p className="AdminHeaderTitle">Profile</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
-          <img src="/images/events1.jpg" alt="img" className="profilePicture" />
+          <Image
+            className="profilePicture"
+            cloudName="dlvt2lnkh"
+            alt="img"
+            publicId={AVATAR}
+          />
           <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>

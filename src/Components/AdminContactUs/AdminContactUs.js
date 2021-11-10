@@ -13,6 +13,7 @@ function AdminContactUs() {
   const [EmailContact, setEmailContact] = useState("");
   const [ContactUsMsg, setContactUsMsg] = useState("");
   const [contact_usList, setcontact_usList] = useState([]);
+  const [AVATAR, setAVATAR] = useState("");
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
   //     console.log(response.data.loggedIn);
@@ -165,6 +166,7 @@ function AdminContactUs() {
       console.log(name);
       console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
+      setAVATAR(name[0].AVATAR);
     }
   }, []);
 
@@ -181,7 +183,12 @@ function AdminContactUs() {
           <p className="AdminHeaderTitle">inbox</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
-          <img src="/images/events1.jpg" alt="img" className="profilePicture" />
+          <Image
+            className="profilePicture"
+            cloudName="dlvt2lnkh"
+            alt="img"
+            publicId={AVATAR}
+          />
 
           <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
