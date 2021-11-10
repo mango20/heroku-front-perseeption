@@ -18,7 +18,9 @@ function AdminAdminList() {
   // const [ADMIN_NAME, setADMIN_NAME] = useState("");
 
   const [ADD_ADMIN, setADD_ADMIN] = useState("");
-
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
   const uploadImage = (base64EncodedImage) => {
     const addAdminName = document.getElementById("addAdminName").value;
     const addAdminContact = document.getElementById("addAdminContact").value;
