@@ -379,8 +379,8 @@ function Registration() {
     ) {
       Axios.post("https://perseeption-tromagade.herokuapp.com/register", {
         data: base64EncodedImage,
-        NAME: UsernameReg_Name,
-        EMAIL: UsernameReg_Email,
+        UsernameReg_Name: UsernameReg_Name,
+        UsernameReg_Email: UsernameReg_Email,
         USERNAME: usernameReg,
         USER_PASSWORD: passwordReg,
 
