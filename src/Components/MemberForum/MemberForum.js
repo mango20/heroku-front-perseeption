@@ -373,7 +373,7 @@ function MemberForum() {
               {FORUM_REPLY_LIST.map((val, key) => {
                 return (
                   <div key={key} className="repliesList">
-                    <p className="nameReply">{val.ADMIN_NAME}</p>
+                    <p className="nameReply">{val.NAME}</p>
 
                     <p className="contentReply">{val.FORUM_REPLY_CONTENT}</p>
                   </div>
@@ -392,7 +392,7 @@ function MemberForum() {
                         alt="img"
                         className="iconForum"
                       />
-                      <p className="iconForumName">{val.ADMIN_NAME}</p>
+                      <p className="iconForumName">{val.NAME}</p>
                       <i
                         className="fa fa-trash"
                         id="bullets"
