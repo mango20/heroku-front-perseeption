@@ -6,7 +6,10 @@ import { Link, useHistory } from "react-router-dom";
 function MemberProfile() {
   const history = useHistory();
   Axios.defaults.withCredentials = true;
-
+  const [USER_ID, setUSER_ID] = useState("");
+  const [NAME, setNAME] = useState("");
+  const [USER_PASSWORD, setUSER_PASSWORD] = useState("");
+  const [EMAIL, setEMAIL] = useState("");
   const [ADMIN_NAME, setADMIN_NAME] = useState("");
   const [USERNAME, setUSERNAME] = useState("");
   const [FATHER_SURNAME, setFATHER_SURNAME] = useState("");
@@ -78,7 +81,9 @@ function MemberProfile() {
 
         console.log(name);
         console.log(name[0].NAME);
-        setNAME(name[0].ADMIN_NAME);
+        setUSER_ID(name[0].USER_ID);
+        setNAME(name[0].NAME);
+        setEMAIL(name[0].EMAIL);
         setADMIN_NAME(name[0].ADMIN_NAME);
         setUSERNAME(name[0].USERNAME);
         setFATHER_SURNAME(name[0].FATHER_SURNAME);
@@ -146,8 +151,82 @@ function MemberProfile() {
     }
   }, []);
 
+  const showAcc = () => {
+    document.getElementById("EditMemberProfile_infoBg").style.display = "block";
+  };
+
+  const hideAcc = () => {
+    document.getElementById("EditMemberProfile_infoBg").style.display = "none";
+  };
+
+  const updateDet_submit = (USER_ID) => {
+    const p = document.getElementById("password_MemberDetails").value;
+    if (p === "") {
+      return;
+    } else {
+      alert("updated");
+      Axios.put(
+        `https://perseeption-tromagade.herokuapp.com/updateMember_Details/${USER_ID}`,
+        {
+          NAME: NAME,
+          EMAIL: EMAIL,
+          USERNAME: USERNAME,
+          USER_PASSWORD: USER_PASSWORD,
+        }
+      );
+      window.location.reload();
+    }
+  };
   return (
     <div className="proBg">
+      <div id="EditMemberProfile_infoBg">
+        <div id="EditMemberProfile_infoIn">
+          <input
+            type="text"
+            value={NAME}
+            onChange={(e) => {
+              setNAME(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            value={EMAIL}
+            onChange={(e) => {
+              setEMAIL(e.target.value);
+            }}
+          />
+          <input
+            type="text"
+            value={USERNAME}
+            onChange={(e) => {
+              setUSERNAME(e.target.value);
+            }}
+          />
+          <P>
+            Enter your password or your new password if you want to change it:
+          </P>
+          <input
+            type="password"
+            id="password_MemberDetails"
+            onChange={(e) => {
+              setUSER_PASSWORD(e.target.value);
+            }}
+          />
+          <div className="btnUpdateMemberProfile_det">
+            <button id="btnUpdateDet_back" onClick={hideAcc}>
+              Back
+            </button>
+            <button
+              id="btnUpdateDet_submit"
+              onClick={() => {
+                updateDet_submit(USER_ID);
+              }}
+            >
+              Update Account
+            </button>
+          </div>
+        </div>
+      </div>
       <div className="contPro">
         <div className="member_Profile_info_">
           <div className="memproCont">
@@ -155,15 +234,24 @@ function MemberProfile() {
               <img src="/images/logoIcon.png" alt="" id="logPro" />
               <h1 className="profileTitle_">Member Profile</h1>
             </div>
+            <div className="">
+              <button id="showAccDetails_" onClick={showAcc}>
+                Edit Account
+              </button>
+              <Link to="/">
+                <p className="backMemberProfile">Back</p>
+              </Link>
+            </div>
 
-            <Link to="/">
-              <p className="backMemberProfile">Back</p>
-            </Link>
             <div className="accData">
               <h2>Account Details</h2>
               <p>
                 Name:
                 <span> {NAME}</span>
+              </p>
+              <p>
+                Email:
+                <span> {EMAIL}</span>
               </p>
               <p>
                 Username:
