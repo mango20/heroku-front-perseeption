@@ -82,6 +82,11 @@ function AdminAdminList() {
         setADMIN_LIST(response.data);
       }
     );
+    document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
   };
 
   const showAddNewAdmin = () => {
@@ -132,6 +137,12 @@ function AdminAdminList() {
   };
 
   const updateAdminInformationBtn = (NEW_ADMIN_ID) => {
+    document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgAdminUpdate").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
+
     console.log(USER_ID);
 
     console.log(NEW_ADMIN_ID);
@@ -209,7 +220,11 @@ function AdminAdminList() {
   }, []);
 
   const deleteAdmin = (USER_ID) => {
-    console.log(USER_ID);
+    document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteAdmin/${USER_ID}`
     ).then((response) => {
@@ -293,6 +308,24 @@ function AdminAdminList() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out"></i> Logout
           </p>
+        </div>
+        <div id="popUpGetMsgAdminUpdate">
+          <div id="popUpGetMsgInAdminUpdate">
+            <h2>PerSEEption Message</h2>
+            <h1>Admin Updated Successfully!</h1>
+          </div>
+        </div>
+        <div id="popUpGetMsgAdminAdded">
+          <div id="popUpGetMsgInAdminAdded">
+            <h2>PerSEEption Message</h2>
+            <h1>Admin Added Successfully!</h1>
+          </div>
+        </div>
+        <div id="popUpGetMsgDeleteAdmin">
+          <div id="popUpGetMsgInDeleteAdmin">
+            <h2>PerSEEption Message</h2>
+            <h1>Admin Request Deleted</h1>
+          </div>
         </div>
         <div className="formBox">
           <div className="dividerTitleFilterAdminList">

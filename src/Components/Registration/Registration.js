@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 function Registration() {
   Axios.defaults.withCredentials = true;
   const [LastMember, setLastMember] = useState([]);
+  const [UsernameReg_Name, setUsernameReg_Name] = useState("");
+  const [UsernameReg_Email, setUsernameReg_Email] = useState("");
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
   const [CHILD_SURNAME, setCHILD_SURNAME] = useState("");
@@ -377,6 +379,8 @@ function Registration() {
     ) {
       Axios.post("https://perseeption-tromagade.herokuapp.com/register", {
         data: base64EncodedImage,
+        NAME: UsernameReg_Name,
+        EMAIL: UsernameReg_Email,
         USERNAME: usernameReg,
         USER_PASSWORD: passwordReg,
 
@@ -980,6 +984,30 @@ function Registration() {
                   </p>
                   <div className="userInpPassUser">
                     <div className="inputUsernameBox">
+                      <p className="usernameTxt_name">Name:</p>
+                      <input
+                        type="text"
+                        id="regName"
+                        className="regInputName"
+                        placeholder="Enter Name"
+                        // onKeyUp={usernameKeyUp}
+                        onChange={(e) => {
+                          setUsernameReg_Name(e.target.value);
+                        }}
+                        required
+                      />
+                      <p className="usernameTxt_email">Email:</p>
+                      <input
+                        type="text"
+                        id="regEmail"
+                        className="regInputEmail"
+                        placeholder="Enter Email"
+                        // onKeyUp={usernameKeyUp}
+                        onChange={(e) => {
+                          setUsernameReg_Email(e.target.value);
+                        }}
+                        required
+                      />
                       <p className="usernameTxt">Username:</p>
                       <input
                         type="text"

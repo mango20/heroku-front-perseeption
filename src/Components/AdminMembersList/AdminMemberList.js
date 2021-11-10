@@ -460,7 +460,12 @@ function AdminMemberList() {
 
   // Update Title
   const ApprovedMember = (USER_ID) => {
-    alert("Admin Approve!");
+    // alert("Admin Approve!");
+    document.getElementById("popUpGetMsgApprove").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
     Axios.put(
       "https://perseeption-tromagade.herokuapp.com/api/approvePendingMember",
       {
@@ -495,7 +500,11 @@ function AdminMemberList() {
 
   // Delete Pending Member
   const deletePendingMember = (USER_ID) => {
-    alert("Admin Deleted!");
+    document.getElementById("popUpGetMsgDeleteMember").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgDeleteMember").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteMemberPending/${USER_ID}`
     ).then((response) => {
@@ -515,7 +524,12 @@ function AdminMemberList() {
 
   // Delete Pending Member
   const deleteApprovedMember = (USER_ID) => {
-    alert("Admin Deleted!");
+    document.getElementById("popUpGetMsgDeleteMember_").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteMemberApprove/${USER_ID}`
     ).then((response) => {
@@ -620,6 +634,7 @@ function AdminMemberList() {
 
   const addNewMember = () => {
     document.getElementById("outerAddNewMember_").style.display = "block";
+    document.getElementById("innerAddNewMember_").style.display = "block";
     // document.getElementById("editApproveMemberContainer1").style.display =
     //   "block";
   };
@@ -674,6 +689,25 @@ function AdminMemberList() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
+        </div>
+        <div id="popUpGetMsgApprove">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Member Approved Successfully!</h1>
+          </div>
+        </div>
+        <div id="popUpGetMsgDeleteMember">
+          <div id="popUpGetMsgInDeleteMember">
+            <h2>PerSEEption Message</h2>
+            <h1>Member Request Deleted</h1>
+          </div>
+        </div>
+
+        <div id="popUpGetMsgDeleteMember_">
+          <div id="popUpGetMsgInDeleteMember_">
+            <h2>PerSEEption Message</h2>
+            <h1>Member Deleted Successfully</h1>
+          </div>
         </div>
         {/* <Link to="/AdminAdminList">Admin List</Link> */}
         <div className="form1">
