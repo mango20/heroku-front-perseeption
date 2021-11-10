@@ -313,7 +313,7 @@ function AdminAdminList() {
           {/* {ADMIN_LIST.map((imageId, index) => {
             return ( */}
           <Image
-            key={index}
+            
             className="profilePicture"
             cloudName="dlvt2lnkh"
             alt="img"
