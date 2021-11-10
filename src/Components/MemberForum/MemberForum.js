@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 function MemberForum() {
   Axios.defaults.withCredentials = true;
   const [FORUM_TITLE, setFORUM_TITLE] = useState("");
+  const [NAME, setNAME] = useState("");
   const [ADMIN_NAME, setADMIN_NAME] = useState("");
   const [FORUM_CONTENT, setFORUM_CONTENT] = useState("");
   const [FORUM_ID, setFORUM_ID] = useState("");
@@ -117,9 +118,9 @@ function MemberForum() {
     if (localStorage.getItem("Client") !== null) {
       const name = JSON.parse(localStorage.getItem("Client"));
       const USER_ID_ = name[0].USER_ID;
-      const ADMIN_NAME = name[0].ADMIN_NAME;
+      const NAME = name[0].NAME;
       console.log(USER_ID_);
-      console.log(ADMIN_NAME);
+      console.log(NAME);
       setUSER_ID(name[0].USER_ID);
 
       Axios.post(
