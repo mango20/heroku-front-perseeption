@@ -229,7 +229,7 @@ function AdminContactUs() {
         <div id="popUpGetMsgDelete">
           <div id="popUpGetMsgInSentDelete">
             <h2>PerSEEption Message</h2>
-            <h1>Admin Remove from list</h1>
+            <h1>Message Deleted!</h1>
           </div>
         </div>
 

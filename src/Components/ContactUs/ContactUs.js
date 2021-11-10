@@ -160,6 +160,7 @@ function ContactUs() {
             <h1>Please fill out all field!</h1>
           </div>
         </div>
+
         <div id="contactUsSent">
           <div id="popUpGetMsgInCont__">
             <h2>Message</h2>
