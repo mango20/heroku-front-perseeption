@@ -18,17 +18,19 @@ function MemberForum() {
 
   const history = useHistory();
   // const [USER_ID, setUSER_ID] = useState("");
-
+  const [AVATAR, setAVATAR] = useState("");
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
+
       if (name1[0].USER_TYPE === "Admin") {
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
       } else {
         document.getElementById("portalDash").style.display = "none";
       }
+      setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
       document.getElementById("loggedInImg").style.display = "block";
@@ -84,6 +86,7 @@ function MemberForum() {
     Axios.get(`https://perseeption-tromagade.herokuapp.com/api/getForum`).then(
       (response) => {
         setFORUM_LIST(response.data);
+        console.log(response.data);
       }
     );
   }, []);
@@ -270,13 +273,21 @@ function MemberForum() {
             Log in
           </Link>
           <div className="memberDiv" id="memberDiv">
-            <img
+            <Image
+              className="loggedInImg"
+              id="loggedInImg"
+              cloudName="dlvt2lnkh"
+              alt="img"
+              publicId={AVATAR}
+              onClick={popup}
+            />
+            {/* <img
               src="/images/events1.jpg"
               alt="sdf"
               className="loggedInImg"
               id="loggedInImg"
               onClick={popup}
-            />
+            /> */}
             <div className="dropdown-content" id="dropdown-content">
               <Link to="/MemberProfile" id="profileGo">
                 Profile
