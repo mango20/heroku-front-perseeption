@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminProfile.css";
 import { Link, useHistory } from "react-router-dom";
+import { Image } from "cloudinary-react";
 function AdminProfile() {
   Axios.defaults.withCredentials = true;
   const history = useHistory();

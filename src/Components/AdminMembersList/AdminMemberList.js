@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminMemberList.css";
 import { Link, useHistory } from "react-router-dom";
-
+import { Image } from "cloudinary-react";
 function AdminMemberList() {
   Axios.defaults.withCredentials = true;
   const [MEMBER_PENDING_LIST, setMEMBER_PENDING_LIST] = useState([]);

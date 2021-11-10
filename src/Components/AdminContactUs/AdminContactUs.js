@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./AdminContactUs.css";
 // import React from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import { Image } from "cloudinary-react";
 function AdminContactUs() {
   Axios.defaults.withCredentials = true;
   const history = useHistory();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./MemberForum.css";
 import { Link, useHistory } from "react-router-dom";
-
+import { Image } from "cloudinary-react";
 function MemberForum() {
   Axios.defaults.withCredentials = true;
   const [FORUM_TITLE, setFORUM_TITLE] = useState("");

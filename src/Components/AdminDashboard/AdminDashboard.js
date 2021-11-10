@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./AdminDashboard.css";
 import { Link, useHistory } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
-
+import { Image } from "cloudinary-react";
 function AdminDashboard() {
   Axios.defaults.withCredentials = true;
   const [NumCountReq, seNumCountReq] = useState([]);
