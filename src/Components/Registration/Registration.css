@@ -789,7 +789,8 @@
 .addressLable,
 .contactLable,
 .occuLabel,
-.childDataLabel {
+.childDataLabel,
+.usernameTxt_name {
   text-align: right;
 }
 .childNameLabel,
@@ -802,7 +803,8 @@
 .addressLable,
 .contactLable,
 .occuLabel,
-.childDataLabel {
+.childDataLabel,
+.usernameTxt_name {
   margin-right: 10px;
 }
 .childsDataBox {
