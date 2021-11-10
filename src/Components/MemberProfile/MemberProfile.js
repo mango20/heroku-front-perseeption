@@ -160,6 +160,11 @@ function MemberProfile() {
   };
 
   const updateDet_submit = (USER_ID) => {
+    console.log(USER_ID);
+    console.log(NAME);
+    console.log(EMAIL);
+    console.log(USERNAME);
+    console.log(USER_PASSWORD);
     const p = document.getElementById("password_MemberDetails").value;
     if (p === "") {
       return;
@@ -174,7 +179,7 @@ function MemberProfile() {
           USER_PASSWORD: USER_PASSWORD,
         }
       );
-      window.location.reload();
+      // window.location.reload();
     }
   };
   return (

@@ -317,7 +317,7 @@
   z-index: 999;
 }
 
-.EditMemberProfile_infoIn {
+#EditMemberProfile_infoIn {
   top: 200px;
   border: solid black 1px;
   /* padding: 10px 25px; */
