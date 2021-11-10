@@ -251,7 +251,7 @@ function AdminAdminList() {
     localStorage.clear();
     window.location.reload();
   };
-
+  const [AVATAR, setAVATAR] = useState("");
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
     if (
@@ -265,6 +265,8 @@ function AdminAdminList() {
       console.log(name);
       console.log(name[0].ADMIN_NAME);
       setADMIN_NAME(name[0].ADMIN_NAME);
+      setAVATAR(name[0].AVATAR);
+
       // setUSER_ID(name[0].USER_ID);
     }
   }, []);
@@ -308,18 +310,17 @@ function AdminAdminList() {
           <p className="AdminHeaderTitle">Manage Admin</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
-          {ADMIN_LIST.map((imageId, index) => {
-            return (
-              <Image
-                key={index}
-                className="profilePicture"
-                cloudName="dlvt2lnkh"
-                publicId={imageId.AVATAR}
-              />
-            );
-          })}
+          {/* {ADMIN_LIST.map((imageId, index) => {
+            return ( */}
+          <Image
+            key={index}
+            className="profilePicture"
+            cloudName="dlvt2lnkh"
+            alt="img"
+            publicId={AVATAR}
+          />
+          {/* ); })} */}
           {/* <img src="/images/events1.jpg" alt="img" className="profilePicture" /> */}
-
           <p className="profileNameHeader">{ADMIN_NAME}</p>
         </Link>
       </div>
