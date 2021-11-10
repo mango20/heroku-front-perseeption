@@ -358,7 +358,7 @@ function AdminAdminList() {
                   return (
                     <tr key={key}>
                       <td>{val.USER_ID}</td>
-                      <td>{val.USErNAME}</td>
+                      <td>{val.USERNAME}</td>
                       <td>{val.ADMIN_CONTACT}</td>
                       <td>{val.ADMIN_ADDRESS}</td>
                       <td>{val.ADMIN_EMAIL}</td>
