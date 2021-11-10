@@ -269,7 +269,7 @@ function AdminAdminList() {
     }
   }, []);
 
-  const [fileInputState, setFileInputState] = useState("");
+  // const [fileInputState, setFileInputState] = useState("");
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
