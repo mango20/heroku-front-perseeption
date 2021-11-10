@@ -67,7 +67,7 @@ function MemberProfile() {
   const [PHYSICAL_THERAPHY, setPHYSICAL_THERAPHY] = useState("");
   const [OCCUPATIONAL_THERAPHY, setOCCUPATIONAL_THERAPHY] = useState("");
   const [SPEECH_THERAPHY, setSPEECH_THERAPHY] = useState("");
-  const [NAME, setNAME] = useState("");
+  // const [NAME, setNAME] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
