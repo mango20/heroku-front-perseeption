@@ -202,9 +202,9 @@ function MemberProfile() {
               setUSERNAME(e.target.value);
             }}
           />
-          <P>
+          <p>
             Enter your password or your new password if you want to change it:
-          </P>
+          </p>
           <input
             type="password"
             id="password_MemberDetails"
