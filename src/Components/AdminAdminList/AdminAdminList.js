@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./AdminList.css";
 import { Link, useHistory } from "react-router-dom";
+import { Image } from "cloudinary-react";
 
 function AdminAdminList() {
   Axios.defaults.withCredentials = true;
@@ -17,7 +18,8 @@ function AdminAdminList() {
   // const [ADMIN_NAME, setADMIN_NAME] = useState("");
 
   const [ADD_ADMIN, setADD_ADMIN] = useState("");
-  const insertNewAdmin = () => {
+
+  const uploadImage = (base64EncodedImage) => {
     const addAdminName = document.getElementById("addAdminName").value;
     const addAdminContact = document.getElementById("addAdminContact").value;
     const addAdminAddress = document.getElementById("addAdminAddress").value;
@@ -68,6 +70,7 @@ function AdminAdminList() {
       addAdminPassword_.style.borderColor = "green";
     }
     Axios.post("https://perseeption-tromagade.herokuapp.com/insertNewAdmin", {
+      data: base64EncodedImage,
       USERNAME: USERNAME,
       ADMIN_NAME: ADD_ADMIN,
       ADMIN_CONTACT: ADMIN_CONTACT,
@@ -264,6 +267,38 @@ function AdminAdminList() {
     }
   }, []);
 
+  const [fileInputState, setFileInputState] = useState("");
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    // reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
+
+  const insertNewAdmin = (e) => {
+    console.log("sub");
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      console.log("AAAAAAAAAAAAAAAAH");
+    };
+  };
+
   return (
     <div className="AdminAdminListBg">
       <div className="AdminHeader">
@@ -271,7 +306,17 @@ function AdminAdminList() {
           <p className="AdminHeaderTitle">Manage Admin</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
-          <img src="/images/events1.jpg" alt="img" className="profilePicture" />
+          {ADMIN_LIST.map((imageId, index) => {
+            return (
+              <Image
+                key={index}
+                className="profilePicture"
+                cloudName="dlvt2lnkh"
+                publicId={imageId.AVATAR}
+              />
+            );
+          })}
+          {/* <img src="/images/events1.jpg" alt="img" className="profilePicture" /> */}
 
           <p className="profileNameHeader">{ADMIN_NAME}</p>
         </Link>
@@ -494,6 +539,12 @@ function AdminAdminList() {
               type="password"
               id="addAdminPassword"
               onChange={(e) => setUSER_PASSWORD(e.target.value)}
+            />
+            <input
+              type="file"
+              id="avatarIcon_"
+              value={fileInputState}
+              onChange={handleFileInputChange}
             />
             <div className="AdminListBtns">
               <p className="adminListCancelBtn" onClick={hideAddNewAdmin}>
