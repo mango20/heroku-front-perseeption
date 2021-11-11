@@ -63,6 +63,7 @@
   /* background: #ffc0c0; */
   padding: 30px;
   text-align: center;
+  display: inline-block;
 }
 .popupProfile {
   display: none;

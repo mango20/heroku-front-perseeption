@@ -68,6 +68,7 @@ function MemberEvents() {
       } else {
         document.getElementById("portalDash").style.display = "none";
       }
+      setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
       document.getElementById("loggedInImg").style.display = "block";
@@ -131,11 +132,12 @@ function MemberEvents() {
             Log in
           </Link>
           <div className="memberDiv" id="memberDiv">
-            <img
-              src="/images/events1.jpg"
-              alt="sdf"
+            <Image
               className="loggedInImg"
               id="loggedInImg"
+              cloudName="dlvt2lnkh"
+              alt="img"
+              publicId={AVATAR}
               onClick={popup}
             />
             <div className="dropdown-content" id="dropdown-content">

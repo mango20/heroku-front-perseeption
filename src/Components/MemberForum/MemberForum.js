@@ -34,6 +34,8 @@ function MemberForum() {
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
       document.getElementById("loggedInImg").style.display = "block";
+      // document.getElementById("LoginHeader_").style.display = "none";
+      // document.getElementById("profileGo_").style.display = "block";
     }
   }, []);
 

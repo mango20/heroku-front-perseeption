@@ -143,7 +143,13 @@ function AdminProfile() {
         <div className="adminInfo">
           <div className="adminInfoBox">
             <div className="adminDummyImage">
-              <i className="fa fa-user-circle-o " id="iconDummy"></i>
+              <Image
+                id="iconDummy"
+                cloudName="dlvt2lnkh"
+                alt="img"
+                publicId={AVATAR}
+              />
+              {/* <i className="fa fa-user-circle-o " id="iconDummy"></i> */}
             </div>
             <div className="adminInfoTexts">
               <p className="adminName">Name: {ADMIN_INFO_NAME}</p>
