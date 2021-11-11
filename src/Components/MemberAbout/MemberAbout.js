@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Image } from "cloudinary-react";
 function MemberAbout() {
   Axios.defaults.withCredentials = true;
+  const [AVATAR, setAVATAR] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
   const history = useHistory();
   useEffect(() => {

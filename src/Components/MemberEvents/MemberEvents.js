@@ -9,7 +9,7 @@ function MemberEvents() {
   const [USER_ID, setUSER_ID] = useState("");
   const [EVENT_LIST, setEVENT_LIST] = useState([]);
   const [EVENT_LIST_, setEVENT_LIST_] = useState([]);
-
+  const [AVATAR, setAVATAR] = useState("");
   const [EVENT_ID_, setEVENT_ID_] = useState("");
   const [EVENT_IMAGE, setEVENT_IMAGE] = useState("");
   const [EVENT_TITLE, setEVENT_TITLE] = useState("");

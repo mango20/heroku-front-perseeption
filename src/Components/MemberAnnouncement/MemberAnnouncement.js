@@ -6,6 +6,7 @@ import { CloudinaryContext, Image } from "cloudinary-react";
 function MemberAnnouncement() {
   Axios.defaults.withCredentials = true;
   const history = useHistory();
+  const [AVATAR, setAVATAR] = useState("");
   const [memberAnnouncementList, setMemberAnnouncementList] = useState([]);
   useEffect(() => {
     Axios.get(
