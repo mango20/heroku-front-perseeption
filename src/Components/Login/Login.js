@@ -22,8 +22,22 @@ function Login() {
       USER_PASSWORD: password,
     }).then((response) => {
       alert(response.data.message);
+      if (
+        response.data.message === "Wrong username and password combination" &&
+        response.data.message === "User doesn't exist"
+      ) {
+        setloginMessage(response.data.message);
+        const errorMgs = (document.getElementById("errorMsg").style.display =
+          "block");
+        setTimeout(function () {
+          document.getElementById("errorMsg").style.display = "none";
+        }, 3000);
+        const errorMgs =
+          ((document.getElementById("errorMsg").style.display = "block"), 1000);
+      }
       console.log(response.data);
       console.log(response.data.result);
+      setloginMessage(response.data.message);
       var userDetails = response.data.result;
       localStorage.setItem("Client", JSON.stringify(userDetails));
       if (response.data.result[0].USER_TYPE === "Admin") {
