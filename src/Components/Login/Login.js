@@ -22,10 +22,7 @@ function Login() {
       USER_PASSWORD: password,
     }).then((response) => {
       // alert(response.data.message);
-      if (
-        response.data.message === "Wrong username and password combination" ||
-        response.data.message === "User doesn't exist"
-      ) {
+      if (response.data) {
         setloginMessage(response.data.message);
         document.getElementById("bgLoginStats").style.display = "block";
         setTimeout(function () {
