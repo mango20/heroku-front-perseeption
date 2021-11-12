@@ -630,7 +630,7 @@ function AdminMemberList() {
 
   const [NAME, setNAME] = useState("");
   // const [USER_ID, setUSER_ID] = useState("");
-  const [USERNAME, setUSERNAME] = useState("");
+  const [USERNAME, setUSER_NAME] = useState("");
   const [CITY_ADDRESS, setCITY_ADDRESS] = useState("");
   const [MOTHER_CONTACT, setMOTHER_CONTACT] = useState("");
   // const [USER_ID, setUSER_ID] = useState("");
@@ -650,6 +650,7 @@ function AdminMemberList() {
       setMOTHER_CONTACT(response.data[0].MOTHER_CONTACT);
       setMOTHER_EMAIL(response.data[0].MOTHER_EMAIL);
       setUSER_ID(response.data[0].USER_ID);
+      setUSER_NAME(response.data[0].USERNAME);
     });
   };
   const [MEMBERUPDATE, setMEMBERUPDATE] = useState([]);
@@ -951,7 +952,7 @@ function AdminMemberList() {
               type="text"
               value={USERNAME}
               onChange={(e) => {
-                setUSERNAME(e.target.value);
+                setUSER_NAME(e.target.value);
               }}
             />
             <div className="editApproveMemberBtns">
