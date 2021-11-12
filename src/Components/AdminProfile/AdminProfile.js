@@ -63,7 +63,7 @@ function AdminProfile() {
       `https://perseeption-tromagade.herokuapp.com/getAdminProfileInfo_/${USER_ID}`
     ).then((response) => {
       console.log(response.data);
-      setNAME(response.data[0].ADMIN_NAME);
+      setNAME(response.data[0].NAME);
       setADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
       setADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
@@ -72,35 +72,40 @@ function AdminProfile() {
   };
 
   const updateAdmin = (USER_ID) => {
-    Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
-      {
-        USER_ID: USER_ID,
-        USERNAME: USERNAME,
-        ADMIN_CONTACT: ADMIN_CONTACT,
-        ADMIN_ADDRESS: ADMIN_ADDRESS,
-        NAME: NAME,
-        USER_PASSWORD: USER_PASSWORD,
-        ADMIN_EMAIL: ADMIN_EMAIL,
-      }
-    ).then((response) => {
-      console.log(response.data);
-      setADMIN_INFO(
-        ADMIN_INFO.map((val) => {
-          return val.USER_ID === USER_ID
-            ? {
-                USER_ID: val.USER_ID,
-                USERNAME: USERNAME,
-                ADMIN_CONTACT: ADMIN_CONTACT,
-                ADMIN_ADDRESS: ADMIN_ADDRESS,
-                NAME: NAME,
-                USER_PASSWORD: USER_PASSWORD,
-                ADMIN_EMAIL: ADMIN_EMAIL,
-              }
-            : val;
-        })
-      );
-    });
+    const p = document.getElementById("profPass").value;
+    if (p === "") {
+      return;
+    } else {
+      Axios.put(
+        `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
+        {
+          USER_ID: USER_ID,
+          USERNAME: USERNAME,
+          ADMIN_CONTACT: ADMIN_CONTACT,
+          ADMIN_ADDRESS: ADMIN_ADDRESS,
+          NAME: NAME,
+          USER_PASSWORD: USER_PASSWORD,
+          ADMIN_EMAIL: ADMIN_EMAIL,
+        }
+      ).then((response) => {
+        console.log(response.data);
+        setADMIN_INFO(
+          ADMIN_INFO.map((val) => {
+            return val.USER_ID === USER_ID
+              ? {
+                  USER_ID: val.USER_ID,
+                  USERNAME: USERNAME,
+                  ADMIN_CONTACT: ADMIN_CONTACT,
+                  ADMIN_ADDRESS: ADMIN_ADDRESS,
+                  NAME: NAME,
+                  USER_PASSWORD: USER_PASSWORD,
+                  ADMIN_EMAIL: ADMIN_EMAIL,
+                }
+              : val;
+          })
+        );
+      });
+    }
   };
   return (
     <div className="adminProfile">
