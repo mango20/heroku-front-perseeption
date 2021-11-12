@@ -627,10 +627,60 @@ function AdminMemberList() {
     document.getElementById("editApproveMemberContainer1").style.display =
       "none";
   };
-  const editApproveMemberList = () => {
+
+  const [NAME, setNAME] = useState("");
+  const [USER_ID, setUSER_ID] = useState("");
+  const [USERNAME, setUSERNAME] = useState("");
+  const [CITY_ADDRESS, setCITY_ADDRESS] = useState("");
+  const [MOTHER_CONTACT, setMOTHER_CONTACT] = useState("");
+  const [USER_ID, setUSER_ID] = useState("");
+  const [MOTHER_EMAIL, setMOTHER_EMAIL] = useState("");
+
+  const editApproveMemberList = (USER_ID) => {
     document.getElementById("editApproveMemberOuter").style.display = "block";
     document.getElementById("editApproveMemberContainer1").style.display =
       "block";
+
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/getMemberProfileInfo_Update/${USER_ID}`
+    ).then((response) => {
+      console.log(response.data);
+      setNAME(response.data[0].NAME);
+      setCITY_ADDRESS(response.data[0].CITY_ADDRESS);
+      setMOTHER_CONTACT(response.data[0].MOTHER_CONTACT);
+      setMOTHER_EMAIL(response.data[0].MOTHER_EMAIL);
+      setUSER_ID(response.data[0].USER_ID);
+    });
+  };
+
+  const editApproveMemberListUpdate = (USER_ID) => {
+    Axios.put(
+      `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
+      {
+        USER_ID: USER_ID,
+        USERNAME: USERNAME,
+        MOTHER_EMAIL: MOTHER_EMAIL,
+        MOTHER_CONTACT: MOTHER_CONTACT,
+        NAME: NAME,
+        CITY_ADDRESS: CITY_ADDRESS,
+      }
+    ).then((response) => {
+      console.log(response.data);
+      setADMIN_INFO(
+        ADMIN_INFO.map((val) => {
+          return val.USER_ID === USER_ID
+            ? {
+                USER_ID: val.USER_ID,
+                USERNAME: USERNAME,
+                MOTHER_EMAIL: MOTHER_EMAIL,
+                MOTHER_CONTACT: MOTHER_CONTACT,
+                NAME: NAME,
+                CITY_ADDRESS: CITY_ADDRESS,
+              }
+            : val;
+        })
+      );
+    });
   };
 
   const addNewMember = () => {
@@ -829,7 +879,9 @@ function AdminMemberList() {
                         <button
                           className="editMemberBtn"
                           id="editApproveMemberListBtn"
-                          onClick={editApproveMemberList}
+                          onClick={() => {
+                            editApproveMemberList(USER_ID);
+                          }}
                         >
                           ✏️
                         </button>
@@ -863,15 +915,45 @@ function AdminMemberList() {
               Edit Approve Member Information
             </p>
             <label>Name:</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={NAME}
+              onChange={(e) => {
+                setNAME(e.target.value);
+              }}
+            />
             <label>Contact:</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={MOTHER_CONTACT}
+              onChange={(e) => {
+                setMOTHER_CONTACT(e.target.value);
+              }}
+            />
             <label>Address:</label>
-            <input type="text" />
+            <input
+              type="text"
+              value={CITY_ADDRESS}
+              onChange={(e) => {
+                setCITY_ADDRESS(e.target.value);
+              }}
+            />
             <label>Email:</label>
-            <input type="text" />
-            <label>Password:</label>
-            <input type="password" />
+            <input
+              type="text"
+              value={MOTHER_EMAIL}
+              onChange={(e) => {
+                setMOTHER_EMAIL(e.target.value);
+              }}
+            />
+            <label>Username:</label>
+            <input
+              type="text"
+              value={USERNAME}
+              onChange={(e) => {
+                setUSERNAME(e.target.value);
+              }}
+            />
             <div className="editApproveMemberBtns">
               <p
                 className="cancelApproveMember"
@@ -879,7 +961,14 @@ function AdminMemberList() {
               >
                 Cancel
               </p>
-              <p className="confirmUpdateApproveMembers">Done Editing!</p>
+              <p
+                className="confirmUpdateApproveMembers"
+                onClick={() => {
+                  editApproveMemberListUpdate(USER_ID);
+                }}
+              >
+                Done Editing!
+              </p>
             </div>
           </div>
         </div>
