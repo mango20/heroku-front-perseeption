@@ -356,6 +356,7 @@
   font-size: 18px;
   padding: 5px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 #btnUpdateDet_submit {
@@ -365,14 +366,20 @@
 
 .btnMempro_side {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "none showAccDetails_ backMemberProfile";
+  grid-template-columns: 1fr 0.5fr 0.5fr;
 }
 
 #showAccDetails_ {
+  grid-area: showAccDetails_;
   background-color: green;
   padding: 10px 30px;
   float: right;
   color: #fff;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.backMemberProfile {
+  grid-area: backMemberProfile;
 }
