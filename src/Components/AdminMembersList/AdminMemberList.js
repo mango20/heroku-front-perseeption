@@ -630,7 +630,7 @@ function AdminMemberList() {
 
   const [NAME, setNAME] = useState("");
   // const [USER_ID, setUSER_ID] = useState("");
-  // const [USERNAME, setUSERNAME] = useState("");
+  const [USERNAME, setUSERNAME] = useState("");
   const [CITY_ADDRESS, setCITY_ADDRESS] = useState("");
   const [MOTHER_CONTACT, setMOTHER_CONTACT] = useState("");
   // const [USER_ID, setUSER_ID] = useState("");
@@ -652,7 +652,7 @@ function AdminMemberList() {
       setUSER_ID(response.data[0].USER_ID);
     });
   };
-
+  const [MEMBERUPDATE, setMEMBERUPDATE] = useState([]);
   const editApproveMemberListUpdate = (USER_ID) => {
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
@@ -666,8 +666,8 @@ function AdminMemberList() {
       }
     ).then((response) => {
       console.log(response.data);
-      setADMIN_INFO(
-        ADMIN_INFO.map((val) => {
+      setMEMBERUPDATE(
+        MEMBERUPDATE.map((val) => {
           return val.USER_ID === USER_ID
             ? {
                 USER_ID: val.USER_ID,
