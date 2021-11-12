@@ -21,37 +21,21 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
-      // errorMsg;
+      // alert(response.data.message);
       setloginMessage(response.data.message);
-      if (
-        document.getElementById("inputUsernameLogin").value === "" ||
-        document.getElementById("inputPasswordLogin").value === ""
-      ) {
-        setloginMessage(response.data.message);
-        document.getElementById("errorMsg").style.display = "block";
-        setTimeout(function () {
-          document.getElementById("errorMsg").style.display = "none";
-        }, 3000);
+      console.log(response.data);
+      console.log(response.data.result);
+      var userDetails = response.data.result;
+      localStorage.setItem("Client", JSON.stringify(userDetails));
+      if (response.data.result[0].USER_TYPE === "Admin") {
+        document.getElementsById("bgLoginStats").style.display = "block";
+        (document.getElementById("bgLoginStats").style.display = "none"), 10000;
+
+        history.push("/AdminDashboard");
       } else {
-        console.log(response.data);
-        console.log(response.data.result);
-        var userDetails = response.data.result;
-        localStorage.setItem("Client", JSON.stringify(userDetails));
-        if (response.data.result[0].USER_TYPE === "Admin") {
-          setloginMessage(response.data.message);
-          document.getElementById("errorMsg").style.display = "block";
-          setTimeout(function () {
-            document.getElementById("errorMsg").style.display = "none";
-          }, 3000);
-          history.push("/AdminDashboard");
-        } else {
-          setloginMessage(response.data.message);
-          document.getElementById("errorMsg").style.display = "block";
-          setTimeout(function () {
-            document.getElementById("errorMsg").style.display = "none";
-          }, 3000);
-          history.push("/");
-        }
+        document.getElementsById("bgLoginStats").style.display = "block";
+        (document.getElementById("bgLoginStats").style.display = "none"), 10000;
+        history.push("/");
       }
     });
   };
@@ -197,7 +181,6 @@ function Login() {
                 type="text"
                 placeholder="Enter username"
                 className="inputUsernameLogin"
-                id="inputUsernameLogin"
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
@@ -206,7 +189,6 @@ function Login() {
             <input
               type="password"
               placeholder="Enter password"
-              id="inputPasswordLogin"
               className="inputPasswordLogin"
               onChange={(e) => {
                 setPassword(e.target.value);
