@@ -28,11 +28,13 @@ function Login() {
       var userDetails = response.data.result;
       localStorage.setItem("Client", JSON.stringify(userDetails));
       if (response.data.result[0].USER_TYPE === "Admin") {
+        setloginMessage(response.data.message);
         document.getElementsById("bgLoginStats").style.display = "block";
         (document.getElementById("bgLoginStats").style.display = "none"), 10000;
 
         history.push("/AdminDashboard");
       } else {
+        setloginMessage(response.data.message);
         document.getElementsById("bgLoginStats").style.display = "block";
         (document.getElementById("bgLoginStats").style.display = "none"), 10000;
         history.push("/");
