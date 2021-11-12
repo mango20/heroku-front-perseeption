@@ -63,7 +63,7 @@ function AdminProfile() {
       `https://perseeption-tromagade.herokuapp.com/getAdminProfileInfo_/${USER_ID}`
     ).then((response) => {
       console.log(response.data);
-      // setNAME(response.data[0].NAME);
+      setNAME(response.data[0].NAME);
       setADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
       setADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
@@ -175,7 +175,12 @@ function AdminProfile() {
               <p className="adminPassword">Password: ************</p>
             </div>
           </div>
-          <button className="updateInfo" onClick={showUpdateProfile}>
+          <button
+            className="updateInfo"
+            onClick={() => {
+              showUpdateProfile(USER_ID);
+            }}
+          >
             Update Information
           </button>
         </div>
