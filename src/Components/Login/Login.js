@@ -24,6 +24,10 @@ function Login() {
       // alert(response.data.message);
 
       setloginMessage(response.data.message);
+      document.getElementById("bgLoginStats").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("bgLoginStats").style.display = "none";
+      }, 3000);
       var userDetails = response.data.result;
       localStorage.setItem("Client", JSON.stringify(userDetails));
       if (response.data.result[0].USER_TYPE === "Admin") {
