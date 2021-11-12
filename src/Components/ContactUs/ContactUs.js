@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./ContactUs.css";
 import { Link, useHistory } from "react-router-dom";
-
+import { Image } from "cloudinary-react";
 function ContactUs() {
   Axios.defaults.withCredentials = true;
   const [USER_ID, setUSER_ID] = useState("");

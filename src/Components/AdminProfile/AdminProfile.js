@@ -11,7 +11,7 @@ function AdminProfile() {
   const [USERNAME, setUSERNAME] = useState("");
   const [ADMIN_CONTACT, setADMIN_CONTACT] = useState("");
   const [ADMIN_ADDRESS, setADMIN_ADDRESS] = useState("");
-  const [ADMIN_NAME, setADMIN_NAME] = useState("");
+  const [NAME, setNAME] = useState("");
   const [ADMIN_EMAIL, setADMIN_EMAIL] = useState("");
 
   const [ADMIN_INFO, setADMIN_INFO] = useState([]);
@@ -30,10 +30,10 @@ function AdminProfile() {
 
       console.log(name);
       console.log(name[0].ADMIN_NAME);
-      setUSERNAME(name[0].ADMIN_NAME);
+      setUSERNAME(name[0].USERNAME);
       setUSER_ID(name[0].USER_ID);
       setADMIN_EMAIL(name[0].ADMIN_EMAIL);
-      setADMIN_NAME(name[0].ADMIN_NAME);
+      setNAME(name[0].NAME);
       setADMIN_ADDRESS(name[0].ADMIN_ADDRESS);
       setADMIN_CONTACT(name[0].ADMIN_CONTACT);
       setUSERNAME(name[0].USERNAME);
@@ -63,7 +63,7 @@ function AdminProfile() {
       `https://perseeption-tromagade.herokuapp.com/getAdminProfileInfo_/${USER_ID}`
     ).then((response) => {
       console.log(response.data);
-      setADMIN_NAME(response.data[0].ADMIN_NAME);
+      setNAME(response.data[0].ADMIN_NAME);
       setADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
       setADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
@@ -79,7 +79,7 @@ function AdminProfile() {
         USERNAME: USERNAME,
         ADMIN_CONTACT: ADMIN_CONTACT,
         ADMIN_ADDRESS: ADMIN_ADDRESS,
-        ADMIN_NAME: ADMIN_NAME,
+        NAME: NAME,
         USER_PASSWORD: USER_PASSWORD,
         ADMIN_EMAIL: ADMIN_EMAIL,
       }
@@ -93,7 +93,7 @@ function AdminProfile() {
                 USERNAME: USERNAME,
                 ADMIN_CONTACT: ADMIN_CONTACT,
                 ADMIN_ADDRESS: ADMIN_ADDRESS,
-                ADMIN_NAME: ADMIN_NAME,
+                NAME: NAME,
                 USER_PASSWORD: USER_PASSWORD,
                 ADMIN_EMAIL: ADMIN_EMAIL,
               }
@@ -115,7 +115,7 @@ function AdminProfile() {
             alt="img"
             publicId={AVATAR}
           />
-          <p className="profileNameHeader">{USERNAME}</p>
+          <p className="profileNameHeader">{NAME}</p>
         </Link>
       </div>
       <div className="eventCont">
@@ -183,7 +183,7 @@ function AdminProfile() {
               type="text"
               value={NAME}
               onChange={(e) => {
-                setADMIN_NAME(e.target.value);
+                setNAME(e.target.value);
               }}
             ></input>
             <label className="profileContact">
