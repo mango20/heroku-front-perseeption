@@ -656,7 +656,7 @@ function AdminMemberList() {
   const [MEMBERUPDATE, setMEMBERUPDATE] = useState([]);
   const editApproveMemberListUpdate = (USER_ID) => {
     Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
+      `https://perseeption-tromagade.herokuapp.com/api/updateMemberInfo_/${USER_ID}`,
       {
         USER_ID: USER_ID,
         USERNAME: USERNAME,
@@ -881,7 +881,7 @@ function AdminMemberList() {
                           className="editMemberBtn"
                           id="editApproveMemberListBtn"
                           onClick={() => {
-                            editApproveMemberList(USER_ID);
+                            editApproveMemberList(val.USER_ID);
                           }}
                         >
                           ✏️
