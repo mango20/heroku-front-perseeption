@@ -22,29 +22,38 @@ function Login() {
       USER_PASSWORD: password,
     }).then((response) => {
       // alert(response.data.message);
-      setloginMessage(response.data.message);
-      document.getElementById("bgLoginStats").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("bgLoginStats").style.display = "none";
-      }, 3000);
-      console.log(response.data);
-      console.log(response.data.result);
-      var userDetails = response.data.result;
-      localStorage.setItem("Client", JSON.stringify(userDetails));
-      if (response.data.result[0].USER_TYPE === "Admin") {
+      if (
+        response.data.message === "Wrong username and password combination" ||
+        response.data.message === "User doesn't exist"
+      ) {
         setloginMessage(response.data.message);
         document.getElementById("bgLoginStats").style.display = "block";
         setTimeout(function () {
           document.getElementById("bgLoginStats").style.display = "none";
         }, 3000);
-        history.push("/AdminDashboard");
+        console.log(response.data);
+        console.log(response.data.result);
+        return;
       } else {
-        setloginMessage(response.data.message);
-        document.getElementById("bgLoginStats").style.display = "block";
-        setTimeout(function () {
-          document.getElementById("bgLoginStats").style.display = "none";
-        }, 3000);
-        history.push("/");
+        var userDetails = response.data.result;
+        localStorage.setItem("Client", JSON.stringify(userDetails));
+        if (response.data.result[0].USER_TYPE === "Admin") {
+          setloginMessage(response.data.message);
+          document.getElementById("bgLoginStats").style.display = "block";
+          setTimeout(function () {
+            document.getElementById("bgLoginStats").style.display = "none";
+          }, 3000);
+          history.push("/AdminDashboard");
+          window.location.reload();
+        } else {
+          setloginMessage(response.data.message);
+          document.getElementById("bgLoginStats").style.display = "block";
+          setTimeout(function () {
+            document.getElementById("bgLoginStats").style.display = "none";
+          }, 3000);
+          history.push("/");
+          window.location.reload();
+        }
       }
     });
   };
