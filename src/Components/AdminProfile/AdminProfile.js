@@ -7,16 +7,16 @@ function AdminProfile() {
   Axios.defaults.withCredentials = true;
   const history = useHistory();
   const [USER_ID, setUSER_ID] = useState("");
-  const [ADMIN_INFO_PASSWORD, setADMIN_INFO_PASSWORD] = useState("");
-  const [ADMIN_INFO_USERNAME, setADMIN_INFO_USERNAME] = useState("");
-  const [ADMIN_INFO_CONTACT, setADMIN_INFO_CONTACT] = useState("");
-  const [ADMIN_INFO_ADDRESS, setADMIN_INFO_ADDRESS] = useState("");
-  const [ADMIN_INFO_NAME, setADMIN_INFO_NAME] = useState("");
-  const [ADMIN_INFO_EMAIL, setADMIN_INFO_EMAIL] = useState("");
+  const [USER_PASSWORD, setUSER_PASSWORD] = useState("");
+  const [USERNAME, setUSERNAME] = useState("");
+  const [ADMIN_CONTACT, setADMIN_CONTACT] = useState("");
+  const [ADMIN_ADDRESS, setADMIN_ADDRESS] = useState("");
+  const [ADMIN_NAME, setADMIN_NAME] = useState("");
+  const [ADMIN_EMAIL, setADMIN_EMAIL] = useState("");
 
   const [ADMIN_INFO, setADMIN_INFO] = useState([]);
 
-  const [USERNAME_, setUSERNAME] = useState("");
+  // const [USERNAME, setUSERNAME] = useState("");
   const [AVATAR, setAVATAR] = useState("");
   useEffect(() => {
     var name1 = JSON.parse(localStorage.getItem("Client"));
@@ -32,12 +32,12 @@ function AdminProfile() {
       console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setUSER_ID(name[0].USER_ID);
-      setADMIN_INFO_EMAIL(name[0].ADMIN_EMAIL);
-      setADMIN_INFO_NAME(name[0].ADMIN_NAME);
-      setADMIN_INFO_ADDRESS(name[0].ADMIN_ADDRESS);
-      setADMIN_INFO_CONTACT(name[0].ADMIN_CONTACT);
-      setADMIN_INFO_USERNAME(name[0].USERNAME);
-      setADMIN_INFO_PASSWORD(name[0].USER_PASSWORD);
+      setADMIN_EMAIL(name[0].ADMIN_EMAIL);
+      setADMIN_NAME(name[0].ADMIN_NAME);
+      setADMIN_ADDRESS(name[0].ADMIN_ADDRESS);
+      setADMIN_CONTACT(name[0].ADMIN_CONTACT);
+      setUSERNAME(name[0].USERNAME);
+      setUSER_PASSWORD(name[0].USER_PASSWORD);
       setAVATAR(name[0].AVATAR);
     }
   }, []);
@@ -54,37 +54,48 @@ function AdminProfile() {
     // popupProfileBox; showUpdateProfile
   };
 
-  const showUpdateProfile = () => {
+  const showUpdateProfile = (USER_ID) => {
     document.getElementById("popupProfileCont").style.display = "block";
     document.getElementById("profileBg").style.display = "block";
     // document.getElementById("profileBg").style.backgroundcolor = "red";
     // popupProfileBox; showUpdateProfile
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/getAdminProfileInfo_/${USER_ID}`
+    ).then((response) => {
+      console.log(response.data);
+      setADMIN_NAME(response.data[0].ADMIN_NAME);
+      setADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
+      setADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
+      setADMIN_EMAIL(response.data[0].ADMIN_EMAIL);
+      setUSER_ID(response.data[0].USER_ID);
+    });
   };
 
   const updateAdmin = (USER_ID) => {
     Axios.put(
-      "https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_",
+      `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
       {
         USER_ID: USER_ID,
-        ADMIN_INFO_USERNAME: ADMIN_INFO_USERNAME,
-        ADMIN_INFO_CONTACT: ADMIN_INFO_CONTACT,
-        ADMIN_INFO_ADDRESS: ADMIN_INFO_ADDRESS,
-        ADMIN_INFO_NAME: ADMIN_INFO_NAME,
-        ADMIN_INFO_PASSWORD: ADMIN_INFO_PASSWORD,
-        ADMIN_INFO_EMAIL: ADMIN_INFO_EMAIL,
+        USERNAME: USERNAME,
+        ADMIN_CONTACT: ADMIN_CONTACT,
+        ADMIN_ADDRESS: ADMIN_ADDRESS,
+        ADMIN_NAME: ADMIN_NAME,
+        USER_PASSWORD: USER_PASSWORD,
+        ADMIN_EMAIL: ADMIN_EMAIL,
       }
     ).then((response) => {
+      console.log(response.data);
       setADMIN_INFO(
         ADMIN_INFO.map((val) => {
           return val.USER_ID === USER_ID
             ? {
                 USER_ID: val.USER_ID,
-                ADMIN_INFO_USERNAME: ADMIN_INFO_USERNAME,
-                ADMIN_INFO_CONTACT: ADMIN_INFO_CONTACT,
-                ADMIN_INFO_ADDRESS: ADMIN_INFO_ADDRESS,
-                ADMIN_INFO_NAME: ADMIN_INFO_NAME,
-                ADMIN_INFO_PASSWORD: ADMIN_INFO_PASSWORD,
-                ADMIN_INFO_EMAIL: ADMIN_INFO_EMAIL,
+                USERNAME: USERNAME,
+                ADMIN_CONTACT: ADMIN_CONTACT,
+                ADMIN_ADDRESS: ADMIN_ADDRESS,
+                ADMIN_NAME: ADMIN_NAME,
+                USER_PASSWORD: USER_PASSWORD,
+                ADMIN_EMAIL: ADMIN_EMAIL,
               }
             : val;
         })
@@ -104,7 +115,7 @@ function AdminProfile() {
             alt="img"
             publicId={AVATAR}
           />
-          <p className="profileNameHeader">{USERNAME_}</p>
+          <p className="profileNameHeader">{USERNAME}</p>
         </Link>
       </div>
       <div className="eventCont">
@@ -152,10 +163,10 @@ function AdminProfile() {
               {/* <i className="fa fa-user-circle-o " id="iconDummy"></i> */}
             </div>
             <div className="adminInfoTexts">
-              <p className="adminName">Name: {ADMIN_INFO_NAME}</p>
-              <p className="adminContact">Contact: {ADMIN_INFO_CONTACT}</p>
-              <p className="adminAddress">Address: {ADMIN_INFO_ADDRESS}</p>
-              <p className="adminEmail">Email Address: {ADMIN_INFO_EMAIL}</p>
+              <p className="adminName">Name: {NAME}</p>
+              <p className="adminContact">Contact: {ADMIN_CONTACT}</p>
+              <p className="adminAddress">Address: {ADMIN_ADDRESS}</p>
+              <p className="adminEmail">Email Address: {ADMIN_EMAIL}</p>
               <p className="adminPassword">Password: ************</p>
             </div>
           </div>
@@ -163,89 +174,85 @@ function AdminProfile() {
             Update Information
           </button>
         </div>
-        {/* {USERNAME_.map((val, key) => {
-          return (
-            <div className="popupProfile" id="profileBg">
-              <div className="popupProfileBox" id="popupProfileCont">
-                <p className="updateYourInfoTitle">Update Your Information</p>
-                <label className="profileName">Name:</label>
-                <input
-                  type="text"
-                  placeholder={val.ADMIN_NAME}
-                  defaultValue={val.ADMIN_NAME}
-                  onChange={(e) => {
-                    setADMIN_INFO_NAME(e.target.value);
-                  }}
-                ></input>
-                <label className="profileContact">
-                  Contact:{" "}
-                  <input
-                    type="text"
-                    placeholder={val.ADMIN_CONTACT}
-                    onChange={(e) => {
-                      setADMIN_INFO_CONTACT(e.target.value);
-                    }}
-                  ></input>
-                </label>
-                <label className="profileAddress">
-                  Address:{" "}
-                  <input
-                    type="text"
-                    placeholder={val.ADMIN_ADDRESS}
-                    onChange={(e) => {
-                      setADMIN_INFO_ADDRESS(e.target.value);
-                    }}
-                  ></input>
-                </label>
-                <label className="profileEmail">
-                  Email:{" "}
-                  <input
-                    type="email"
-                    placeholder={val.ADMIN_EMAIL}
-                    onChange={(e) => {
-                      setADMIN_INFO_EMAIL(e.target.value);
-                    }}
-                  ></input>
-                </label>
-                <label className="profilePass">
-                  Username:{" "}
-                  <input
-                    type="text"
-                    placeholder={val.USERNAME}
-                    onChange={(e) => {
-                      setADMIN_INFO_USERNAME(e.target.value);
-                    }}
-                  ></input>
-                </label>
-                <label className="profilePass">
-                  Password:{" "}
-                  <input
-                    type="password"
-                    placeholder="*******"
-                    id="profPass"
-                    onChange={(e) => {
-                      setADMIN_INFO_PASSWORD(e.target.value);
-                    }}
-                  ></input>
-                </label>
-                <div className="btnProfile">
-                  <p className="cancelBtnProfile" onClick={hideUpdateProfile}>
-                    Cancel
-                  </p>
-                  <p
-                    className="updateNowBtn"
-                    onClick={() => {
-                      updateAdmin(val.USER_ID);
-                    }}
-                  >
-                    Update Now
-                  </p>
-                </div>
-              </div>
+
+        <div className="popupProfile" id="profileBg">
+          <div className="popupProfileBox" id="popupProfileCont">
+            <p className="updateYourInfoTitle">Update Your Information</p>
+            <label className="profileName">Name:</label>
+            <input
+              type="text"
+              value={NAME}
+              onChange={(e) => {
+                setADMIN_NAME(e.target.value);
+              }}
+            ></input>
+            <label className="profileContact">
+              Contact:{" "}
+              <input
+                type="text"
+                // placeholder={val.ADMIN_CONTACT}
+                value={ADMIN_CONTACT}
+                onChange={(e) => {
+                  setADMIN_CONTACT(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label className="profileAddress">
+              Address:{" "}
+              <input
+                type="text"
+                value={ADMIN_ADDRESS}
+                onChange={(e) => {
+                  setADMIN_ADDRESS(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label className="profileEmail">
+              Email:{" "}
+              <input
+                type="email"
+                value={ADMIN_EMAIL}
+                onChange={(e) => {
+                  setADMIN_EMAIL(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label className="profilePass">
+              Username:{" "}
+              <input
+                type="text"
+                value={USERNAME}
+                onChange={(e) => {
+                  setUSERNAME(e.target.value);
+                }}
+              ></input>
+            </label>
+            <label className="profilePass">
+              Password:{" "}
+              <input
+                type="password"
+                placeholder="*******"
+                id="profPass"
+                onChange={(e) => {
+                  setUSER_PASSWORD(e.target.value);
+                }}
+              ></input>
+            </label>
+            <div className="btnProfile">
+              <p className="cancelBtnProfile" onClick={hideUpdateProfile}>
+                Cancel
+              </p>
+              <p
+                className="updateNowBtn"
+                onClick={() => {
+                  updateAdmin(USER_ID);
+                }}
+              >
+                Update Now
+              </p>
             </div>
-          );
-        })} */}
-        Form
+          </div>
+        </div>
       </div>
     </div>
   );

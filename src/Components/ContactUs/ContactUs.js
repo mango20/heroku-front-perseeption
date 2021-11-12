@@ -10,6 +10,7 @@ function ContactUs() {
   const [contact_number, setcontact_number] = useState("");
   const [contact_email, setcontact_email] = useState("");
   const [contact_message, setcontact_message] = useState("");
+  const [AVATAR, setAVATAR] = useState("");
   const history = useHistory();
   // const [announcementContentList, setAnnouncementList] = useState([]);
   // const [newReview, setNewReview] = useState("");
@@ -26,6 +27,7 @@ function ContactUs() {
       } else {
         document.getElementById("portalDash").style.display = "none";
       }
+      setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
       document.getElementById("loggedInImg").style.display = "block";
@@ -134,11 +136,12 @@ function ContactUs() {
               Log in
             </Link>
             <div className="memberDiv" id="memberDiv">
-              <img
-                src="/images/events1.jpg"
-                alt="sdf"
+              <Image
                 className="loggedInImg"
                 id="loggedInImg"
+                cloudName="dlvt2lnkh"
+                alt="img"
+                publicId={AVATAR}
                 onClick={popup}
               />
               <div className="dropdown-content" id="dropdown-content">

@@ -64,6 +64,8 @@
   padding: 30px;
   text-align: center;
   display: inline-block;
+  height: 200px;
+  border-radius: 100px;
 }
 .popupProfile {
   display: none;
