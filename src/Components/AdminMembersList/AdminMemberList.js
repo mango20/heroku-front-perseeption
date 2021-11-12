@@ -633,7 +633,7 @@ function AdminMemberList() {
   // const [USERNAME, setUSERNAME] = useState("");
   const [CITY_ADDRESS, setCITY_ADDRESS] = useState("");
   const [MOTHER_CONTACT, setMOTHER_CONTACT] = useState("");
-  const [USER_ID, setUSER_ID] = useState("");
+  // const [USER_ID, setUSER_ID] = useState("");
   const [MOTHER_EMAIL, setMOTHER_EMAIL] = useState("");
 
   const editApproveMemberList = (USER_ID) => {
