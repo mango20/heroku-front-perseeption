@@ -365,13 +365,14 @@
 }
 
 .btnMempro_side {
-  display: grid;
-  grid-template-areas: "none showAccDetails_ backMemberProfile";
-  grid-template-columns: 1fr 0.5fr 0.5fr;
+  float: right;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 #showAccDetails_ {
-  grid-area: showAccDetails_;
+ 
   background-color: green;
   padding: 10px 30px;
   float: right;
@@ -381,6 +382,6 @@
 }
 
 .backMemberProfile {
-  grid-area: backMemberProfile;
+  
   margin-left: 10px;
 }
