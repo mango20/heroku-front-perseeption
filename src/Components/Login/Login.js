@@ -27,8 +27,7 @@ function Login() {
         response.data.message === "User doesn't exist"
       ) {
         setloginMessage(response.data.message);
-        const errorMgs = (document.getElementById("errorMsg").style.display =
-          "block");
+        document.getElementById("errorMsg").style.display = "block";
         setTimeout(function () {
           document.getElementById("errorMsg").style.display = "none";
         }, 3000);
