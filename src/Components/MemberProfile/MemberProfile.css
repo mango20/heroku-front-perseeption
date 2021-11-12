@@ -335,7 +335,7 @@
   left: 0;
   bottom: 50;
   right: 0;
-  margin-top: 15%;
+  margin-top: 10%;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -382,4 +382,5 @@
 
 .backMemberProfile {
   grid-area: backMemberProfile;
+  margin-left: 10px;
 }

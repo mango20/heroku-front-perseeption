@@ -257,9 +257,6 @@ function MemberProfile() {
               <h1 className="profileTitle_">Member Profile</h1>
             </div>
             <div className="btnMempro_side">
-              <Link to="/">
-                <p className="backMemberProfile">Back</p>
-              </Link>
               <button
                 id="showAccDetails_"
                 onClick={() => {
@@ -268,6 +265,9 @@ function MemberProfile() {
               >
                 Edit Account
               </button>
+              <Link to="/">
+                <p className="backMemberProfile">Back</p>
+              </Link>
             </div>
 
             <div className="accData">
