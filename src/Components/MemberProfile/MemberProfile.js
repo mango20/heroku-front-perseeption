@@ -151,8 +151,20 @@ function MemberProfile() {
     }
   }, []);
 
-  const showAcc = () => {
+  const showAcc = (USER_ID) => {
     document.getElementById("EditMemberProfile_infoBg").style.display = "block";
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/getMemberProfileInfo_MemberSec/${USER_ID}`
+    ).then((response) => {
+      console.log(response.data);
+      setNAME(response.data[0].NAME);
+      setUSERNAME(response.data[0].USERNAME);
+      // setCITY_ADDRESS(response.data[0].CITY_ADDRESS);
+      // setMOTHER_CONTACT(response.data[0].MOTHER_CONTACT);
+      setEMAIL(response.data[0].EMAIL);
+      setUSER_ID(response.data[0].USER_ID);
+      // setUSER_PASSWORD(response.data[0].USER_PASSWORD);
+    });
   };
 
   const hideAcc = () => {
@@ -187,6 +199,7 @@ function MemberProfile() {
     <div className="proBg">
       <div id="EditMemberProfile_infoBg">
         <div id="EditMemberProfile_infoIn">
+          <p>Update Member Account</p>
           <input
             type="text"
             value={NAME}
@@ -197,12 +210,14 @@ function MemberProfile() {
           <input
             type="text"
             value={EMAIL}
+            placeholder="Enter Email"
             onChange={(e) => {
               setEMAIL(e.target.value);
             }}
           />
           <input
             type="text"
+            placeholder="Enter Username"
             value={USERNAME}
             onChange={(e) => {
               setUSERNAME(e.target.value);
@@ -214,6 +229,7 @@ function MemberProfile() {
           <input
             type="password"
             id="password_MemberDetails"
+            placeholder="Enter Password"
             onChange={(e) => {
               setUSER_PASSWORD(e.target.value);
             }}
@@ -240,8 +256,13 @@ function MemberProfile() {
               <img src="/images/logoIcon.png" alt="" id="logPro" />
               <h1 className="profileTitle_">Member Profile</h1>
             </div>
-            <div className="">
-              <button id="showAccDetails_" onClick={showAcc}>
+            <div className="btnMempro_side">
+              <button
+                id="showAccDetails_"
+                onClick={() => {
+                  showAcc(USER_ID);
+                }}
+              >
                 Edit Account
               </button>
               <Link to="/">
