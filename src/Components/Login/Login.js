@@ -23,11 +23,6 @@ function Login() {
     }).then((response) => {
       // alert(response.data.message);
       setloginMessage(response.data.message);
-      document.getElementsById("bgLoginStats").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("bgLoginStats").style.display = "none";
-      }, 3000);
-
       console.log(response.data);
       console.log(response.data.result);
       var userDetails = response.data.result;
