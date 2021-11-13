@@ -313,7 +313,7 @@ function MemberForum() {
     console.log(tr);
     for (i = 0; i < tr.length; i++) {
       console.log(i);
-      td = tr[i].getElementsByTagName("p")[0];
+      td = tr[i].getElementById("titleQuestion")[0];
       console.log(td);
       if (td) {
         txtValue = td.textContent || td.innerText;
