@@ -304,8 +304,11 @@ function MemberForum() {
       txtValue1,
       txtValue2;
     input = document.getElementById("inputSearchForum");
+    console.log(input);
     filter = input.value.toUpperCase();
+    console.log(filter);
     table = document.getElementById("forumQuestionHead");
+    // console.log(table);
     tr = table.getElementsByTagName("div");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("p")[1];
