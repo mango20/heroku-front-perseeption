@@ -303,12 +303,17 @@ function MemberForum() {
       txtValue,
       txtValue1,
       txtValue2;
-    input = document.getElementById("inputSearchForum").value;
+
     console.log(input);
-    setFORUM_LIST(
-      FORUM_LIST.filter((val) => {
-        return val.FORUM_TITLE === input; // Filter/remove if it not equals to id
-      })
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForum").then(
+      (response) => {
+        input = document.getElementById("inputSearchForum").value;
+        setFORUM_LIST(
+          FORUM_LIST.filter((val) => {
+            return val.FORUM_TITLE === input; // Filter/remove if it not equals to id
+          })
+        );
+      }
     );
     // filter = input.value.toUpperCase();
     // console.log(filter);
