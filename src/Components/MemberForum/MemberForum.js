@@ -290,6 +290,35 @@ function MemberForum() {
   //     FORUM_LIST(response.data);
   //   });
   // }, []);
+
+  const filterApproveMembers = () => {
+    var input,
+      filter,
+      table,
+      tr,
+      td,
+      td1,
+      td2,
+      i,
+      txtValue,
+      txtValue1,
+      txtValue2;
+    input = document.getElementById("inputSearchForum");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("forumQuestionHead");
+    tr = table.getElementsByTagName("div");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("p")[1];
+      if (td || td1) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  };
   return (
     <div className="ForumBg">
       <div className="MainHeader">
@@ -455,7 +484,9 @@ function MemberForum() {
               <input
                 type="text"
                 className="inputSearchForum"
+                id="inputSearchForum"
                 placeholder="Search Title"
+                onKeyUp={filterApproveMembers}
               />
             </div>
           </div>
