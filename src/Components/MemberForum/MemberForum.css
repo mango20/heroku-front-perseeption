@@ -748,3 +748,7 @@
 /* #iconForum {
   display: none;
 } */
+
+.innerAddNewMember_ {
+  overflow: scroll;
+}

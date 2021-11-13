@@ -41,411 +41,469 @@ function AdminMemberList() {
     window.location.reload();
   };
 
-  const [addMember_, setaddMember_] = useState({
-    USERNAME: "",
-    USER_PASSWORD: "",
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState("");
 
-    CHILD_SURNAME: "",
-    CHILD_GIVEN_NAME: "",
-    CHILD_MIDDLE_NAME: "",
-
-    FATHER_SURNAME: "",
-    FATHER_GIVEN_NAME: "",
-    FATHER_MIDDLE_NAME: "",
-
-    FATHER_CONTACT: "",
-    FATHER_EMAIL: "",
-    FATHER_BIRTHDAY: "",
-    FATHER_OCCUPATION: "",
-
-    MOTHER_SURNAME: "",
-    MOTHER_GIVEN_NAME: "",
-    MOTHER_MIDDLE_NAME: "",
-
-    MOTHER_CONTACT: "",
-    MOTHER_EMAIL: "",
-    MOTHER_BIRTHDAY: "",
-    MOTHER_OCCUPATION: "",
-
-    GUARDIAN_SURNAME: "",
-    GUARDIAN_GIVEN_NAME: "",
-    GUARDIAN_MIDDLE_NAME: "",
-    GUARDIAN_CONTACT: "",
-
-    MOTHER_LANDLINE: "",
-    FATHER_LANDLINE: "",
-
-    FIRST_SIBLING: "",
-    SECOND_SIBLING: "",
-    THIRD_SIBLING: "",
-
-    CITY_ADDRESS: "",
-    REGION_ADDRESS: "",
-    PROVINCE_ADDRESS: "",
-
-    MONTHLY_INCOME: "",
-
-    CHILD_BIRTHDAY: "",
-    SEX: "",
-    SCHOOL_NAME: "",
-    SCHOOL_ADDRESS: "",
-    YEAR_GRADE_LEVEL: "",
-    CAUSE_OF_BLINDNESS: "",
-    TOTALY_BLIND_EYES: "",
-    TB_ADD_DISABILITY: "",
-    LOW_VISION_EYES: "",
-    LV_ADD_DISABILITY: "",
-    ADAPTIVE_LENS: "",
-    STYLUS: "",
-    ARTIFICIAL_EYES: "",
-    COMPUTER_SCREEN: "",
-    WHITE_CANE: "",
-    CCTV: "",
-    WHEEL_CHAIR: "",
-    LARGE_PRINTS: "",
-    HEARING_AID: "",
-    ABACUS: "",
-    BRAILLER: "",
-    PHYSICAL_THERAPHY: "",
-    OCCUPATIONAL_THERAPHY: "",
-    SPEECH_THERAPHY: "",
-    OTHER_CONDITION: "",
-
-    file: [],
-    filepreview: null,
-  });
-
-  const UploadWithGCash = (event) => {
-    setaddMember_({
-      ...addMember_,
-      file: event.target.files[0],
-      filepreview: URL.createObjectURL(event.target.files[0]),
-    });
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
   };
 
-  const UploadWithGCashSex = (event) => {
-    setaddMember_({
-      ...addMember_,
-      SEX: event.target.value,
-    });
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    // reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
   };
 
-  const UploadWithGCashtbE = (event) => {
-    setaddMember_({
-      ...addMember_,
-      TOTALY_BLIND_EYES: event.target.value,
-    });
+  const handleSubmitFile = (e) => {
+    console.log("sub");
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error("AHHHHHHHH!!");
+      console.log("AAAAAAAAAAAAAAAAH");
+    };
   };
 
-  const UploadWithGCashLV = (event) => {
-    setaddMember_({
-      ...addMember_,
-      LOW_VISION_EYES: event.target.value,
-    });
+  const uploadImage = (base64EncodedImage) => {
+    console.log(base64EncodedImage);
+
+    try {
+      Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
+        data: base64EncodedImage,
+      });
+      // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
+      setFileInputState("");
+      setPreviewSource("");
+      setEVENT_TITLE("");
+      setEVENT_CONTENT("");
+      // document.getElementById("fileBtnId").value = "";
+      // document.getElementById("inputEventTitle").value = "";
+      // document.getElementById("inputEventContent").value = "";
+
+      // }
+      //   console.log(EVENT_TITLE);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const UploadWithGCashAL = (event) => {
-    setaddMember_({
-      ...addMember_,
-      ADAPTIVE_LENS: event.target.value,
-    });
-  };
+  // const [addMember_, setaddMember_] = useState({
+  //   USERNAME: "",
+  //   USER_PASSWORD: "",
 
-  const UploadWithGCashS = (event) => {
-    setaddMember_({
-      ...addMember_,
-      STYLUS: event.target.value,
-    });
-  };
+  //   CHILD_SURNAME: "",
+  //   CHILD_GIVEN_NAME: "",
+  //   CHILD_MIDDLE_NAME: "",
 
-  const UploadWithGCashAE = (event) => {
-    setaddMember_({
-      ...addMember_,
-      ARTIFICIAL_EYES: event.target.value,
-    });
-  };
+  //   FATHER_SURNAME: "",
+  //   FATHER_GIVEN_NAME: "",
+  //   FATHER_MIDDLE_NAME: "",
 
-  const UploadWithGCashCS = (event) => {
-    setaddMember_({
-      ...addMember_,
-      COMPUTER_SCREEN: event.target.value,
-    });
-  };
+  //   FATHER_CONTACT: "",
+  //   FATHER_EMAIL: "",
+  //   FATHER_BIRTHDAY: "",
+  //   FATHER_OCCUPATION: "",
 
-  const UploadWithGCashWCa = (event) => {
-    setaddMember_({
-      ...addMember_,
-      WHITE_CANE: event.target.value,
-    });
-  };
+  //   MOTHER_SURNAME: "",
+  //   MOTHER_GIVEN_NAME: "",
+  //   MOTHER_MIDDLE_NAME: "",
 
-  const UploadWithGCashCC = (event) => {
-    setaddMember_({
-      ...addMember_,
-      CCTV: event.target.value,
-    });
-  };
+  //   MOTHER_CONTACT: "",
+  //   MOTHER_EMAIL: "",
+  //   MOTHER_BIRTHDAY: "",
+  //   MOTHER_OCCUPATION: "",
 
-  const UploadWithGCashWC = (event) => {
-    setaddMember_({
-      ...addMember_,
-      WHEEL_CHAIR: event.target.value,
-    });
-  };
+  //   GUARDIAN_SURNAME: "",
+  //   GUARDIAN_GIVEN_NAME: "",
+  //   GUARDIAN_MIDDLE_NAME: "",
+  //   GUARDIAN_CONTACT: "",
 
-  const UploadWithGCashLP = (event) => {
-    setaddMember_({
-      ...addMember_,
-      LARGE_PRINTS: event.target.value,
-    });
-  };
+  //   MOTHER_LANDLINE: "",
+  //   FATHER_LANDLINE: "",
 
-  const UploadWithGCashHA = (event) => {
-    setaddMember_({
-      ...addMember_,
-      HEARING_AID: event.target.value,
-    });
-  };
+  //   FIRST_SIBLING: "",
+  //   SECOND_SIBLING: "",
+  //   THIRD_SIBLING: "",
 
-  const UploadWithGCashA = (event) => {
-    setaddMember_({
-      ...addMember_,
-      ABACUS: event.target.value,
-    });
-  };
+  //   CITY_ADDRESS: "",
+  //   REGION_ADDRESS: "",
+  //   PROVINCE_ADDRESS: "",
 
-  const UploadWithGCashB = (event) => {
-    setaddMember_({
-      ...addMember_,
-      BRAILLER: event.target.value,
-    });
-  };
+  //   MONTHLY_INCOME: "",
 
-  const UploadWithGCashPT = (event) => {
-    setaddMember_({
-      ...addMember_,
-      PHYSICAL_THERAPHY: event.target.value,
-    });
-  };
+  //   CHILD_BIRTHDAY: "",
+  //   SEX: "",
+  //   SCHOOL_NAME: "",
+  //   SCHOOL_ADDRESS: "",
+  //   YEAR_GRADE_LEVEL: "",
+  //   CAUSE_OF_BLINDNESS: "",
+  //   TOTALY_BLIND_EYES: "",
+  //   TB_ADD_DISABILITY: "",
+  //   LOW_VISION_EYES: "",
+  //   LV_ADD_DISABILITY: "",
+  //   ADAPTIVE_LENS: "",
+  //   STYLUS: "",
+  //   ARTIFICIAL_EYES: "",
+  //   COMPUTER_SCREEN: "",
+  //   WHITE_CANE: "",
+  //   CCTV: "",
+  //   WHEEL_CHAIR: "",
+  //   LARGE_PRINTS: "",
+  //   HEARING_AID: "",
+  //   ABACUS: "",
+  //   BRAILLER: "",
+  //   PHYSICAL_THERAPHY: "",
+  //   OCCUPATIONAL_THERAPHY: "",
+  //   SPEECH_THERAPHY: "",
+  //   OTHER_CONDITION: "",
 
-  const UploadWithGCashOT = (event) => {
-    setaddMember_({
-      ...addMember_,
-      OCCUPATIONAL_THERAPHY: event.target.value,
-    });
-  };
+  //   file: [],
+  //   filepreview: null,
+  // });
 
-  const UploadWithGCashST = (event) => {
-    setaddMember_({
-      ...addMember_,
-      SPEECH_THERAPHY: event.target.value,
-    });
-  };
-  const UploadWithGCashMT = (event) => {
-    setaddMember_({
-      ...addMember_,
-      MONTHLY_INCOME: event.target.value,
-    });
-  };
+  // const UploadWithGCash = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     file: event.target.files[0],
+  //     filepreview: URL.createObjectURL(event.target.files[0]),
+  //   });
+  // };
 
-  const addMember_form_ = (event) => {
-    setaddMember_({
-      ...addMember_,
-      USERNAME: document.getElementById("addM_username").value,
-      USER_PASSWORD: document.getElementById("addM_pass").value,
+  // const UploadWithGCashSex = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     SEX: event.target.value,
+  //   });
+  // };
 
-      // CHILD
-      CHILD_SURNAME: document.getElementById("addM_childSurname").value,
-      CHILD_GIVEN_NAME: document.getElementById("addM_childName").value,
-      CHILD_MIDDLE_NAME: document.getElementById("addM_childMiddleName").value,
+  // const UploadWithGCashtbE = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     TOTALY_BLIND_EYES: event.target.value,
+  //   });
+  // };
 
-      // FATHER
-      FATHER_SURNAME: document.getElementById("addM_fatherSurname").value,
-      FATHER_GIVEN_NAME: document.getElementById("addM_fatherName").value,
-      FATHER_MIDDLE_NAME: document.getElementById("addM_fatherMiddleName")
-        .value,
+  // const UploadWithGCashLV = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     LOW_VISION_EYES: event.target.value,
+  //   });
+  // };
 
-      FATHER_LANDLINE: document.getElementById("addM_fatherLandline").value,
-      FATHER_CONTACT: document.getElementById("addM_fatherContact").value,
-      FATHER_EMAIL: document.getElementById("addM_fatherEmail").value,
-      FATHER_BIRTHDAY: document.getElementById("addM_fatherBday").value,
-      FATHER_OCCUPATION: document.getElementById("addM_fatherOccupation").value,
+  // const UploadWithGCashAL = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     ADAPTIVE_LENS: event.target.value,
+  //   });
+  // };
 
-      // MOTHER
-      MOTHER_SURNAME: document.getElementById("addM_motherSurname").value,
-      MOTHER_GIVEN_NAME: document.getElementById("addM_motherName").value,
-      MOTHER_MIDDLE_NAME: document.getElementById("addM_motherMiddleName")
-        .value,
+  // const UploadWithGCashS = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     STYLUS: event.target.value,
+  //   });
+  // };
 
-      MOTHER_LANDLINE: document.getElementById("addM_motherLandline").value,
-      MOTHER_CONTACT: document.getElementById("addM_motherContactNumber").value,
-      MOTHER_EMAIL: document.getElementById("addM_motherEmail").value,
-      MOTHER_BIRTHDAY: document.getElementById("addM_motherBday").value,
-      MOTHER_OCCUPATION: document.getElementById("addM_motherOccupation").value,
+  // const UploadWithGCashAE = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     ARTIFICIAL_EYES: event.target.value,
+  //   });
+  // };
 
-      // GUARDIAN
-      GUARDIAN_SURNAME: document.getElementById("addM_guardianSurname").value,
-      GUARDIAN_GIVEN_NAME: document.getElementById("addM_guardianName").value,
-      GUARDIAN_MIDDLE_NAME: document.getElementById("addM_guardianMiddleName")
-        .value,
+  // const UploadWithGCashCS = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     COMPUTER_SCREEN: event.target.value,
+  //   });
+  // };
 
-      GUARDIAN_CONTACT: document.getElementById("addM_guardianContactNumber")
-        .value,
+  // const UploadWithGCashWCa = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     WHITE_CANE: event.target.value,
+  //   });
+  // };
 
-      // SIBLING
-      FIRST_SIBLING: document.getElementById("addM_siblingName1").value,
-      SECOND_SIBLING: document.getElementById("addM_siblingName2").value,
-      THIRD_SIBLING: document.getElementById("addM_siblingName3").value,
+  // const UploadWithGCashCC = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     CCTV: event.target.value,
+  //   });
+  // };
 
-      // ADDRESS
-      CITY_ADDRESS: document.getElementById("addM_address").value,
-      REGION_ADDRESS: document.getElementById("addM_region").value,
-      PROVINCE_ADDRESS: document.getElementById("addM_province").value,
+  // const UploadWithGCashWC = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     WHEEL_CHAIR: event.target.value,
+  //   });
+  // };
 
-      // CHILDS DATA
-      CHILD_BIRTHDAY: document.getElementById("addM_cBday").value,
+  // const UploadWithGCashLP = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     LARGE_PRINTS: event.target.value,
+  //   });
+  // };
 
-      SCHOOL_NAME: document.getElementById("addM_cSchool").value,
-      SCHOOL_ADDRESS: document.getElementById("addM_cSAddress").value,
-      YEAR_GRADE_LEVEL: document.getElementById("addM_cYear").value,
+  // const UploadWithGCashHA = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     HEARING_AID: event.target.value,
+  //   });
+  // };
 
-      CAUSE_OF_BLINDNESS: document.getElementById("addM_cCOB").value,
+  // const UploadWithGCashA = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     ABACUS: event.target.value,
+  //   });
+  // };
 
-      // TOTALY_BLIND_EYES: event.target.value,
-      TB_ADD_DISABILITY: document.getElementById("addM_cTBAD").value,
+  // const UploadWithGCashB = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     BRAILLER: event.target.value,
+  //   });
+  // };
 
-      // LOW_VISION_EYES: event.target.value,
-      LV_ADD_DISABILITY: document.getElementById("addM_cLVAD").value,
+  // const UploadWithGCashPT = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     PHYSICAL_THERAPHY: event.target.value,
+  //   });
+  // };
 
-      // ADAPTIVE_LENS: event.target.value,
-      // STYLUS: event.target.value,
-      // ARTIFICIAL_EYES: event.target.value,
-      // COMPUTER_SCREEN: event.target.value,
-      // WHITE_CANE: event.target.value,
-      // CCTV: event.target.value,
-      // WHEEL_CHAIR: event.target.value,
-      // LARGE_PRINTS: event.target.value,
-      // HEARING_AID: event.target.value,
-      // ABACUS: event.target.value,
-      // BRAILLER: event.target.value,
+  // const UploadWithGCashOT = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     OCCUPATIONAL_THERAPHY: event.target.value,
+  //   });
+  // };
 
-      // PHYSICAL_THERAPHY: event.target.value,
-      // OCCUPATIONAL_THERAPHY: event.target.value,
-      // SPEECH_THERAPHY: event.target.value,
+  // const UploadWithGCashST = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     SPEECH_THERAPHY: event.target.value,
+  //   });
+  // };
+  // const UploadWithGCashMT = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     MONTHLY_INCOME: event.target.value,
+  //   });
+  // };
 
-      OTHER_CONDITION: document.getElementById("addM_OCN").value,
-    });
-  };
+  // const addMember_form_ = (event) => {
+  //   setaddMember_({
+  //     ...addMember_,
+  //     USERNAME: document.getElementById("addM_username").value,
+  //     USER_PASSWORD: document.getElementById("addM_pass").value,
 
-  const addMember_submit = async () => {
-    const formData_ = new FormData();
-    formData_.append("image", addMember_.file);
-    console.log(addMember_.file);
-    formData_.append("USERNAME", addMember_.USERNAME);
-    formData_.append("USER_PASSWORD", addMember_.USER_PASSWORD);
+  //     // CHILD
+  //     CHILD_SURNAME: document.getElementById("addM_childSurname").value,
+  //     CHILD_GIVEN_NAME: document.getElementById("addM_childName").value,
+  //     CHILD_MIDDLE_NAME: document.getElementById("addM_childMiddleName").value,
 
-    formData_.append("CHILD_SURNAME", addMember_.CHILD_SURNAME);
-    formData_.append("CHILD_GIVEN_NAME", addMember_.CHILD_GIVEN_NAME);
-    formData_.append("CHILD_MIDDLE_NAME", addMember_.CHILD_MIDDLE_NAME);
+  //     // FATHER
+  //     FATHER_SURNAME: document.getElementById("addM_fatherSurname").value,
+  //     FATHER_GIVEN_NAME: document.getElementById("addM_fatherName").value,
+  //     FATHER_MIDDLE_NAME: document.getElementById("addM_fatherMiddleName")
+  //       .value,
 
-    formData_.append("FATHER_SURNAME", addMember_.FATHER_SURNAME);
-    formData_.append("FATHER_GIVEN_NAME", addMember_.FATHER_GIVEN_NAME);
-    formData_.append("FATHER_MIDDLE_NAME", addMember_.FATHER_MIDDLE_NAME);
+  //     FATHER_LANDLINE: document.getElementById("addM_fatherLandline").value,
+  //     FATHER_CONTACT: document.getElementById("addM_fatherContact").value,
+  //     FATHER_EMAIL: document.getElementById("addM_fatherEmail").value,
+  //     FATHER_BIRTHDAY: document.getElementById("addM_fatherBday").value,
+  //     FATHER_OCCUPATION: document.getElementById("addM_fatherOccupation").value,
 
-    formData_.append("FATHER_LANDLINE", addMember_.FATHER_LANDLINE);
-    formData_.append("FATHER_CONTACT", addMember_.FATHER_CONTACT);
-    formData_.append("FATHER_EMAIL", addMember_.FATHER_EMAIL);
-    formData_.append("FATHER_BIRTHDAY", addMember_.FATHER_BIRTHDAY);
-    formData_.append("FATHER_OCCUPATION", addMember_.FATHER_OCCUPATION);
+  //     // MOTHER
+  //     MOTHER_SURNAME: document.getElementById("addM_motherSurname").value,
+  //     MOTHER_GIVEN_NAME: document.getElementById("addM_motherName").value,
+  //     MOTHER_MIDDLE_NAME: document.getElementById("addM_motherMiddleName")
+  //       .value,
 
-    formData_.append("MOTHER_SURNAME", addMember_.MOTHER_SURNAME);
-    formData_.append("MOTHER_GIVEN_NAME", addMember_.MOTHER_GIVEN_NAME);
-    formData_.append("MOTHER_MIDDLE_NAME", addMember_.MOTHER_MIDDLE_NAME);
+  //     MOTHER_LANDLINE: document.getElementById("addM_motherLandline").value,
+  //     MOTHER_CONTACT: document.getElementById("addM_motherContactNumber").value,
+  //     MOTHER_EMAIL: document.getElementById("addM_motherEmail").value,
+  //     MOTHER_BIRTHDAY: document.getElementById("addM_motherBday").value,
+  //     MOTHER_OCCUPATION: document.getElementById("addM_motherOccupation").value,
 
-    formData_.append("MOTHER_CONTACT", addMember_.MOTHER_CONTACT);
-    formData_.append("MOTHER_LANDLINE", addMember_.MOTHER_LANDLINE);
-    formData_.append("MOTHER_EMAIL", addMember_.MOTHER_EMAIL);
-    formData_.append("MOTHER_BIRTHDAY", addMember_.MOTHER_BIRTHDAY);
-    formData_.append("MOTHER_OCCUPATION", addMember_.MOTHER_OCCUPATION);
+  //     // GUARDIAN
+  //     GUARDIAN_SURNAME: document.getElementById("addM_guardianSurname").value,
+  //     GUARDIAN_GIVEN_NAME: document.getElementById("addM_guardianName").value,
+  //     GUARDIAN_MIDDLE_NAME: document.getElementById("addM_guardianMiddleName")
+  //       .value,
 
-    formData_.append("GUARDIAN_SURNAME", addMember_.GUARDIAN_SURNAME);
-    formData_.append("GUARDIAN_GIVEN_NAME", addMember_.GUARDIAN_GIVEN_NAME);
-    formData_.append("GUARDIAN_MIDDLE_NAME", addMember_.GUARDIAN_MIDDLE_NAME);
-    formData_.append("GUARDIAN_CONTACT", addMember_.GUARDIAN_CONTACT);
+  //     GUARDIAN_CONTACT: document.getElementById("addM_guardianContactNumber")
+  //       .value,
 
-    formData_.append("FIRST_SIBLING", addMember_.FIRST_SIBLING);
-    formData_.append("SECOND_SIBLING", addMember_.SECOND_SIBLING);
-    formData_.append("THIRD_SIBLING", addMember_.THIRD_SIBLING);
+  //     // SIBLING
+  //     FIRST_SIBLING: document.getElementById("addM_siblingName1").value,
+  //     SECOND_SIBLING: document.getElementById("addM_siblingName2").value,
+  //     THIRD_SIBLING: document.getElementById("addM_siblingName3").value,
 
-    formData_.append("CITY_ADDRESS", addMember_.CITY_ADDRESS);
-    formData_.append("REGION_ADDRESS", addMember_.REGION_ADDRESS);
-    formData_.append("PROVINCE_ADDRESS", addMember_.PROVINCE_ADDRESS);
+  //     // ADDRESS
+  //     CITY_ADDRESS: document.getElementById("addM_address").value,
+  //     REGION_ADDRESS: document.getElementById("addM_region").value,
+  //     PROVINCE_ADDRESS: document.getElementById("addM_province").value,
 
-    formData_.append("MONTHLY_INCOME", addMember_.MONTHLY_INCOME);
+  //     // CHILDS DATA
+  //     CHILD_BIRTHDAY: document.getElementById("addM_cBday").value,
 
-    formData_.append("CHILD_BIRTHDAY", addMember_.CHILD_BIRTHDAY);
-    formData_.append("SEX", addMember_.SEX);
-    formData_.append("SCHOOL_NAME", addMember_.SCHOOL_NAME);
-    formData_.append("SCHOOL_ADDRESS", addMember_.SCHOOL_ADDRESS);
-    formData_.append("YEAR_GRADE_LEVEL", addMember_.YEAR_GRADE_LEVEL);
-    formData_.append("CAUSE_OF_BLINDNESS", addMember_.CAUSE_OF_BLINDNESS);
-    formData_.append("TOTALY_BLIND_EYES", addMember_.TOTALY_BLIND_EYES);
-    formData_.append("TB_ADD_DISABILITY", addMember_.TB_ADD_DISABILITY);
-    formData_.append("LOW_VISION_EYES", addMember_.LOW_VISION_EYES);
-    formData_.append("LV_ADD_DISABILITY", addMember_.LV_ADD_DISABILITY);
-    formData_.append("ADAPTIVE_LENS", addMember_.ADAPTIVE_LENS);
-    formData_.append("STYLUS", addMember_.STYLUS);
-    formData_.append("ARTIFICIAL_EYES", addMember_.ARTIFICIAL_EYES);
-    formData_.append("COMPUTER_SCREEN", addMember_.COMPUTER_SCREEN);
-    formData_.append("WHITE_CANE", addMember_.WHITE_CANE);
-    formData_.append("CCTV", addMember_.CCTV);
-    formData_.append("WHEEL_CHAIR", addMember_.WHEEL_CHAIR);
-    formData_.append("LARGE_PRINTS", addMember_.LARGE_PRINTS);
-    formData_.append("HEARING_AID", addMember_.HEARING_AID);
-    formData_.append("ABACUS", addMember_.ABACUS);
-    formData_.append("BRAILLER", addMember_.BRAILLER);
-    formData_.append("PHYSICAL_THERAPHY", addMember_.PHYSICAL_THERAPHY);
-    formData_.append("OCCUPATIONAL_THERAPHY", addMember_.OCCUPATIONAL_THERAPHY);
-    formData_.append("SPEECH_THERAPHY", addMember_.SPEECH_THERAPHY);
-    formData_.append("OTHER_CONDITION", addMember_.OTHER_CONDITION);
+  //     SCHOOL_NAME: document.getElementById("addM_cSchool").value,
+  //     SCHOOL_ADDRESS: document.getElementById("addM_cSAddress").value,
+  //     YEAR_GRADE_LEVEL: document.getElementById("addM_cYear").value,
 
-    console.log(addMember_.USERNAME);
-    console.log(addMember_.USERNAME);
+  //     CAUSE_OF_BLINDNESS: document.getElementById("addM_cCOB").value,
 
-    console.log(addMember_.CHILD_SURNAME);
-    console.log(addMember_.CHILD_GIVEN_NAME);
-    console.log(addMember_.CHILD_MIDDLE_NAME);
+  //     // TOTALY_BLIND_EYES: event.target.value,
+  //     TB_ADD_DISABILITY: document.getElementById("addM_cTBAD").value,
 
-    console.log(addMember_.FATHER_SURNAME);
-    console.log(addMember_.FATHER_GIVEN_NAME);
-    console.log(addMember_.FATHER_MIDDLE_NAME);
+  //     // LOW_VISION_EYES: event.target.value,
+  //     LV_ADD_DISABILITY: document.getElementById("addM_cLVAD").value,
 
-    console.log(addMember_.FATHER_CONTACT);
-    console.log(addMember_.FATHER_EMAIL);
-    console.log(addMember_.FATHER_BIRTHDAY);
-    console.log(addMember_.FATHER_OCCUPATION);
+  //     // ADAPTIVE_LENS: event.target.value,
+  //     // STYLUS: event.target.value,
+  //     // ARTIFICIAL_EYES: event.target.value,
+  //     // COMPUTER_SCREEN: event.target.value,
+  //     // WHITE_CANE: event.target.value,
+  //     // CCTV: event.target.value,
+  //     // WHEEL_CHAIR: event.target.value,
+  //     // LARGE_PRINTS: event.target.value,
+  //     // HEARING_AID: event.target.value,
+  //     // ABACUS: event.target.value,
+  //     // BRAILLER: event.target.value,
 
-    console.log(addMember_.MOTHER_SURNAME);
-    console.log(addMember_.MOTHER_GIVEN_NAME);
-    console.log(addMember_.MOTHER_MIDDLE_NAME);
+  //     // PHYSICAL_THERAPHY: event.target.value,
+  //     // OCCUPATIONAL_THERAPHY: event.target.value,
+  //     // SPEECH_THERAPHY: event.target.value,
 
-    console.log(addMember_.MOTHER_CONTACT);
-    console.log(addMember_.MOTHER_EMAIL);
-    console.log(addMember_.MOTHER_BIRTHDAY);
-    console.log(addMember_.MOTHER_OCCUPATION);
+  //     OTHER_CONDITION: document.getElementById("addM_OCN").value,
+  //   });
+  // };
 
-    console.log(addMember_.MONTHLY_INCOME);
+  // const addMember_submit = async () => {
+  //   const formData_ = new FormData();
+  //   formData_.append("image", addMember_.file);
+  //   console.log(addMember_.file);
+  //   formData_.append("USERNAME", addMember_.USERNAME);
+  //   formData_.append("USER_PASSWORD", addMember_.USER_PASSWORD);
 
-    // formData_.append("content", addMember_.content);
+  //   formData_.append("CHILD_SURNAME", addMember_.CHILD_SURNAME);
+  //   formData_.append("CHILD_GIVEN_NAME", addMember_.CHILD_GIVEN_NAME);
+  //   formData_.append("CHILD_MIDDLE_NAME", addMember_.CHILD_MIDDLE_NAME);
 
-    Axios.post(
-      "https://perseeption-tromagade.herokuapp.com/uploadGCash",
-      formData_,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
-  };
+  //   formData_.append("FATHER_SURNAME", addMember_.FATHER_SURNAME);
+  //   formData_.append("FATHER_GIVEN_NAME", addMember_.FATHER_GIVEN_NAME);
+  //   formData_.append("FATHER_MIDDLE_NAME", addMember_.FATHER_MIDDLE_NAME);
+
+  //   formData_.append("FATHER_LANDLINE", addMember_.FATHER_LANDLINE);
+  //   formData_.append("FATHER_CONTACT", addMember_.FATHER_CONTACT);
+  //   formData_.append("FATHER_EMAIL", addMember_.FATHER_EMAIL);
+  //   formData_.append("FATHER_BIRTHDAY", addMember_.FATHER_BIRTHDAY);
+  //   formData_.append("FATHER_OCCUPATION", addMember_.FATHER_OCCUPATION);
+
+  //   formData_.append("MOTHER_SURNAME", addMember_.MOTHER_SURNAME);
+  //   formData_.append("MOTHER_GIVEN_NAME", addMember_.MOTHER_GIVEN_NAME);
+  //   formData_.append("MOTHER_MIDDLE_NAME", addMember_.MOTHER_MIDDLE_NAME);
+
+  //   formData_.append("MOTHER_CONTACT", addMember_.MOTHER_CONTACT);
+  //   formData_.append("MOTHER_LANDLINE", addMember_.MOTHER_LANDLINE);
+  //   formData_.append("MOTHER_EMAIL", addMember_.MOTHER_EMAIL);
+  //   formData_.append("MOTHER_BIRTHDAY", addMember_.MOTHER_BIRTHDAY);
+  //   formData_.append("MOTHER_OCCUPATION", addMember_.MOTHER_OCCUPATION);
+
+  //   formData_.append("GUARDIAN_SURNAME", addMember_.GUARDIAN_SURNAME);
+  //   formData_.append("GUARDIAN_GIVEN_NAME", addMember_.GUARDIAN_GIVEN_NAME);
+  //   formData_.append("GUARDIAN_MIDDLE_NAME", addMember_.GUARDIAN_MIDDLE_NAME);
+  //   formData_.append("GUARDIAN_CONTACT", addMember_.GUARDIAN_CONTACT);
+
+  //   formData_.append("FIRST_SIBLING", addMember_.FIRST_SIBLING);
+  //   formData_.append("SECOND_SIBLING", addMember_.SECOND_SIBLING);
+  //   formData_.append("THIRD_SIBLING", addMember_.THIRD_SIBLING);
+
+  //   formData_.append("CITY_ADDRESS", addMember_.CITY_ADDRESS);
+  //   formData_.append("REGION_ADDRESS", addMember_.REGION_ADDRESS);
+  //   formData_.append("PROVINCE_ADDRESS", addMember_.PROVINCE_ADDRESS);
+
+  //   formData_.append("MONTHLY_INCOME", addMember_.MONTHLY_INCOME);
+
+  //   formData_.append("CHILD_BIRTHDAY", addMember_.CHILD_BIRTHDAY);
+  //   formData_.append("SEX", addMember_.SEX);
+  //   formData_.append("SCHOOL_NAME", addMember_.SCHOOL_NAME);
+  //   formData_.append("SCHOOL_ADDRESS", addMember_.SCHOOL_ADDRESS);
+  //   formData_.append("YEAR_GRADE_LEVEL", addMember_.YEAR_GRADE_LEVEL);
+  //   formData_.append("CAUSE_OF_BLINDNESS", addMember_.CAUSE_OF_BLINDNESS);
+  //   formData_.append("TOTALY_BLIND_EYES", addMember_.TOTALY_BLIND_EYES);
+  //   formData_.append("TB_ADD_DISABILITY", addMember_.TB_ADD_DISABILITY);
+  //   formData_.append("LOW_VISION_EYES", addMember_.LOW_VISION_EYES);
+  //   formData_.append("LV_ADD_DISABILITY", addMember_.LV_ADD_DISABILITY);
+  //   formData_.append("ADAPTIVE_LENS", addMember_.ADAPTIVE_LENS);
+  //   formData_.append("STYLUS", addMember_.STYLUS);
+  //   formData_.append("ARTIFICIAL_EYES", addMember_.ARTIFICIAL_EYES);
+  //   formData_.append("COMPUTER_SCREEN", addMember_.COMPUTER_SCREEN);
+  //   formData_.append("WHITE_CANE", addMember_.WHITE_CANE);
+  //   formData_.append("CCTV", addMember_.CCTV);
+  //   formData_.append("WHEEL_CHAIR", addMember_.WHEEL_CHAIR);
+  //   formData_.append("LARGE_PRINTS", addMember_.LARGE_PRINTS);
+  //   formData_.append("HEARING_AID", addMember_.HEARING_AID);
+  //   formData_.append("ABACUS", addMember_.ABACUS);
+  //   formData_.append("BRAILLER", addMember_.BRAILLER);
+  //   formData_.append("PHYSICAL_THERAPHY", addMember_.PHYSICAL_THERAPHY);
+  //   formData_.append("OCCUPATIONAL_THERAPHY", addMember_.OCCUPATIONAL_THERAPHY);
+  //   formData_.append("SPEECH_THERAPHY", addMember_.SPEECH_THERAPHY);
+  //   formData_.append("OTHER_CONDITION", addMember_.OTHER_CONDITION);
+
+  //   console.log(addMember_.USERNAME);
+  //   console.log(addMember_.USERNAME);
+
+  //   console.log(addMember_.CHILD_SURNAME);
+  //   console.log(addMember_.CHILD_GIVEN_NAME);
+  //   console.log(addMember_.CHILD_MIDDLE_NAME);
+
+  //   console.log(addMember_.FATHER_SURNAME);
+  //   console.log(addMember_.FATHER_GIVEN_NAME);
+  //   console.log(addMember_.FATHER_MIDDLE_NAME);
+
+  //   console.log(addMember_.FATHER_CONTACT);
+  //   console.log(addMember_.FATHER_EMAIL);
+  //   console.log(addMember_.FATHER_BIRTHDAY);
+  //   console.log(addMember_.FATHER_OCCUPATION);
+
+  //   console.log(addMember_.MOTHER_SURNAME);
+  //   console.log(addMember_.MOTHER_GIVEN_NAME);
+  //   console.log(addMember_.MOTHER_MIDDLE_NAME);
+
+  //   console.log(addMember_.MOTHER_CONTACT);
+  //   console.log(addMember_.MOTHER_EMAIL);
+  //   console.log(addMember_.MOTHER_BIRTHDAY);
+  //   console.log(addMember_.MOTHER_OCCUPATION);
+
+  //   console.log(addMember_.MONTHLY_INCOME);
+
+  //   // formData_.append("content", addMember_.content);
+
+  //   Axios.post(
+  //     "https://perseeption-tromagade.herokuapp.com/uploadGCash",
+  //     formData_,
+  //     {
+  //       headers: { "Content-Type": "multipart/form-data" },
+  //     }
+  //   );
+  // };
 
   // Render
   useEffect(() => {
@@ -994,13 +1052,13 @@ function AdminMemberList() {
                 type="text"
                 placeholder="Username"
                 id="addM_username"
-                onChange={addMember_form_}
+                onChange={(e) => setUSERNAME_(e.target.value)}
               />
               <input
                 type="password"
                 placeholder="Password"
                 id="addM_pass"
-                onChange={addMember_form_}
+                onChange={(e) => setUSER_PASSWORD(e.target.value)}
               />
               <h2>Child & Family Personal Data</h2>
               <p>(Personal na Datos ng Bata at ng Pamilya)</p>
@@ -1008,180 +1066,180 @@ function AdminMemberList() {
                 type="text"
                 id="addM_childSurname"
                 placeholder="Child's Surname"
-                onChange={addMember_form_}
+                onChange={(e) => setCHILD_SURNAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Child's Name"
                 id="addM_childName"
-                onChange={addMember_form_}
+                onChange={(e) => setCHILD_NAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Child's Middlename"
                 id="addM_childMiddleName"
-                onChange={addMember_form_}
+                onChange={(e) => setCHILD_MIDDLE_NAME(e.target.value)}
               />
               <h3>Father's Information</h3>
               <input
                 type="text"
                 placeholder="Father's Surname"
                 id="addM_fatherSurname"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_SURNAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Father's Name"
                 id="addM_fatherName"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_NAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Father's Middlename"
                 id="addM_fatherMiddleName"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_MIDDLE_NAME(e.target.value)}
               />
               <input
                 type="tel"
                 placeholder="Father's Contact Number"
                 id="addM_fatherContact"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_CONTACT(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Father's Landline Number"
                 id="addM_fatherLandline"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_LANDLINE(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Father's Email"
                 id="addM_fatherEmail"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_EMAIL(e.target.value)}
               />
               <p>Father's Birthday:</p>
               <input
                 type="date"
                 id="addM_fatherBday"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_BIRTHDAY(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Father's Occupation"
                 id="addM_fatherOccupation"
-                onChange={addMember_form_}
+                onChange={(e) => setFATHER_OCCUPATION(e.target.value)}
               />
               <h3>Mother's Information</h3>
               <input
                 type="text"
                 placeholder="Mother's Surname"
                 id="addM_motherSurname"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_SURNAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Mother's Name"
                 id="addM_motherName"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_NAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Mother's Middlename"
                 id="addM_motherMiddleName"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_MIDDLE_NAME(e.target.value)}
               />
               <input
                 type="tel"
                 placeholder="Mother's Contact Number"
                 id="addM_motherContactNumber"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_CONTACT(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Mother's Landline Number"
                 id="addM_motherLandline"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_LANDLINE(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Mother's Email"
                 id="addM_motherEmail"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_EMAIL(e.target.value)}
               />
               <p>Mother's Birthday:</p>
               <input
                 type="date"
                 id="addM_motherBday"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHER_BIRTHDAY(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Mother's Occupation"
                 id="addM_motherOccupation"
-                onChange={addMember_form_}
+                onChange={(e) => setMOTHERTHER_OCCUPATION(e.target.value)}
               />
               <h3>Guardians's Information</h3>
               <input
                 type="text"
                 placeholder="Guardians's Surname"
                 id="addM_guardianSurname"
-                onChange={addMember_form_}
+                onChange={(e) => setGUARDIAN_SURNAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Guardians's Name"
                 id="addM_guardianName"
-                onChange={addMember_form_}
+                onChange={(e) => setGUARDIAN_NAME(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Guardians's Middlename"
                 id="addM_guardianMiddleName"
-                onChange={addMember_form_}
+                onChange={(e) => setGUARDIAN_MIDDLE_NAME(e.target.value)}
               />
               <input
                 type="tel"
                 placeholder="Guardians's Contact Number"
                 id="addM_guardianContactNumber"
-                onChange={addMember_form_}
+                onChange={(e) => setGUARDIAN_CONTACT(e.target.value)}
               />
               <h3>Siblings</h3>
               <input
                 type="text"
                 placeholder="Sibling Name"
                 id="addM_siblingName1"
-                onChange={addMember_form_}
+                onChange={(e) => setFIRST_SIBLING(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Sibling Name"
                 id="addM_siblingName2"
-                onChange={addMember_form_}
+                onChange={(e) => setSECOND_SIBLING(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Sibling Name"
                 id="addM_siblingName3"
-                onChange={addMember_form_}
+                onChange={(e) => setTHIRD_SIBLING(e.target.value)}
               />
               <h3>Address</h3>
               <input
                 type="text"
                 placeholder="City Address"
                 id="addM_address"
-                onChange={addMember_form_}
+                onChange={(e) => setCITY_ADDRESS_(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Region"
                 id="addM_region"
-                onChange={addMember_form_}
+                onChange={(e) => setREGION_ADDRESS(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Province Address"
                 id="addM_province"
-                onChange={addMember_form_}
+                onChange={(e) => setPROVINCE_ADDRESS(e.target.value)}
               />
               <h3>Combined Monthly Income of Father and Mother</h3>
               <div className="addMemberRadio">
@@ -1193,7 +1251,7 @@ function AdminMemberList() {
                       className="below12_"
                       value="Below Ph12,000"
                       id="addM_b13"
-                      onChange={UploadWithGCashMT}
+                      onChange={(e) => setMONTHLY_INCOME(e.target.value)}
                       // onChange={(e) => {
                       //   setMONTHLY_INCOME(e.target.value);
                       // }}
@@ -1207,7 +1265,7 @@ function AdminMemberList() {
                       name="MONTHLY_INCOME"
                       value="Ph12,000-30,000"
                       id="addM_12_30"
-                      onChange={UploadWithGCashMT}
+                      onChange={(e) => setMONTHLY_INCOME(e.target.value)}
                       // onChange={(e) => {
                       //   setMONTHLY_INCOME(e.target.value);
                       // }}
@@ -1221,7 +1279,7 @@ function AdminMemberList() {
                       className="fifty_"
                       value="Ph30,000-50,000"
                       id="addM_30_50"
-                      onChange={UploadWithGCashMT}
+                      onChange={(e) => setMONTHLY_INCOME(e.target.value)}
                       // onChange={(e) => {
                       //   setMONTHLY_INCOME(e.target.value);
                       // }}
@@ -1236,7 +1294,7 @@ function AdminMemberList() {
                       className="above_"
                       value="Above Ph50,000"
                       id="addM_a50"
-                      onChange={UploadWithGCashMT}
+                      onChange={(e) => setMONTHLY_INCOME(e.target.value)}
                       // onChange={(e) => {
                       //   setMONTHLY_INCOME(e.target.value);
                       // }}
@@ -1248,14 +1306,18 @@ function AdminMemberList() {
               <h3>Child's Data</h3>
               <p>(Datos ng Bata)</p>
               <p>Child's Birthday:</p>{" "}
-              <input type="date" id="addM_cBday" onChange={addMember_form_} />
+              <input
+                type="date"
+                id="addM_cBday"
+                onChange={(e) => setCHILD_BIRTHDAY(e.target.value)}
+              />
               <p>Gender</p>
               <input
                 type="radio"
                 name="SEX"
                 value="Male"
                 id="addM_cSexM"
-                onChange={UploadWithGCashSex}
+                onChange={(e) => setSEX(e.target.value)}
               />{" "}
               <label>Male</label>
               <input
@@ -1263,20 +1325,20 @@ function AdminMemberList() {
                 name="SEX"
                 value="Female"
                 id="addM_cSexF"
-                onChange={UploadWithGCashSex}
+                onChange={(e) => setSEX(e.target.value)}
               />{" "}
               <label>Female</label>
               <input
                 type="text"
                 placeholder="School"
                 id="addM_cSchool"
-                onChange={addMember_form_}
+                onChange={(e) => setSCHOOL(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Year/ Grade Level"
                 id="addM_cYear"
-                onChange={addMember_form_}
+                onChange={(e) => setSEX(e.target.value)}
               />
               <input
                 type="text"
@@ -1701,7 +1763,9 @@ function AdminMemberList() {
                   type="file"
                   name="imgGcash"
                   id="imgGcash"
-                  onChange={UploadWithGCash}
+                  // onChange={UploadWithGCash}
+                  onChange={handleFileInputChange}
+                  value={fileInputState}
                 />
               </div>
             </div>
@@ -1711,7 +1775,7 @@ function AdminMemberList() {
               </p>
               <p
                 className="confirmUpdateApproveMembers"
-                onClick={addMember_submit}
+                onClick={handleSubmitFile}
               >
                 Submit form
               </p>
