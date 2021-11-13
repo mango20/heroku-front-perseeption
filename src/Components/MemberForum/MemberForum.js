@@ -100,7 +100,7 @@ function MemberForum() {
           setFORUM_LIST(response.data);
           document.getElementById("iconForum_").style.display = "block";
           // document.getElementById("iconForum").style.display = "none";
-        } else {
+        } else if (response.data[0].USER_TYPE === "Member") {
           setFORUM_LIST(response.data);
           // document.getElementById("iconForum_").style.display = "none";
           document.getElementById("iconForum").style.display = "block";
