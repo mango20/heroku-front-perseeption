@@ -307,7 +307,7 @@ function MemberForum() {
     console.log(input);
     filter = input.value.toUpperCase();
     console.log(filter);
-    table = document.getElementById("forumQuestionHead");
+    table = document.getElementById("questionBox");
     console.log(table);
     tr = table.getElementsByTagName("div");
     console.log(tr);
@@ -514,7 +514,7 @@ function MemberForum() {
             <div className="scrollForum">
               {FORUM_LIST.map((val, key) => {
                 return (
-                  <div key={key} className="questionBox">
+                  <div key={key} className="questionBox" d="questionBox">
                     <div className="forumQuestionHead" id="forumQuestionHead">
                       {/* <img
                         src="/images/avatar.png"
@@ -546,7 +546,9 @@ function MemberForum() {
                     </div>
                     <div className="forumQuestionContent">
                       {/* <p className="titleQuestion">{val.FORUM_ID}</p> */}
-                      <p className="titleQuestion">{val.FORUM_TITLE}</p>
+                      <p className="titleQuestion" id="titleQuestion">
+                        {val.FORUM_TITLE}
+                      </p>
                       <p className="contentQuestion">{val.FORUM_CONTENT}</p>
                     </div>
                     <p
