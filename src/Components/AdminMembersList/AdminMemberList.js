@@ -86,8 +86,8 @@ function AdminMemberList() {
       // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
       setFileInputState("");
       setPreviewSource("");
-      setEVENT_TITLE("");
-      setEVENT_CONTENT("");
+      // setEVENT_TITLE("");
+      // setEVENT_CONTENT("");
       // document.getElementById("fileBtnId").value = "";
       // document.getElementById("inputEventTitle").value = "";
       // document.getElementById("inputEventContent").value = "";
