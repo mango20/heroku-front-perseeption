@@ -96,6 +96,13 @@ function MemberForum() {
     Axios.get(`https://perseeption-tromagade.herokuapp.com/api/getForum`).then(
       (response) => {
         setFORUM_LIST(response.data);
+        if (response.data[0].USER_TYPE === "Admin") {
+          document.getElementById("iconForum_").style.display = "block";
+          document.getElementById("iconForum").style.display = "none";
+        } else {
+          document.getElementById("iconForum_").style.display = "none";
+          document.getElementById("iconForum").style.display = "block";
+        }
         console.log(response.data);
       }
     );
@@ -463,8 +470,16 @@ function MemberForum() {
                         alt="img"
                         className="iconForum"
                       /> */}
+                      <img
+                        src="/images/AvatarIcon.png"
+                        alt="img"
+                        className="iconForum"
+                        id="iconForum"
+                        // onClick={popup}
+                      />
                       <Image
                         className="iconForum"
+                        id="iconForum_"
                         cloudName="dlvt2lnkh"
                         alt="img"
                         publicId={val.AVATAR}
