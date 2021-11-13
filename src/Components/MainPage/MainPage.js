@@ -185,7 +185,6 @@ function MainPage() {
                   alt="img"
                   className="loggedInImg"
                   id="loggedInImg_"
-                  style="display: none;"
                 />
                 <Image
                   className="loggedInImg"
@@ -194,7 +193,6 @@ function MainPage() {
                   alt="img"
                   publicId={AVATAR}
                   onClick={popup}
-                  style="display: none;"
                 />
                 <div className="dropdown-content" id="dropdown-content">
                   <Link to="/MemberProfile" id="profileGo">
