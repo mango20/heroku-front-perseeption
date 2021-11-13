@@ -306,7 +306,7 @@ function MemberForum() {
     const FORUM_TITLE = document.getElementById("inputSearchForum").value;
     console.log(FORUM_TITLE);
     Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getForum/${FORUM_TITLE}"
+      `https://perseeption-tromagade.herokuapp.com/api/getForum/${FORUM_TITLE}`
     ).then((response) => {
       setFORUM_LIST(
         FORUM_LIST.filter((val) => {
