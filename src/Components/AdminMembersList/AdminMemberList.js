@@ -1042,7 +1042,7 @@ function AdminMemberList() {
             </div>
           </div>
         </div>
-        <div className="outerAddNewMember_" id="outerAddNewMember_">
+        {/* <div className="outerAddNewMember_" id="outerAddNewMember_">
           <div className="innerAddNewMember_" id="innerAddNewMember_">
             <p className="editMemberApproveInfo">Add Member</p>
             <div className="form_addMember">
@@ -1780,8 +1780,8 @@ function AdminMemberList() {
                 Submit form
               </p>
             </div>
-          </div>
-        </div>
+          </div> 
+        </div>*/}
       </div>
     </div>
   );
