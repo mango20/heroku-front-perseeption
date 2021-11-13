@@ -744,3 +744,7 @@
 #iconForum_ {
   display: none;
 }
+
+#.iconForum {
+  display: none;
+}
