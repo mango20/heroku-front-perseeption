@@ -33,10 +33,12 @@ function MainPage() {
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
         document.getElementById("portalDash_").style.display = "block";
       } else {
+        document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
         document.getElementById("portalDash_").style.display = "none";
       }
@@ -178,6 +180,12 @@ function MainPage() {
             </Link>
             <div className="memberDiv" id="memberDiv">
               <div>
+                <img
+                  src="/images/AvatarIcon.png"
+                  alt="img"
+                  className="loggedInImg"
+                  id="loggedInImg_"
+                />
                 <Image
                   className="loggedInImg"
                   id="loggedInImg"
