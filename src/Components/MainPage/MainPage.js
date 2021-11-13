@@ -262,7 +262,7 @@ function MainPage() {
 
         <div className="imageOrg" id="imageOrg">
           <div className="slideshow">
-            <img src="/images/pavic.jpg" alt="img" className="orgImg" />
+            <img src="/images/mainpage1.png" alt="img" className="orgImg" />
             <img src="/images/events1.jpg" alt="img" className="orgImg1" />
             <img src="/images/events2.jpg" alt="img" className="orgImg2" />
             <img src="/images/events1.jpg" alt="img" className="orgImg3" />
