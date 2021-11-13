@@ -61,7 +61,7 @@ function TermsCondition() {
           </Link>
           <div className="memberDiv" id="memberDiv">
             <img
-              src="/images/AvatarIcon.png"
+              src="/images/AvatarIcon.jpg"
               alt="img"
               className="loggedInImg"
               id="loggedInImg_"

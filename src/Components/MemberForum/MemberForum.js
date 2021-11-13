@@ -361,7 +361,7 @@ function MemberForum() {
           </Link>
           <div className="memberDiv" id="memberDiv">
             <img
-              src="/images/AvatarIcon.png"
+              src="/images/AvatarIcon.jpg"
               alt="img"
               className="loggedInImg"
               id="loggedInImg_"
@@ -525,7 +525,7 @@ function MemberForum() {
                         className="iconForum"
                       /> */}
                       <img
-                        src="/images/AvatarIcon.png"
+                        src="/images/AvatarIcon.jpg"
                         alt="img"
                         className="iconForum"
                         id="iconForum"

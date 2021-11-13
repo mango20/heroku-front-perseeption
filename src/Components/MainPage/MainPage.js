@@ -183,7 +183,7 @@ function MainPage() {
             <div className="memberDiv" id="memberDiv">
               <div>
                 <img
-                  src="/images/AvatarIcon.png"
+                  src="/images/AvatarIcon.jpg"
                   alt="img"
                   className="loggedInImg"
                   id="loggedInImg_"
