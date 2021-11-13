@@ -535,7 +535,7 @@ function MemberForum() {
                         className="iconForum"
                         id="iconForum_"
                         cloudName="dlvt2lnkh"
-                        alt="img"
+                        // alt="img"
                         publicId={val.AVATAR}
                       />
                       <p className="iconForumName">{val.NAME}</p>
