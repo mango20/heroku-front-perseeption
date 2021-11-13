@@ -292,17 +292,7 @@ function MemberForum() {
   // }, []);
 
   const filterApproveMembers = () => {
-    var input,
-      filter,
-      table,
-      tr,
-      td,
-      td1,
-      td2,
-      i,
-      txtValue,
-      txtValue1,
-      txtValue2;
+    var input, filter, table, tr, td, td1, td2, txtValue, txtValue1, txtValue2;
     const FORUM_TITLE = document.getElementById("inputSearchForum").value;
     console.log(FORUM_TITLE);
     Axios.get(
