@@ -303,28 +303,33 @@ function MemberForum() {
       txtValue,
       txtValue1,
       txtValue2;
-    input = document.getElementById("inputSearchForum");
+    input = document.getElementById("inputSearchForum").value;
     console.log(input);
-    filter = input.value.toUpperCase();
-    console.log(filter);
-    table = document.getElementById("forumQuestionHead");
-    console.log(table);
-    tr = table.getElementsByTagName("p");
-    console.log(tr);
-    console.log(tr.length);
-    for (i = 0; i < tr.length; i++) {
-      console.log(i);
-      td = tr[i].getElementById("titleQuestion")[0];
-      console.log(td);
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
+    setFORUM_LIST(
+      FORUM_LIST.filter((val) => {
+        return val.FORUM_ID === input; // Filter/remove if it not equals to id
+      })
+    );
+    // filter = input.value.toUpperCase();
+    // console.log(filter);
+    // table = document.getElementById("forumQuestionHead");
+    // console.log(table);
+    // tr = table.getElementsByTagName("p");
+    // console.log(tr);
+    // console.log(tr.length);
+    // for (i = 0; i < tr.length; i++) {
+    //   console.log(i);
+    //   td = tr[i].getElementById("titleQuestion")[0];
+    //   console.log(td);
+    //   if (td) {
+    //     txtValue = td.textContent || td.innerText;
+    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //       tr[i].style.display = "";
+    //     } else {
+    //       tr[i].style.display = "none";
+    //     }
+    //   }
+    // }
   };
   return (
     <div className="ForumBg">
