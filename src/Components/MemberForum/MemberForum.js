@@ -307,7 +307,7 @@ function MemberForum() {
     console.log(input);
     setFORUM_LIST(
       FORUM_LIST.filter((val) => {
-        return val.FORUM_ID === input; // Filter/remove if it not equals to id
+        return val.FORUM_TITLE === input; // Filter/remove if it not equals to id
       })
     );
     // filter = input.value.toUpperCase();
