@@ -262,7 +262,7 @@ function MainPage() {
 
         <div className="imageOrg" id="imageOrg">
           <div className="slideshow">
-            <img src="/images/mainpage1.jpg" alt="img" className="orgImg" />
+            {/* <img src="/images/mainpage1.jpg" alt="img" className="orgImg" /> */}
             <img src="/images/mainpage1.jpg" alt="img" className="orgImg1" />
             <img src="/images/mainpage2.png" alt="img" className="orgImg2" />
             <img src="/images/mainpage3.png" alt="img" className="orgImg3" />
