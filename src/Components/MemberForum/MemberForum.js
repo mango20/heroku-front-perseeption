@@ -75,14 +75,14 @@ function MemberForum() {
   //   });
   // }, []);
 
-  useEffect(() => {
-    Axios.get(
-      "https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}"
-    ).then((response) => {
-      setFORUM_REPLY_LIST(response.data);
-      console.log(response.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   Axios.get(
+  //     "https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}"
+  //   ).then((response) => {
+  //     setFORUM_REPLY_LIST(response.data);
+  //     console.log(response.data);
+  //   });
+  // }, []);
 
   useEffect(() => {
     Axios.get(
@@ -106,6 +106,7 @@ function MemberForum() {
           document.getElementById("iconForum").style.display = "block";
         }
         console.log(response.data);
+        console.log(response.data[0].USER_TYPE);
       }
     );
   }, []);
