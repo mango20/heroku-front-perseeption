@@ -187,6 +187,7 @@ function MainPage() {
                   alt="img"
                   className="loggedInImg"
                   id="loggedInImg_"
+                  onClick={popup}
                 />
                 <Image
                   className="loggedInImg"
