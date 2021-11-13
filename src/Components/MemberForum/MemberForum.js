@@ -113,6 +113,13 @@ function MemberForum() {
         });
         window.location.reload();
       });
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
     } else {
       document.getElementById("floatYouNeedLoginBg").style.display = "block";
       document.getElementById("floatYouNeedContainer").style.display = "block";
@@ -147,6 +154,11 @@ function MemberForum() {
 
         setFORUM_REPLY_LIST(response.data);
       });
+      document.getElementById("popUpGetMsgApprove").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgApprove").style.display = "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
 
       // Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForumTop").then((response) => {
       //   setFORUM_REPLY_LIST(response.data);
@@ -175,6 +187,12 @@ function MemberForum() {
         console.log(response.data[0].FORUM_ID);
       }
     );
+    document.getElementById("popUpGetMsgApprove_").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
+
     // setFORUM_TITLE(" sd");
     // document.getElementById("floatForumAskQuestionBg").style.display = "none";
     document.getElementById("floatForumAskQuestionBg").style.display = "none";
@@ -301,6 +319,24 @@ function MemberForum() {
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
+        </div>
+      </div>
+      <div id="popUpGetMsgApprove">
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Forum Reply Posted Successfully!</h1>
+        </div>
+      </div>
+      <div id="popUpGetMsgApprove_">
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Forum Content Posted Successfully!</h1>
+        </div>
+      </div>
+      <div id="popUpGetMsgDeleteMember_">
+        <div id="popUpGetMsgInDeleteMember_">
+          <h2>PerSEEption Message</h2>
+          <h1>Forum Deleted Successfully</h1>
         </div>
       </div>
       <div className="floatYouNeedLoginBg" id="floatYouNeedLoginBg">
