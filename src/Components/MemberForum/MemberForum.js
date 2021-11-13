@@ -311,7 +311,7 @@ function MemberForum() {
       console.log(response.data);
       setFORUM_LIST(
         FORUM_LIST.filter((val) => {
-          return val.FORUM_TITLE === FORUM_TITLE; // Filter/remove if it not equals to id
+          return val.FORUM_TITLE !== FORUM_TITLE; // Filter/remove if it not equals to id
         })
       );
     });
