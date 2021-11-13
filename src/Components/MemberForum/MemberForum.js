@@ -95,12 +95,13 @@ function MemberForum() {
   useEffect(() => {
     Axios.get(`https://perseeption-tromagade.herokuapp.com/api/getForum`).then(
       (response) => {
-        setFORUM_LIST(response.data);
         if (response.data[0].USER_TYPE === "Admin") {
+          setFORUM_LIST(response.data);
           document.getElementById("iconForum_").style.display = "block";
-          document.getElementById("iconForum").style.display = "none";
+          // document.getElementById("iconForum").style.display = "none";
         } else {
-          document.getElementById("iconForum_").style.display = "none";
+          setFORUM_LIST(response.data);
+          // document.getElementById("iconForum_").style.display = "none";
           document.getElementById("iconForum").style.display = "block";
         }
         console.log(response.data);
