@@ -74,6 +74,13 @@ function AdminProfile() {
   const updateAdmin = (USER_ID) => {
     const p = document.getElementById("profPass").value;
     if (p === "") {
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
       return;
     } else {
       Axios.put(
@@ -105,6 +112,11 @@ function AdminProfile() {
           })
         );
       });
+      document.getElementById("popUpGetMsgApprove").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgApprove").style.display = "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
     }
   };
   return (
@@ -155,6 +167,18 @@ function AdminProfile() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
+        </div>
+        <div id="popUpGetMsgDeleteMember_">
+          <div id="popUpGetMsgInDeleteMember_">
+            <h2>PerSEEption Message</h2>
+            <h1>Please enter your password for an update</h1>
+          </div>
+        </div>
+        <div id="popUpGetMsgApprove">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Your Profile Update Successfully!</h1>
+          </div>
         </div>
         <div className="adminInfo">
           <div className="adminInfoBox">

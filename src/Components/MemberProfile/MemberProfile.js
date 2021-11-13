@@ -179,6 +179,14 @@ function MemberProfile() {
     console.log(USER_PASSWORD);
     const p = document.getElementById("password_MemberDetails").value;
     if (p === "") {
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+
       return;
     } else {
       alert("updated");
@@ -191,6 +199,12 @@ function MemberProfile() {
           USER_PASSWORD: USER_PASSWORD,
         }
       );
+      document.getElementById("popUpGetMsgApprove").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgApprove").style.display = "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+
       localStorage.clear();
       history.push("/");
     }
@@ -247,6 +261,18 @@ function MemberProfile() {
               Update Account
             </button>
           </div>
+        </div>
+      </div>
+      <div id="popUpGetMsgDeleteMember_">
+        <div id="popUpGetMsgInDeleteMember_">
+          <h2>PerSEEption Message</h2>
+          <h1>Please enter your password for an update</h1>
+        </div>
+      </div>
+      <div id="popUpGetMsgApprove">
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Your Profile Updated Successfully!</h1>
         </div>
       </div>
       <div className="contPro">
