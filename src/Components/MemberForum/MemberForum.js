@@ -303,18 +303,17 @@ function MemberForum() {
       txtValue,
       txtValue1,
       txtValue2;
-
-    console.log(input);
-    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForum").then(
-      (response) => {
-        input = document.getElementById("inputSearchForum").value;
-        setFORUM_LIST(
-          FORUM_LIST.filter((val) => {
-            return val.FORUM_TITLE === input; // Filter/remove if it not equals to id
-          })
-        );
-      }
-    );
+    const FORUM_TITLE = document.getElementById("inputSearchForum").value;
+    console.log(FORUM_TITLE);
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getForum/${FORUM_TITLE}"
+    ).then((response) => {
+      setFORUM_LIST(
+        FORUM_LIST.filter((val) => {
+          return val.FORUM_TITLE === FORUM_TITLE; // Filter/remove if it not equals to id
+        })
+      );
+    });
     // filter = input.value.toUpperCase();
     // console.log(filter);
     // table = document.getElementById("forumQuestionHead");
