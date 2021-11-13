@@ -61,6 +61,13 @@ function TermsCondition() {
           </Link>
           <div className="memberDiv" id="memberDiv">
             <img
+              src="/images/AvatarIcon.png"
+              alt="img"
+              className="loggedInImg"
+              id="loggedInImg_"
+              onClick={popup}
+            />
+            <img
               src="/images/events1.jpg"
               alt="sdf"
               className="loggedInImg"

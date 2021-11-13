@@ -14,15 +14,18 @@ function MemberAbout() {
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("loggedInImg").style.display = "block";
+        document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
       } else {
+        document.getElementById("loggedInImg_").style.display = "block";
+        document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
       }
       setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("loggedInImg").style.display = "block";
     }
   }, []);
 
@@ -80,6 +83,13 @@ function MemberAbout() {
             Log in
           </Link>
           <div className="memberDiv" id="memberDiv">
+            <img
+              src="/images/AvatarIcon.png"
+              alt="img"
+              className="loggedInImg"
+              id="loggedInImg_"
+              onClick={popup}
+            />
             <Image
               className="loggedInImg"
               id="loggedInImg"

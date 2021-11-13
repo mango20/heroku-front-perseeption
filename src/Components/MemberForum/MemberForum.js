@@ -25,15 +25,18 @@ function MemberForum() {
       var name1 = JSON.parse(localStorage.getItem("Client"));
 
       if (name1[0].USER_TYPE === "Admin") {
+        document.getElementById("loggedInImg").style.display = "block";
+        document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
       } else {
+        document.getElementById("loggedInImg_").style.display = "block";
+        document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
       }
       setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("loggedInImg").style.display = "block";
       // document.getElementById("LoginHeader_").style.display = "none";
       // document.getElementById("profileGo_").style.display = "block";
     }
@@ -49,11 +52,11 @@ function MemberForum() {
 
   const logout = () => {
     document.getElementById("popUpGetMsgApprove_logout").style.display =
-    "block";
-  setTimeout(function () {
-    document.getElementById("popUpGetMsgApprove_logout").style.display =
-      "none";
-  }, 3000);
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
@@ -298,6 +301,13 @@ function MemberForum() {
             Log in
           </Link>
           <div className="memberDiv" id="memberDiv">
+            <img
+              src="/images/AvatarIcon.png"
+              alt="img"
+              className="loggedInImg"
+              id="loggedInImg_"
+              onClick={popup}
+            />
             <Image
               className="loggedInImg"
               id="loggedInImg"
@@ -327,11 +337,11 @@ function MemberForum() {
         </div>
       </div>
       <div id="popUpGetMsgApprove_logout">
-          <div id="popUpGetMsgInApprove">
-            <h2>PerSEEption Message</h2>
-            <h1>Logout Successfully!</h1>
-          </div>
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Logout Successfully!</h1>
         </div>
+      </div>
       <div id="popUpGetMsgApprove">
         <div id="popUpGetMsgInApprove">
           <h2>PerSEEption Message</h2>
