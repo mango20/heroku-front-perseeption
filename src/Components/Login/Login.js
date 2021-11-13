@@ -22,9 +22,9 @@ function Login() {
       USER_PASSWORD: password,
     }).then((response) => {
       // alert(response.data.message);
-      setloginMessage(response.data.message);
-      document.getElementsById("bgLoginStats").style.display = "block";
-      (document.getElementById("bgLoginStats").style.display = "none"), 10000;
+      // setloginMessage(response.data.message);
+      // document.getElementsById("bgLoginStats").style.display = "block";
+      // (document.getElementById("bgLoginStats").style.display = "none"), 10000;
 
       console.log(response.data);
       console.log(response.data.result);
