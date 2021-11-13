@@ -309,7 +309,7 @@ function MemberForum() {
     tr = table.getElementsByTagName("div");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("p")[1];
-      if (td || td1) {
+      if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
@@ -509,7 +509,7 @@ function MemberForum() {
               {FORUM_LIST.map((val, key) => {
                 return (
                   <div key={key} className="questionBox">
-                    <div className="forumQuestionHead">
+                    <div className="forumQuestionHead" id="forumQuestionHead">
                       {/* <img
                         src="/images/avatar.png"
                         alt="img"
