@@ -308,6 +308,7 @@ function MemberForum() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/api/getForum/${FORUM_TITLE}`
     ).then((response) => {
+      console.log(response.data);
       setFORUM_LIST(
         FORUM_LIST.filter((val) => {
           return val.FORUM_TITLE === FORUM_TITLE; // Filter/remove if it not equals to id
