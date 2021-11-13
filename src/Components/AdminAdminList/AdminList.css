@@ -455,7 +455,8 @@
   /* text-align: center; */
 }
 
-#popUpGetMsgAdminUpdate {
+#popUpGetMsgAdminUpdate,
+#popUpGetMsgApprove_logout {
   display: none;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.575);

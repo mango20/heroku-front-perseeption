@@ -44,7 +44,12 @@ function MemberAnnouncement() {
   };
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
@@ -158,6 +163,12 @@ function MemberAnnouncement() {
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
+        </div>
+      </div>
+      <div id="popUpGetMsgApprove_logout">
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Logout Successfully!</h1>
         </div>
       </div>
       <h1 className="announcementTitleHead">Announcement</h1>

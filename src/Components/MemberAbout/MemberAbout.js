@@ -35,7 +35,12 @@ function MemberAbout() {
   };
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
@@ -136,6 +141,12 @@ function MemberAbout() {
             Every visually impaired child will enjoy equal opportunities and
             access in all activities in life according to choice and ability.
           </p>
+        </div>
+      </div>
+      <div id="popUpGetMsgApprove_logout">
+        <div id="popUpGetMsgInApprove">
+          <h2>PerSEEption Message</h2>
+          <h1>Logout Successfully!</h1>
         </div>
       </div>
       <Link to="/Registration" className="floatBtn" id="floatBtn">

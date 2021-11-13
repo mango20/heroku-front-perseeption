@@ -109,7 +109,14 @@ function MainPage() {
 
   const history = useHistory();
   const logout = () => {
-    alert("logout");
+    // alert("logout");
+    // popUpGetMsgApprove_logout;
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
@@ -194,6 +201,13 @@ function MainPage() {
           </div>
         </div>
 
+        <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
+          </div>
+        </div>
+
         <div id="menuBar_bground_">
           <div id="menuBar_inside">
             <Link className="homeHeader_" to="/">
@@ -237,11 +251,11 @@ function MainPage() {
 
         <div className="imageOrg" id="imageOrg">
           <div className="slideshow">
-            <img src="/images/pavic.jpg" alt="img" className="orgImg" />
-            <img src="/images/events1.jpg" alt="img" className="orgImg1" />
-            <img src="/images/events2.jpg" alt="img" className="orgImg2" />
-            <img src="/images/events1.jpg" alt="img" className="orgImg3" />
-            <img src="/images/events2.jpg" alt="img" className="orgImg4" />
+            <img src="/images/mainpage4.jpg" alt="img" className="orgImg" />
+            <img src="/images/mainpage1.png" alt="img" className="orgImg1" />
+            <img src="/images/mainpage2.png" alt="img" className="orgImg2" />
+            <img src="/images/mainpage3.png" alt="img" className="orgImg3" />
+            <img src="/images/pavic.jpg" alt="img" className="orgImg4" />
           </div>
         </div>
         <Link to="/Registration" className="floatBtn" id="floatBtn">

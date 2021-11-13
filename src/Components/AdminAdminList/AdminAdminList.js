@@ -247,7 +247,12 @@ function AdminAdminList() {
     });
   };
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     window.location.reload();
   };
@@ -312,7 +317,7 @@ function AdminAdminList() {
         <Link to="/AdminProfile" className="profileIcon">
           {/* {ADMIN_LIST.map((imageId, index) => {
             return ( */}
-          <Image 
+          <Image
             className="profilePicture"
             cloudName="dlvt2lnkh"
             alt="img"
@@ -355,6 +360,12 @@ function AdminAdminList() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out"></i> Logout
           </p>
+        </div>
+        <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
+          </div>
         </div>
         <div id="popUpGetMsgAdminUpdate">
           <div id="popUpGetMsgInAdminUpdate">

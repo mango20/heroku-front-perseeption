@@ -348,7 +348,12 @@ function AdminAnnouncement() {
   };
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     window.location.reload();
   };
@@ -415,6 +420,12 @@ function AdminAnnouncement() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out"></i> Logout
           </p>
+        </div>
+        <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
+          </div>
         </div>
         <div className="form1">
           <form onSubmit={handleSubmitFile1}>

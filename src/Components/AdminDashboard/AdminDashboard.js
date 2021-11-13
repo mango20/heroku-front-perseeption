@@ -47,7 +47,12 @@ function AdminDashboard() {
   // }, []);
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     window.location.reload();
   };
@@ -184,6 +189,12 @@ function AdminDashboard() {
               <i className="fa fa-sign-out" id="adminLogout"></i> Logout
             </p>
           </div>
+          <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
+          </div>
+        </div>
           <div className="boxes">
             {NumCountReq.map((val, key) => {
               return (

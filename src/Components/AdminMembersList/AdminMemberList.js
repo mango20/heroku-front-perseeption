@@ -31,7 +31,12 @@ function AdminMemberList() {
   }, []);
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     window.location.reload();
   };
@@ -764,6 +769,12 @@ function AdminMemberList() {
           <div id="popUpGetMsgInDeleteMember_">
             <h2>PerSEEption Message</h2>
             <h1>Member Deleted Successfully</h1>
+          </div>
+        </div>
+        <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
           </div>
         </div>
         {/* <Link to="/AdminAdminList">Admin List</Link> */}

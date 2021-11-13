@@ -39,7 +39,12 @@ function Events() {
   }, []);
 
   const logout = () => {
-    alert("logout");
+    document.getElementById("popUpGetMsgApprove_logout").style.display =
+      "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_logout").style.display =
+        "none";
+    }, 3000);
     localStorage.clear();
     window.location.reload();
   };
@@ -509,6 +514,12 @@ function Events() {
             </div>
             <div id="titleMessage"></div>
           </form>
+        </div>
+        <div id="popUpGetMsgApprove_logout">
+          <div id="popUpGetMsgInApprove">
+            <h2>PerSEEption Message</h2>
+            <h1>Logout Successfully!</h1>
+          </div>
         </div>
         <div className="container">
           {/* {previewSource && (
