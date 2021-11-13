@@ -309,7 +309,7 @@ function MemberForum() {
     console.log(filter);
     table = document.getElementById("forumQuestionHead");
     console.log(table);
-    tr = table.getElementsByTagName("div");
+    tr = table.getElementsByTagName("p");
     console.log(tr);
     console.log(tr.length);
     for (i = 0; i < tr.length; i++) {
