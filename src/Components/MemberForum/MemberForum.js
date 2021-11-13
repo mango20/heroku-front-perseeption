@@ -311,6 +311,7 @@ function MemberForum() {
     console.log(table);
     tr = table.getElementsByTagName("div");
     console.log(tr);
+    console.log(tr.length);
     for (i = 0; i < tr.length; i++) {
       console.log(i);
       td = tr[i].getElementById("titleQuestion")[0];
