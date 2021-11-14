@@ -128,6 +128,18 @@ function AdminAnnouncement() {
             ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
           }
         );
+        document.getElementById("messageAnnouncementPopUpouter").style.display =
+          "block";
+        document.getElementById("messageAnnouncement_Content").style.display =
+          "block";
+
+        setTimeout(function () {
+          document.getElementById(
+            "messageAnnouncementPopUpouter"
+          ).style.display = "none";
+          document.getElementById("messageAnnouncement_Content").style.display =
+            "none";
+        }, 3000);
         setFileInputState1("");
         setPreviewSource1("");
         setANNOUNCEMENT_TITLE("");
