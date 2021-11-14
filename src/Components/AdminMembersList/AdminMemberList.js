@@ -851,9 +851,9 @@ function AdminMemberList() {
           {MEMBER_PENDING_LIST_.map((val, key) => {
             return (
               <div key={key} id="memberPendinginn">
-                <div className="h3">{val.USERNAME}</div>
+                <h3>{val.USERNAME}</h3>
                 <Image
-                  // className="loggedInImg"
+                  className="gcashCheck"
                   // id="loggedInImg"
                   cloudName="dlvt2lnkh"
                   alt="img"
