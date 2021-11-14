@@ -216,7 +216,7 @@ function MemberEvents() {
             cloudName="dlvt2lnkh"
             // id="announcement_Img_event"
             publicId={EVENT_IMAGE}
-            // style="object-fit:contain;"
+            
           />
           <p className="event_TitleRM">{EVENT_TITLE}</p>
           <p className="event_DateRM">{EVENT_DATE}</p>
