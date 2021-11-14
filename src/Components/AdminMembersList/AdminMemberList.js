@@ -849,7 +849,7 @@ function AdminMemberList() {
         <div id="memberPendingBg">
           {MEMBER_PENDING_LIST_.map((val, key) => {
             return (
-              <div key={key} className="memberPendinginn">
+              <div key={key} id="memberPendinginn">
                 <div className="h3">{val.USERNAME}</div>
                 <Image
                   // className="loggedInImg"
