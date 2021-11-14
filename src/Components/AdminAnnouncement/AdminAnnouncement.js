@@ -107,6 +107,7 @@ function AdminAnnouncement() {
       if (title === "" || img === 0 || content === "") {
         // Error message
         document.getElementById("titleMessage_").style.color = "red";
+        // document.getElementById("titleMessage_").style.marginLeft = "200px";
         let timerId = setInterval(
           () =>
             (document.getElementById("titleMessage_").innerHTML =
