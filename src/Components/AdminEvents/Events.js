@@ -85,17 +85,17 @@ function Events() {
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
       uploadImage(reader.result);
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+      ).then((response) => {
+        // console.log(response.data);
+        setEVENT_LIST(response.data);
+      });
     };
     reader.onerror = () => {
       console.error("AHHHHHHHH!!");
       console.log("AAAAAAAAAAAAAAAAH");
     };
-    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
-      (response) => {
-        // console.log(response.data);
-        setEVENT_LIST(response.data);
-      }
-    );
   };
 
   const uploadImage = (base64EncodedImage) => {
