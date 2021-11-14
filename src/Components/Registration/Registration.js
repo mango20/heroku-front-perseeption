@@ -210,7 +210,8 @@ function Registration() {
     var physicalTheraphy = document.getElementsByName("physicalTheraphy");
     var ocupationalTheraphy = document.getElementsByName("ocupationalTheraphy");
     var speechTherapy = document.getElementsByName("speechTherapy");
-    var validRegex = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    var validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (regUsername_user === "") {
       regUsername_user_.style.borderColor = "red";
