@@ -436,6 +436,6 @@
   object-fit: contain;
   width: 100%;
   /* object-fit: cover; */
-  height: 500px;
+  height: 400px;
   margin-bottom: 20px;
 }

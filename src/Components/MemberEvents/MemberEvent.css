@@ -155,3 +155,11 @@
 #memberEventList_id_ {
   display: none;
 }
+
+.announcement_Img_event {
+  object-fit: contain;
+  width: 100%;
+  /* object-fit: cover; */
+  height: 400px;
+  margin-bottom: 20px;
+}
