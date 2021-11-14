@@ -212,9 +212,9 @@ function MemberEvents() {
           </p>
 
           <Image
-            // className="announcement_Img_"
+            className="announcement_Img_event"
             cloudName="dlvt2lnkh"
-            id="announcement_Img_event"
+            // id="announcement_Img_event"
             publicId={EVENT_IMAGE}
             // style="object-fit:contain;"
           />
