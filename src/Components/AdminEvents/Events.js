@@ -492,7 +492,19 @@ function Events() {
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
         </div>
+        <div id="popUpGetMsgAdminUpdate">
+          <div id="popUpGetMsgInAdminUpdate">
+            <h2>PerSEEption Message</h2>
+            <h1>Announcement Updated Successfully!</h1>
+          </div>
+        </div>
 
+        <div id="popUpGetMsgDeleteAdmin">
+          <div id="popUpGetMsgInDeleteAdmin">
+            <h2>PerSEEption Message</h2>
+            <h1>Announcement Deleted Successfully</h1>
+          </div>
+        </div>
         <div className="messageEventPopUpouter" id="messageEventPopUpouter">
           <div className="messageEvent_Content" id="messageEvent_Content">
             <h4 className="EventMsgTitle">Message</h4>

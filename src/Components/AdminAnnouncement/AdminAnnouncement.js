@@ -292,6 +292,14 @@ function AdminAnnouncement() {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
         })
       );
+
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
@@ -320,6 +328,13 @@ function AdminAnnouncement() {
         })
       );
 
+      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
       ).then((response) => {
@@ -347,6 +362,13 @@ function AdminAnnouncement() {
             : val;
         })
       );
+
+      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
 
       //   setNewReview("");
       //   document.getElementById("updateAnnouncementContentID").value = "";
@@ -433,6 +455,20 @@ function AdminAnnouncement() {
             <i className="fa fa-sign-out"></i> Logout
           </p>
         </div>
+        <div id="popUpGetMsgAdminUpdate">
+          <div id="popUpGetMsgInAdminUpdate">
+            <h2>PerSEEption Message</h2>
+            <h1>Announcement Updated Successfully!</h1>
+          </div>
+        </div>
+
+        <div id="popUpGetMsgDeleteAdmin">
+          <div id="popUpGetMsgInDeleteAdmin">
+            <h2>PerSEEption Message</h2>
+            <h1>Announcement Deleted Successfully</h1>
+          </div>
+        </div>
+
         <div id="popUpGetMsgApprove_logout">
           <div id="popUpGetMsgInApprove">
             <h2>PerSEEption Message</h2>
