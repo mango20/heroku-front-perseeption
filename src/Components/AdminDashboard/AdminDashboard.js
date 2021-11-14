@@ -104,7 +104,7 @@ function AdminDashboard() {
         backgroundColor: ["#ABDEE6"],
         borderColor: "rgba(0,0,0,1)",
         borderWidth: 2,
-        data: [0, 0, 0, 0, 0, 0, 0, 17],
+        data: [0, 0, 0, 0, 0, 0, 0, 17, 5, 1, 4, 3],
       },
     ],
   };
@@ -190,11 +190,11 @@ function AdminDashboard() {
             </p>
           </div>
           <div id="popUpGetMsgApprove_logout">
-          <div id="popUpGetMsgInApprove">
-            <h2>PerSEEption Message</h2>
-            <h1>Logout Successfully!</h1>
+            <div id="popUpGetMsgInApprove">
+              <h2>PerSEEption Message</h2>
+              <h1>Logout Successfully!</h1>
+            </div>
           </div>
-        </div>
           <div className="boxes">
             {NumCountReq.map((val, key) => {
               return (
