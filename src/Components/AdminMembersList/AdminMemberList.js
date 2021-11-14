@@ -922,21 +922,70 @@ function AdminMemberList() {
 
                 {MEMBER_PENDING_LIST.map((val, key) => {
                   return (
-                    <tr
-                      key={key}
-                      onClick={() => {
-                        showMem(val.USER_ID);
-                      }}
-                    >
-                      <td>{val.USER_ID}</td>
-                      <td>{val.USERNAME}</td>
-                      <td>{val.MOTHER_NAME}</td>
-                      <td>{val.FATHER_NAME}</td>
-                      <td>{val.FATHER_CONTACT}</td>
-                      <td>{val.MOTHER_CONTACT}</td>
-                      <td>{val.ADDRESS}</td>
-                      <td>{val.REGISTRATION_DATE}</td>
-                      <td>{val.USER_REQUEST}</td>
+                    <tr key={key}>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.USER_ID}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.USERNAME}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.MOTHER_NAME}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.FATHER_NAME}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.FATHER_CONTACT}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.MOTHER_CONTACT}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.ADDRESS}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.REGISTRATION_DATE}
+                      </td>
+                      <td
+                        onClick={() => {
+                          showMem(val.USER_ID);
+                        }}
+                      >
+                        {val.USER_REQUEST}
+                      </td>
                       <td>
                         <button
                           onClick={() => {
