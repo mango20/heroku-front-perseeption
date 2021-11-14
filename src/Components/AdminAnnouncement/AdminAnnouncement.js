@@ -130,16 +130,14 @@ function AdminAnnouncement() {
             ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
           }
         );
-        document.getElementById("messageAnnouncementPopUpouter").style.display =
+        document.getElementById("messageEventPopUpouter").style.display =
           "block";
-        document.getElementById("messageAnnouncement_Content").style.display =
-          "block";
+        document.getElementById("messageEvent_Content").style.display = "block";
 
         setTimeout(function () {
-          document.getElementById(
-            "messageAnnouncementPopUpouter"
-          ).style.display = "none";
-          document.getElementById("messageAnnouncement_Content").style.display =
+          document.getElementById("messageEventPopUpouter").style.display =
+            "none";
+          document.getElementById("messageEvent_Content").style.display =
             "none";
         }, 3000);
         setFileInputState1("");
@@ -411,17 +409,11 @@ function AdminAnnouncement() {
           <p className="profileNameHeader">{USERNAME_}</p>
         </Link>
       </div>
-      <div
-        className="messageAnnouncementPopUpouter"
-        id="messageAnnouncementPopUpouter"
-      >
-        <div
-          className="messageAnnouncement_Content"
-          id="messageAnnouncement_Content"
-        >
-          <h4 className="announcementMsgTitle">Message</h4>
+      <div className="messageEventPopUpouter" id="messageEventPopUpouter">
+        <div className="messageEvent_Content" id="messageEvent_Content">
+          <h4 className="EventMsgTitle">Message</h4>
           {/* <i className="fa fa-times" id="announcementX"></i> */}
-          <p className="announcementMsg">Announcement Successfully Posted</p>
+          <p className="EventMsg">Announcement Successfully Posted</p>
         </div>
       </div>
       <div className="eventCont">
