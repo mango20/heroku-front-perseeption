@@ -439,3 +439,13 @@
   height: 400px;
   margin-bottom: 20px;
 }
+
+.popUpReadmoreEvent::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.popUpReadmoreEvent {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
