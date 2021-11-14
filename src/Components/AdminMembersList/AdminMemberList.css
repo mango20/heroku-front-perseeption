@@ -602,3 +602,12 @@
 .addAdminNewMember {
   display: none;
 }
+
+.popUpReadmoreEvent {
+  height: 100%;
+  overflow: scroll;
+}
+
+#announcement_Img_ {
+  height: 100%;
+}

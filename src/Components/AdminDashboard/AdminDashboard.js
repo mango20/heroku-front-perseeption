@@ -104,7 +104,7 @@ function AdminDashboard() {
         backgroundColor: ["#ABDEE6"],
         borderColor: "rgba(0,0,0,1)",
         borderWidth: 2,
-        data: [10, 59, 30, 40, 20, 80],
+        data: [0, 0, 0, 0, 0, 0, 0, 17],
       },
     ],
   };
