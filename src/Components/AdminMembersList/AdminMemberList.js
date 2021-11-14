@@ -93,7 +93,7 @@ function AdminMemberList() {
       // document.getElementById("inputEventContent").value = "";
 
       // }
-        console.log(EVENT_TITLE);
+        // console.log(EVENT_TITLE);
     } catch (error) {
       // console.error(error);
     }
