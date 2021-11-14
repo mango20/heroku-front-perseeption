@@ -106,9 +106,10 @@ function AdminAnnouncement() {
       const img = document.getElementById("fileBtnAnnouncement").value;
       if (title === "" || img === 0 || content === "") {
         // Error message
+        document.getElementById("titleMessage_").style.color = "red";
         let timerId = setInterval(
           () =>
-            (document.getElementById("titleMessage").innerHTML =
+            (document.getElementById("titleMessage_").innerHTML =
               "Please fill out form completely!"),
           0
         );
@@ -116,7 +117,7 @@ function AdminAnnouncement() {
         // Timeout
         setTimeout(() => {
           clearInterval(timerId);
-          document.getElementById("titleMessage").innerHTML = "";
+          document.getElementById("titleMessage_").innerHTML = "";
         }, 3000);
         return false;
       } else {
@@ -507,7 +508,7 @@ function AdminAnnouncement() {
             <div id="titleAnnouncementMsg"></div>
           </form>
         </div>
-        <div id="titleMessage"></div>
+        <div id="titleMessage_"></div>
         {/* {previewSource1 && (
           <img src={previewSource1} alt="chosen" style={{ height: "300px" }} />
         )} */}
