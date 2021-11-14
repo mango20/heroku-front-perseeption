@@ -90,6 +90,12 @@ function Events() {
       console.error("AHHHHHHHH!!");
       console.log("AAAAAAAAAAAAAAAAH");
     };
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+      (response) => {
+        // console.log(response.data);
+        setEVENT_LIST(response.data);
+      }
+    );
   };
 
   const uploadImage = (base64EncodedImage) => {
