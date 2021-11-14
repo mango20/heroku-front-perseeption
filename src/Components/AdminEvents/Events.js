@@ -52,7 +52,7 @@ function Events() {
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
       (response) => {
-        setImagesIds(response.data);
+        setEVENT_LIST(response.data);
       }
     );
   }, []);
