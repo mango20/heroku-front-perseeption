@@ -17,7 +17,7 @@ function AdminAnnouncement() {
   // const submit = async () => {
   //   const formdata = new FormData();
   //   formdata.append("image", announcementInformation.file);
-    
+
   //   formdata.append("title", announcementInformation.title);
   //   formdata.append("content", announcementInformation.content);
   //   if (
@@ -507,7 +507,7 @@ function AdminAnnouncement() {
             <div id="titleAnnouncementMsg"></div>
           </form>
         </div>
-
+        <div id="titleMessage"></div>
         {/* {previewSource1 && (
           <img src={previewSource1} alt="chosen" style={{ height: "300px" }} />
         )} */}
