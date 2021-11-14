@@ -432,6 +432,6 @@
   overflow: hidden;
 }
 
-.announcement_Img_ {
+#announcement_Img_ {
   object-fit: contain;
 }
