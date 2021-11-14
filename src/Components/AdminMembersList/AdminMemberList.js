@@ -513,7 +513,7 @@ function AdminMemberList() {
       `https://perseeption-tromagade.herokuapp.com/api/getUser/${USER_ID}`
     ).then((response) => {
       console.log(response.data);
-      // setMEMBER_PENDING_LIST_(response.data);
+      setMEMBER_PENDING_LIST_(response.data);
     });
   };
 
@@ -848,17 +848,21 @@ function AdminMemberList() {
         </div>
         {/* <Link to="/AdminAdminList">Admin List</Link> */}
         <div id="memberPendingBg">
-          {/* <div id="memberPendinginn">
-            <div className="h3">{USERNAME}</div>
-            <Image
-              // className="loggedInImg"
-              // id="loggedInImg"
-              cloudName="dlvt2lnkh"
-              alt="img"
-              publicId={GCASH_IMAGE}
-              // onClick={popup}
-            />
-          </div> */}
+          {MEMBER_PENDING_LIST_.map((val, key) => {
+            return (
+              <div key={key} id="memberPendinginn">
+                <div className="h3">{val.USERNAME}</div>
+                <Image
+                  // className="loggedInImg"
+                  // id="loggedInImg"
+                  cloudName="dlvt2lnkh"
+                  alt="img"
+                  publicId={val.GCASH_IMAGE}
+                  // onClick={popup}
+                />
+              </div>
+            );
+          })}
         </div>
         <div className="form1">
           <div className="dividerTitleFilter">
