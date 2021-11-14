@@ -732,6 +732,13 @@ function AdminMemberList() {
   };
   const [MEMBERUPDATE, setMEMBERUPDATE] = useState([]);
   const editApproveMemberListUpdate = (USER_ID) => {
+    document.getElementById("messageEventPopUpouter").style.display = "block";
+    document.getElementById("messageEvent_Content").style.display = "block";
+
+    setTimeout(function () {
+      document.getElementById("messageEventPopUpouter").style.display = "none";
+      document.getElementById("messageEvent_Content").style.display = "none";
+    }, 3000);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/api/updateMemberInfo_/${USER_ID}`,
       {
@@ -823,6 +830,14 @@ function AdminMemberList() {
           <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
+        </div>
+
+        <div className="messageEventPopUpouter" id="messageEventPopUpouter">
+          <div className="messageEvent_Content" id="messageEvent_Content">
+            <h4 className="EventMsgTitle">PerSEEption Message</h4>
+            {/* <i className="fa fa-times" id="announcementX"></i> */}
+            <p className="EventMsg">Information Updated Successfully!</p>
+          </div>
         </div>
         <div id="popUpGetMsgApprove">
           <div id="popUpGetMsgInApprove">
