@@ -506,6 +506,9 @@ function AdminMemberList() {
   // };
 
   // Render
+  const backToMem = () => {
+    document.getElementById("memberPendingBg").style.display = "none";
+  };
   const [MEMBER_PENDING_LIST_, setMEMBER_PENDING_LIST_] = useState([]);
   const showMem = (USER_ID) => {
     document.getElementById("memberPendingBg").style.display = "block";
@@ -851,7 +854,14 @@ function AdminMemberList() {
           {MEMBER_PENDING_LIST_.map((val, key) => {
             return (
               <div key={key} id="memberPendinginn">
-                <h3>{val.USERNAME}</h3>
+                <h1>Member Pending Information</h1>
+                <p>Name: {val.NAME}</p>
+                <p>Username: {val.USERNAME}</p>
+                <p>Email: {val.EMAIL}</p>
+                <p>
+                  Child's Name: {val.CHILD_NAME} {val.CHILD_MIDDLE_NAME}{" "}
+                  {val.CHILD_SURNAME}
+                </p>
                 <Image
                   className="gcashCheck"
                   // id="loggedInImg"
@@ -860,6 +870,7 @@ function AdminMemberList() {
                   publicId={val.GCASH_IMAGE}
                   // onClick={popup}
                 />
+                <button onClick={backToMem}>Back</button>
               </div>
             );
           })}
