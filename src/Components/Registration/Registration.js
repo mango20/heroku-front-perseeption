@@ -987,7 +987,7 @@ function Registration() {
                       <p class="usernameTxt_name">Name:</p>
                       <input
                         type="text"
-                        id="regUsername"
+                        // id="regUsername"
                         className="regInputName"
                         placeholder="Enter Name"
                         onChange={(e) => {
@@ -1000,7 +1000,7 @@ function Registration() {
                       <p className="usernameTxt">Email:</p>
                       <input
                         type="text"
-                        id="regUsername"
+                        // id="regUsername"
                         className="regInputEmail"
                         placeholder="Enter Email"
                         // onKeyUp={usernameKeyUp}
