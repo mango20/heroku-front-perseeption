@@ -512,6 +512,7 @@ function AdminMemberList() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/api/getUser/${USER_ID}`
     ).then((response) => {
+      console.log(response.data);
       setMEMBER_PENDING_LIST_(response.data);
     });
   };
