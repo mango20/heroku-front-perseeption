@@ -123,22 +123,7 @@ function Registration() {
   const Register = (e) => {
     console.log("sub");
     e.preventDefault();
-    if (!selectedFile)
-      return (document.getElementById("InvalidOuter").style.display = "block");
-    document.getElementById("Invalid_Content").style.display = "block";
-
-    setTimeout(function () {
-      document.getElementById("InvalidOuter").style.display = "none";
-    }, 2000);
-
-    setTimeout(function () {
-      document.getElementById("Invalid_Content").style.display = "none";
-    }, 2000);
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (!selectedFile) return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
