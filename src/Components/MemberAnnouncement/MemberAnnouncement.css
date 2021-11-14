@@ -119,6 +119,10 @@
   margin-bottom: 20px;
 }
 
+#announcement_Img_ {
+  object-fit: contain;
+}
+
 #xbtnReadMoreAnnouncement {
   /* background-color: #fff; */
   width: 8%;
