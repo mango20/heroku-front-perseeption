@@ -106,6 +106,7 @@ function Events() {
       const content = document.getElementById("inputEventContent").value;
       const img = document.getElementById("fileBtnId").value;
       if (title === "" || img === 0 || content === "") {
+        document.getElementById("titleMessage").style.color = "red";
         let timerId = setInterval(
           () =>
             (document.getElementById("titleMessage").innerHTML =
@@ -125,6 +126,16 @@ function Events() {
           EVENT_TITLE: EVENT_TITLE,
           EVENT_CONTENT: EVENT_CONTENT,
         });
+        document.getElementById("messageEventPopUpouter").style.display =
+          "block";
+        document.getElementById("messageEvent_Content").style.display = "block";
+
+        setTimeout(function () {
+          document.getElementById("messageEventPopUpouter").style.display =
+            "none";
+          document.getElementById("messageEvent_Content").style.display =
+            "none";
+        }, 3000);s
         // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
         setFileInputState("");
         setPreviewSource("");
