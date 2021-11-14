@@ -123,7 +123,23 @@ function Registration() {
   const Register = (e) => {
     console.log("sub");
     e.preventDefault();
-    if (!selectedFile) return;
+    if (!selectedFile)
+      document.getElementById("InvalidOuter").style.display = "block";
+    document.getElementById("Invalid_Content").style.display = "block";
+
+    setTimeout(function () {
+      document.getElementById("InvalidOuter").style.display = "none";
+    }, 2000);
+
+    setTimeout(function () {
+      document.getElementById("Invalid_Content").style.display = "none";
+    }, 2000);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    return;
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
@@ -137,6 +153,11 @@ function Registration() {
 
   // REGISTER
   const uploadImage = (base64EncodedImage) => {
+    var emailAcc_user = document.getElementById("emailAcc_user").value;
+    var regUsername_user = document.getElementById("regUsername_user").value;
+    var emailAcc_user_ = document.getElementById("emailAcc_user");
+    var regUsername_user_ = document.getElementById("regUsername_user");
+    ///
     console.log(base64EncodedImage);
     var borderUserName = document.getElementById("regUsername");
     var borderRegUserId = document.getElementById("regPass");
@@ -205,6 +226,19 @@ function Registration() {
     var physicalTheraphy = document.getElementsByName("physicalTheraphy");
     var ocupationalTheraphy = document.getElementsByName("ocupationalTheraphy");
     var speechTherapy = document.getElementsByName("speechTherapy");
+    var validRegex = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+
+    if (regUsername_user === "") {
+      regUsername_user_.style.borderColor = "red";
+    } else {
+      regUsername_user_.style.borderColor = "#dddddd";
+    }
+
+    if (emailAcc_user === "" || !emailAcc_user.match(validRegex)) {
+      emailAcc_user_.style.borderColor = "red";
+    } else {
+      emailAcc_user_.style.borderColor = "#dddddd";
+    }
 
     // Validation Username
     if (inputUsername === "" || !usernameRegex.test(inputUsername)) {
@@ -340,6 +374,7 @@ function Registration() {
 
     //  Get condition
     if (
+      emailAcc_user.match(validRegex) &&
       passwordRegex.test(inputPassword) &&
       usernameRegex.test(inputUsername) &&
       (!Childsurname === "" || Childsurname.match(letters)) &&
@@ -987,7 +1022,7 @@ function Registration() {
                       <p class="usernameTxt_name">Name:</p>
                       <input
                         type="text"
-                        // id="regUsername"
+                        id="regUsername_user"
                         className="regInputName"
                         placeholder="Enter Name"
                         onChange={(e) => {
@@ -1001,6 +1036,7 @@ function Registration() {
                       <input
                         type="text"
                         // id="regUsername"
+                        id="emailAcc_user"
                         className="regInputEmail"
                         placeholder="Enter Email"
                         // onKeyUp={usernameKeyUp}
