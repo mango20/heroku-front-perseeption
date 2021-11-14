@@ -193,7 +193,7 @@ function Events() {
   //   const submit = async () => {
   //     const formdata_ = new FormData();
   //     formdata_.append("image", eventInformation.file);
-  console.log(eventInformation.file);
+  // console.log(eventInformation.file);
   //     formdata_.append("title", eventInformation.title);
   //     formdata_.append("content", eventInformation.content);
   //     if (
@@ -251,7 +251,7 @@ function Events() {
   //     const formData = new FormData();
   //     formData.append("file", imageSelected);
   //     formData.append("upload_preset", "jogvnb1m");
-  console.log(imageSelected);
+  // console.log(imageSelected);
   //     Axios.post(
   //       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
   //       formData,
@@ -264,7 +264,7 @@ function Events() {
   //       }
   //     ).then((response) => {
   //       const fileName = response.data;
-  console.log(fileName);
+  // console.log(fileName);
   //       Axios.post(
   //         "https://perseeption-tromagade.herokuapp.com/uploadEvent_Admin",
   //         {
@@ -273,7 +273,7 @@ function Events() {
   //           EVENT_IMAGE: fileName,
   //         }
   //       ).then((response) => {
-  console.log(EVENT_TITLE);
+  // console.log(EVENT_TITLE);
   //       });
   //     });
   //   };
@@ -281,7 +281,7 @@ function Events() {
 
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  console.log(response.data.loggedIn);
+  // console.log(response.data.loggedIn);
   //     if (response.data.loggedIn === true) {
   //       setUSER_ID(response.data.user[0].USER_ID);
   //     } else {

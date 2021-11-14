@@ -398,7 +398,7 @@ function AdminMemberList() {
   // const addMember_submit = async () => {
   //   const formData_ = new FormData();
   //   formData_.append("image", addMember_.file);
-    console.log(addMember_.file);
+    // console.log(addMember_.file);
   //   formData_.append("USERNAME", addMember_.USERNAME);
   //   formData_.append("USER_PASSWORD", addMember_.USER_PASSWORD);
 
@@ -467,32 +467,32 @@ function AdminMemberList() {
   //   formData_.append("SPEECH_THERAPHY", addMember_.SPEECH_THERAPHY);
   //   formData_.append("OTHER_CONDITION", addMember_.OTHER_CONDITION);
 
-    console.log(addMember_.USERNAME);
-    console.log(addMember_.USERNAME);
+    // console.log(addMember_.USERNAME);
+    // console.log(addMember_.USERNAME);
 
-    console.log(addMember_.CHILD_SURNAME);
-    console.log(addMember_.CHILD_GIVEN_NAME);
-    console.log(addMember_.CHILD_MIDDLE_NAME);
+    // console.log(addMember_.CHILD_SURNAME);
+    // console.log(addMember_.CHILD_GIVEN_NAME);
+    // console.log(addMember_.CHILD_MIDDLE_NAME);
 
-    console.log(addMember_.FATHER_SURNAME);
-    console.log(addMember_.FATHER_GIVEN_NAME);
-    console.log(addMember_.FATHER_MIDDLE_NAME);
+    // console.log(addMember_.FATHER_SURNAME);
+    // console.log(addMember_.FATHER_GIVEN_NAME);
+    // console.log(addMember_.FATHER_MIDDLE_NAME);
 
-    console.log(addMember_.FATHER_CONTACT);
-    console.log(addMember_.FATHER_EMAIL);
-    console.log(addMember_.FATHER_BIRTHDAY);
-    console.log(addMember_.FATHER_OCCUPATION);
+    // console.log(addMember_.FATHER_CONTACT);
+    // console.log(addMember_.FATHER_EMAIL);
+    // console.log(addMember_.FATHER_BIRTHDAY);
+    // console.log(addMember_.FATHER_OCCUPATION);
 
-    console.log(addMember_.MOTHER_SURNAME);
-    console.log(addMember_.MOTHER_GIVEN_NAME);
-    console.log(addMember_.MOTHER_MIDDLE_NAME);
+    // console.log(addMember_.MOTHER_SURNAME);
+    // console.log(addMember_.MOTHER_GIVEN_NAME);
+    // console.log(addMember_.MOTHER_MIDDLE_NAME);
 
-    console.log(addMember_.MOTHER_CONTACT);
-    console.log(addMember_.MOTHER_EMAIL);
-    console.log(addMember_.MOTHER_BIRTHDAY);
-    console.log(addMember_.MOTHER_OCCUPATION);
+    // console.log(addMember_.MOTHER_CONTACT);
+    // console.log(addMember_.MOTHER_EMAIL);
+    // console.log(addMember_.MOTHER_BIRTHDAY);
+    // console.log(addMember_.MOTHER_OCCUPATION);
 
-    console.log(addMember_.MONTHLY_INCOME);
+    // console.log(addMember_.MONTHLY_INCOME);
 
   //   // formData_.append("content", addMember_.content);
 
