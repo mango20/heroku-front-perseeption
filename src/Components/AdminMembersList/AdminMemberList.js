@@ -506,6 +506,16 @@ function AdminMemberList() {
   // };
 
   // Render
+  const [MEMBER_PENDING_LIST_, setMEMBER_PENDING_LIST_] = useState([]);
+  const showMem = (USER_ID) => {
+    document.getElementById("memberPendingBg").style.display = "block";
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/api/getUser/${USER_ID}`
+    ).then((response) => {
+      setMEMBER_PENDING_LIST_(response.data);
+    });
+  };
+
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getUser").then(
       (response) => {
@@ -836,6 +846,23 @@ function AdminMemberList() {
           </div>
         </div>
         {/* <Link to="/AdminAdminList">Admin List</Link> */}
+        <div id="memberPendingBg">
+          {MEMBER_PENDING_LIST_.map((val, key) => {
+            return (
+              <div key={key} className="memberPendinginn">
+                <div className="h3">{val.USERNAME}</div>
+                <Image
+                  // className="loggedInImg"
+                  // id="loggedInImg"
+                  cloudName="dlvt2lnkh"
+                  alt="img"
+                  publicId={val.GCASH_IMAGE}
+                  // onClick={popup}
+                />
+              </div>
+            );
+          })}
+        </div>
         <div className="form1">
           <div className="dividerTitleFilter">
             <p className="pendingMemberList">Member List (Pending)</p>
@@ -868,7 +895,12 @@ function AdminMemberList() {
 
                 {MEMBER_PENDING_LIST.map((val, key) => {
                   return (
-                    <tr key={key}>
+                    <tr
+                      key={key}
+                      onClick={() => {
+                        showMem(val.USER_ID);
+                      }}
+                    >
                       <td>{val.USER_ID}</td>
                       <td>{val.USERNAME}</td>
                       <td>{val.MOTHER_NAME}</td>

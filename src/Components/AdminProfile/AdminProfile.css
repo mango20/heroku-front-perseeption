@@ -67,7 +67,8 @@
   height: 200px;
   border-radius: 100px;
 }
-.popupProfile {
+.popupProfile,
+#memberPendingBg {
   display: none;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.575);
