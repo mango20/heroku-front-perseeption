@@ -431,3 +431,7 @@
 #tableApprovedAdminList td {
   overflow: hidden;
 }
+
+.announcement_Img_ {
+  object-fit: contain;
+}
