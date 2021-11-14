@@ -135,7 +135,7 @@ function Events() {
             "none";
           document.getElementById("messageEvent_Content").style.display =
             "none";
-        }, 3000);s
+        }, 3000);
         // alert("posted!" + EVENT_TITLE + EVENT_CONTENT);
         setFileInputState("");
         setPreviewSource("");
