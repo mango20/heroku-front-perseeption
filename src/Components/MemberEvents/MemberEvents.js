@@ -182,6 +182,7 @@ function MemberEvents() {
               <Image
                 className="announcement_Img"
                 cloudName="dlvt2lnkh"
+                id="announcement_Img_event"
                 publicId={val.EVENT_IMAGE}
               />
               <p className="event_Title">{val.EVENT_TITLE}</p>
