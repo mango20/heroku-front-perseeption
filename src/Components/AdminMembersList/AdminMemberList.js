@@ -22,8 +22,8 @@ function AdminMemberList() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setUSER_ID(name[0].USER_ID);
       setAVATAR(name[0].AVATAR);
@@ -62,7 +62,7 @@ function AdminMemberList() {
   };
 
   const handleSubmitFile = (e) => {
-    console.log("sub");
+    // console.log("sub");
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -71,13 +71,13 @@ function AdminMemberList() {
       uploadImage(reader.result);
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      console.log("AAAAAAAAAAAAAAAAH");
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
     };
   };
 
   const uploadImage = (base64EncodedImage) => {
-    console.log(base64EncodedImage);
+    // console.log(base64EncodedImage);
 
     try {
       Axios.post("https://perseeption-tromagade.herokuapp.com/api/upload", {
@@ -93,9 +93,9 @@ function AdminMemberList() {
       // document.getElementById("inputEventContent").value = "";
 
       // }
-      //   console.log(EVENT_TITLE);
+        console.log(EVENT_TITLE);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -398,7 +398,7 @@ function AdminMemberList() {
   // const addMember_submit = async () => {
   //   const formData_ = new FormData();
   //   formData_.append("image", addMember_.file);
-  //   console.log(addMember_.file);
+    console.log(addMember_.file);
   //   formData_.append("USERNAME", addMember_.USERNAME);
   //   formData_.append("USER_PASSWORD", addMember_.USER_PASSWORD);
 
@@ -467,32 +467,32 @@ function AdminMemberList() {
   //   formData_.append("SPEECH_THERAPHY", addMember_.SPEECH_THERAPHY);
   //   formData_.append("OTHER_CONDITION", addMember_.OTHER_CONDITION);
 
-  //   console.log(addMember_.USERNAME);
-  //   console.log(addMember_.USERNAME);
+    console.log(addMember_.USERNAME);
+    console.log(addMember_.USERNAME);
 
-  //   console.log(addMember_.CHILD_SURNAME);
-  //   console.log(addMember_.CHILD_GIVEN_NAME);
-  //   console.log(addMember_.CHILD_MIDDLE_NAME);
+    console.log(addMember_.CHILD_SURNAME);
+    console.log(addMember_.CHILD_GIVEN_NAME);
+    console.log(addMember_.CHILD_MIDDLE_NAME);
 
-  //   console.log(addMember_.FATHER_SURNAME);
-  //   console.log(addMember_.FATHER_GIVEN_NAME);
-  //   console.log(addMember_.FATHER_MIDDLE_NAME);
+    console.log(addMember_.FATHER_SURNAME);
+    console.log(addMember_.FATHER_GIVEN_NAME);
+    console.log(addMember_.FATHER_MIDDLE_NAME);
 
-  //   console.log(addMember_.FATHER_CONTACT);
-  //   console.log(addMember_.FATHER_EMAIL);
-  //   console.log(addMember_.FATHER_BIRTHDAY);
-  //   console.log(addMember_.FATHER_OCCUPATION);
+    console.log(addMember_.FATHER_CONTACT);
+    console.log(addMember_.FATHER_EMAIL);
+    console.log(addMember_.FATHER_BIRTHDAY);
+    console.log(addMember_.FATHER_OCCUPATION);
 
-  //   console.log(addMember_.MOTHER_SURNAME);
-  //   console.log(addMember_.MOTHER_GIVEN_NAME);
-  //   console.log(addMember_.MOTHER_MIDDLE_NAME);
+    console.log(addMember_.MOTHER_SURNAME);
+    console.log(addMember_.MOTHER_GIVEN_NAME);
+    console.log(addMember_.MOTHER_MIDDLE_NAME);
 
-  //   console.log(addMember_.MOTHER_CONTACT);
-  //   console.log(addMember_.MOTHER_EMAIL);
-  //   console.log(addMember_.MOTHER_BIRTHDAY);
-  //   console.log(addMember_.MOTHER_OCCUPATION);
+    console.log(addMember_.MOTHER_CONTACT);
+    console.log(addMember_.MOTHER_EMAIL);
+    console.log(addMember_.MOTHER_BIRTHDAY);
+    console.log(addMember_.MOTHER_OCCUPATION);
 
-  //   console.log(addMember_.MONTHLY_INCOME);
+    console.log(addMember_.MONTHLY_INCOME);
 
   //   // formData_.append("content", addMember_.content);
 
@@ -515,7 +515,7 @@ function AdminMemberList() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/api/getUser/${USER_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setMEMBER_PENDING_LIST_(response.data);
     });
   };
@@ -586,7 +586,7 @@ function AdminMemberList() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteMemberPending/${USER_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setMEMBER_PENDING_LIST(
         MEMBER_PENDING_LIST.filter((val) => {
           return val.USER_ID !== USER_ID; // Filter/remove if it not equals to id
@@ -611,7 +611,7 @@ function AdminMemberList() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteMemberApprove/${USER_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setMEMBER_APPROVE_LIST(
         MEMBER_APPROVE_LIST.filter((val) => {
           return val.USER_ID !== USER_ID; // Filter/remove if it not equals to id
@@ -721,7 +721,7 @@ function AdminMemberList() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getMemberProfileInfo_Update/${USER_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setNAME(response.data[0].NAME);
       setCITY_ADDRESS(response.data[0].CITY_ADDRESS);
       setMOTHER_CONTACT(response.data[0].MOTHER_CONTACT);
@@ -750,7 +750,7 @@ function AdminMemberList() {
         CITY_ADDRESS: CITY_ADDRESS,
       }
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setMEMBERUPDATE(
         MEMBERUPDATE.map((val) => {
           return val.USER_ID === USER_ID

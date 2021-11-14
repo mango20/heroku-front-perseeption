@@ -28,8 +28,8 @@ function AdminProfile() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].USERNAME);
       setUSER_ID(name[0].USER_ID);
       setADMIN_EMAIL(name[0].ADMIN_EMAIL);
@@ -67,7 +67,7 @@ function AdminProfile() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminProfileInfo_/${USER_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setNAME(response.data[0].NAME);
       setADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
@@ -100,7 +100,7 @@ function AdminProfile() {
           ADMIN_EMAIL: ADMIN_EMAIL,
         }
       ).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setADMIN_INFO(
           ADMIN_INFO.map((val) => {
             return val.USER_ID === USER_ID

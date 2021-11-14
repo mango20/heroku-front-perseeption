@@ -24,8 +24,8 @@ function Login() {
       alert(response.data.message);
       // setloginMessage(response.data.message);
 
-      console.log(response.data);
-      console.log(response.data.result);
+      // console.log(response.data);
+      // console.log(response.data.result);
       var userDetails = response.data.result;
       localStorage.setItem("Client", JSON.stringify(userDetails));
       if (response.data.result[0].USER_TYPE === "Admin") {
@@ -36,13 +36,13 @@ function Login() {
     });
   };
   // Axios.defaults.withCredentials = true;
-  // console.log((Axios.defaults.withCredentials = true));
+  console.log((Axios.defaults.withCredentials = true));
   // const Login = ({updateUser}) => {
   //   Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
   //     USERNAME: username,
   //     USER_PASSWORD: password,
   //   }).then((response) => {
-  //     console.log(response);
+      console.log(response);
   //     // setLoginStatus(response);
   //     if (!response.data.auth) {
   //       setLoginStatus(false);
@@ -55,7 +55,7 @@ function Login() {
   //       // const errorMgs =
   //       //   ((document.getElementById("errorMsg").style.display = "block"), 1000);
   //     } else {
-  //       console.log(response.data);
+        console.log(response.data);
   //       // localStorage.setItem("USER_ID", response.data.token);
   //       localStorage.setItem("USER_ID", response.data.result[0].USER_TYPE);
   //       localStorage.getItem(response.data.result);
@@ -65,9 +65,9 @@ function Login() {
   //         ((document.getElementById("bgLoginStats").style.display = "block"),
   //         10000);
   //       // document.getElementsById("bgLoginStats").style.display = "block";
-  //       console.log(response.data.result[0].message);
+        console.log(response.data.result[0].message);
   //       if (response.data.result[0].USER_TYPE === "Admin") {
-  //         console.log(response.data.result[0].USER_TYPE);
+          console.log(response.data.result[0].USER_TYPE);
   //         Axios.defaults.withCredentials = true;
   //         // history.pushState("")
   //         // history.push("/AdminDashboard");
@@ -91,7 +91,7 @@ function Login() {
   // //       "x-access-token": localStorage.getItem("token"),
   // //     },
   // //   }).then((response) => {
-  // //     console.log(response);
+  //     console.log(response);
   // //   });
   // // };
 
@@ -100,7 +100,7 @@ function Login() {
   //     (response) => {
   //       if (response.data.loggedIn === true) {
   //         setLoginStatus(response.data.user[0].USERNAME);
-  //         console.log(response.data.user[0].USERNAME);
+          console.log(response.data.user[0].USERNAME);
   //       }
   //     }
   //   );
@@ -123,14 +123,14 @@ function Login() {
         setTimeout(function () {
           document.getElementById("emailMsg").style.display = "none";
         }, 3000);
-        console.log(response.data);
+        // console.log(response.data);
       } else {
         document.getElementById("emailMsg").style.display = "block";
         document.getElementById("emailMsg").style.backgroundColor = "green";
         // setTimeout(function () {
         //   document.getElementById("emailMsg").style.display = "none";
         // }, 3000);
-        // console.log(response.data);
+        console.log(response.data);
       }
     });
   };

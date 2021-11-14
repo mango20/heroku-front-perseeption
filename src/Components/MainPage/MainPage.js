@@ -12,17 +12,7 @@ function MainPage() {
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME, setUSERNAME] = useState([]);
 
-  // const [loginStatus, setLoginStatus] = useState(false);
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       document.getElementById("loggedInImg").style.display = "none";
-  //       document.getElementById("floatBtn").style.display = "block";
-  //       document.getElementById("LoginHeader").style.display = "block";
-  //     }
-  //   });
-  // }, []);
+
 
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
@@ -55,26 +45,7 @@ function MainPage() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-  //     (response) => {
-  //       console.log(response.data.loggedIn);
-  //       console.log(response.data.user);
-  //       if (response.data.loggedIn === true) {
-  //         setUSER_ID(response.data.user[0].USER_ID);
-  //         // setUSERNAME(response.data);
-  //         document.getElementById("floatBtn").style.display = "none";
-  //         document.getElementById("LoginHeader").style.display = "none";
-  //         document.getElementById("loggedInImg").style.display = "block";
-  //         // document.getElementById("loggedInImg").style.display = "none";
-  //         // document.getElementById("dropdown-content").style.display = "block";
-  //       }
-  //       // else {
-  //       //   document.getElementById("loggedInImg").style.display = "none";
-  //       // }
-  //     }
-  //   );
-  // }, []);
+  
 
   // Render
   useEffect(() => {
@@ -84,12 +55,7 @@ function MainPage() {
       setMAIN_EVENT(response.data);
     });
   }, []);
-  //   useEffect(() => {
-  //     Axios.post("https://foodernity.herokuapp.com/").then((response) => {
-  //       // setMAIN_EVENT(response.data);
-  //       console.log(response.data);
-  //     });
-  //   }, []);
+
   const popup = () => {
     if (document.getElementById("dropdown-content").style.display !== "block") {
       document.getElementById("dropdown-content").style.display = "block";
@@ -98,18 +64,7 @@ function MainPage() {
     }
   };
 
-  // const logout = () => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/logout").then((response) => {
-  //     // alert("sdf");
-  //     window.location.reload();
-  //     console.log(response.data);
-  //   });
-  //   localStorage.clear();
-  //   document.getElementById("floatBtn").style.display = "block";
-  //   document.getElementById("LoginHeader").style.display = "block";
-  //   document.getElementById("loggedInImg").style.display = "none";
-  //   document.getElementById("dropdown-content").style.display = "none";
-  // };
+  
 
   const history = useHistory();
   const logout = () => {

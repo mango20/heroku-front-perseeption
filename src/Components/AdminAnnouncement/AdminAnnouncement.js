@@ -17,7 +17,7 @@ function AdminAnnouncement() {
   // const submit = async () => {
   //   const formdata = new FormData();
   //   formdata.append("image", announcementInformation.file);
-  //   console.log(announcementInformation.file);
+    
   //   formdata.append("title", announcementInformation.title);
   //   formdata.append("content", announcementInformation.content);
   //   if (
@@ -85,7 +85,7 @@ function AdminAnnouncement() {
   };
 
   const handleSubmitFile1 = (e) => {
-    console.log("submarine");
+    // console.log("submarine");
     e.preventDefault();
     if (!selectedFile1) return;
     const reader = new FileReader();
@@ -94,8 +94,8 @@ function AdminAnnouncement() {
       uploadImage1(reader.result);
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      console.log("AAAAAAAAAAAAAAAAH");
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
     };
   };
 
@@ -163,11 +163,11 @@ function AdminAnnouncement() {
           "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
         ).then((response) => {
           setANNOUNCEMENT_LIST(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         });
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -180,7 +180,7 @@ function AdminAnnouncement() {
         setANNOUNCEMENT_LIST(response.data);
       });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -194,7 +194,7 @@ function AdminAnnouncement() {
       "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
     ).then((response) => {
       setANNOUNCEMENT_LIST(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, []);
 
@@ -211,8 +211,8 @@ function AdminAnnouncement() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME_(name[0].ADMIN_NAME);
       setUSER_ID(name[0].USER_ID);
       setAVATAR(name[0].AVATAR);
@@ -286,7 +286,7 @@ function AdminAnnouncement() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/delete/${ANNOUNCEMENT_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setANNOUNCEMENT_LIST(
         ANNOUNCEMENT_LIST.filter((val) => {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id

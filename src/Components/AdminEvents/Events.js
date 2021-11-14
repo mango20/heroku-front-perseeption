@@ -30,8 +30,8 @@ function Events() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setUSER_ID(name[0].USER_ID);
       setAVATAR(name[0].AVATAR);
@@ -78,7 +78,7 @@ function Events() {
   };
 
   const handleSubmitFile = (e) => {
-    console.log("sub");
+    // console.log("sub");
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -88,18 +88,18 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setEVENT_LIST(response.data);
       });
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      console.log("AAAAAAAAAAAAAAAAH");
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
     };
   };
 
   const uploadImage = (base64EncodedImage) => {
-    console.log(base64EncodedImage);
+    // console.log(base64EncodedImage);
 
     try {
       const title = document.getElementById("inputEventTitle").value;
@@ -148,12 +148,12 @@ function Events() {
           "https://perseeption-tromagade.herokuapp.com/api/getEvent"
         ).then((response) => {
           setEVENT_LIST(response.data);
-          console.log(response.data);
+          // console.log(response.data);
         });
       }
-      //   console.log(EVENT_TITLE);
+      console.log(EVENT_TITLE);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -170,11 +170,11 @@ function Events() {
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setEVENT_LIST(response.data);
       });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -185,7 +185,7 @@ function Events() {
   useEffect(() => {
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
       (response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setEVENT_LIST(response.data);
       }
     );
@@ -193,7 +193,7 @@ function Events() {
   //   const submit = async () => {
   //     const formdata_ = new FormData();
   //     formdata_.append("image", eventInformation.file);
-  //     console.log(eventInformation.file);
+  console.log(eventInformation.file);
   //     formdata_.append("title", eventInformation.title);
   //     formdata_.append("content", eventInformation.content);
   //     if (
@@ -251,7 +251,7 @@ function Events() {
   //     const formData = new FormData();
   //     formData.append("file", imageSelected);
   //     formData.append("upload_preset", "jogvnb1m");
-  //     console.log(imageSelected);
+  console.log(imageSelected);
   //     Axios.post(
   //       "https://api.cloudinary.com/v1_1/dlvt2lnkh/image/upload",
   //       formData,
@@ -264,7 +264,7 @@ function Events() {
   //       }
   //     ).then((response) => {
   //       const fileName = response.data;
-  //       console.log(fileName);
+  console.log(fileName);
   //       Axios.post(
   //         "https://perseeption-tromagade.herokuapp.com/uploadEvent_Admin",
   //         {
@@ -273,7 +273,7 @@ function Events() {
   //           EVENT_IMAGE: fileName,
   //         }
   //       ).then((response) => {
-  //         console.log(EVENT_TITLE);
+  console.log(EVENT_TITLE);
   //       });
   //     });
   //   };
@@ -281,7 +281,7 @@ function Events() {
 
   // useEffect(() => {
   //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
+  console.log(response.data.loggedIn);
   //     if (response.data.loggedIn === true) {
   //       setUSER_ID(response.data.user[0].USER_ID);
   //     } else {
@@ -369,7 +369,7 @@ function Events() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteEvent/${EVENT_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setEVENT_LIST(
         EVENT_LIST.filter((val) => {
           return val.EVENT_ID !== EVENT_ID; // Filter/remove if it not equals to id

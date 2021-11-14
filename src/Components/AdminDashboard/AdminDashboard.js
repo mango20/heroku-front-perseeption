@@ -25,26 +25,12 @@ function AdminDashboard() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
     }
   }, []);
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then(
-  //     (response) => {
-  //       console.log(response.data);
-  //       console.log(response.data.loggedIn);
-  //       if (response.data.loggedIn === true) {
-  //         setUSERNAME(response.data.user);
-  //       } else {
-  //         // history.push("/Login");
-  //         console.log("lfalse");
-  //       }
-  //     }
-  //   );
-  // }, []);
 
   const logout = () => {
     document.getElementById("popUpGetMsgApprove_logout").style.display =
@@ -56,13 +42,6 @@ function AdminDashboard() {
     localStorage.clear();
     window.location.reload();
   };
-
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/countGenderFemale").then((response) => {
-  //     setcountFemale(response.data);
-  //     console.log(response.data);
-  //   });
-  // }, []);
 
   useEffect(() => {
     Axios.get(

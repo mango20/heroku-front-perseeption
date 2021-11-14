@@ -17,14 +17,14 @@ function MemberEvents() {
   const [EVENT_CONTENT, setEVENT_CONTENT] = useState("");
 
   const readMoreEvents_ = (EVENT_ID) => {
-    console.log(EVENT_ID);
+    // console.log(EVENT_ID);
     document.getElementById("memberEventList_id_").style.display = "block";
     document.getElementById("popUpReadmoreEvent_id").style.display = "block";
     document.getElementById("memberEventList_id").style.display = "none";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreEvent/${EVENT_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
 
       setEVENT_IMAGE(response.data[0].EVENT_IMAGE);
       setEVENT_TITLE(response.data[0].EVENT_TITLE);
@@ -38,7 +38,7 @@ function MemberEvents() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreEvent/${EVENT_ID_}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
 
       setEVENT_IMAGE("");
       setEVENT_TITLE("");
@@ -50,7 +50,7 @@ function MemberEvents() {
       "https://perseeption-tromagade.herokuapp.com/api/getMemberEvent"
     ).then((response) => {
       setEVENT_LIST(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
     document.getElementById("memberEventList_id_").style.display = "none";
     document.getElementById("popUpReadmoreEvent_id").style.display = "none";

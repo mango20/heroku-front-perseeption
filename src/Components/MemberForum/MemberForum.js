@@ -64,25 +64,6 @@ function MemberForum() {
     document.getElementById("dropdown-content").style.display = "none";
     window.location.reload();
   };
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //     } else {
-  //       window.location = "/";
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   Axios.get(
-  //     "https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}"
-  //   ).then((response) => {
-  //     setFORUM_REPLY_LIST(response.data);
-  //     console.log(response.data);
-  //   });
-  // }, []);
 
   useEffect(() => {
     Axios.get(
@@ -95,7 +76,7 @@ function MemberForum() {
   useEffect(() => {
     Axios.get(`https://perseeption-tromagade.herokuapp.com/api/getForum`).then(
       (response) => {
-        console.log("hehe" + response.data);
+        // console.log("hehe" + response.data);
         if (response.data[0].USER_TYPE === "Admin") {
           setFORUM_LIST(response.data);
           document.getElementById("iconForum_").style.display = "block";
@@ -105,8 +86,8 @@ function MemberForum() {
           // document.getElementById("iconForum_").style.display = "none";
           document.getElementById("iconForum").style.display = "block";
         }
-        console.log(response.data);
-        console.log(response.data[0].USER_TYPE);
+        // console.log(response.data);
+        // console.log(response.data[0].USER_TYPE);
       }
     );
   }, []);
@@ -116,7 +97,7 @@ function MemberForum() {
       Axios.delete(
         `https://perseeption-tromagade.herokuapp.com/api/deleteQuestion/${FORUM_ID}`
       ).then((response) => {
-        console.log(response);
+        // console.log(response);
         setFORUM_LIST(
           FORUM_LIST.filter((val) => {
             return val.FORUM_ID !== FORUM_ID; // Filter/remove if it not equals to id
@@ -127,7 +108,7 @@ function MemberForum() {
           "https://perseeption-tromagade.herokuapp.com/api/getForum"
         ).then((response) => {
           setFORUM_LIST(response.data);
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data[0].USER_TYPE === "Admin") {
             document.getElementById("iconForum_").style.display = "block";
             document.getElementById("iconForum").style.display = "none";
@@ -156,8 +137,8 @@ function MemberForum() {
       const name = JSON.parse(localStorage.getItem("Client"));
       const USER_ID_ = name[0].USER_ID;
       const NAME = name[0].NAME;
-      console.log(USER_ID_);
-      console.log(NAME);
+      // console.log(USER_ID_);
+      // console.log(NAME);
       setUSER_ID(name[0].USER_ID);
 
       Axios.post(
@@ -168,14 +149,14 @@ function MemberForum() {
           USER_ID: USER_ID_,
         }
       );
-      console.log(FORUM_REPLY_CONTENT);
-      console.log(FORUM_ID);
-      console.log(USER_ID_);
+      // console.log(FORUM_REPLY_CONTENT);
+      // console.log(FORUM_ID);
+      // console.log(USER_ID_);
 
       Axios.get(
         `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
       ).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
 
         setFORUM_REPLY_LIST(response.data);
       });
@@ -198,18 +179,18 @@ function MemberForum() {
     // Insert Announcement
     const name = JSON.parse(localStorage.getItem("Client"));
     const USER_ID_ = name[0].USER_ID;
-    console.log(USER_ID_);
+    // console.log(USER_ID_);
     Axios.post("https://perseeption-tromagade.herokuapp.com/insertForum", {
       USER_ID_: USER_ID_,
       FORUM_ID: FORUM_ID,
       FORUM_TITLE: FORUM_TITLE,
       FORUM_CONTENT: FORUM_CONTENT,
     });
-    console.log(USER_ID_);
+    // console.log(USER_ID_);
     Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForum").then(
       (response) => {
         setFORUM_LIST(response.data);
-        console.log(response.data[0].FORUM_ID);
+        // console.log(response.data[0].FORUM_ID);
         if (response.data[0].USER_TYPE === "Admin") {
           document.getElementById("iconForum_").style.display = "block";
           document.getElementById("iconForum").style.display = "none";
@@ -267,67 +248,16 @@ function MemberForum() {
   };
 
   const loadComment = (FORUM_ID) => {
-    console.log(FORUM_ID);
+    // console.log(FORUM_ID);
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setFORUM_REPLY_LIST(response.data);
-      //   .then(
-      //   (response) => {
-      //     console.log(response.data);
-
-      //     setFORUM_REPLY_LIST(response.data);
-      //   }
     });
   };
 
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/getForumReply").then((response) => {
-  //     FORUM_REPLY_LIST(response.data);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/getForum").then((response) => {
-  //     FORUM_LIST(response.data);
-  //   });
-  // }, []);
-
-  const filterApproveMembers = () => {
-    // var input, filter, table, tr, td, td1, td2, txtValue, txtValue1, txtValue2;
-    // const FORUM_TITLE = document.getElementById("inputSearchForum").value;
-    // console.log(FORUM_TITLE);
-    // Axios.get(
-    //   `https://perseeption-tromagade.herokuapp.com/api/getForum/${FORUM_TITLE}`
-    // ).then((response) => {
-    //   console.log(response.data);
-    //   setFORUM_LIST(
-    //     FORUM_LIST.filter((val) => {
-    //       return val.FORUM_TITLE === FORUM_TITLE; // Filter/remove if it not equals to id
-    //     })
-    //   );
-    // filter = input.value.toUpperCase();
-    // console.log(filter);
-    // table = document.getElementById("forumQuestionHead");
-    // console.log(table);
-    // tr = table.getElementsByTagName("p");
-    // console.log(tr);
-    // console.log(tr.length);
-    // for (i = 0; i < tr.length; i++) {
-    //   console.log(i);
-    //   td = tr[i].getElementById("titleQuestion")[0];
-    //   console.log(td);
-    //   if (td) {
-    //     txtValue = td.textContent || td.innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //       tr[i].style.display = "";
-    //     } else {
-    //       tr[i].style.display = "none";
-    //     }
-    //   }
-    // }
-  };
+  const filterApproveMembers = () => {};
   return (
     <div className="ForumBg">
       <div className="MainHeader">

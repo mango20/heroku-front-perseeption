@@ -128,11 +128,11 @@ function AdminAdminList() {
   const showEditAdmin = (USER_ID) => {
     document.getElementById("formEditAdminOuter").style.display = "block";
     document.getElementById("editAdminBoxContainer").style.display = "block";
-    console.log(USER_ID);
+    // console.log(USER_ID);
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformation_/${USER_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setNEW_ADMIN_NAME(response.data[0].ADMIN_NAME);
       setNEW_ADMIN_ADDRESS(response.data[0].ADMIN_ADDRESS);
       setNEW_ADMIN_CONTACT(response.data[0].ADMIN_CONTACT);
@@ -148,11 +148,11 @@ function AdminAdminList() {
       // document.getElementById("popUpGetMsgInCont").style.display = "none";
     }, 3000);
 
-    console.log(USER_ID);
+    // console.log(USER_ID);
 
-    console.log(NEW_ADMIN_ID);
-    console.log(NEW_ADMIN_NAME);
-    console.log(NEW_ADMIN_ADDRESS);
+    // console.log(NEW_ADMIN_ID);
+    // console.log(NEW_ADMIN_NAME);
+    // console.log(NEW_ADMIN_ADDRESS);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/updateAdminInformation__/${NEW_ADMIN_ID}`,
       {
@@ -162,7 +162,7 @@ function AdminAdminList() {
         ADMIN_EMAIL: NEW_ADMIN_EMAIL,
       }
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setADMIN_LIST(
         ADMIN_LIST.map((val) => {
           return val.NEW_ADMIN_ID === NEW_ADMIN_ID
@@ -219,7 +219,7 @@ function AdminAdminList() {
     Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
       (response) => {
         setADMIN_LIST(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       }
     );
   }, []);
@@ -233,7 +233,7 @@ function AdminAdminList() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteAdmin/${USER_ID}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setADMIN_LIST(
         ADMIN_LIST.filter((val) => {
           return val.USER_ID !== USER_ID; // Filter/remove if it not equals to id
@@ -267,8 +267,8 @@ function AdminAdminList() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setADMIN_NAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
 
@@ -294,7 +294,7 @@ function AdminAdminList() {
   };
 
   const insertNewAdmin = (e) => {
-    console.log("sub");
+    // console.log("sub");
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -303,8 +303,8 @@ function AdminAdminList() {
       uploadImage(reader.result);
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      console.log("AAAAAAAAAAAAAAAAH");
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
     };
   };
 

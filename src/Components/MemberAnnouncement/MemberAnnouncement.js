@@ -76,7 +76,7 @@ function MemberAnnouncement() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID_}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
 
       setANNOUNCEMENT_IMAGE("");
       setANNOUNCEMENT_TITLE("");
@@ -88,7 +88,7 @@ function MemberAnnouncement() {
       "https://perseeption-tromagade.herokuapp.com/api/getMemberAnnouncement"
     ).then((response) => {
       setMemberAnnouncementList(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
     document.getElementById("popUpReadmoreAnnouncement_id").style.display =
       "none";
@@ -100,7 +100,7 @@ function MemberAnnouncement() {
   };
 
   const readMoreAnnouncement = (ANNOUNCEMENT_ID) => {
-    console.log(ANNOUNCEMENT_ID);
+    // console.log(ANNOUNCEMENT_ID);
     document.getElementById("popUpReadmoreAnnouncement_id").style.display =
       "block";
     document.getElementById("_memberAnnouncementList_id_").style.display =
@@ -110,7 +110,7 @@ function MemberAnnouncement() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/readMoreAnnouncement/${ANNOUNCEMENT_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
 
       setANNOUNCEMENT_IMAGE(response.data[0].ANNOUNCEMENT_IMAGE);
       setANNOUNCEMENT_TITLE(response.data[0].ANNOUNCEMENT_TITLE);

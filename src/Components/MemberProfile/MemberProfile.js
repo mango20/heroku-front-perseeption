@@ -79,8 +79,8 @@ function MemberProfile() {
       } else {
         var name = JSON.parse(localStorage.getItem("Client"));
 
-        console.log(name);
-        console.log(name[0].NAME);
+        // console.log(name);
+        // console.log(name[0].NAME);
         setUSER_ID(name[0].USER_ID);
         setNAME(name[0].NAME);
         setEMAIL(name[0].EMAIL);
@@ -156,7 +156,7 @@ function MemberProfile() {
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getMemberProfileInfo_MemberSec/${USER_ID}`
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       setNAME(response.data[0].NAME);
       setUSERNAME(response.data[0].USERNAME);
       // setCITY_ADDRESS(response.data[0].CITY_ADDRESS);
@@ -172,11 +172,11 @@ function MemberProfile() {
   };
 
   const updateDet_submit = (USER_ID) => {
-    console.log(USER_ID);
-    console.log(NAME);
-    console.log(EMAIL);
-    console.log(USERNAME);
-    console.log(USER_PASSWORD);
+    // console.log(USER_ID);
+    // console.log(NAME);
+    // console.log(EMAIL);
+    // console.log(USERNAME);
+    // console.log(USER_PASSWORD);
     const p = document.getElementById("password_MemberDetails").value;
     if (p === "") {
       document.getElementById("popUpGetMsgDeleteMember_").style.display =

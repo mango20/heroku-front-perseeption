@@ -121,7 +121,7 @@ function Registration() {
   };
 
   const Register = (e) => {
-    console.log("sub");
+    // console.log("sub");
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -130,8 +130,8 @@ function Registration() {
       uploadImage(reader.result);
     };
     reader.onerror = () => {
-      console.error("AHHHHHHHH!!");
-      console.log("AAAAAAAAAAAAAAAAH");
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
     };
   };
 
@@ -142,7 +142,7 @@ function Registration() {
     var emailAcc_user_ = document.getElementById("emailAcc_user");
     var regUsername_user_ = document.getElementById("regUsername_user");
     ///
-    console.log(base64EncodedImage);
+    // console.log(base64EncodedImage);
     var borderUserName = document.getElementById("regUsername");
     var borderRegUserId = document.getElementById("regPass");
     var letters = /^[A-Za-z]+$/;
@@ -730,11 +730,6 @@ function Registration() {
       // document.getElementById("validUsername").style.display = "none";
     }
   };
-  //   useEffect(() => {
-  //     Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //       console.log(response);
-  //     });
-  //   }, []);
 
   const scrollCreateAcc = () => {
     window.scrollTo({

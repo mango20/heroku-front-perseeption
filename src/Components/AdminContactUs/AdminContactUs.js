@@ -14,16 +14,7 @@ function AdminContactUs() {
   const [ContactUsMsg, setContactUsMsg] = useState("");
   const [contact_usList, setcontact_usList] = useState([]);
   const [AVATAR, setAVATAR] = useState("");
-  // useEffect(() => {
-  //   Axios.get("https://perseeption-tromagade.herokuapp.com/login").then((response) => {
-  //     console.log(response.data.loggedIn);
-  //     if (response.data.loggedIn === true) {
-  //       setUSER_ID(response.data.user[0].USER_ID);
-  //     } else {
-  //       window.location = "/Login";
-  //     }
-  //   });
-  // }, []);
+
 
   useEffect(() => {
     Axios.get(
@@ -35,11 +26,11 @@ function AdminContactUs() {
 
   // Delete Announcement
   const deleteContactMessage = (contact_id) => {
-    console.log(contact_id);
+    // console.log(contact_id);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteContactUsMsgt/${contact_id}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setcontact_usList(
         contact_usList.filter((val) => {
           return val.contact_id !== contact_id; // Filter/remove if it not equals to id
@@ -59,16 +50,16 @@ function AdminContactUs() {
   };
 
   // const showDetails = (contact_id) => {
-  //   console.log(contact_id);
+    console.log(contact_id);
   // };
   const replyBtn = (contact_id) => {
-    console.log(contact_id);
+    // console.log(contact_id);
     document.getElementById("floatContactUsMessage_bg").style.display = "block";
     document.getElementById("floatContactUsMessage").style.display = "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getAdminInformations_/${contact_id}`
     ).then((response) => {
-      console.log(response);
+      // console.log(response);
       setcontact_usList(
         contact_usList.filter((val) => {
           return val.contact_id === contact_id;
@@ -78,13 +69,13 @@ function AdminContactUs() {
   };
 
   const sendEmail = (contact_id) => {
-    console.log(contact_id);
+    // console.log(contact_id);
     const p = document.getElementById("email-id").value;
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
     ).then((response) => {
       const getEmail = response.data[0].contact_email;
-      console.log(getEmail);
+      // console.log(getEmail);
       Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
         EmailContact: p,
         Subject: Subject,
@@ -104,7 +95,7 @@ function AdminContactUs() {
   const hideReplyModal = () => {
     document.getElementById("nameAdmin-id").value = "";
     const p = (document.getElementById("email-id").value = "");
-    console.log(p);
+    // console.log(p);
     document.getElementById("messagesText").value = "";
     document.getElementById("floatContactUsMessage_bg").style.display = "none";
     document.getElementById("floatContactUsMessage").style.display = "none";
@@ -163,8 +154,8 @@ function AdminContactUs() {
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
 
-      console.log(name);
-      console.log(name[0].ADMIN_NAME);
+      // console.log(name);
+      // console.log(name[0].ADMIN_NAME);
       setUSERNAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
     }
