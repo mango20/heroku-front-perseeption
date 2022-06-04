@@ -42,7 +42,7 @@
 @media only screen and (max-width: 1262px) {
   #_memberAnnouncementList_id_,
   #memberEventList_id_ {
-    height: 100vh;
+    height: 100%;
   }
 
   /* .announcement_Img {

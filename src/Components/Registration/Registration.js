@@ -121,22 +121,6 @@ function Registration() {
   };
 
   const Register = (e) => {
-    // console.log("sub");
-    e.preventDefault();
-    if (!selectedFile) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    reader.onloadend = () => {
-      uploadImage(reader.result);
-    };
-    reader.onerror = () => {
-      // console.error("AHHHHHHHH!!");
-      // console.log("AAAAAAAAAAAAAAAAH");
-    };
-  };
-
-  // REGISTER
-  const uploadImage = (base64EncodedImage) => {
     var emailAcc_user = document.getElementById("emailAcc_user").value;
     var regUsername_user = document.getElementById("regUsername_user").value;
     var emailAcc_user_ = document.getElementById("emailAcc_user");
@@ -158,13 +142,143 @@ function Registration() {
     const passwordRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16}$)"
     );
+
+    //
+    const FatherSurname = document.getElementById("inputFatherSurname").value;
+    const FatherSurname1 = document.getElementById("inputFatherSurname");
+
+    //inputFatherGivenName
+    const FatherGivenName = document.getElementById(
+      "inputFatherGivenName"
+    ).value;
+    const FatherGivenName1 = document.getElementById("inputFatherGivenName");
+
+    //inputFatherMiddleName
+    const FatherMiddleName = document.getElementById(
+      "inputFatherMiddleName"
+    ).value;
+    const FatherMiddleName1 = document.getElementById("inputFatherMiddleName");
+
+    //inputMotherSurname
+    const MotherSurname = document.getElementById("inputMotherSurname").value;
+    const MotherSurname1 = document.getElementById("inputMotherSurname");
+
+    //inputMotherfirst
+    const Motherfirst = document.getElementById("inputMotherfirst").value;
+    const Motherfirst1 = document.getElementById("inputMotherfirst");
+
+    //inputMotherMiddle
+    const MotherMiddle = document.getElementById("inputMotherMiddle").value;
+    const MotherMiddle1 = document.getElementById("inputMotherMiddle");
+
+    //guardianFam
+    const guardianFam = document.getElementById("guardianFam").value;
+    const guardianFam1 = document.getElementById("guardianFam");
+
+    //guardianGivenName
+    const guardianGivenName =
+      document.getElementById("guardianGivenName").value;
+    const guardianGivenName1 = document.getElementById("guardianGivenName");
+
+    //guardianMiddle
+    const guardianMiddle = document.getElementById("guardianMiddle").value;
+    const guardianMiddle1 = document.getElementById("guardianMiddle");
+
+    //guardianContact
+    const guardianContact = document.getElementById("guardianContact").value;
+    const guardianContact1 = document.getElementById("guardianContact");
+
+    //firstSib
+    const firstSib = document.getElementById("firstSib").value;
+    const firstSib1 = document.getElementById("firstSib");
+
+    //secSib
+    const secSib = document.getElementById("secSib").value;
+    const secSib1 = document.getElementById("secSib");
+
+    //thirdSib
+    const thirdSib = document.getElementById("thirdSib").value;
+    const thirdSib1 = document.getElementById("thirdSib");
+
+    // fcontact
+    const fcontact = document.getElementById("fcontact").value;
+    const fcontact1 = document.getElementById("fcontact");
+
+    // mcontact
+    const mcontact = document.getElementById("mcontact").value;
+    const mcontact1 = document.getElementById("mcontact");
+
+    //fland
+    const fland = document.getElementById("fland").value;
+    const fland1 = document.getElementById("fland");
+
+    //mland
+    const mland = document.getElementById("mland").value;
+    const mland1 = document.getElementById("mland");
+
+    //femail
+    const femail = document.getElementById("femail").value;
+    const femail1 = document.getElementById("femail");
+
+    //memail
+    const memail = document.getElementById("memail").value;
+    const memail1 = document.getElementById("memail");
+
+    //mocc
+    const mocc = document.getElementById("mocc").value;
+    const mocc1 = document.getElementById("mocc");
+
+    //focc
+    const focc = document.getElementById("focc").value;
+    const focc1 = document.getElementById("focc");
+
+    //inpYGL
+    const inpYGL = document.getElementById("inpYGL").value;
+    const inpYGL1 = document.getElementById("inpYGL");
+
+    // inpuSchAdd
+    const inpuSchAdd = document.getElementById("inpuSchAdd").value;
+    const inpuSchAdd1 = document.getElementById("inpuSchAdd");
+
+    //inpSch
+    const inpSch = document.getElementById("inpSch").value;
+    const inpSch1 = document.getElementById("inpSch");
+
+    //inpDisTb
+    const inpDisTb = document.getElementById("inpDisTb").value;
+    const inpDisTb1 = document.getElementById("inpDisTb");
+
+    //inpAddDislv
+    const inpAddDislv = document.getElementById("inpAddDislv").value;
+    const inpAddDislv1 = document.getElementById("inpAddDislv");
+
+    //conditionTxtArea
+    const conditionTxtArea = document.getElementById("conditionTxtArea").value;
+    const conditionTxtArea1 = document.getElementById("conditionTxtArea");
+
+    //gcashImg
+    const gcashImg = document.getElementById("gcashImg").value;
+    const gcashImg1 = document.getElementById("gcashImg");
+
+    //totally blind
+    var tb_option = document.getElementsByName("tb_option");
+
+    //var lv_option = document.getElementsByName("lv_option");
+    var lv_option = document.getElementsByName("lv_option");
+
+    //----
+
     //
     const Childsurname = document.getElementById("inputChildSurname").value;
     const Childsurname1 = document.getElementById("inputChildSurname");
+
     //
     var childName = document.getElementById("inputChildGivenNameId").value;
     var childName1 = document.getElementById("inputChildGivenNameId");
 
+    //
+    var ChildMiddlename = document.getElementById("inputChildMiddleName").value;
+    var ChildMiddlename1 = document.getElementById("inputChildMiddleName");
     //
     var city = document.getElementById("city").value;
     var city1 = document.getElementById("city");
@@ -213,7 +327,770 @@ function Registration() {
     var validRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (regUsername_user === "") {
+    //Letter only
+    var nameRegex = /^([a-zA-Z\s]{1,50})$/;
+    var numberRegex = /^([0-9]{1,11})$/;
+    var landRegex = /^([0-9 \-()]{9,20})$/;
+    var nameNumRegex = /^([a-zA-Z0-9\s]{1,50})$/;
+    var nameNumComRegex = /^([a-zA-Z\,0-9\s]{1,50})$/;
+    var emailRegex_ =
+      /^([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
+
+    // Done validating
+    if (regUsername_user === "" || !nameRegex.test(regUsername_user)) {
+      regUsername_user_.style.borderColor = "red";
+    } else {
+      regUsername_user_.style.borderColor = "#dddddd";
+    }
+
+    if (emailAcc_user === "" || !emailAcc_user.match(emailRegex_)) {
+      emailAcc_user_.style.borderColor = "red";
+    } else {
+      emailAcc_user_.style.borderColor = "#dddddd";
+    }
+
+    // Validation Username
+    if (inputUsername === "" || !usernameRegex.test(inputUsername)) {
+      borderUserName.style.borderColor = "red";
+    } else {
+      borderUserName.style.borderColor = "#dddddd";
+    }
+
+    // Validation Pass
+    if (inputPassword === "" || !passwordRegex.test(inputPassword)) {
+      borderRegUserId.style.borderColor = "red";
+    } else {
+      borderRegUserId.style.borderColor = "#dddddd";
+    }
+
+    // Done validating
+    if (
+      Childsurname === "" ||
+      !Childsurname.match(letters) ||
+      !nameRegex.test(Childsurname)
+    ) {
+      Childsurname1.style.borderColor = "red";
+      document.getElementById("invalidchildSurname").style.display = "block";
+    } else {
+      Childsurname1.style.borderColor = "#dddddd";
+      document.getElementById("invalidchildSurname").style.display = "none";
+    }
+
+    //Done Validating
+    if (
+      childName === "" ||
+      !childName.match(letters) ||
+      !nameRegex.test(childName)
+    ) {
+      childName1.style.borderColor = "red";
+    } else {
+      childName1.style.borderColor = "#dddddd";
+    }
+
+    // middlename not empty and regex
+    if (ChildMiddlename !== "" && nameRegex.test(ChildMiddlename)) {
+      ChildMiddlename1.style.borderColor = "#dddddd";
+    } else {
+      var p = (document.getElementById("inputChildMiddleName").value = "none");
+    }
+
+    //-----------
+
+    // FatherSurname not empty and regex
+    if (FatherSurname !== "" && nameRegex.test(FatherSurname)) {
+      FatherSurname1.style.borderColor = "#dddddd";
+    }
+    if (FatherSurname !== "" && !nameRegex.test(FatherSurname)) {
+      FatherSurname1.style.borderColor = "red";
+    }
+
+    if (FatherSurname === "") {
+      document.getElementById("inputFatherSurname").value = "none";
+    }
+
+    // FatherGivenName not empty and regex
+    if (FatherGivenName !== "" && nameRegex.test(FatherGivenName)) {
+      FatherGivenName1.style.borderColor = "#dddddd";
+    }
+    if (FatherGivenName !== "" && !nameRegex.test(FatherGivenName)) {
+      FatherGivenName1.style.borderColor = "red";
+    }
+
+    if (FatherGivenName === "") {
+      document.getElementById("inputFatherGivenName").value = "none";
+    }
+
+    // FatherMiddleName not empty and regex
+    if (FatherMiddleName !== "" && nameRegex.test(FatherMiddleName)) {
+      FatherMiddleName1.style.borderColor = "#dddddd";
+    }
+    if (FatherMiddleName !== "" && !nameRegex.test(FatherMiddleName)) {
+      FatherMiddleName1.style.borderColor = "red";
+    }
+
+    if (FatherMiddleName === "") {
+      document.getElementById("inputFatherMiddleName").value = "none";
+    }
+
+    // inputMotherSurname not empty and regex
+    if (MotherSurname !== "" && nameRegex.test(MotherSurname)) {
+      MotherSurname1.style.borderColor = "#dddddd";
+    }
+    if (MotherSurname !== "" && !nameRegex.test(MotherSurname)) {
+      MotherSurname1.style.borderColor = "red";
+    }
+
+    if (MotherSurname === "") {
+      document.getElementById("inputMotherSurname").value = "none";
+    }
+
+    // inputMotherfirst not empty and regex
+    if (Motherfirst !== "" && nameRegex.test(Motherfirst)) {
+      Motherfirst1.style.borderColor = "#dddddd";
+    }
+    if (Motherfirst !== "" && !nameRegex.test(Motherfirst)) {
+      Motherfirst1.style.borderColor = "red";
+    }
+
+    if (Motherfirst === "") {
+      document.getElementById("inputMotherfirst").value = "none";
+    }
+
+    // MotherMiddle not empty and regex
+    if (MotherMiddle !== "" && nameRegex.test(MotherMiddle)) {
+      MotherMiddle1.style.borderColor = "#dddddd";
+    }
+    if (MotherMiddle !== "" && !nameRegex.test(MotherMiddle)) {
+      MotherMiddle1.style.borderColor = "red";
+    }
+
+    if (MotherMiddle === "") {
+      document.getElementById("inputMotherMiddle").value = "none";
+    }
+
+    // guardianFam not empty and regex
+    if (guardianFam !== "" && nameRegex.test(guardianFam)) {
+      guardianFam1.style.borderColor = "#dddddd";
+    }
+    if (guardianFam !== "" && !nameRegex.test(guardianFam)) {
+      guardianFam1.style.borderColor = "red";
+    }
+
+    if (guardianFam === "") {
+      document.getElementById("guardianFam").value = "none";
+    }
+
+    // guardianGivenName not empty and regex
+    if (guardianGivenName !== "" && nameRegex.test(guardianGivenName)) {
+      guardianGivenName1.style.borderColor = "#dddddd";
+    }
+    if (guardianGivenName !== "" && !nameRegex.test(guardianGivenName)) {
+      guardianGivenName1.style.borderColor = "red";
+    }
+    if (guardianGivenName === "") {
+      document.getElementById("guardianGivenName").value = "none";
+    }
+
+    // guardianGivenName not empty and regex
+    if (guardianMiddle !== "" && nameRegex.test(guardianMiddle)) {
+      guardianMiddle1.style.borderColor = "#dddddd";
+    }
+    if (guardianMiddle !== "" && !nameRegex.test(guardianMiddle)) {
+      guardianMiddle1.style.borderColor = "red";
+    }
+    if (guardianMiddle === "") {
+      document.getElementById("guardianMiddle").value = "none";
+    }
+
+    // guardianContact not empty and regex
+    if (guardianContact !== "" && numberRegex.test(guardianContact)) {
+      guardianContact1.style.borderColor = "#dddddd";
+    }
+    if (guardianContact !== "" && !numberRegex.test(guardianContact)) {
+      guardianContact1.style.borderColor = "red";
+    }
+    if (guardianContact === "") {
+      document.getElementById("guardianContact").value = "00000000000";
+    }
+
+    // guardianGivenName not empty and regex
+    if (firstSib !== "" && nameRegex.test(firstSib)) {
+      firstSib1.style.borderColor = "#dddddd";
+    }
+    if (firstSib !== "" && !nameRegex.test(firstSib)) {
+      firstSib1.style.borderColor = "red";
+    }
+    if (firstSib === "") {
+      document.getElementById("firstSib").value = "none";
+    }
+
+    // secSib not empty and regex
+    if (secSib !== "" && nameRegex.test(secSib)) {
+      secSib1.style.borderColor = "#dddddd";
+    }
+    if (secSib !== "" && !nameRegex.test(secSib)) {
+      secSib1.style.borderColor = "red";
+    }
+    if (secSib === "") {
+      document.getElementById("secSib").value = "none";
+    }
+
+    // secSib not empty and regex
+    if (thirdSib !== "" && nameRegex.test(thirdSib)) {
+      thirdSib1.style.borderColor = "#dddddd";
+    }
+    if (thirdSib !== "" && !nameRegex.test(thirdSib)) {
+      thirdSib1.style.borderColor = "red";
+    }
+    if (thirdSib === "") {
+      document.getElementById("thirdSib").value = "none";
+    }
+
+    // fcontact not empty and regex
+    if (fcontact !== "" && numberRegex.test(fcontact)) {
+      fcontact1.style.borderColor = "#dddddd";
+    }
+    if (fcontact !== "" && !numberRegex.test(fcontact)) {
+      fcontact1.style.borderColor = "red";
+    }
+    if (fcontact === "") {
+      document.getElementById("fcontact").value = "00000000000";
+    }
+
+    // mcontact not empty and regex
+    if (mcontact !== "" && numberRegex.test(mcontact)) {
+      mcontact1.style.borderColor = "#dddddd";
+    }
+    if (mcontact !== "" && !numberRegex.test(mcontact)) {
+      mcontact1.style.borderColor = "red";
+    }
+    if (mcontact === "") {
+      document.getElementById("mcontact").value = "00000000000";
+    }
+
+    // fland not empty and regex
+    if (fland !== "" && landRegex.test(fland)) {
+      fland1.style.borderColor = "#dddddd";
+    }
+    if (fland !== "" && !landRegex.test(fland)) {
+      fland1.style.borderColor = "red";
+    }
+    if (fland === "") {
+      document.getElementById("fland").value = "00000000000";
+    }
+
+    // mland not empty and regex
+    if (mland !== "" && landRegex.test(mland)) {
+      mland1.style.borderColor = "#dddddd";
+    }
+    if (mland !== "" && !landRegex.test(mland)) {
+      mland1.style.borderColor = "red";
+    }
+    if (mland === "") {
+      document.getElementById("mland").value = "00000000000";
+    }
+
+    // femail not empty and regex
+    if ((femail !== "" && emailRegex_.test(femail)) || femail === "none") {
+      femail1.style.borderColor = "#dddddd";
+    }
+    if (femail !== "" && !emailRegex_.test(femail) && femail !== "none") {
+      femail1.style.borderColor = "red";
+    }
+    if (memail === "") {
+      document.getElementById("femail").value = "none";
+    }
+
+    // memail not empty and regex
+    if ((memail !== "" && emailRegex_.test(memail)) || memail === "none") {
+      memail1.style.borderColor = "#dddddd";
+    }
+    if (memail !== "" && !emailRegex_.test(memail) && memail !== "none") {
+      memail1.style.borderColor = "red";
+    }
+    if (memail === "") {
+      document.getElementById("memail").value = "none";
+    }
+
+    // mocc not empty and regex
+    if (mocc !== "" && nameRegex.test(mocc)) {
+      mocc1.style.borderColor = "#dddddd";
+    }
+    if (mocc !== "" && !nameRegex.test(mocc)) {
+      mocc1.style.borderColor = "red";
+    }
+    if (mocc === "") {
+      document.getElementById("mocc").value = "none";
+    }
+
+    // focc not empty and regex
+    if (focc !== "" && nameRegex.test(focc)) {
+      focc1.style.borderColor = "#dddddd";
+    }
+    if (focc !== "" && !nameRegex.test(focc)) {
+      focc1.style.borderColor = "red";
+    }
+    if (focc === "") {
+      document.getElementById("focc").value = "none";
+    }
+
+    // inpYGL not empty and regex
+    if (inpYGL !== "" && nameNumRegex.test(inpYGL)) {
+      inpYGL1.style.borderColor = "#dddddd";
+    }
+    if (inpYGL !== "" && !nameNumRegex.test(inpYGL)) {
+      inpYGL1.style.borderColor = "red";
+    }
+    if (inpYGL === "") {
+      document.getElementById("inpYGL").value = "none";
+    }
+
+    // inpuSchAdd not empty and regex
+    if (inpuSchAdd !== "" && nameNumComRegex.test(inpuSchAdd)) {
+      inpuSchAdd1.style.borderColor = "#dddddd";
+    }
+    if (inpuSchAdd !== "" && !nameNumComRegex.test(inpuSchAdd)) {
+      inpYGL1.style.borderColor = "red";
+    }
+    if (inpuSchAdd === "") {
+      document.getElementById("inpuSchAdd").value = "none";
+    }
+
+    // inpSch not empty and regex
+    if (inpSch !== "" && nameRegex.test(inpSch)) {
+      inpSch1.style.borderColor = "#dddddd";
+    }
+    if (inpSch !== "" && !nameRegex.test(inpSch)) {
+      inpSch1.style.borderColor = "red";
+    }
+    if (inpSch === "") {
+      document.getElementById("inpSch").value = "none";
+    }
+
+    // inpDisTb not empty and regex
+    if (inpDisTb !== "" && nameRegex.test(inpDisTb)) {
+      inpSch1.style.borderColor = "#dddddd";
+    }
+    if (inpDisTb !== "" && !nameRegex.test(inpDisTb)) {
+      inpDisTb1.style.borderColor = "red";
+    }
+    if (inpDisTb === "") {
+      document.getElementById("inpDisTb").value = "none";
+    }
+
+    // inpAddDislv not empty and regex
+    if (inpAddDislv !== "" && nameRegex.test(inpAddDislv)) {
+      inpAddDislv1.style.borderColor = "#dddddd";
+    }
+    if (inpAddDislv !== "" && !nameRegex.test(inpAddDislv)) {
+      inpAddDislv1.style.borderColor = "red";
+    }
+    if (inpAddDislv === "") {
+      document.getElementById("inpAddDislv").value = "none";
+    }
+
+    // conditionTxtArea not empty and regex
+    if (conditionTxtArea !== "" && nameRegex.test(conditionTxtArea)) {
+      conditionTxtArea1.style.borderColor = "#dddddd";
+    }
+    if (conditionTxtArea !== "" && !nameRegex.test(conditionTxtArea)) {
+      conditionTxtArea1.style.borderColor = "red";
+    }
+    if (conditionTxtArea === "") {
+      document.getElementById("conditionTxtArea").value = "none";
+    }
+
+    if (gcashImg === "") {
+      gcashImg1.style.background = "red";
+    } else {
+      gcashImg1.style.background = "white";
+    }
+
+    if (
+      !(
+        tb_option[0].checked === true ||
+        tb_option[1].checked === true ||
+        tb_option[2].checked === true ||
+        tb_option[3].checked === true
+      )
+    ) {
+      document.getElementById("visionLabel").style.color = "red";
+    } else {
+      document.getElementById("visionLabel").style.color = "black";
+    }
+
+    if (
+      !(
+        lv_option[0].checked === true ||
+        lv_option[1].checked === true ||
+        lv_option[2].checked === true ||
+        lv_option[3].checked === true
+      )
+    ) {
+      document.getElementById("visionLabel1").style.color = "red";
+    } else {
+      document.getElementById("visionLabel1").style.color = "black";
+    }
+
+    //-----------
+
+    // city not empty and regex
+    if (city !== "" && nameNumRegex.test(city)) {
+      city1.style.borderColor = "#dddddd";
+    } else {
+      city1.style.borderColor = "red";
+    }
+
+    if (city === "") {
+      city1.style.borderColor = "red";
+    }
+
+    // region not empty and regex
+    if (region !== "" && nameNumRegex.test(region)) {
+      region1.style.borderColor = "#dddddd";
+    } else {
+      region1.style.borderColor = "red";
+    }
+
+    if (region === "") {
+      region1.style.borderColor = "red";
+    }
+
+    // province not empty and regex
+    if (province !== "" && nameNumRegex.test(province)) {
+      province1.style.borderColor = "#dddddd";
+    } else {
+      province1.style.borderColor = "red";
+    }
+    if (province === "") {
+      province1.style.borderColor = "red";
+    }
+
+    //DOB
+    if (childsDOB === "") {
+      childsDOB1.style.borderColor = "red";
+      // document.getElementById("childBdayMsg").style.display = "block";
+    } else {
+      childsDOB1.style.borderColor = "#dddddd";
+      // document.getElementById("childBdayMsg").style.display = "none";
+    }
+
+    // province not empty and regex
+
+    if (causeBlindness !== "" && nameNumRegex.test(causeBlindness)) {
+      causeBlindness1.style.borderColor = "#dddddd";
+    } else {
+      causeBlindness1.style.borderColor = "red";
+    }
+
+    if (causeBlindness === "") {
+      causeBlindness1.style.borderColor = "red";
+      // document.getElementById("invalidchildSurname").style.display = "block";
+    }
+
+    if (!(sex[0].checked === true || sex[1].checked === true)) {
+      document.getElementById("sexMsg").style.display = "block";
+    } else {
+      document.getElementById("sexMsg").style.display = "none";
+    }
+
+    if (
+      !(
+        income[0].checked === true ||
+        income[1].checked === true ||
+        income[2].checked === true ||
+        income[3].checked === true
+      )
+    ) {
+      document.getElementById("monthlyIncomeTitle").style.color = "red";
+      document.getElementById("monthlyIncomeTitle").style.display = "block";
+    } else {
+      document.getElementById("monthlyIncomeTitle").style.display = "none";
+    }
+
+    if (
+      !(
+        physicalTheraphy[0].checked === true ||
+        physicalTheraphy[1].checked === true ||
+        physicalTheraphy[2].checked === true
+      ) ||
+      !(
+        ocupationalTheraphy[0].checked === true ||
+        ocupationalTheraphy[1].checked === true ||
+        ocupationalTheraphy[2].checked === true
+      ) ||
+      !(
+        speechTherapy[0].checked === true ||
+        speechTherapy[1].checked === true ||
+        speechTherapy[2].checked === true
+      )
+    ) {
+      document.getElementById("tableMessageTheraphy").style.display = "block";
+      document.getElementById("tableService").style.borderStyle = "solid";
+      document.getElementById("tableService").style.borderColor = "red";
+    } else {
+      document.getElementById("tableMessageTheraphy").style.display = "none";
+      document.getElementById("tableService").style.borderStyle = "none";
+    }
+
+    if (
+      !(adaptiveLens[0].checked === true || adaptiveLens[1].checked === true) ||
+      !(stylus[0].checked === true || stylus[1].checked === true) ||
+      !(
+        artificialEyes[0].checked === true || artificialEyes[1].checked === true
+      ) ||
+      !(
+        computerScreen[0].checked === true || computerScreen[1].checked === true
+      ) ||
+      !(whiteCane[0].checked === true || whiteCane[1].checked === true) ||
+      !(cctvs[0].checked === true || cctvs[1].checked === true) ||
+      !(wheelChair[0].checked === true || wheelChair[1].checked === true) ||
+      !(largePrints[0].checked === true || largePrints[1].checked === true) ||
+      !(hearingAid[0].checked === true || hearingAid[1].checked === true) ||
+      !(abacus[0].checked === true || abacus[1].checked === true) ||
+      !(brailler[0].checked === true || brailler[1].checked === true)
+    ) {
+      document.getElementById("tableMessage").style.display = "block";
+      document.getElementById("tableNeed").style.borderStyle = "solid";
+      document.getElementById("tableNeed").style.borderColor = "red";
+    } else {
+      document.getElementById("tableMessage").style.display = "none";
+      document.getElementById("tableNeed").style.borderStyle = "none";
+    }
+
+    // console.log("sub");
+    e.preventDefault();
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      // console.error("AHHHHHHHH!!");
+      // console.log("AAAAAAAAAAAAAAAAH");
+    };
+  };
+
+  // REGISTER
+  const uploadImage = (base64EncodedImage) => {
+    var emailAcc_user = document.getElementById("emailAcc_user").value;
+    var regUsername_user = document.getElementById("regUsername_user").value;
+    var emailAcc_user_ = document.getElementById("emailAcc_user");
+    var regUsername_user_ = document.getElementById("regUsername_user");
+    ///
+    // console.log(base64EncodedImage);
+    var borderUserName = document.getElementById("regUsername");
+    var borderRegUserId = document.getElementById("regPass");
+    var letters = /^[A-Za-z]+$/;
+    // Username Regex
+    const inputUsername = document.getElementById("regUsername").value;
+
+    const usernameRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,30}$)"
+    );
+
+    // Password Regex
+    const inputPassword = document.getElementById("regPass").value;
+    const passwordRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16}$)"
+    );
+
+    //
+    const FatherSurname = document.getElementById("inputFatherSurname").value;
+    const FatherSurname1 = document.getElementById("inputFatherSurname");
+
+    //inputFatherGivenName
+    const FatherGivenName = document.getElementById(
+      "inputFatherGivenName"
+    ).value;
+    const FatherGivenName1 = document.getElementById("inputFatherGivenName");
+
+    //inputFatherMiddleName
+    const FatherMiddleName = document.getElementById(
+      "inputFatherMiddleName"
+    ).value;
+    const FatherMiddleName1 = document.getElementById("inputFatherMiddleName");
+
+    //inputMotherSurname
+    const MotherSurname = document.getElementById("inputMotherSurname").value;
+    const MotherSurname1 = document.getElementById("inputMotherSurname");
+
+    //inputMotherfirst
+    const Motherfirst = document.getElementById("inputMotherfirst").value;
+    const Motherfirst1 = document.getElementById("inputMotherfirst");
+
+    //inputMotherMiddle
+    const MotherMiddle = document.getElementById("inputMotherMiddle").value;
+    const MotherMiddle1 = document.getElementById("inputMotherMiddle");
+
+    //guardianFam
+    const guardianFam = document.getElementById("guardianFam").value;
+    const guardianFam1 = document.getElementById("guardianFam");
+
+    //guardianGivenName
+    const guardianGivenName =
+      document.getElementById("guardianGivenName").value;
+    const guardianGivenName1 = document.getElementById("guardianGivenName");
+
+    //guardianMiddle
+    const guardianMiddle = document.getElementById("guardianMiddle").value;
+    const guardianMiddle1 = document.getElementById("guardianMiddle");
+
+    //guardianContact
+    const guardianContact = document.getElementById("guardianContact").value;
+    const guardianContact1 = document.getElementById("guardianContact");
+
+    //firstSib
+    const firstSib = document.getElementById("firstSib").value;
+    const firstSib1 = document.getElementById("firstSib");
+
+    //secSib
+    const secSib = document.getElementById("secSib").value;
+    const secSib1 = document.getElementById("secSib");
+
+    //thirdSib
+    const thirdSib = document.getElementById("thirdSib").value;
+    const thirdSib1 = document.getElementById("thirdSib");
+
+    // fcontact
+    const fcontact = document.getElementById("fcontact").value;
+    const fcontact1 = document.getElementById("fcontact");
+
+    // mcontact
+    const mcontact = document.getElementById("mcontact").value;
+    const mcontact1 = document.getElementById("mcontact");
+
+    //fland
+    const fland = document.getElementById("fland").value;
+    const fland1 = document.getElementById("fland");
+
+    //mland
+    const mland = document.getElementById("mland").value;
+    const mland1 = document.getElementById("mland");
+
+    //femail
+    const femail = document.getElementById("femail").value;
+    const femail1 = document.getElementById("femail");
+
+    //memail
+    const memail = document.getElementById("memail").value;
+    const memail1 = document.getElementById("memail");
+
+    //mocc
+    const mocc = document.getElementById("mocc").value;
+    const mocc1 = document.getElementById("mocc");
+
+    //focc
+    const focc = document.getElementById("focc").value;
+    const focc1 = document.getElementById("focc");
+
+    //inpYGL
+    const inpYGL = document.getElementById("inpYGL").value;
+    const inpYGL1 = document.getElementById("inpYGL");
+
+    // inpuSchAdd
+    const inpuSchAdd = document.getElementById("inpuSchAdd").value;
+    const inpuSchAdd1 = document.getElementById("inpuSchAdd");
+
+    //inpSch
+    const inpSch = document.getElementById("inpSch").value;
+    const inpSch1 = document.getElementById("inpSch");
+
+    //inpDisTb
+    const inpDisTb = document.getElementById("inpDisTb").value;
+    const inpDisTb1 = document.getElementById("inpDisTb");
+
+    //inpAddDislv
+    const inpAddDislv = document.getElementById("inpAddDislv").value;
+    const inpAddDislv1 = document.getElementById("inpAddDislv");
+
+    //conditionTxtArea
+    const conditionTxtArea = document.getElementById("conditionTxtArea").value;
+    const conditionTxtArea1 = document.getElementById("conditionTxtArea");
+
+    //gcashImg
+    const gcashImg = document.getElementById("gcashImg").value;
+    const gcashImg1 = document.getElementById("gcashImg");
+
+    //----
+
+    //
+    const Childsurname = document.getElementById("inputChildSurname").value;
+    const Childsurname1 = document.getElementById("inputChildSurname");
+
+    //
+    var childName = document.getElementById("inputChildGivenNameId").value;
+    var childName1 = document.getElementById("inputChildGivenNameId");
+
+    //
+    var ChildMiddlename = document.getElementById("inputChildMiddleName").value;
+    var ChildMiddlename1 = document.getElementById("inputChildMiddleName");
+    //
+    var city = document.getElementById("city").value;
+    var city1 = document.getElementById("city");
+
+    //
+    var region = document.getElementById("region").value;
+    var region1 = document.getElementById("region");
+
+    //
+    var province = document.getElementById("province").value;
+    var province1 = document.getElementById("province");
+
+    //
+    var income = document.getElementsByName("income");
+
+    //
+    var childsDOB = document.getElementById("childsDOB").value;
+    var childsDOB1 = document.getElementById("childsDOB");
+
+    //
+    var sex = document.getElementsByName("sex");
+
+    //
+    var causeBlindness = document.getElementById("causeBlindness").value;
+    var causeBlindness1 = document.getElementById("causeBlindness");
+
+    // console.log(surnameChild);
+
+    //
+    var adaptiveLens = document.getElementsByName("adaptiveLens");
+    var stylus = document.getElementsByName("stylus");
+    var artificialEyes = document.getElementsByName("artificialEyes");
+    var computerScreen = document.getElementsByName("computerScreen");
+
+    var whiteCane = document.getElementsByName("whiteCane");
+    var cctvs = document.getElementsByName("CCTV");
+    var wheelChair = document.getElementsByName("wheelChair");
+    var largePrints = document.getElementsByName("largePrints");
+    var hearingAid = document.getElementsByName("hearingAid");
+    var abacus = document.getElementsByName("abacus");
+    var brailler = document.getElementsByName("brailler");
+
+    //totally blind
+    var tb_option = document.getElementsByName("tb_option");
+
+    //var lv_option = document.getElementsByName("lv_option");
+    var lv_option = document.getElementsByName("lv_option");
+
+    var physicalTheraphy = document.getElementsByName("physicalTheraphy");
+    var ocupationalTheraphy = document.getElementsByName("ocupationalTheraphy");
+    var speechTherapy = document.getElementsByName("speechTherapy");
+    var validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    //Letter only
+    var nameRegex = /^([a-zA-Z\s]{1,50})$/;
+    var numberRegex = /^([0-9]{1,11})$/;
+    var landRegex = /^([0-9 \-()]{9,20})$/;
+    var nameNumRegex = /^([a-zA-Z0-9\s]{1,50})$/;
+    var nameNumComRegex = /^([a-zA-Z\,0-9\s]{1,50})$/;
+    var emailRegex_ =
+      /^([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
+
+    // Done validating
+    if (regUsername_user === "" || !nameRegex.test(regUsername_user)) {
       regUsername_user_.style.borderColor = "red";
     } else {
       regUsername_user_.style.borderColor = "#dddddd";
@@ -239,7 +1116,12 @@ function Registration() {
       borderRegUserId.style.borderColor = "#dddddd";
     }
 
-    if (Childsurname === "" || !Childsurname.match(letters)) {
+    // Done validating
+    if (
+      Childsurname === "" ||
+      !Childsurname.match(letters) ||
+      !nameRegex.test(Childsurname)
+    ) {
       Childsurname1.style.borderColor = "red";
       document.getElementById("invalidchildSurname").style.display = "block";
     } else {
@@ -247,30 +1129,371 @@ function Registration() {
       document.getElementById("invalidchildSurname").style.display = "none";
     }
 
-    if (childName === "" || !childName.match(letters)) {
+    //Done Validating
+    if (
+      childName === "" ||
+      !childName.match(letters) ||
+      !nameRegex.test(childName)
+    ) {
       childName1.style.borderColor = "red";
     } else {
       childName1.style.borderColor = "#dddddd";
     }
 
+    // middlename not empty and regex
+    if (ChildMiddlename !== "" && nameRegex.test(ChildMiddlename)) {
+      ChildMiddlename1.style.borderColor = "#dddddd";
+    } else {
+      document.getElementById("inputChildMiddleName").value = "none";
+    }
+
+    //-----------
+
+    // FatherSurname not empty and regex
+    if (FatherSurname !== "" && nameRegex.test(FatherSurname)) {
+      FatherSurname1.style.borderColor = "#dddddd";
+    }
+    if (FatherSurname !== "" && !nameRegex.test(FatherSurname)) {
+      FatherSurname1.style.borderColor = "red";
+    }
+
+    if (FatherSurname === "") {
+      document.getElementById("inputFatherSurname").value = "none";
+    }
+
+    // FatherGivenName not empty and regex
+    if (FatherGivenName !== "" && nameRegex.test(FatherGivenName)) {
+      FatherGivenName1.style.borderColor = "#dddddd";
+    }
+    if (FatherGivenName !== "" && !nameRegex.test(FatherGivenName)) {
+      FatherGivenName1.style.borderColor = "red";
+    }
+
+    if (FatherGivenName === "") {
+      document.getElementById("inputFatherGivenName").value = "none";
+    }
+
+    // FatherMiddleName not empty and regex
+    if (FatherMiddleName !== "" && nameRegex.test(FatherMiddleName)) {
+      FatherMiddleName1.style.borderColor = "#dddddd";
+    }
+    if (FatherMiddleName !== "" && !nameRegex.test(FatherMiddleName)) {
+      FatherMiddleName1.style.borderColor = "red";
+    }
+
+    if (FatherMiddleName === "") {
+      document.getElementById("inputFatherMiddleName").value = "none";
+    }
+
+    // inputMotherSurname not empty and regex
+    if (MotherSurname !== "" && nameRegex.test(MotherSurname)) {
+      MotherSurname1.style.borderColor = "#dddddd";
+    }
+    if (MotherSurname !== "" && !nameRegex.test(MotherSurname)) {
+      MotherSurname1.style.borderColor = "red";
+    }
+
+    if (MotherSurname === "") {
+      document.getElementById("inputMotherSurname").value = "none";
+    }
+
+    // inputMotherfirst not empty and regex
+    if (Motherfirst !== "" && nameRegex.test(Motherfirst)) {
+      Motherfirst1.style.borderColor = "#dddddd";
+    }
+    if (Motherfirst !== "" && !nameRegex.test(Motherfirst)) {
+      Motherfirst1.style.borderColor = "red";
+    }
+
+    if (Motherfirst === "") {
+      document.getElementById("inputMotherfirst").value = "none";
+    }
+
+    // MotherMiddle not empty and regex
+    if (MotherMiddle !== "" && nameRegex.test(MotherMiddle)) {
+      MotherMiddle1.style.borderColor = "#dddddd";
+    }
+    if (MotherMiddle !== "" && !nameRegex.test(MotherMiddle)) {
+      MotherMiddle1.style.borderColor = "red";
+    }
+
+    if (MotherMiddle === "") {
+      document.getElementById("inputMotherMiddle").value = "none";
+    }
+
+    // guardianFam not empty and regex
+    if (guardianFam !== "" && nameRegex.test(guardianFam)) {
+      guardianFam1.style.borderColor = "#dddddd";
+    }
+    if (guardianFam !== "" && !nameRegex.test(guardianFam)) {
+      guardianFam1.style.borderColor = "red";
+    }
+
+    if (guardianFam === "") {
+      document.getElementById("guardianFam").value = "none";
+    }
+
+    // guardianGivenName not empty and regex
+    if (guardianGivenName !== "" && nameRegex.test(guardianGivenName)) {
+      guardianGivenName1.style.borderColor = "#dddddd";
+    }
+    if (guardianGivenName !== "" && !nameRegex.test(guardianGivenName)) {
+      guardianGivenName1.style.borderColor = "red";
+    }
+    if (guardianGivenName === "") {
+      document.getElementById("guardianGivenName").value = "none";
+    }
+
+    // guardianGivenName not empty and regex
+    if (guardianMiddle !== "" && nameRegex.test(guardianMiddle)) {
+      guardianMiddle1.style.borderColor = "#dddddd";
+    }
+    if (guardianMiddle !== "" && !nameRegex.test(guardianMiddle)) {
+      guardianMiddle1.style.borderColor = "red";
+    }
+    if (guardianMiddle === "") {
+      document.getElementById("guardianMiddle").value = "none";
+    }
+
+    // guardianContact not empty and regex
+    if (guardianContact !== "" && numberRegex.test(guardianContact)) {
+      guardianContact1.style.borderColor = "#dddddd";
+    }
+    if (guardianContact !== "" && !numberRegex.test(guardianContact)) {
+      guardianContact1.style.borderColor = "red";
+    }
+    if (guardianContact === "") {
+      document.getElementById("guardianContact").value = "00000000000";
+    }
+
+    // guardianGivenName not empty and regex
+    if (firstSib !== "" && nameRegex.test(firstSib)) {
+      firstSib1.style.borderColor = "#dddddd";
+    }
+    if (firstSib !== "" && !nameRegex.test(firstSib)) {
+      firstSib1.style.borderColor = "red";
+    }
+    if (firstSib === "") {
+      document.getElementById("firstSib").value = "none";
+    }
+
+    // secSib not empty and regex
+    if (secSib !== "" && nameRegex.test(secSib)) {
+      secSib1.style.borderColor = "#dddddd";
+    }
+    if (secSib !== "" && !nameRegex.test(secSib)) {
+      secSib1.style.borderColor = "red";
+    }
+    if (secSib === "") {
+      document.getElementById("secSib").value = "none";
+    }
+
+    // secSib not empty and regex
+    if (thirdSib !== "" && nameRegex.test(thirdSib)) {
+      thirdSib1.style.borderColor = "#dddddd";
+    }
+    if (thirdSib !== "" && !nameRegex.test(thirdSib)) {
+      thirdSib1.style.borderColor = "red";
+    }
+    if (thirdSib === "") {
+      document.getElementById("thirdSib").value = "none";
+    }
+
+    // fcontact not empty and regex
+    if (fcontact !== "" && numberRegex.test(fcontact)) {
+      fcontact1.style.borderColor = "#dddddd";
+    }
+    if (fcontact !== "" && !numberRegex.test(fcontact)) {
+      fcontact1.style.borderColor = "red";
+    }
+    if (fcontact === "") {
+      document.getElementById("fcontact").value = "00000000000";
+    }
+
+    // mcontact not empty and regex
+    if (mcontact !== "" && numberRegex.test(mcontact)) {
+      mcontact1.style.borderColor = "#dddddd";
+    }
+    if (mcontact !== "" && !numberRegex.test(mcontact)) {
+      mcontact1.style.borderColor = "red";
+    }
+    if (mcontact === "") {
+      document.getElementById("mcontact").value = "00000000000";
+    }
+
+    // fland not empty and regex
+    if (fland !== "" && landRegex.test(fland)) {
+      fland1.style.borderColor = "#dddddd";
+    }
+    if (fland !== "" && !landRegex.test(fland)) {
+      fland1.style.borderColor = "red";
+    }
+    if (fland === "") {
+      document.getElementById("fland").value = "00000000000";
+    }
+
+    // mland not empty and regex
+    if (mland !== "" && landRegex.test(mland)) {
+      mland1.style.borderColor = "#dddddd";
+    }
+    if (mland !== "" && !landRegex.test(mland)) {
+      mland1.style.borderColor = "red";
+    }
+    if (mland === "") {
+      document.getElementById("mland").value = "00000000000";
+    }
+
+    // femail not empty and regex
+    if ((femail !== "" && emailRegex_.test(femail)) || femail === "none") {
+      femail1.style.borderColor = "#dddddd";
+    }
+    if (femail !== "" && !emailRegex_.test(femail) && femail !== "none") {
+      femail1.style.borderColor = "red";
+    }
+    if (memail === "") {
+      document.getElementById("femail").value = "none";
+    }
+
+    // memail not empty and regex
+    if ((memail !== "" && emailRegex_.test(memail)) || memail === "none") {
+      memail1.style.borderColor = "#dddddd";
+    }
+    if (memail !== "" && !emailRegex_.test(memail) && memail !== "none") {
+      memail1.style.borderColor = "red";
+    }
+    if (memail === "") {
+      document.getElementById("memail").value = "none";
+    }
+
+    // mocc not empty and regex
+    if (mocc !== "" && nameRegex.test(mocc)) {
+      mocc1.style.borderColor = "#dddddd";
+    }
+    if (mocc !== "" && !nameRegex.test(mocc)) {
+      mocc1.style.borderColor = "red";
+    }
+    if (mocc === "") {
+      document.getElementById("mocc").value = "none";
+    }
+
+    // focc not empty and regex
+    if (focc !== "" && nameRegex.test(focc)) {
+      focc1.style.borderColor = "#dddddd";
+    }
+    if (focc !== "" && !nameRegex.test(focc)) {
+      focc1.style.borderColor = "red";
+    }
+    if (focc === "") {
+      document.getElementById("focc").value = "none";
+    }
+
+    // inpYGL not empty and regex
+    if (inpYGL !== "" && nameNumRegex.test(inpYGL)) {
+      inpYGL1.style.borderColor = "#dddddd";
+    }
+    if (inpYGL !== "" && !nameNumRegex.test(inpYGL)) {
+      inpYGL1.style.borderColor = "red";
+    }
+    if (inpYGL === "") {
+      document.getElementById("inpYGL").value = "none";
+    }
+
+    // inpuSchAdd not empty and regex
+    if (inpuSchAdd !== "" && nameNumComRegex.test(inpuSchAdd)) {
+      inpuSchAdd1.style.borderColor = "#dddddd";
+    }
+    if (inpuSchAdd !== "" && !nameNumComRegex.test(inpuSchAdd)) {
+      inpYGL1.style.borderColor = "red";
+    }
+    if (inpuSchAdd === "") {
+      document.getElementById("inpuSchAdd").value = "none";
+    }
+
+    // inpSch not empty and regex
+    if (inpSch !== "" && nameRegex.test(inpSch)) {
+      inpSch1.style.borderColor = "#dddddd";
+    }
+    if (inpSch !== "" && !nameRegex.test(inpSch)) {
+      inpSch1.style.borderColor = "red";
+    }
+    if (inpSch === "") {
+      document.getElementById("inpSch").value = "none";
+    }
+
+    // inpDisTb not empty and regex
+    if (inpDisTb !== "" && nameRegex.test(inpDisTb)) {
+      inpSch1.style.borderColor = "#dddddd";
+    }
+    if (inpDisTb !== "" && !nameRegex.test(inpDisTb)) {
+      inpDisTb1.style.borderColor = "red";
+    }
+    if (inpDisTb === "") {
+      document.getElementById("inpDisTb").value = "none";
+    }
+
+    // inpAddDislv not empty and regex
+    if (inpAddDislv !== "" && nameRegex.test(inpAddDislv)) {
+      inpAddDislv1.style.borderColor = "#dddddd";
+    }
+    if (inpAddDislv !== "" && !nameRegex.test(inpAddDislv)) {
+      inpAddDislv1.style.borderColor = "red";
+    }
+    if (inpAddDislv === "") {
+      document.getElementById("inpAddDislv").value = "none";
+    }
+
+    // conditionTxtArea not empty and regex
+    if (conditionTxtArea !== "" && nameRegex.test(conditionTxtArea)) {
+      conditionTxtArea1.style.borderColor = "#dddddd";
+    }
+    if (conditionTxtArea !== "" && !nameRegex.test(conditionTxtArea)) {
+      conditionTxtArea1.style.borderColor = "red";
+    }
+    if (conditionTxtArea === "") {
+      document.getElementById("conditionTxtArea").value = "none";
+    }
+
+    if (gcashImg === "") {
+      gcashImg1.style.background = "red";
+    } else {
+      gcashImg1.style.background = "white";
+    }
+
+    //-----------
+
+    // city not empty and regex
+    if (city !== "" && nameNumRegex.test(city)) {
+      city1.style.borderColor = "#dddddd";
+    } else {
+      city1.style.borderColor = "red";
+    }
+
     if (city === "") {
       city1.style.borderColor = "red";
+    }
+
+    // region not empty and regex
+    if (region !== "" && nameNumRegex.test(region)) {
+      region1.style.borderColor = "#dddddd";
     } else {
-      city1.style.borderColor = "#dddddd";
+      region1.style.borderColor = "red";
     }
 
     if (region === "") {
       region1.style.borderColor = "red";
-    } else {
-      region1.style.borderColor = "#dddddd";
     }
 
+    // province not empty and regex
+    if (province !== "" && nameNumRegex.test(province)) {
+      province1.style.borderColor = "#dddddd";
+    } else {
+      province1.style.borderColor = "red";
+    }
     if (province === "") {
       province1.style.borderColor = "red";
-    } else {
-      province1.style.borderColor = "#dddddd";
     }
 
+    //DOB
     if (childsDOB === "") {
       childsDOB1.style.borderColor = "red";
       // document.getElementById("childBdayMsg").style.display = "block";
@@ -279,12 +1502,43 @@ function Registration() {
       // document.getElementById("childBdayMsg").style.display = "none";
     }
 
-    if (causeBlindness === "" || !causeBlindness.match(letters)) {
+    // province not empty and regex
+
+    if (causeBlindness !== "" && nameNumRegex.test(causeBlindness)) {
+      causeBlindness1.style.borderColor = "#dddddd";
+    } else {
+      causeBlindness1.style.borderColor = "red";
+    }
+
+    if (causeBlindness === "") {
       causeBlindness1.style.borderColor = "red";
       // document.getElementById("invalidchildSurname").style.display = "block";
+    }
+
+    if (
+      !(
+        tb_option[0].checked === true ||
+        tb_option[1].checked === true ||
+        tb_option[2].checked === true ||
+        tb_option[3].checked === true
+      )
+    ) {
+      document.getElementById("visionLabel").style.color = "red";
     } else {
-      causeBlindness1.style.borderColor = "#dddddd";
-      // document.getElementById("usernameMsg").style.display = "none";
+      document.getElementById("visionLabel").style.color = "black";
+    }
+
+    if (
+      !(
+        lv_option[0].checked === true ||
+        lv_option[1].checked === true ||
+        lv_option[2].checked === true ||
+        lv_option[3].checked === true
+      )
+    ) {
+      document.getElementById("visionLabel1").style.color = "red";
+    } else {
+      document.getElementById("visionLabel1").style.color = "black";
     }
 
     if (!(sex[0].checked === true || sex[1].checked === true)) {
@@ -359,7 +1613,69 @@ function Registration() {
 
     //  Get condition
     if (
-      emailAcc_user.match(validRegex) &&
+      (tb_option[0].checked === true ||
+        tb_option[1].checked === true ||
+        tb_option[2].checked === true ||
+        tb_option[3].checked === true) &&
+      (lv_option[0].checked === true ||
+        lv_option[1].checked === true ||
+        lv_option[2].checked === true ||
+        lv_option[3].checked === true) &&
+      ChildMiddlename !== "" &&
+      nameRegex.test(ChildMiddlename) &&
+      FatherSurname !== "" &&
+      nameRegex.test(FatherSurname) &&
+      FatherGivenName !== "" &&
+      nameRegex.test(FatherGivenName) &&
+      FatherMiddleName !== "" &&
+      nameRegex.test(FatherMiddleName) &&
+      MotherSurname !== "" &&
+      nameRegex.test(MotherSurname) &&
+      Motherfirst !== "" &&
+      nameRegex.test(Motherfirst) &&
+      MotherMiddle !== "" &&
+      nameRegex.test(MotherMiddle) &&
+      guardianFam !== "" &&
+      nameRegex.test(guardianFam) &&
+      guardianGivenName !== "" &&
+      nameRegex.test(guardianGivenName) &&
+      guardianMiddle !== "" &&
+      nameRegex.test(guardianMiddle) &&
+      guardianContact !== "" &&
+      numberRegex.test(guardianContact) &&
+      firstSib !== "" &&
+      nameRegex.test(firstSib) &&
+      secSib !== "" &&
+      nameRegex.test(secSib) &&
+      thirdSib !== "" &&
+      nameRegex.test(thirdSib) &&
+      fcontact !== "" &&
+      numberRegex.test(fcontact) &&
+      mcontact !== "" &&
+      numberRegex.test(mcontact) &&
+      fland !== "" &&
+      landRegex.test(fland) &&
+      mland !== "" &&
+      landRegex.test(mland) &&
+      ((femail !== "" && emailRegex_.test(femail)) || femail === "none") &&
+      ((memail !== "" && emailRegex_.test(memail)) || memail === "none") &&
+      mocc !== "" &&
+      nameRegex.test(mocc) &&
+      focc !== "" &&
+      nameRegex.test(focc) &&
+      inpYGL !== "" &&
+      nameNumRegex.test(inpYGL) &&
+      inpuSchAdd !== "" &&
+      nameNumComRegex.test(inpuSchAdd) &&
+      inpSch !== "" &&
+      nameRegex.test(inpSch) &&
+      inpDisTb !== "" &&
+      nameRegex.test(inpDisTb) &&
+      inpAddDislv !== "" &&
+      nameRegex.test(inpAddDislv) &&
+      conditionTxtArea !== "" &&
+      nameRegex.test(conditionTxtArea) &&
+      emailAcc_user.match(emailRegex_) &&
       passwordRegex.test(inputPassword) &&
       usernameRegex.test(inputUsername) &&
       (!Childsurname === "" || Childsurname.match(letters)) &&
@@ -406,59 +1722,59 @@ function Registration() {
 
         CHILD_SURNAME: CHILD_SURNAME,
         CHILD_GIVEN_NAME: CHILD_GIVEN_NAME,
-        CHILD_MIDDLE_NAME: CHILD_MIDDLE_NAME,
+        CHILD_MIDDLE_NAME: ChildMiddlename,
 
-        FATHER_SURNAME: FATHER_SURNAME,
-        FATHER_GIVEN_NAME: FATHER_GIVEN_NAME,
-        FATHER_MIDDLE_NAME: FATHER_MIDDLE_NAME,
+        FATHER_SURNAME: FatherSurname,
+        FATHER_GIVEN_NAME: FatherGivenName,
+        FATHER_MIDDLE_NAME: FatherMiddleName,
         FATHER_BIRTHDAY: FATHER_BIRTHDAY,
 
-        MOTHER_SURNAME: MOTHER_SURNAME,
-        MOTHER_GIVEN_NAME: MOTHER_GIVEN_NAME,
-        MOTHER_MIDDLE_NAME: MOTHER_MIDDLE_NAME,
+        MOTHER_SURNAME: MotherSurname,
+        MOTHER_GIVEN_NAME: Motherfirst,
+        MOTHER_MIDDLE_NAME: MotherMiddle,
         MOTHER_BIRTHDAY: MOTHER_BIRTHDAY,
 
-        GUARDIAN_SURNAME: GUARDIAN_SURNAME,
-        GUARDIAN_GIVEN_NAME: GUARDIAN_GIVEN_NAME,
-        GUARDIAN_MIDDLE_NAME: GUARDIAN_MIDDLE_NAME,
-        GUARDIAN_CONTACT: GUARDIAN_CONTACT,
+        GUARDIAN_SURNAME: guardianFam,
+        GUARDIAN_GIVEN_NAME: guardianGivenName,
+        GUARDIAN_MIDDLE_NAME: guardianMiddle,
+        GUARDIAN_CONTACT: guardianContact,
         //Guardian Num
 
-        FIRST_SIBLING: FIRST_SIBLING,
-        SECOND_SIBLING: SECOND_SIBLING,
-        THIRD_SIBLING: THIRD_SIBLING,
+        FIRST_SIBLING: firstSib,
+        SECOND_SIBLING: secSib,
+        THIRD_SIBLING: thirdSib,
 
         CITY_ADDRESS: CITY_ADDRESS,
         REGION_ADDRESS: REGION_ADDRESS,
         PROVINCE_ADDRESS: PROVINCE_ADDRESS,
 
-        FATHER_CONTACT: FATHER_CONTACT,
-        MOTHER_CONTACT: MOTHER_CONTACT,
-        FATHER_LANDLINE: FATHER_LANDLINE,
-        MOTHER_LANDLINE: MOTHER_LANDLINE,
+        FATHER_CONTACT: fcontact,
+        MOTHER_CONTACT: mcontact,
+        FATHER_LANDLINE: fland,
+        MOTHER_LANDLINE: mland,
 
-        FATHER_EMAIL: FATHER_EMAIL,
-        MOTHER_EMAIL: MOTHER_EMAIL,
+        FATHER_EMAIL: femail,
+        MOTHER_EMAIL: memail,
 
         MONTHLY_INCOME: MONTHLY_INCOME,
 
-        FATHER_OCCUPATION: FATHER_OCCUPATION,
-        MOTHER_OCCUPATION: MOTHER_OCCUPATION,
+        FATHER_OCCUPATION: focc,
+        MOTHER_OCCUPATION: mocc,
 
         CHILD_BIRTHDAY: CHILD_BIRTHDAY,
         SEX: SEX,
 
-        SCHOOL_NAME: SCHOOL_NAME,
-        YEAR_GRADE_LEVEL: YEAR_GRADE_LEVEL,
-        SCHOOL_ADDRESS: SCHOOL_ADDRESS,
+        SCHOOL_NAME: inpSch,
+        YEAR_GRADE_LEVEL: inpYGL,
+        SCHOOL_ADDRESS: inpuSchAdd,
 
         CAUSE_OF_BLINDNESS: CAUSE_OF_BLINDNESS,
 
         TOTALY_BLIND_EYES: TOTALY_BLIND_EYES,
-        TB_ADD_DISABILITY: TB_ADD_DISABILITY,
+        TB_ADD_DISABILITY: inpDisTb,
 
         LOW_VISION_EYES: LOW_VISION_EYES,
-        LV_ADD_DISABILITY: LV_ADD_DISABILITY,
+        LV_ADD_DISABILITY: inpAddDislv,
 
         ADAPTIVE_LENS: ADAPTIVE_LENS,
         STYLUS: STYLUS,
@@ -481,7 +1797,7 @@ function Registration() {
         OCCUPATIONAL_THERAPHY: OCCUPATIONAL_THERAPHY,
         SPEECH_THERAPHY: SPEECH_THERAPHY,
 
-        OTHER_CONDITION: OTHER_CONDITION,
+        OTHER_CONDITION: conditionTxtArea,
       });
 
       document.getElementById("Registered_MemberOuter").style.display = "block";
@@ -775,17 +2091,6 @@ function Registration() {
     document.getElementById("beforeCont").style.display = "block";
   };
 
-  const checkForm = () => {
-    // Axios.get(
-    //   "https://perseeption-tromagade.herokuapp.com/api/getLastMember"
-    // ).then((response) => {
-    //   setLastMember(response.data);
-    // });
-    document.getElementById("Registered_MemberOuter").style.display = "none";
-    document.getElementById("Registered_Member").style.display = "none";
-    document.getElementById("floatReg_form").style.display = "block";
-    document.getElementById("Reg_formContent").style.display = "block";
-  };
   return (
     <div className="registrationBg" id="registrationBg">
       <div className="MainHeader">
@@ -848,9 +2153,6 @@ function Registration() {
             <Link to="/" className="back_reg_form_Btn">
               Back to Homepage
             </Link>
-            <p className="registeredMember_Btn" onClick={checkForm}>
-              Check my form
-            </p>
           </div>
         </div>
       </div>
@@ -867,125 +2169,6 @@ function Registration() {
         </div>
       </div>
 
-      <div className="floatReg_form" id="floatReg_form">
-        <div className="Reg_formContent" id="Reg_formContent">
-          <p className="title_reg_form_">Check Your Form</p>
-
-          <div className="reg_form_Cont">
-            {/* <p className="reg_info_title">Check Your Form</p> */}
-            <p className="reg_form_list_info">Username:</p>
-            <p className="rf_data">{usernameReg}</p>
-            <p className="reg_form_list_info">Child's Name:</p>
-            <p className="rf_data">
-              {CHILD_GIVEN_NAME} {CHILD_MIDDLE_NAME} {CHILD_SURNAME}
-            </p>
-            <p className="reg_form_list_info">Father's Name:</p>
-            <p className="rf_data">
-              {FATHER_GIVEN_NAME} {FATHER_MIDDLE_NAME} {FATHER_SURNAME}
-            </p>
-            <p className="reg_form_list_info">Father's Birthday:</p>
-            <p className="rf_data">{FATHER_BIRTHDAY}</p>
-
-            <p className="reg_form_list_info">Father's Birthday:</p>
-            <p className="rf_data">
-              {MOTHER_GIVEN_NAME} {MOTHER_MIDDLE_NAME} {MOTHER_SURNAME}
-            </p>
-            <p className="reg_form_list_info">Father's Birthday:</p>
-            <p className="rf_data">{FATHER_BIRTHDAY}</p>
-            <p className="reg_form_list_info">Guardian's Name:</p>
-            <p className="rf_data">
-              {GUARDIAN_GIVEN_NAME} {GUARDIAN_MIDDLE_NAME} {GUARDIAN_SURNAME}
-            </p>
-            <p className="reg_form_list_info">Guardian Contact:</p>
-            <p className="rf_data">{GUARDIAN_CONTACT}</p>
-            <p className="reg_form_list_info">First Sibling:</p>
-            <p className="rf_data">{FIRST_SIBLING}</p>
-            <p className="reg_form_list_info">Second Sibling:</p>
-            <p className="rf_data">{SECOND_SIBLING}</p>
-            <p className="reg_form_list_info">Third Sibling:</p>
-            <p className="rf_data">{THIRD_SIBLING}</p>
-            <p className="reg_form_list_info">Address:</p>
-            <p className="rf_data">
-              {CITY_ADDRESS} {REGION_ADDRESS} {PROVINCE_ADDRESS}
-            </p>
-            <p className="reg_form_list_info">Father's Contact/ Landline:</p>
-            <p className="rf_data">
-              {FATHER_CONTACT} {FATHER_LANDLINE}
-            </p>
-            <p className="reg_form_list_info">Mother's Contact/ Landline:</p>
-            <p className="rf_data">
-              {MOTHER_CONTACT} {MOTHER_LANDLINE}
-            </p>
-            <p className="reg_form_list_info">Father's Email:</p>
-            <p className="rf_data">{FATHER_EMAIL}</p>
-            <p className="reg_form_list_info">Mother's Email:</p>
-            <p className="rf_data">{MOTHER_EMAIL}</p>
-            <p className="reg_form_list_info">Monthly Income:</p>
-            <p className="rf_data">{MONTHLY_INCOME}</p>
-            <p className="reg_form_list_info">Father's Occupation:</p>
-            <p className="rf_data">{FATHER_OCCUPATION}</p>
-            <p className="reg_form_list_info">Mother Occupation:</p>
-            <p className="rf_data">{MOTHER_OCCUPATION}</p>
-            <p className="reg_form_list_info">Childs's Birthday:</p>
-            <p className="rf_data">{CHILD_BIRTHDAY}</p>
-            <p className="reg_form_list_info">Sex:</p>
-            <p className="rf_data">{SEX}</p>
-            <p className="reg_form_list_info">School Name:</p>
-            <p className="rf_data">{SCHOOL_NAME}</p>
-            <p className="reg_form_list_info">Year/ Grade Level:</p>
-            <p className="rf_data">{YEAR_GRADE_LEVEL}</p>
-            <p className="reg_form_list_info">School Address:</p>
-            <p className="rf_data">{SCHOOL_ADDRESS}</p>
-            <p className="reg_form_list_info">Cause of Blindness:</p>
-            <p className="rf_data">{CAUSE_OF_BLINDNESS}</p>
-            <p className="reg_form_list_info">Totaly Blind Eyes:</p>
-            <p className="rf_data">{TOTALY_BLIND_EYES}</p>
-            <p className="reg_form_list_info">
-              Totally Blind Additional Disability:
-            </p>
-            <p className="rf_data">{TB_ADD_DISABILITY}</p>
-            <p className="reg_form_list_info">Low Vision Eyes:</p>
-            <p className="rf_data">{LOW_VISION_EYES}</p>
-            <p className="reg_form_list_info">
-              Low Vision Additional Disability:
-            </p>
-            <p className="rf_data">{LV_ADD_DISABILITY}</p>
-            <p className="reg_form_list_info">Adaptive Lens:</p>
-            <p className="rf_data">{ADAPTIVE_LENS}</p>
-            <p className="reg_form_list_info">Stylus:</p>
-            <p className="rf_data">{STYLUS}</p>
-            <p className="reg_form_list_info">Artificial Eyes:</p>
-            <p className="rf_data">{ARTIFICIAL_EYES}</p>
-            <p className="reg_form_list_info">Computer Screen:</p>
-            <p className="rf_data">{COMPUTER_SCREEN}</p>
-            <p className="reg_form_list_info">White Cane:</p>
-            <p className="rf_data">{WHITE_CANE}</p>
-            <p className="reg_form_list_info">CCTV:</p>
-            <p className="rf_data">{CCTV}</p>
-            <p className="reg_form_list_info">Wheel Chair:</p>
-            <p className="rf_data">{WHEEL_CHAIR}</p>
-            <p className="reg_form_list_info">Large Prints:</p>
-            <p className="rf_data">{LARGE_PRINTS}</p>
-            <p className="reg_form_list_info">Hearing Aid:</p>
-            <p className="rf_data">{HEARING_AID}</p>
-            <p className="reg_form_list_info">Abacus:</p>
-            <p className="rf_data">{ABACUS}</p>
-            <p className="reg_form_list_info">Brailler:</p>
-            <p className="rf_data">{BRAILLER}</p>
-            <p className="reg_form_list_info">Physical Theraphy:</p>
-            <p className="rf_data">{PHYSICAL_THERAPHY}</p>
-            <p className="reg_form_list_info">Otccupational Theraphy:</p>
-            <p className="rf_data">{OCCUPATIONAL_THERAPHY}</p>
-            <p className="reg_form_list_info">Speech Theraphy:</p>
-            <p className="rf_data">{SPEECH_THERAPHY}</p>
-            <p className="reg_form_list_info">Other Condition:</p>
-            <p className="rf_data">{OTHER_CONDITION}</p>
-          </div>
-          <Link to="/" className="form_reg_btn">
-            Go Back to Homepage
-          </Link>
-        </div>
-      </div>
       <div className="beforeCont" id="beforeCont">
         <div className="regOuter">
           <div className="formRegContent">
@@ -1040,7 +2223,8 @@ function Registration() {
                         required
                       />
                       <p className="instructions">
-                        (Consist of letters and numbers)
+                        (Consist of letters, big letters, special characters and
+                        numbers)
                       </p>
                       <div className="usernameMessages">
                         <p id="validUsername" className="validUsername">
@@ -1083,71 +2267,12 @@ function Registration() {
                 <div className="ChildFamilyBox" id="childFamId">
                   <div className="ChildDataCont">
                     <p className="registrationTitleAccount">
-                      Child & Family Personal Data
+                      Family Personal Data
                     </p>
                     <p className="registrationSubtitleAccount">
-                      (Personal na Datos ng Bata at ng Pamilya)
+                      (Personal na Datos ng Pamilya)
                     </p>
-                    <div className="childFamOuter">
-                      <div className="childsName">
-                        <div className="childSurnameBox">
-                          <p className="childNameLabel">Child's Surname: </p>
-                          <input
-                            type="text"
-                            placeholder="Enter Family Name"
-                            className="inputChildSurname"
-                            id="inputChildSurname"
-                            onKeyUp={passChildSur}
-                            onChange={(e) => {
-                              setCHILD_SURNAME(e.target.value);
-                            }}
-                          />
-
-                          <div className="usernameMsg" id="usernameMsg">
-                            <p
-                              id="invalidchildSurname"
-                              className="invalidchildSurname"
-                            >
-                              Please enter surname
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="childNameBox">
-                          <p className="childNameLabel">Child's Name: </p>
-                          <input
-                            type="text"
-                            placeholder="Enter Given Name"
-                            className="inputChildGivenName"
-                            id="inputChildGivenNameId"
-                            onKeyUp={childNameKey}
-                            onChange={(e) => {
-                              setCHILD_GIVEN_NAME(e.target.value);
-                            }}
-                          />
-                          <div className="usernameNameMsg">
-                            <p
-                              id="invalidchildName"
-                              className="invalidchildName"
-                            >
-                              Please enter name
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="childMiddleNameBox">
-                          <p className="childNameLabel">Child's Middlename: </p>
-                          <input
-                            type="text"
-                            placeholder="Enter Middle Name"
-                            className="inputChildMiddleName"
-                            onChange={(e) => {
-                              setCHILD_MIDDLE_NAME(e.target.value);
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                    <div className="childFamOuter"></div>
                     <div className="fatherSec">
                       <div className="fatherSurnameBox">
                         <p className="fatherLabel">Father's Surname: </p>
@@ -1155,6 +2280,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Family Name"
                           className="inputFatherSurname"
+                          id="inputFatherSurname"
                           onChange={(e) => {
                             setFATHER_SURNAME(e.target.value);
                           }}
@@ -1166,6 +2292,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Given Name"
                           className="inputFatherGivenName"
+                          id="inputFatherGivenName"
                           onChange={(e) => {
                             setFATHER_GIVEN_NAME(e.target.value);
                           }}
@@ -1177,6 +2304,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Middle Name"
                           className="inputFatherMiddleName"
+                          id="inputFatherMiddleName"
                           onChange={(e) => {
                             setFATHER_MIDDLE_NAME(e.target.value);
                           }}
@@ -1201,6 +2329,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Family Name"
                           className="inputMotherSurname"
+                          id="inputMotherSurname"
                           onChange={(e) => {
                             setMOTHER_SURNAME(e.target.value);
                           }}
@@ -1212,6 +2341,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Given Name"
                           className="inputMotherfirst"
+                          id="inputMotherfirst"
                           onChange={(e) => {
                             setMOTHER_GIVEN_NAME(e.target.value);
                           }}
@@ -1223,6 +2353,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Middle Name"
                           className="inputMotherMiddle"
+                          id="inputMotherMiddle"
                           onChange={(e) => {
                             setMOTHER_MIDDLE_NAME(e.target.value);
                           }}
@@ -1247,6 +2378,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Family Name"
                           className="guardianFam"
+                          id="guardianFam"
                           onChange={(e) => {
                             setGUARDIAN_SURNAME(e.target.value);
                           }}
@@ -1259,6 +2391,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Given Name"
                           className="guardianGivenName"
+                          id="guardianGivenName"
                           onChange={(e) => {
                             setGUARDIAN_GIVEN_NAME(e.target.value);
                           }}
@@ -1271,6 +2404,7 @@ function Registration() {
                           type="text"
                           placeholder="Enter Middle Name"
                           className="guardianMiddle"
+                          id="guardianMiddle"
                           onChange={(e) => {
                             setGUARDIAN_MIDDLE_NAME(e.target.value);
                           }}
@@ -1282,6 +2416,7 @@ function Registration() {
                           type="tel"
                           placeholder="Enter Contact Number"
                           className="guardianContact"
+                          id="guardianContact"
                           pattern="[0-9]{11}"
                           onChange={(e) => {
                             setGUARDIAN_CONTACT(e.target.value);
@@ -1295,6 +2430,7 @@ function Registration() {
                         <input
                           type="text"
                           className="firstSib"
+                          id="firstSib"
                           placeholder="Enter Full Name"
                           onChange={(e) => {
                             setFIRST_SIBLING(e.target.value);
@@ -1307,6 +2443,7 @@ function Registration() {
                         <input
                           type="text"
                           className="secSib"
+                          id="secSib"
                           placeholder="Enter Full Name"
                           onChange={(e) => {
                             setSECOND_SIBLING(e.target.value);
@@ -1318,6 +2455,7 @@ function Registration() {
                         <input
                           type="text"
                           className="thirdSib"
+                          id="thirdSib"
                           placeholder="Enter Full Name"
                           onChange={(e) => {
                             setTHIRD_SIBLING(e.target.value);
@@ -1372,6 +2510,7 @@ function Registration() {
                         <input
                           type="tel"
                           className="fcontact"
+                          id="fcontact"
                           placeholder="Father's Contact Number"
                           onChange={(e) => {
                             setFATHER_CONTACT(e.target.value);
@@ -1383,6 +2522,7 @@ function Registration() {
                         <input
                           type="tel"
                           className="mcontact"
+                          id="mcontact"
                           placeholder="Mother's Contact Number"
                           onChange={(e) => {
                             setMOTHER_CONTACT(e.target.value);
@@ -1394,6 +2534,7 @@ function Registration() {
                         <input
                           type="tel"
                           className="fland"
+                          id="fland"
                           placeholder="Father's Landline Number"
                           onChange={(e) => {
                             setFATHER_LANDLINE(e.target.value);
@@ -1405,6 +2546,7 @@ function Registration() {
                         <input
                           type="tel"
                           className="mland"
+                          id="mland"
                           placeholder="Mother's Landline Number"
                           onChange={(e) => {
                             setMOTHER_LANDLINE(e.target.value);
@@ -1415,6 +2557,7 @@ function Registration() {
                         <p className="contactLable">Father's Email: </p>
                         <input
                           className="femail"
+                          id="femail"
                           type="email"
                           placeholder="Father's Email Address"
                           onChange={(e) => {
@@ -1426,6 +2569,7 @@ function Registration() {
                         <p className="contactLable">Mother's Email: </p>
                         <input
                           className="memail"
+                          id="memail"
                           type="email"
                           placeholder="Mother's Email Address"
                           onChange={(e) => {
@@ -1488,6 +2632,7 @@ function Registration() {
                         <input
                           type="text"
                           className="focc"
+                          id="focc"
                           placeholder="Father's Occupation"
                           onChange={(e) => {
                             setFATHER_OCCUPATION(e.target.value);
@@ -1499,6 +2644,7 @@ function Registration() {
                         <input
                           type="text"
                           className="mocc"
+                          id="mocc"
                           placeholder="Mother's Occupation"
                           onChange={(e) => {
                             setMOTHER_OCCUPATION(e.target.value);
@@ -1515,6 +2661,62 @@ function Registration() {
                   <p className="registrationSubtitleChildsData">
                     (Datos ng Bata)
                   </p>
+                  <div className="childsName">
+                    <div className="childSurnameBox">
+                      <p className="childNameLabel">Child's Surname: </p>
+                      <input
+                        type="text"
+                        placeholder="Enter Family Name"
+                        className="inputChildSurname"
+                        id="inputChildSurname"
+                        onKeyUp={passChildSur}
+                        onChange={(e) => {
+                          setCHILD_SURNAME(e.target.value);
+                        }}
+                      />
+
+                      <div className="usernameMsg" id="usernameMsg">
+                        <p
+                          id="invalidchildSurname"
+                          className="invalidchildSurname"
+                        >
+                          Please enter surname
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="childNameBox">
+                      <p className="childNameLabel">Child's Name: </p>
+                      <input
+                        type="text"
+                        placeholder="Enter Given Name"
+                        className="inputChildGivenName"
+                        id="inputChildGivenNameId"
+                        onKeyUp={childNameKey}
+                        onChange={(e) => {
+                          setCHILD_GIVEN_NAME(e.target.value);
+                        }}
+                      />
+                      <div className="usernameNameMsg">
+                        <p id="invalidchildName" className="invalidchildName">
+                          Please enter name
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="childMiddleNameBox">
+                      <p className="childNameLabel">Child's Middlename: </p>
+                      <input
+                        type="text"
+                        placeholder="Enter Middle Name"
+                        className="inputChildMiddleName"
+                        id="inputChildMiddleName"
+                        onChange={(e) => {
+                          setCHILD_MIDDLE_NAME(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div className="cont9">
                     <div className="childBirthdayBox">
                       <p className="childDataLabel">Date of Birth</p>
@@ -1559,6 +2761,7 @@ function Registration() {
                         <p className="childDataLabel">School</p>
                         <input
                           className="inpSch"
+                          id="inpSch"
                           type="text"
                           placeholder="Enter School"
                           onChange={(e) => {
@@ -1570,6 +2773,7 @@ function Registration() {
                         <p className="childDataLabel">Year/ Grade Level:</p>
                         <input
                           className="inpYGL"
+                          id="inpYGL"
                           type="text"
                           placeholder="Enter Yr/Grade Level"
                           onChange={(e) => {
@@ -1582,6 +2786,7 @@ function Registration() {
                         <input
                           type="text"
                           className="inpuSchAdd"
+                          id="inpuSchAdd"
                           placeholder="Enter School Address"
                           onChange={(e) => {
                             setSCHOOL_ADDRESS(e.target.value);
@@ -1605,7 +2810,9 @@ function Registration() {
                   </div>
                   <p className="vTitle">Vision</p>
                   <div className="cont12">
-                    <p className="visionLabel">Totally Blind</p>
+                    <p className="visionLabel" id="visionLabel">
+                      Totally Blind
+                    </p>
                     <div className="tbOptionBox">
                       <input
                         type="radio"
@@ -1636,8 +2843,17 @@ function Registration() {
                           setTOTALY_BLIND_EYES(e.target.value);
                         }}
                       />
-
                       <label className="bothTxt">Both: left and Right</label>
+                      <input
+                        type="radio"
+                        className="bothEyeTb"
+                        name="tb_option"
+                        value="none"
+                        onChange={(e) => {
+                          setTOTALY_BLIND_EYES(e.target.value);
+                        }}
+                      />
+                      <label> None</label>
                     </div>
 
                     <p className="visionLabel">
@@ -1646,6 +2862,7 @@ function Registration() {
                     <input
                       type="text"
                       className="inpDisTb"
+                      id="inpDisTb"
                       placeholder="Enter Additional Disabilities"
                       onChange={(e) => {
                         setTB_ADD_DISABILITY(e.target.value);
@@ -1653,7 +2870,9 @@ function Registration() {
                     />
                   </div>
                   <div className="lvBox">
-                    <label className="visionLabel">Low Vision</label>
+                    <label className="visionLabel" id="visionLabel1">
+                      Low Vision
+                    </label>
                     <div className="lbOptionBox">
                       <input
                         type="radio"
@@ -1685,6 +2904,17 @@ function Registration() {
                         }}
                       />
                       <label className="lvBothTxt">Both: left and Right</label>
+
+                      <input
+                        type="radio"
+                        name="lv_option"
+                        className="lvBoth"
+                        value="none"
+                        onChange={(e) => {
+                          setLOW_VISION_EYES(e.target.value);
+                        }}
+                      />
+                      <label className="lvBothTxt">None</label>
                     </div>
 
                     <label className="visionLabel">
@@ -1693,6 +2923,7 @@ function Registration() {
                     <input
                       type="text"
                       className="inpAddDislv"
+                      id="inpAddDislv"
                       placeholder="Enter Additional Disabilities"
                       onChange={(e) => {
                         setLV_ADD_DISABILITY(e.target.value);
@@ -2093,6 +3324,7 @@ function Registration() {
                         </p>
                         <textarea
                           className="conditionTxtArea"
+                          id="conditionTxtArea"
                           placeholder="Please Type Here"
                           onChange={(e) => {
                             setOTHER_CONDITION(e.target.value);

@@ -152,6 +152,7 @@ function MemberProfile() {
   }, []);
 
   const showAcc = (USER_ID) => {
+    alert(USER_ID);
     document.getElementById("EditMemberProfile_infoBg").style.display = "block";
     Axios.get(
       `https://perseeption-tromagade.herokuapp.com/getMemberProfileInfo_MemberSec/${USER_ID}`
@@ -178,7 +179,32 @@ function MemberProfile() {
     // console.log(USERNAME);
     // console.log(USER_PASSWORD);
     const p = document.getElementById("password_MemberDetails").value;
-    if (p === "") {
+    const name_mempro = document.getElementById("name_mempro").value;
+    const name_mempro1 = document.getElementById("name_mempro");
+    const email_mempro = document.getElementById("email_mempro").value;
+    const email_mempro1 = document.getElementById("email_mempro");
+    const username_mempro = document.getElementById("username_mempro").value;
+    const username_mempro1 = document.getElementById("username_mempro");
+
+    var usernameReg = /^[A-Za-z][A-Za-z0-9_!@]{6,30}$/;
+    var nameRegex = /^([a-zA-Z\s]{1,50})$/;
+    var emailRegex_ =
+      /^([a-zA-Z0-9\.-]{5,})@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
+    // Name
+    if (name_mempro === "" || !nameRegex.test(name_mempro)) {
+      document.getElementById("name_mempro").style.borderColor = "red";
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+      }, 3000);
+    } else {
+      document.getElementById("name_mempro").style.borderColor = "black";
+    }
+
+    if (email_mempro === "" || !emailRegex_.test(email_mempro)) {
+      document.getElementById("email_mempro").style.borderColor = "red";
       document.getElementById("popUpGetMsgDeleteMember_").style.display =
         "block";
       setTimeout(function () {
@@ -186,10 +212,49 @@ function MemberProfile() {
           "none";
         // document.getElementById("popUpGetMsgInCont").style.display = "none";
       }, 3000);
+    }
 
-      return;
+    if (email_mempro !== "" && emailRegex_.test(email_mempro)) {
+      document.getElementById("email_mempro").style.borderColor = "black";
+    }
+
+    if (username_mempro === "" || !usernameReg.test(username_mempro)) {
+      document.getElementById("username_mempro").style.borderColor = "red";
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
     } else {
-      alert("updated");
+      document.getElementById("username_mempro").style.borderColor = "black";
+    }
+
+    if (p === "") {
+      document.getElementById("password_MemberDetails").style.borderColor =
+        "red";
+      document.getElementById("popUpGetMsgDeleteMember_").style.display =
+        "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteMember_").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+    } else {
+      document.getElementById("password_MemberDetails").style.borderColor =
+        "black";
+    }
+
+    if (
+      name_mempro !== "" &&
+      nameRegex.test(name_mempro) &&
+      email_mempro !== "" &&
+      emailRegex_.test(email_mempro) &&
+      username_mempro !== "" &&
+      usernameReg.test(username_mempro) &&
+      p !== ""
+    ) {
       Axios.put(
         `https://perseeption-tromagade.herokuapp.com/updateMember_Details/${USER_ID}`,
         {
@@ -216,6 +281,7 @@ function MemberProfile() {
           <p>Update Member Account</p>
           <input
             type="text"
+            id="name_mempro"
             value={NAME}
             onChange={(e) => {
               setNAME(e.target.value);
@@ -223,6 +289,7 @@ function MemberProfile() {
           />
           <input
             type="text"
+            id="email_mempro"
             value={EMAIL}
             placeholder="Enter Email"
             onChange={(e) => {
@@ -232,6 +299,7 @@ function MemberProfile() {
           <input
             type="text"
             placeholder="Enter Username"
+            id="username_mempro"
             value={USERNAME}
             onChange={(e) => {
               setUSERNAME(e.target.value);
@@ -266,7 +334,7 @@ function MemberProfile() {
       <div id="popUpGetMsgDeleteMember_">
         <div id="popUpGetMsgInDeleteMember_">
           <h2>PerSEEption Message</h2>
-          <h1>Please enter your password for an update</h1>
+          <h1>Please valid information to update</h1>
         </div>
       </div>
       <div id="popUpGetMsgApprove">

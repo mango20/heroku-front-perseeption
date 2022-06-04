@@ -86,6 +86,27 @@ function AdminAnnouncement() {
 
   const handleSubmitFile1 = (e) => {
     // console.log("submarine");
+
+    const title = document.getElementById("inputAnnouncementTitle").value;
+    const content = document.getElementById("inputAnnouncementContent").value;
+    const img = document.getElementById("fileBtnAnnouncement").value;
+    if (title === "" || img === 0 || content === "" || img === "") {
+      // Error message
+      document.getElementById("titleMessage_").style.color = "red";
+      // document.getElementById("titleMessage_").style.marginLeft = "200px";
+      let timerId = setInterval(
+        () =>
+          (document.getElementById("titleMessage_").innerHTML =
+            "Please fill out form completely!"),
+        0
+      );
+
+      // Timeout
+      setTimeout(() => {
+        clearInterval(timerId);
+        document.getElementById("titleMessage_").innerHTML = "";
+      }, 3000);
+    }
     e.preventDefault();
     if (!selectedFile1) return;
     const reader = new FileReader();
@@ -430,7 +451,7 @@ function AdminAnnouncement() {
             <i className="fa fa-bullhorn"></i>Announcement
           </Link>
           <Link to="/AdminContactUs" className="dash">
-            <i className="fa fa-envelope"></i>Contact Us
+            <i className="fa fa-envelope"></i>Messages
           </Link>
           <Link to="/Events" className="dash">
             <i className="fa fa-calendar-o"></i>Event
