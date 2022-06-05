@@ -21,29 +21,22 @@ function MemberForum() {
   const [AVATAR, setAVATAR] = useState("");
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
-      document.getElementById("memberLogout").style.display = "none";
-      document.getElementById("profileGo_").style.display = "none";
-      document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
-      setUSER_ID(name1[0].USER_ID);
+
       if (name1[0].USER_TYPE === "Admin") {
         document.getElementById("loggedInImg").style.display = "block";
         document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
-        document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("loggedInImg_").style.display = "block";
         document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
-        document.getElementById("portalDash_").style.display = "none";
       }
       setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("LoginHeader_").style.display = "none";
-      document.getElementById("profileGo_").style.display = "block";
       // document.getElementById("LoginHeader_").style.display = "none";
       // document.getElementById("profileGo_").style.display = "block";
     }
@@ -57,15 +50,7 @@ function MemberForum() {
     }
   };
 
-  const logout = (USER_ID) => {
-    const stat = "logout";
-    alert(USER_ID);
-    Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
-      {
-        STATUS: stat,
-      }
-    );
+  const logout = () => {
     document.getElementById("popUpGetMsgApprove_logout").style.display =
       "block";
     setTimeout(function () {
@@ -152,51 +137,34 @@ function MemberForum() {
       const name = JSON.parse(localStorage.getItem("Client"));
       const USER_ID_ = name[0].USER_ID;
       const NAME = name[0].NAME;
-
-      const replyId = document.getElementById("inputReplyForum").value;
       // console.log(USER_ID_);
       // console.log(NAME);
       setUSER_ID(name[0].USER_ID);
 
-      if (replyId === "") {
-        //changeMsg_DelBlank
-        document.getElementById("popUpGetMsgDeleteMember_").style.display =
-          "block";
-        document.getElementById("changeMsg_DelBlank").innerHTML =
-          "Please don't leave it blank";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgDeleteMember_").style.display =
-            "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
-      }
+      Axios.post(
+        `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
+        {
+          FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
+          FORUM_ID: FORUM_ID,
+          USER_ID: USER_ID_,
+        }
+      );
+      // console.log(FORUM_REPLY_CONTENT);
+      // console.log(FORUM_ID);
+      // console.log(USER_ID_);
 
-      if (replyId !== "") {
-        Axios.post(
-          `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
-          {
-            FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
-            FORUM_ID: FORUM_ID,
-            USER_ID: USER_ID_,
-          }
-        );
-        // console.log(FORUM_REPLY_CONTENT);
-        // console.log(FORUM_ID);
-        // console.log(USER_ID_);
+      Axios.get(
+        `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
+      ).then((response) => {
+        // console.log(response.data);
 
-        Axios.get(
-          `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
-        ).then((response) => {
-          // console.log(response.data);
-
-          setFORUM_REPLY_LIST(response.data);
-        });
-        document.getElementById("popUpGetMsgApprove").style.display = "block";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgApprove").style.display = "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
-      }
+        setFORUM_REPLY_LIST(response.data);
+      });
+      document.getElementById("popUpGetMsgApprove").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgApprove").style.display = "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
 
       // Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForumTop").then((response) => {
       //   setFORUM_REPLY_LIST(response.data);
@@ -212,45 +180,15 @@ function MemberForum() {
     const name = JSON.parse(localStorage.getItem("Client"));
     const USER_ID_ = name[0].USER_ID;
     // console.log(USER_ID_);
-
-    // inputForumContentQuestion inputForumTitleQuestion
-    const inputForumContentQuestion_val = document.getElementById(
-      "inputForumContentQuestion"
-    ).value;
-
-    const inputForumTitleQuestion_val = document.getElementById(
-      "inputForumTitleQuestion"
-    ).value;
-
-    if (
-      inputForumContentQuestion_val === "" ||
-      inputForumTitleQuestion_val === ""
-    ) {
-      document.getElementById("popUpGetMsgDeleteMember_").style.display =
-        "block";
-      document.getElementById("changeMsg_DelBlank").innerHTML =
-        "Please don't leave it blank";
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgDeleteMember_").style.display =
-          "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
-    }
-
-    if (
-      inputForumContentQuestion_val !== "" &&
-      inputForumTitleQuestion_val !== ""
-    ) {
-      Axios.post("https://perseeption-tromagade.herokuapp.com/insertForum", {
-        USER_ID_: USER_ID_,
-        FORUM_ID: FORUM_ID,
-        FORUM_TITLE: FORUM_TITLE,
-        FORUM_CONTENT: FORUM_CONTENT,
-      });
-      // console.log(USER_ID_);
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getForum"
-      ).then((response) => {
+    Axios.post("https://perseeption-tromagade.herokuapp.com/insertForum", {
+      USER_ID_: USER_ID_,
+      FORUM_ID: FORUM_ID,
+      FORUM_TITLE: FORUM_TITLE,
+      FORUM_CONTENT: FORUM_CONTENT,
+    });
+    // console.log(USER_ID_);
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForum").then(
+      (response) => {
         setFORUM_LIST(response.data);
         // console.log(response.data[0].FORUM_ID);
         if (response.data[0].USER_TYPE === "Admin") {
@@ -260,22 +198,22 @@ function MemberForum() {
           document.getElementById("iconForum_").style.display = "none";
           document.getElementById("iconForum").style.display = "block";
         }
-      });
-      document.getElementById("popUpGetMsgApprove_").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgApprove_").style.display = "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
+      }
+    );
+    document.getElementById("popUpGetMsgApprove_").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgApprove_").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
 
-      // setFORUM_TITLE(" sd");
-      // document.getElementById("floatForumAskQuestionBg").style.display = "none";
-      document.getElementById("floatForumAskQuestionBg").style.display = "none";
-      document.getElementById("floatForumAskQuestion").style.display = "none";
-      // window.location.reload();
-      // var form = document.getElementById("inputAnnouncementTitle");
-      // form.target.reset();
-      // document.getElementById("inputForumContentQuestion").innerHTML = "";
-    }
+    // setFORUM_TITLE(" sd");
+    // document.getElementById("floatForumAskQuestionBg").style.display = "none";
+    document.getElementById("floatForumAskQuestionBg").style.display = "none";
+    document.getElementById("floatForumAskQuestion").style.display = "none";
+    // window.location.reload();
+    // var form = document.getElementById("inputAnnouncementTitle");
+    // form.target.reset();
+    // document.getElementById("inputForumContentQuestion").innerHTML = "";
   };
 
   const hidePopupForumAsk = () => {
@@ -320,31 +258,6 @@ function MemberForum() {
   };
 
   const filterApproveMembers = () => {};
-
-  const showMenuBar = () => {
-    document.getElementById("menuBar_bground_").style.display = "block";
-    document.getElementById("menuBar_inside").style.display = "block";
-    // document.getElementById("memberAnnouncementList_id_").style.display =
-    //   "none";
-    // document.getElementById("_memberAnnouncementList_id_").style.display =
-    //   "none";
-    document.getElementById("forumBody").style.display = "none";
-    // document.getElementById("floatForumAskQuestionBg").style.display = "none";
-    document.getElementById("outerFoot").style.display = "none";
-  };
-
-  const backMain = () => {
-    document.getElementById("menuBar_bground_").style.display = "none";
-    document.getElementById("menuBar_inside").style.display = "none";
-    // document.getElementById("memberAnnouncementList_id_").style.display =
-    //   "grid";
-    // document.getElementById("_memberAnnouncementList_id_").style.display =
-    //   "block";
-    document.getElementById("forumBody").style.display = "grid";
-    // document.getElementById("floatForumAskQuestionBg").style.display = "block";
-    document.getElementById("outerFoot").style.display = "block";
-  };
-
   return (
     <div className="ForumBg">
       <div className="MainHeader">
@@ -406,62 +319,12 @@ function MemberForum() {
               <Link to="/AdminDashboard" id="portalDash">
                 Dashboard
               </Link>
-              {/*<p onClick={logout}>Logout</p>*/}
-              <p
-                onClick={() => {
-                  logout(USER_ID);
-                }}
-              >
-                Logout
-              </p>
+              <p onClick={logout}>Logout</p>
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
-          <i className="fa fa-bars" onClick={showMenuBar}></i>
         </div>
       </div>
-
-      <div id="menuBar_bground_">
-        <div id="menuBar_inside">
-          <Link className="homeHeader_" to="/">
-            Home
-          </Link>
-          <Link className="announcementHeader_" to="/MemberAnnouncement">
-            Announcement
-          </Link>
-          <Link className="eventHeader_" to="/MemberEvents">
-            Event
-          </Link>
-          <Link className="forumHeader_" to="/MemberForum">
-            Forum
-          </Link>
-          <Link className="aboutHeader_" to="/MemberAbout">
-            About
-          </Link>
-          <Link className="contactHeader_" to="/ContactUs">
-            Contact
-          </Link>
-          <Link className="signinHeader_" id="LoginHeader_" to="/Login">
-            Log in
-          </Link>
-          <Link to="/MemberProfile" id="profileGo_">
-            Profile
-          </Link>
-          <Link to="/AdminDashboard" id="portalDash_">
-            Dashboard
-          </Link>
-          <div className="mobOptions">
-            <a id="backtoWeb" onClick={backMain}>
-              Back
-            </a>
-            <a id="memberLogout" onClick={logout}>
-              Logout
-            </a>
-          </div>
-          {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
-        </div>
-      </div>
-
       <div id="popUpGetMsgApprove_logout">
         <div id="popUpGetMsgInApprove">
           <h2>PerSEEption Message</h2>
@@ -483,7 +346,7 @@ function MemberForum() {
       <div id="popUpGetMsgDeleteMember_">
         <div id="popUpGetMsgInDeleteMember_">
           <h2>PerSEEption Message</h2>
-          <h1 id="changeMsg_DelBlank">Forum Deleted Successfully</h1>
+          <h1>Forum Deleted Successfully</h1>
         </div>
       </div>
       <div className="floatYouNeedLoginBg" id="floatYouNeedLoginBg">
@@ -539,7 +402,7 @@ function MemberForum() {
           </div>
         </div>
       </div>
-      <div className="forumBody" id="forumBody">
+      <div className="forumBody">
         <div className="navForum"></div>
         <div className="forumTitleList">
           <p className="mostRecentTitle">Most Recent</p>
@@ -704,7 +567,7 @@ function MemberForum() {
       <Link to="/Registration" className="floatBtn1" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
       </Link>
-      <div className="outerFoot" id="outerFoot">
+      <div className="outerFoot">
         <div className="footer">
           <div className="footIcon">
             <img

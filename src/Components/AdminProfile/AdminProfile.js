@@ -78,28 +78,7 @@ function AdminProfile() {
 
   const updateAdmin = (USER_ID) => {
     const p = document.getElementById("profPass").value;
-    const name_update_ = document.getElementById("name_update_").value;
-    const username_update_ = document.getElementById("username_update_").value;
-    const email_update_ = document.getElementById("email_update_").value;
-    const adress_update_ = document.getElementById("adress_update_").value;
-    const contact_update_ = document.getElementById("contact_update_").value;
-    var nameRegex = /^([a-zA-Z\s]{1,50})$/;
-    var nameNumRegex = /^([a-zA-Z0-9\s\.#,]{1,50})$/;
-    var emailRegex_ =
-      /^([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
-    var numberRegex = /^([0-9]{1,11})$/;
-    if (
-      p === "" ||
-      name_update_ === "" ||
-      username_update_ === "" ||
-      email_update_ === "" ||
-      adress_update_ === "" ||
-      contact_update_ === "" ||
-      !nameRegex.test(name_update_) ||
-      !nameNumRegex.test(adress_update_) ||
-      !emailRegex_.test(email_update_) ||
-      !numberRegex.test(contact_update_)
-    ) {
+    if (p === "") {
       document.getElementById("popUpGetMsgDeleteMember_").style.display =
         "block";
       setTimeout(function () {
@@ -107,20 +86,8 @@ function AdminProfile() {
           "none";
         // document.getElementById("popUpGetMsgInCont").style.display = "none";
       }, 3000);
-    }
-
-    if (
-      p !== "" ||
-      name_update_ !== "" ||
-      username_update_ !== "" ||
-      email_update_ !== "" ||
-      adress_update_ !== "" ||
-      contact_update_ !== "" ||
-      nameRegex.test(name_update_) ||
-      nameNumRegex.test(adress_update_) ||
-      emailRegex_.test(email_update_) ||
-      numberRegex.test(contact_update_)
-    ) {
+      return;
+    } else {
       Axios.put(
         `https://perseeption-tromagade.herokuapp.com/api/updateAdminInfo_/${USER_ID}`,
         {
@@ -187,7 +154,7 @@ function AdminProfile() {
             <i className="fa fa-bullhorn"></i>Announcement
           </Link>
           <Link to="/AdminContactUs" className="dash">
-            <i className="fa fa-envelope"></i>Messages
+            <i className="fa fa-envelope"></i>Contact Us
           </Link>
           <Link to="/Events" className="dash">
             <i className="fa fa-calendar-o"></i>Event
@@ -209,7 +176,7 @@ function AdminProfile() {
         <div id="popUpGetMsgDeleteMember_">
           <div id="popUpGetMsgInDeleteMember_">
             <h2>PerSEEption Message</h2>
-            <h1>Please enter valid information</h1>
+            <h1>Please enter your password for an update</h1>
           </div>
         </div>
         <div id="popUpGetMsgApprove">
@@ -259,7 +226,6 @@ function AdminProfile() {
             <label className="profileName">Name:</label>
             <input
               type="text"
-              id="name_update_"
               value={NAME}
               onChange={(e) => {
                 setNAME(e.target.value);
@@ -269,7 +235,6 @@ function AdminProfile() {
               Contact:{" "}
               <input
                 type="text"
-                id="contact_update_"
                 // placeholder={val.ADMIN_CONTACT}
                 value={ADMIN_CONTACT}
                 onChange={(e) => {
@@ -281,7 +246,6 @@ function AdminProfile() {
               Address:{" "}
               <input
                 type="text"
-                id="adress_update_"
                 value={ADMIN_ADDRESS}
                 onChange={(e) => {
                   setADMIN_ADDRESS(e.target.value);
@@ -292,7 +256,6 @@ function AdminProfile() {
               Email:{" "}
               <input
                 type="email"
-                id="email_update_"
                 value={ADMIN_EMAIL}
                 onChange={(e) => {
                   setADMIN_EMAIL(e.target.value);
@@ -302,7 +265,6 @@ function AdminProfile() {
             <label className="profilePass">
               Username:{" "}
               <input
-                id="username_update_"
                 type="text"
                 value={USERNAME}
                 onChange={(e) => {

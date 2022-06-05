@@ -342,7 +342,7 @@ function AdminAdminList() {
             <i className="fa fa-bullhorn"></i>Announcement
           </Link>
           <Link to="/AdminContactUs" className="dash">
-            <i className="fa fa-envelope"></i>Messages
+            <i className="fa fa-envelope"></i>Contact Us
           </Link>
           <Link to="/Events" className="dash">
             <i className="fa fa-calendar-o"></i>Event

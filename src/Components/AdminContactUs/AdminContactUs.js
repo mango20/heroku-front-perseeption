@@ -15,6 +15,7 @@ function AdminContactUs() {
   const [contact_usList, setcontact_usList] = useState([]);
   const [AVATAR, setAVATAR] = useState("");
 
+
   useEffect(() => {
     Axios.get(
       "https://perseeption-tromagade.herokuapp.com/getContactUsMsg"
@@ -49,7 +50,7 @@ function AdminContactUs() {
   };
 
   // const showDetails = (contact_id) => {
-  console.log(contact_id);
+    console.log(contact_id);
   // };
   const replyBtn = (contact_id) => {
     // console.log(contact_id);
@@ -70,41 +71,26 @@ function AdminContactUs() {
   const sendEmail = (contact_id) => {
     // console.log(contact_id);
     const p = document.getElementById("email-id").value;
-    const subjectInput = document.getElementById("nameAdmin-id").value;
-    const messageInput = document.getElementById("messagesText").value;
-    if (messageInput === "" || subjectInput === "") {
-      document.getElementById("popUpGetMsgDelete").style.display = "block";
-      document.getElementById("warningMsg").innerHTML =
-        "Please fill out the form!";
-
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgDelete").style.display = "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
-    }
-
-    if (messageInput !== "" && subjectInput !== "") {
-      Axios.get(
-        `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
-      ).then((response) => {
-        const getEmail = response.data[0].contact_email;
-        // console.log(getEmail);
-        Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
-          EmailContact: p,
-          Subject: Subject,
-          ContactUsMsg: ContactUsMsg,
-          // USER_ID: USER_ID,
-        });
+    Axios.get(
+      `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
+    ).then((response) => {
+      const getEmail = response.data[0].contact_email;
+      // console.log(getEmail);
+      Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
+        EmailContact: p,
+        Subject: Subject,
+        ContactUsMsg: ContactUsMsg,
+        // USER_ID: USER_ID,
       });
-      document.getElementById("nameAdmin-id").value = "";
-      // document.getElementById("email-id").value = "";
-      document.getElementById("messagesText").value = "";
-      document.getElementById("popUpGetMsgSent").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgSent").style.display = "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
-    }
+    });
+    document.getElementById("nameAdmin-id").value = "";
+    // document.getElementById("email-id").value = "";
+    document.getElementById("messagesText").value = "";
+    document.getElementById("popUpGetMsgSent").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("popUpGetMsgSent").style.display = "none";
+      // document.getElementById("popUpGetMsgInCont").style.display = "none";
+    }, 3000);
   };
   const hideReplyModal = () => {
     document.getElementById("nameAdmin-id").value = "";
@@ -217,7 +203,7 @@ function AdminContactUs() {
             <i className="fa fa-bullhorn"></i>Announcement
           </Link>
           <Link to="/AdminContactUs" className="dash">
-            <i className="fa fa-envelope"></i>Messages
+            <i className="fa fa-envelope"></i>Contact Us
           </Link>
           <Link to="/Events" className="dash">
             <i className="fa fa-calendar-o"></i>Event
@@ -246,7 +232,7 @@ function AdminContactUs() {
         <div id="popUpGetMsgDelete">
           <div id="popUpGetMsgInSentDelete">
             <h2>PerSEEption Message</h2>
-            <h1 id="warningMsg">Message Deleted!</h1>
+            <h1>Message Deleted!</h1>
           </div>
         </div>
         <div id="popUpGetMsgApprove_logout">
@@ -280,7 +266,7 @@ function AdminContactUs() {
               </tr>
               {contact_usList.map((val, key) => {
                 return (
-                  <tr key={key} style={{ backgroundColor: val.contact_status }}>
+                  <tr key={key}>
                     <td>
                       <div className="messageComp">{val.contact_id}</div>
                     </td>

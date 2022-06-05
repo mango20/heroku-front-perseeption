@@ -12,6 +12,8 @@ function MainPage() {
   const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME, setUSERNAME] = useState([]);
 
+
+
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
       history.push("/");
@@ -43,9 +45,10 @@ function MainPage() {
     }
   }, []);
 
+  
+
   // Render
   useEffect(() => {
-    //"https://perseeption-tromagade.herokuapp.com/api/getMainEvent"
     Axios.get(
       "https://perseeption-tromagade.herokuapp.com/api/getMainEvent"
     ).then((response) => {
@@ -60,6 +63,8 @@ function MainPage() {
       document.getElementById("dropdown-content").style.display = "none";
     }
   };
+
+  
 
   const history = useHistory();
   const logout = () => {
