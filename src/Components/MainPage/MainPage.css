@@ -54,7 +54,7 @@
   display: grid;
   /* grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr; */
   /* grid-gap: 5px; */
-  grid-template-areas: "homeHeader announcementHeader eventHeader forumHeader aboutHeader contactHeader memberDiv signinHeader";
+  grid-template-areas: "homeHeader announcementHeader eventHeader forumHeader aboutHeader contactHeader  signinHeader memberDiv";
 }
 .fa-bars {
   grid-area: headerText;
@@ -68,7 +68,7 @@
 
 #menuBar_bground_ {
   display: none;
-  height: 100vh;
+  /* height: 150%; */
   background-color: #009744;
 }
 @media only screen and (max-width: 1262px) {
@@ -252,7 +252,7 @@
 }
 
 .signinHeader {
-  grid-area: memberDiv;
+  grid-area: signinHeader;
   /* background-color: thistle; */
   /* line-height: 48px; */
   text-decoration: none;
@@ -262,18 +262,36 @@
   border: 1px solid rgb(221, 221, 221);
   outline-offset: -3px;
   /* margin: 0 auto; */
-  padding-top: 7px;
+  /* padding-top: 7px;
   margin-top: -8px;
   margin-bottom: 10px;
-  margin-left: 5px;
+  margin-left: 5px; */
   font-weight: 600;
   letter-spacing: 1px;
+
+  /* sample */
+
+  /* margin-bottom: 15%; */
+  padding-top: 10%;
+  margin-left: -30%;
+  /* text-align: center; */
+  /* padding-left: -10%; */
+  height: 100%;
+  /* margin: auto 0; */
+  width: 100%;
+  margin: auto;
+  margin-left: 0%;
+  margin-right: auto;
+  margin-top: -10px;
+  /* padding-left: 40%; */
+
   /* font-weight: 400; */
 }
 
 .signinHeader:hover {
   border: 1px solid #36a9e1;
   color: #36a9e1;
+  /* background-color: #009744; */
 }
 
 .homeHeader {
@@ -782,6 +800,7 @@
   padding-top: 150px;
   text-align: center;
   height: 100%;
+  padding-bottom: 10%;
 }
 
 #menuBar_bground_ a {

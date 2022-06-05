@@ -79,6 +79,24 @@ function Events() {
 
   const handleSubmitFile = (e) => {
     // console.log("sub");
+    const title = document.getElementById("inputEventTitle").value;
+    const content = document.getElementById("inputEventContent").value;
+    const img = document.getElementById("fileBtnId").value;
+    if (title === "" || img === 0 || content === "" || img === "") {
+      document.getElementById("titleMessage").style.color = "red";
+      let timerId = setInterval(
+        () =>
+          (document.getElementById("titleMessage").innerHTML =
+            "Please fill out form completely!"),
+        0
+      );
+
+      // Timeout
+      setTimeout(() => {
+        clearInterval(timerId);
+        document.getElementById("titleMessage").innerHTML = "";
+      }, 3000);
+    }
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -473,7 +491,7 @@ function Events() {
             <i className="fa fa-bullhorn"></i>Announcement
           </Link>
           <Link to="/AdminContactUs" className="dash">
-            <i className="fa fa-envelope"></i>Contact Us
+            <i className="fa fa-envelope"></i>Messages
           </Link>
           <Link to="/Events" className="dash">
             <i className="fa fa-calendar-o"></i>Event

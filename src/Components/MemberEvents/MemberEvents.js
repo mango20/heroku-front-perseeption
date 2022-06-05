@@ -60,6 +60,9 @@ function MemberEvents() {
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
       // history.push("/");
+      document.getElementById("memberLogout").style.display = "none";
+      document.getElementById("profileGo_").style.display = "none";
+      document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
@@ -67,14 +70,18 @@ function MemberEvents() {
         document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
+        document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("loggedInImg_").style.display = "block";
         document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
+        document.getElementById("portalDash_").style.display = "none";
       }
       setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("LoginHeader_").style.display = "none";
+      document.getElementById("profileGo_").style.display = "block";
     }
   }, []);
 
@@ -107,6 +114,27 @@ function MemberEvents() {
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
     window.location.reload();
+  };
+
+  const showMenuBar = () => {
+    document.getElementById("menuBar_bground_").style.display = "block";
+    document.getElementById("menuBar_inside").style.display = "block";
+    document.getElementById("memberEventList_id").style.display = "none";
+    document.getElementById("memberEventList_id_").style.display = "none";
+    document.getElementById("eventTitle_Head").style.display = "none";
+    // document.getElementById("mainEventList").style.display = "none";
+    document.getElementById("outerFoot").style.display = "none";
+  };
+
+  const backMain = () => {
+    document.getElementById("menuBar_bground_").style.display = "none";
+    document.getElementById("menuBar_inside").style.display = "none";
+    document.getElementById("memberEventList_id").style.display = "grid";
+    // document.getElementById("memberEventList_id_").style.display =
+    //   "block";
+    document.getElementById("eventTitle_Head").style.display = "block";
+    // document.getElementById("mainEventList").style.display = "none";
+    document.getElementById("outerFoot").style.display = "block";
   };
   return (
     <div className="MemberEventsBg">
@@ -166,6 +194,7 @@ function MemberEvents() {
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
+          <i className="fa fa-bars" onClick={showMenuBar}></i>
         </div>
       </div>
       <div id="popUpGetMsgApprove_logout">
@@ -174,7 +203,50 @@ function MemberEvents() {
           <h1>Logout Successfully!</h1>
         </div>
       </div>
-      <h1 className="eventTitle_Head">Event</h1>
+
+      <div id="menuBar_bground_">
+        <div id="menuBar_inside">
+          <Link className="homeHeader_" to="/">
+            Home
+          </Link>
+          <Link className="announcementHeader_" to="/MemberAnnouncement">
+            Announcement
+          </Link>
+          <Link className="eventHeader_" to="/MemberEvents">
+            Event
+          </Link>
+          <Link className="forumHeader_" to="/MemberForum">
+            Forum
+          </Link>
+          <Link className="aboutHeader_" to="/MemberAbout">
+            About
+          </Link>
+          <Link className="contactHeader_" to="/ContactUs">
+            Contact
+          </Link>
+          <Link className="signinHeader_" id="LoginHeader_" to="/Login">
+            Log in
+          </Link>
+          <Link to="/MemberProfile" id="profileGo_">
+            Profile
+          </Link>
+          <Link to="/AdminDashboard" id="portalDash_">
+            Dashboard
+          </Link>
+          <div className="mobOptions">
+            <a id="backtoWeb" onClick={backMain}>
+              Back
+            </a>
+            <a id="memberLogout" onClick={logout}>
+              Logout
+            </a>
+          </div>
+          {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
+        </div>
+      </div>
+      <h1 className="eventTitle_Head" id="eventTitle_Head">
+        Event
+      </h1>
       <div className="memberEventList" id="memberEventList_id">
         {EVENT_LIST.map((val, key) => {
           return (
@@ -216,7 +288,6 @@ function MemberEvents() {
             cloudName="dlvt2lnkh"
             // id="announcement_Img_event"
             publicId={EVENT_IMAGE}
-            
           />
           <p className="event_TitleRM">{EVENT_TITLE}</p>
           <p className="event_DateRM">{EVENT_DATE}</p>
@@ -226,7 +297,7 @@ function MemberEvents() {
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
       </Link>
-      <div className="outerFoot">
+      <div className="outerFoot" id="outerFoot">
         <div className="footer">
           <div className="footIcon">
             <img

@@ -20,6 +20,9 @@ function MemberAnnouncement() {
 
   useEffect(() => {
     if (localStorage.getItem("Client") === null) {
+      document.getElementById("memberLogout").style.display = "none";
+      document.getElementById("profileGo_").style.display = "none";
+      document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
       if (name1[0].USER_TYPE === "Admin") {
@@ -27,14 +30,18 @@ function MemberAnnouncement() {
         document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
+        document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("loggedInImg_").style.display = "block";
         document.getElementById("loggedInImg").style.display = "none";
         document.getElementById("portalDash").style.display = "none";
+        document.getElementById("portalDash_").style.display = "none";
       }
       setAVATAR(name1[0].AVATAR);
       document.getElementById("floatBtn").style.display = "none";
       document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("LoginHeader_").style.display = "none";
+      document.getElementById("profileGo_").style.display = "block";
       // document.getElementById("loggedInImg").style.display = "block";
       // document.getElementById("LoginHeader_").style.display = "none";
       // document.getElementById("profileGo_").style.display = "block";
@@ -120,6 +127,30 @@ function MemberAnnouncement() {
     });
   };
 
+  const showMenuBar = () => {
+    document.getElementById("menuBar_bground_").style.display = "block";
+    document.getElementById("menuBar_inside").style.display = "block";
+    document.getElementById("memberAnnouncementList_id_").style.display =
+      "none";
+    document.getElementById("_memberAnnouncementList_id_").style.display =
+      "none";
+    document.getElementById("announcementTitleHead").style.display = "none";
+    // document.getElementById("mainEventList").style.display = "none";
+    document.getElementById("outerFoot").style.display = "none";
+  };
+
+  const backMain = () => {
+    document.getElementById("menuBar_bground_").style.display = "none";
+    document.getElementById("menuBar_inside").style.display = "none";
+    document.getElementById("memberAnnouncementList_id_").style.display =
+      "grid";
+    // document.getElementById("_memberAnnouncementList_id_").style.display =
+    //   "block";
+    document.getElementById("announcementTitleHead").style.display = "block";
+    // document.getElementById("mainEventList").style.display = "none";
+    document.getElementById("outerFoot").style.display = "block";
+  };
+
   return (
     <div className="AnnouncementBg">
       <div className="MainHeader">
@@ -178,6 +209,7 @@ function MemberAnnouncement() {
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
+          <i className="fa fa-bars" onClick={showMenuBar}></i>
         </div>
       </div>
       <div id="popUpGetMsgApprove_logout">
@@ -186,7 +218,51 @@ function MemberAnnouncement() {
           <h1>Logout Successfully!</h1>
         </div>
       </div>
-      <h1 className="announcementTitleHead">Announcement</h1>
+
+      <div id="menuBar_bground_">
+        <div id="menuBar_inside">
+          <Link className="homeHeader_" to="/">
+            Home
+          </Link>
+          <Link className="announcementHeader_" to="/MemberAnnouncement">
+            Announcement
+          </Link>
+          <Link className="eventHeader_" to="/MemberEvents">
+            Event
+          </Link>
+          <Link className="forumHeader_" to="/MemberForum">
+            Forum
+          </Link>
+          <Link className="aboutHeader_" to="/MemberAbout">
+            About
+          </Link>
+          <Link className="contactHeader_" to="/ContactUs">
+            Contact
+          </Link>
+          <Link className="signinHeader_" id="LoginHeader_" to="/Login">
+            Log in
+          </Link>
+          <Link to="/MemberProfile" id="profileGo_">
+            Profile
+          </Link>
+          <Link to="/AdminDashboard" id="portalDash_">
+            Dashboard
+          </Link>
+          <div className="mobOptions">
+            <a id="backtoWeb" onClick={backMain}>
+              Back
+            </a>
+            <a id="memberLogout" onClick={logout}>
+              Logout
+            </a>
+          </div>
+          {/* <i className="fa fa-bars" onClick={showMenuBar}></i> */}
+        </div>
+      </div>
+
+      <h1 className="announcementTitleHead" id="announcementTitleHead">
+        Announcement
+      </h1>
       <div className="memberAnnouncementList" id="memberAnnouncementList_id_">
         {memberAnnouncementList.map((val, key) => {
           return (
@@ -243,7 +319,7 @@ function MemberAnnouncement() {
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
       </Link>
-      <div className="outerFoot">
+      <div className="outerFoot" id="outerFoot">
         <div className="footer">
           <div className="footIcon">
             <img
