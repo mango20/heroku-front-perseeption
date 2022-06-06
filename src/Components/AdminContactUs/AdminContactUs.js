@@ -86,6 +86,7 @@ function AdminContactUs() {
 
     if (messageInput !== "" && subjectInput !== "") {
       const contact_stat = "#90EE90";
+      alert(contact_id);
       Axios.put(
         `https://perseeption-tromagade.herokuapp.com/updateColor/${contact_id}`,
         {
@@ -179,6 +180,7 @@ function AdminContactUs() {
 
       // console.log(name);
       // console.log(name[0].ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
       setUSERNAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
     }
