@@ -406,7 +406,7 @@ function AdminContactUs() {
                     <li>
                       <button
                         onClick={() => {
-                          sendEmail(contact_id);
+                          sendEmail(val.contact_id);
                         }}
                       >
                         Send
