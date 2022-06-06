@@ -4,6 +4,8 @@ import "./TermsCondition.css";
 import { Link } from "react-router-dom";
 
 function TermsCondition() {
+  const [USER_ID, setUSER_ID] = useState("");
+
   Axios.defaults.withCredentials = true;
   const logout = (USER_ID) => {
     const stat = "logout";
