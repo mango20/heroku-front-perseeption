@@ -70,6 +70,7 @@ function AdminContactUs() {
 
   const sendEmail = (contact_id) => {
     // console.log(contact_id);
+    alert(contact_id);
     const p = document.getElementById("email-id").value;
     const subjectInput = document.getElementById("nameAdmin-id").value;
     const messageInput = document.getElementById("messagesText").value;
@@ -91,7 +92,7 @@ function AdminContactUs() {
         `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
       ).then((response) => {
         const getEmail = response.data[0].contact_email;
-        alert(contact_id);
+
         // console.log(getEmail);
         Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
           EmailContact: p,
