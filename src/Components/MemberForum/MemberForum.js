@@ -454,7 +454,12 @@ function MemberForum() {
             <a id="backtoWeb" onClick={backMain}>
               Back
             </a>
-            <a id="memberLogout" onClick={logout}>
+            <a
+              id="memberLogout"
+              onClick={() => {
+                logout(USER_ID);
+              }}
+            >
               Logout
             </a>
           </div>

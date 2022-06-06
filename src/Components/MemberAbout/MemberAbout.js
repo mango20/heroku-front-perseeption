@@ -44,7 +44,15 @@ function MemberAbout() {
     }
   };
 
-  const logout = () => {
+  const logout = (USER_ID) => {
+    const stat = "logout";
+    alert(USER_ID);
+    Axios.put(
+      `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
+      {
+        STATUS: stat,
+      }
+    );
     document.getElementById("popUpGetMsgApprove_logout").style.display =
       "block";
     setTimeout(function () {
@@ -135,7 +143,13 @@ function MemberAbout() {
               <Link to="/AdminDashboard" id="portalDash">
                 Dashboard
               </Link>
-              <p onClick={logout}>Logout</p>
+              <p
+                onClick={() => {
+                  logout(USER_ID);
+                }}
+              >
+                Logout
+              </p>
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
@@ -176,7 +190,12 @@ function MemberAbout() {
             <a id="backtoWeb" onClick={backMain}>
               Back
             </a>
-            <a id="memberLogout" onClick={logout}>
+            <a
+              id="memberLogout"
+              onClick={() => {
+                logout(USER_ID);
+              }}
+            >
               Logout
             </a>
           </div>

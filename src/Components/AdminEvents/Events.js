@@ -38,7 +38,15 @@ function Events() {
     }
   }, []);
 
-  const logout = () => {
+  const logout = (USER_ID) => {
+    const stat = "logout";
+    alert(USER_ID);
+    Axios.put(
+      `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
+      {
+        STATUS: stat,
+      }
+    );
     document.getElementById("popUpGetMsgApprove_logout").style.display =
       "block";
     setTimeout(function () {
@@ -506,7 +514,12 @@ function Events() {
             <i className="fa fa-comments"></i>Forum
           </Link>
           <div className="line"></div>
-          <p className="logout_Admin" onClick={logout}>
+          <p
+            className="logout_Admin"
+            onClick={() => {
+              logout(USER_ID);
+            }}
+          >
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
         </div>

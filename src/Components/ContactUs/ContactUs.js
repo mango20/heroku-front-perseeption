@@ -52,7 +52,15 @@ function ContactUs() {
     }
   };
 
-  const logout = () => {
+  const logout = (USER_ID) => {
+    const stat = "logout";
+    alert(USER_ID);
+    Axios.put(
+      `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
+      {
+        STATUS: stat,
+      }
+    );
     document.getElementById("popUpGetMsgApprove_logout").style.display =
       "block";
     setTimeout(function () {
@@ -325,7 +333,13 @@ function ContactUs() {
                 <Link to="/AdminDashboard" id="portalDash">
                   Dashboard
                 </Link>
-                <p onClick={logout}>Logout</p>
+                <p
+                  onClick={() => {
+                    logout(USER_ID);
+                  }}
+                >
+                  Logout
+                </p>
                 {/* <a href="#">Sign In other Account</a> */}
               </div>
             </div>
