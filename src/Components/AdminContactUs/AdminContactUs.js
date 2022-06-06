@@ -14,6 +14,7 @@ function AdminContactUs() {
   const [ContactUsMsg, setContactUsMsg] = useState("");
   const [contact_usList, setcontact_usList] = useState([]);
   const [AVATAR, setAVATAR] = useState("");
+  const [contact_status, setcontact_status] = useState("");
 
   useEffect(() => {
     Axios.get(
@@ -84,6 +85,14 @@ function AdminContactUs() {
     }
 
     if (messageInput !== "" && subjectInput !== "") {
+      const contact_stat = "#90EE90";
+      Axios.put(
+        `https://perseeption-tromagade.herokuapp.com/updateColor/${contact_id}`,
+        {
+          contact_status: contact_stat,
+        }
+      );
+
       Axios.get(
         `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
       ).then((response) => {
