@@ -403,7 +403,13 @@ function AdminContactUs() {
                       ></textarea>
                     </li>
                     <li>
-                      <button onClick={sendEmail}>Send</button>
+                      <button
+                        onClick={() => {
+                          sendEmail(contact_id);
+                        }}
+                      >
+                        Send
+                      </button>
                     </li>
                   </ul>
                 </div>
