@@ -87,17 +87,12 @@ function AdminContactUs() {
     if (messageInput !== "" && subjectInput !== "") {
       const contact_stat = "#90EE90";
       alert(contact_id);
-      Axios.put(
-        `https://perseeption-tromagade.herokuapp.com/updateColor/${contact_id}`,
-        {
-          contact_status: contact_stat,
-        }
-      );
 
       Axios.get(
         `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
       ).then((response) => {
         const getEmail = response.data[0].contact_email;
+
         // console.log(getEmail);
         Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
           EmailContact: p,
@@ -105,6 +100,12 @@ function AdminContactUs() {
           ContactUsMsg: ContactUsMsg,
           // USER_ID: USER_ID,
         });
+        Axios.put(
+          `https://perseeption-tromagade.herokuapp.com/updateColor/${contact_id}`,
+          {
+            contact_status: contact_stat,
+          }
+        );
       });
       document.getElementById("nameAdmin-id").value = "";
       // document.getElementById("email-id").value = "";
