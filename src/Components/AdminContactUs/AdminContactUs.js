@@ -86,13 +86,12 @@ function AdminContactUs() {
 
     if (messageInput !== "" && subjectInput !== "") {
       const contact_stat = "#90EE90";
-      alert(contact_id);
 
       Axios.get(
         `https://perseeption-tromagade.herokuapp.com/getContactUsMsg/${contact_id}`
       ).then((response) => {
         const getEmail = response.data[0].contact_email;
-
+        alert(contact_id);
         // console.log(getEmail);
         Axios.post("https://perseeption-tromagade.herokuapp.com/sendtoEmail", {
           EmailContact: p,
