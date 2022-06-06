@@ -1,4 +1,4 @@
-import React from "react"; //useEffect,
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./TermsCondition.css";
 import { Link } from "react-router-dom";
