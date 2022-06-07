@@ -390,8 +390,15 @@ function Events() {
     }
   };
 
+  //
+
+  const deleteEvent_ = () => {
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+  };
+
   // Delete Announcement
   const deleteEvent = (EVENT_ID) => {
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/deleteEvent/${EVENT_ID}`
     ).then((response) => {
@@ -401,6 +408,16 @@ function Events() {
           return val.EVENT_ID !== EVENT_ID; // Filter/remove if it not equals to id
         })
       );
+
+      document.getElementById("announcementRed").innerHTML =
+        "Event Deleted Successfully";
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+
       Axios.get(
         "https://perseeption-tromagade.herokuapp.com/api/getEvent"
       ).then((response) => {
@@ -411,61 +428,96 @@ function Events() {
 
   // Update Title
   const updateEventTitle = (EVENT_ID) => {
-    Axios.put(
-      "https://perseeption-tromagade.herokuapp.com/api/updateEventTitle",
-      {
-        EVENT_ID: EVENT_ID,
-        EVENT_TITLE: NEW_EVENT_TITLE,
-      }
-    ).then((response) => {
-      setEVENT_LIST(
-        EVENT_LIST.map((val) => {
-          return val.EVENT_ID === EVENT_ID
-            ? {
-                EVENT_ID: val.EVENT_ID,
-                EVENT_TITLE: NEW_EVENT_TITLE,
-              }
-            : val;
-        })
-      );
+    const updateEventTitle_ = document.getElementById("updateEventTitle").value;
 
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+    if (updateEventTitle_ === "") {
+      document.getElementById("updateEventTitle").style.borderColor = "red";
+      document.getElementById("announcementRed").innerHTML =
+        "Please Enter Title";
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
+          "none";
+      }, 3000);
+    }
+
+    if (updateEventTitle_ !== "") {
+      document.getElementById("updateEventTitle").style.borderColor = "#c6c6c6";
+      Axios.put(
+        "https://perseeption-tromagade.herokuapp.com/api/updateEventTitle",
+        {
+          EVENT_ID: EVENT_ID,
+          EVENT_TITLE: NEW_EVENT_TITLE,
+        }
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setEVENT_LIST(
+          EVENT_LIST.map((val) => {
+            return val.EVENT_ID === EVENT_ID
+              ? {
+                  EVENT_ID: val.EVENT_ID,
+                  EVENT_TITLE: NEW_EVENT_TITLE,
+                }
+              : val;
+          })
+        );
+
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+        ).then((response) => {
+          setEVENT_LIST(response.data);
+        });
       });
-    });
+    }
   };
 
   // Update Content
   const updateEventContent = (EVENT_ID) => {
-    Axios.put(
-      "https://perseeption-tromagade.herokuapp.com/api/updateEventContent",
-      {
-        EVENT_ID: EVENT_ID,
-        EVENT_CONTENT: NEW_EVENT_REVIEW,
-      }
-    ).then((response) => {
-      setEVENT_LIST(
-        EVENT_LIST.map((val) => {
-          return val.EVENT_ID === EVENT_ID
-            ? {
-                EVENT_ID: val.EVENT_ID,
-                EVENT_CONTENT: NEW_EVENT_REVIEW,
-              }
-            : val;
-        })
-      );
+    //updateEventContent
+    const updateEventContent_ =
+      document.getElementById("updateEventContent").value;
 
-      //   setNewReview("");
-      //   document.getElementById("updateAnnouncementContentID").value = "";
+    if (updateEventContent_ === "") {
+      document.getElementById("updateEventContent").style.borderColor = "red";
+      document.getElementById("announcementRed").innerHTML =
+        "Please Enter Title";
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
+          "none";
+      }, 3000);
+    }
 
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+    if (updateEventContent_ !== "") {
+      document.getElementById("updateEventContent").style.borderColor =
+        "#c6c6c6";
+      Axios.put(
+        "https://perseeption-tromagade.herokuapp.com/api/updateEventContent",
+        {
+          EVENT_ID: EVENT_ID,
+          EVENT_CONTENT: NEW_EVENT_REVIEW,
+        }
       ).then((response) => {
-        setEVENT_LIST(response.data);
+        setEVENT_LIST(
+          EVENT_LIST.map((val) => {
+            return val.EVENT_ID === EVENT_ID
+              ? {
+                  EVENT_ID: val.EVENT_ID,
+                  EVENT_CONTENT: NEW_EVENT_REVIEW,
+                }
+              : val;
+          })
+        );
+
+        //   setNewReview("");
+        //   document.getElementById("updateAnnouncementContentID").value = "";
+
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getEvent"
+        ).then((response) => {
+          setEVENT_LIST(response.data);
+        });
       });
-    });
+    }
   };
 
   return (
@@ -533,9 +585,10 @@ function Events() {
         <div id="popUpGetMsgDeleteAdmin">
           <div id="popUpGetMsgInDeleteAdmin">
             <h2>PerSEEption Message</h2>
-            <h1>Announcement Deleted Successfully</h1>
+            <h1 id="announcementRed">Announcement Deleted Successfully</h1>
           </div>
         </div>
+
         <div className="messageEventPopUpouter" id="messageEventPopUpouter">
           <div className="messageEvent_Content" id="messageEvent_Content">
             <h4 className="EventMsgTitle">Message</h4>
@@ -610,6 +663,7 @@ function Events() {
                   <input
                     type="text"
                     className="updateEventTitle"
+                    id="updateEventTitle"
                     placeholder="Enter Title"
                     onChange={(e) => {
                       setNEW_EVENT_TITLE(e.target.value);
@@ -628,6 +682,7 @@ function Events() {
                   <input
                     type="text"
                     className="updateEventContent"
+                    id="updateEventContent"
                     placeholder="Enter Updated Content"
                     onChange={(e) => {
                       setNEW_EVENT_REVIEW(e.target.value);
@@ -641,14 +696,27 @@ function Events() {
                   >
                     Update
                   </button>{" "}
-                  <button
-                    className="delAdminButton"
-                    onClick={() => {
-                      deleteEvent(imageId.EVENT_ID);
-                    }}
-                  >
+                  <button className="delAdminButton" onClick={deleteEvent_}>
                     DELETE
                   </button>
+                </div>
+                {/*sdas*/}
+                <div id="popUpGetMsgDeleteAdmin_">
+                  <div id="popUpGetMsgInDeleteAdmin_">
+                    <h2>PerSEEption Message</h2>
+                    <h1 id="announcementRed_">
+                      Are you sure you want to delete it?
+                    </h1>
+                    <button>Cancel</button>
+                    <button
+                      className="delAdminButton"
+                      onClick={() => {
+                        deleteEvent(imageId.EVENT_ID);
+                      }}
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </div>
               </div>
             );
