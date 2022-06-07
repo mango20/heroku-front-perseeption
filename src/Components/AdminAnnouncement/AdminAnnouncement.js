@@ -302,8 +302,19 @@ function AdminAnnouncement() {
     }
   };
 
+  const deleteAnnouncement_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+  };
+
+  const cancel_event_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+  };
+
   // Delete Announcement
   const deletAnnouncementButton = (ANNOUNCEMENT_ID) => {
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/delete/${ANNOUNCEMENT_ID}`
     ).then((response) => {
@@ -719,13 +730,31 @@ function AdminAnnouncement() {
                     Update
                   </button>{" "}
                   <button
-                    className="deleteAnnouncementBtn"
-                    onClick={() => {
-                      deletAnnouncementButton(val.ANNOUNCEMENT_ID);
-                    }}
+                    className="delAdminButton"
+                    onClick={deleteAnnouncement_}
                   >
                     DELETE
                   </button>
+                </div>
+                {/*sdas*/}
+                <div id="popUpGetMsgDeleteAdmin_">
+                  <div id="popUpGetMsgInDeleteAdmin_">
+                    <h2>PerSEEption Message</h2>
+                    <h1 id="announcementRed_">
+                      Are you sure you want to delete it?
+                    </h1>
+                    <button id="cancel_EveBtn" onClick={cancel_event_}>
+                      Cancel
+                    </button>
+                    <button
+                      className="delAdminButton"
+                      onClick={() => {
+                        deletAnnouncementButton(val.ANNOUNCEMENT_ID);
+                      }}
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </div>
               </div>
             );
