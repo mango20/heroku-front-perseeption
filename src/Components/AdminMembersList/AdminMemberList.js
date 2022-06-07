@@ -584,8 +584,19 @@ function AdminMemberList() {
     });
   };
 
+  const deletePendingMember_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+  };
+
+  const cancel_deletePendingMember_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+  };
+
   // Delete Pending Member
   const deletePendingMember = (USER_ID) => {
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
     document.getElementById("popUpGetMsgDeleteMember").style.display = "block";
     setTimeout(function () {
       document.getElementById("popUpGetMsgDeleteMember").style.display = "none";
@@ -1011,13 +1022,34 @@ function AdminMemberList() {
                       </td>
                       <td>
                         <button
-                          onClick={() => {
-                            deletePendingMember(val.USER_ID);
-                          }}
                           className="deleteMemberRequest"
+                          onClick={deletePendingMember_}
                         >
                           🗑
                         </button>
+                        {/*sdas*/}
+                        <div id="popUpGetMsgDeleteAdmin_">
+                          <div id="popUpGetMsgInDeleteAdmin_">
+                            <h2>PerSEEption Message</h2>
+                            <h1 id="announcementRed_">
+                              Are you sure you want to delete it?
+                            </h1>
+                            <button
+                              id="cancel_EveBtn"
+                              onClick={cancel_deletePendingMember_}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              className="delAdminButton"
+                              onClick={() => {
+                                deletePendingMember(val.USER_ID);
+                              }}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   );
