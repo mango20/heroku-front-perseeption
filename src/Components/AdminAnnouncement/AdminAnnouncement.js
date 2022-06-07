@@ -351,7 +351,7 @@ function AdminAnnouncement() {
 
     if (updateAnnouncementTitle_ !== "") {
       document.getElementById("updateAnnouncementTitle").style.borderColor =
-        "c6c6c6";
+        "#c6c6c6";
       Axios.put(
         "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementTitle",
         {
@@ -389,40 +389,61 @@ function AdminAnnouncement() {
 
   // Update Content
   const updateAnnouncementContent = (ANNOUNCEMENT_ID) => {
-    Axios.put(
-      "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementContent",
-      {
-        ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
-        ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
-      }
-    ).then((response) => {
-      setANNOUNCEMENT_LIST(
-        ANNOUNCEMENT_LIST.map((val) => {
-          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
-            ? {
-                ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
-                ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
-              }
-            : val;
-        })
-      );
+    const updateAnnouncementContent_ = document.getElementById(
+      "updateAnnouncementContent"
+    ).value;
 
-      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
+    if (updateAnnouncementContent_ === "") {
+      document.getElementById("updateAnnouncementContent").style.borderColor =
+        "red";
+      document.getElementById("announcementRed").innerHTML =
+        "Please Enter Content";
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
       setTimeout(function () {
-        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
           "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
       }, 3000);
+    }
 
-      //   setNewReview("");
-      //   document.getElementById("updateAnnouncementContentID").value = "";
-
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+    if (updateAnnouncementContent_ !== "") {
+      document.getElementById("updateAnnouncementContent_").style.borderColor =
+        "#c6c6c6";
+      Axios.put(
+        "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementContent",
+        {
+          ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
+          ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
+        }
       ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
+        setANNOUNCEMENT_LIST(
+          ANNOUNCEMENT_LIST.map((val) => {
+            return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
+              ? {
+                  ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
+                  ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
+                }
+              : val;
+          })
+        );
+
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "block";
+        setTimeout(function () {
+          document.getElementById("popUpGetMsgAdminUpdate").style.display =
+            "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
+
+        //   setNewReview("");
+        //   document.getElementById("updateAnnouncementContentID").value = "";
+
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+        ).then((response) => {
+          setANNOUNCEMENT_LIST(response.data);
+        });
       });
-    });
+    }
   };
 
   const logout = (USER_ID) => {
@@ -683,6 +704,7 @@ function AdminAnnouncement() {
                   <input
                     type="text"
                     className="updateAnnouncementContent"
+                    id="updateAnnouncementContent"
                     placeholder="Enter Updated Content"
                     onChange={(e) => {
                       setNewCONTENT(e.target.value);
