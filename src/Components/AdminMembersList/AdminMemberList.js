@@ -1027,6 +1027,14 @@ function AdminMemberList() {
                         >
                           🗑
                         </button>
+                        <button
+                          className="delAdminButton"
+                          onClick={() => {
+                            deletePendingMember(val.USER_ID);
+                          }}
+                        >
+                          DELETE
+                        </button>
                         {/*sdas*/}
                         <div id="popUpGetMsgDeleteAdmin_">
                           <div id="popUpGetMsgInDeleteAdmin_">
