@@ -393,7 +393,13 @@ function Events() {
   //
 
   const deleteEvent_ = () => {
+    //cancel_event_
     document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+  };
+
+  const cancel_event_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
   };
 
   // Delete Announcement
@@ -707,7 +713,9 @@ function Events() {
                     <h1 id="announcementRed_">
                       Are you sure you want to delete it?
                     </h1>
-                    <button>Cancel</button>
+                    <button id="cancel_EveBtn" onClick={cancel_event_}>
+                      Cancel
+                    </button>
                     <button
                       className="delAdminButton"
                       onClick={() => {
