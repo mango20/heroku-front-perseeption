@@ -313,7 +313,8 @@ function AdminAnnouncement() {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
         })
       );
-
+      document.getElementById("announcementRed").innerHTML =
+        "Announcement Deleted Successfully";
       document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
       setTimeout(function () {
         document.getElementById("popUpGetMsgDeleteAdmin").style.display =
@@ -331,37 +332,59 @@ function AdminAnnouncement() {
 
   // Update Title
   const updateAnnouncementTitle = (ANNOUNCEMENT_ID) => {
-    Axios.put(
-      "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementTitle",
-      {
-        ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
-        ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
-      }
-    ).then((response) => {
-      setANNOUNCEMENT_LIST(
-        ANNOUNCEMENT_LIST.map((val) => {
-          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
-            ? {
-                ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
-                ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
-              }
-            : val;
-        })
-      );
+    //#c6c6c6
+    const updateAnnouncementTitle_ = document.getElementById(
+      "updateAnnouncementTitle"
+    ).value;
 
-      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
+    if (updateAnnouncementTitle_ === "") {
+      document.getElementById("updateAnnouncementTitle").style.borderColor =
+        "red";
+      document.getElementById("announcementRed").innerHTML =
+        "Please Enter Title";
+      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
       setTimeout(function () {
-        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
           "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
       }, 3000);
+    }
 
-      Axios.get(
-        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+    if (updateAnnouncementTitle_ !== "") {
+      document.getElementById("updateAnnouncementTitle").style.borderColor =
+        "c6c6c6";
+      Axios.put(
+        "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementTitle",
+        {
+          ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
+          ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
+        }
       ).then((response) => {
-        setANNOUNCEMENT_LIST(response.data);
+        setANNOUNCEMENT_LIST(
+          ANNOUNCEMENT_LIST.map((val) => {
+            return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
+              ? {
+                  ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
+                  ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
+                }
+              : val;
+          })
+        );
+
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "block";
+        setTimeout(function () {
+          document.getElementById("popUpGetMsgAdminUpdate").style.display =
+            "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
+
+        Axios.get(
+          "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+        ).then((response) => {
+          setANNOUNCEMENT_LIST(response.data);
+        });
       });
-    });
+    }
   };
 
   // Update Content
@@ -404,7 +427,7 @@ function AdminAnnouncement() {
 
   const logout = (USER_ID) => {
     const stat = "logout";
-   // alert(USER_ID);
+    // alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -493,7 +516,7 @@ function AdminAnnouncement() {
         <div id="popUpGetMsgDeleteAdmin">
           <div id="popUpGetMsgInDeleteAdmin">
             <h2>PerSEEption Message</h2>
-            <h1>Announcement Deleted Successfully</h1>
+            <h1 id="announcementRed">Announcement Deleted Successfully</h1>
           </div>
         </div>
 
@@ -641,6 +664,7 @@ function AdminAnnouncement() {
                   <input
                     type="text"
                     className="updateAnnouncementTitle"
+                    id="updateAnnouncementTitle"
                     placeholder="Enter Title"
                     onChange={(e) => {
                       setNEW_ANNOUNCEMENT_TITLE(e.target.value);
