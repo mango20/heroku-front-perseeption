@@ -283,7 +283,7 @@
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  border: none;
+
   outline: none;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -607,4 +607,3 @@
   height: 100%;
   overflow: scroll;
 }
-

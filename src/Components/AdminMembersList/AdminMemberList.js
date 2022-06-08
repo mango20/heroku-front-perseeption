@@ -751,40 +751,130 @@ function AdminMemberList() {
   };
   const [MEMBERUPDATE, setMEMBERUPDATE] = useState([]);
   const editApproveMemberListUpdate = (USER_ID) => {
-    document.getElementById("messageEventPopUpouter").style.display = "block";
-    document.getElementById("messageEvent_Content").style.display = "block";
+    var eam_name = document.getElementById("eam_name").value;
+    var eam_contact = document.getElementById("eam_contact").value;
+    var eam_address = document.getElementById("eam_address").value;
+    var eam_email = document.getElementById("eam_email").value;
+    var eam_username = document.getElementById("eam_username").value;
 
-    setTimeout(function () {
-      document.getElementById("messageEventPopUpouter").style.display = "none";
-      document.getElementById("messageEvent_Content").style.display = "none";
-    }, 3000);
-    Axios.put(
-      `https://perseeption-tromagade.herokuapp.com/api/updateMemberInfo_/${USER_ID}`,
-      {
-        USER_ID: USER_ID,
-        USERNAME: USERNAME,
-        MOTHER_EMAIL: MOTHER_EMAIL,
-        MOTHER_CONTACT: MOTHER_CONTACT,
-        NAME: NAME,
-        CITY_ADDRESS: CITY_ADDRESS,
-      }
-    ).then((response) => {
-      // console.log(response.data);
-      setMEMBERUPDATE(
-        MEMBERUPDATE.map((val) => {
-          return val.USER_ID === USER_ID
-            ? {
-                USER_ID: val.USER_ID,
-                USERNAME: USERNAME,
-                MOTHER_EMAIL: MOTHER_EMAIL,
-                MOTHER_CONTACT: MOTHER_CONTACT,
-                NAME: NAME,
-                CITY_ADDRESS: CITY_ADDRESS,
-              }
-            : val;
-        })
-      );
-    });
+    const contactus_name_regex = /^([a-zA-Z\s\.]{1,50})$/;
+
+    if (eam_name === "" || !contactus_name_regex.test(eam_name)) {
+      document.getElementById("eam_name").style.borderColor = "red";
+    }
+    if (eam_name !== "" && contactus_name_regex.test(eam_name)) {
+      document.getElementById("eam_name").style.borderColor = "#c6c6c6";
+    }
+
+    const contactus_contactNum_regex = /^([0-9]{11})$/;
+    if (eam_contact === "" || !contactus_contactNum_regex.test(eam_contact)) {
+      document.getElementById("eam_contact").style.borderColor = "red";
+    }
+    if (eam_contact !== "" && contactus_contactNum_regex.test(eam_contact)) {
+      document.getElementById("eam_contact").style.borderColor = "#c6c6c6";
+    }
+
+    var addressRegex_ = /^([a-zA-Z0-9\.-\s,#]+)$/;
+    if (eam_address === "" || !addressRegex_.test(eam_address)) {
+      document.getElementById("eam_address").style.borderColor = "red";
+    }
+    if (eam_address !== "" && addressRegex_.test(eam_address)) {
+      document.getElementById("eam_address").style.borderColor = "#c6c6c6";
+    }
+
+    var emailRegex_ =
+      /^([a-zA-Z0-9\.-]{5,})@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
+    if (eam_email === "" || !emailRegex_.test(eam_email)) {
+      document.getElementById("eam_email").style.borderColor = "red";
+    }
+
+    if (eam_email !== "" && emailRegex_.test(eam_email)) {
+      document.getElementById("eam_email").style.borderColor = "#c6c6c6";
+    }
+
+    const usernameRegex = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,30}$)"
+    );
+
+    if (eam_username === "" || !usernameRegex.test(eam_username)) {
+      document.getElementById("eam_username").style.borderColor = "red";
+    }
+
+    if (eam_username !== "" && usernameRegex.test(eam_username)) {
+      document.getElementById("eam_username").style.borderColor = "#c6c6c6";
+    }
+
+    if (
+      eam_name === "" ||
+      !contactus_name_regex.test(eam_name) ||
+      eam_contact === "" ||
+      !contactus_contactNum_regex.test(eam_contact) ||
+      eam_address === "" ||
+      !addressRegex_.test(eam_address) ||
+      eam_email === "" ||
+      !emailRegex_.test(eam_email) ||
+      eam_username === "" ||
+      !usernameRegex.test(eam_username)
+    ) {
+      document.getElementById("popUpGetMsgCont").style.display = "block";
+      document.getElementById("popUpGetMsgInCont").style.display = "block";
+
+      setTimeout(function () {
+        document.getElementById("popUpGetMsgCont").style.display = "none";
+        document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
+    }
+
+    if (
+      eam_name !== "" &&
+      contactus_name_regex.test(eam_name) &&
+      eam_contact !== "" &&
+      contactus_contactNum_regex.test(eam_contact) &&
+      eam_address !== "" &&
+      addressRegex_.test(eam_address) &&
+      eam_email !== "" &&
+      emailRegex_.test(eam_email) &&
+      eam_username !== "" &&
+      usernameRegex.test(eam_username)
+    ) {
+      document.getElementById("messageEventPopUpouter").style.display = "block";
+      document.getElementById("messageEvent_Content").style.display = "block";
+
+      setTimeout(function () {
+        document.getElementById("messageEventPopUpouter").style.display =
+          "none";
+        document.getElementById("messageEvent_Content").style.display = "none";
+      }, 3000);
+
+      document.getElementById("editApproveMemberOuter").style.display = "none";
+      Axios.put(
+        `https://perseeption-tromagade.herokuapp.com/api/updateMemberInfo_/${USER_ID}`,
+        {
+          USER_ID: USER_ID,
+          USERNAME: USERNAME,
+          MOTHER_EMAIL: MOTHER_EMAIL,
+          MOTHER_CONTACT: MOTHER_CONTACT,
+          NAME: NAME,
+          CITY_ADDRESS: CITY_ADDRESS,
+        }
+      ).then((response) => {
+        // console.log(response.data);
+        setMEMBERUPDATE(
+          MEMBERUPDATE.map((val) => {
+            return val.USER_ID === USER_ID
+              ? {
+                  USER_ID: val.USER_ID,
+                  USERNAME: USERNAME,
+                  MOTHER_EMAIL: MOTHER_EMAIL,
+                  MOTHER_CONTACT: MOTHER_CONTACT,
+                  NAME: NAME,
+                  CITY_ADDRESS: CITY_ADDRESS,
+                }
+              : val;
+          })
+        );
+      });
+    }
   };
 
   const addNewMember = () => {
@@ -856,13 +946,6 @@ function AdminMemberList() {
           </p>
         </div>
 
-        <div className="messageEventPopUpouter" id="messageEventPopUpouter">
-          <div className="messageEvent_Content" id="messageEvent_Content">
-            <h4 className="EventMsgTitle">PerSEEption Message</h4>
-            {/* <i className="fa fa-times" id="announcementX"></i> */}
-            <p className="EventMsg">Information Updated Successfully!</p>
-          </div>
-        </div>
         <div id="popUpGetMsgApprove">
           <div id="popUpGetMsgInApprove">
             <h2>PerSEEption Message</h2>
@@ -1117,6 +1200,7 @@ function AdminMemberList() {
             <label>Name:</label>
             <input
               type="text"
+              id="eam_name"
               value={NAME}
               onChange={(e) => {
                 setNAME(e.target.value);
@@ -1125,6 +1209,7 @@ function AdminMemberList() {
             <label>Contact:</label>
             <input
               type="text"
+              id="eam_contact"
               value={MOTHER_CONTACT}
               onChange={(e) => {
                 setMOTHER_CONTACT(e.target.value);
@@ -1133,6 +1218,7 @@ function AdminMemberList() {
             <label>Address:</label>
             <input
               type="text"
+              id="eam_address"
               value={CITY_ADDRESS}
               onChange={(e) => {
                 setCITY_ADDRESS(e.target.value);
@@ -1141,6 +1227,7 @@ function AdminMemberList() {
             <label>Email:</label>
             <input
               type="text"
+              id="eam_email"
               value={MOTHER_EMAIL}
               onChange={(e) => {
                 setMOTHER_EMAIL(e.target.value);
@@ -1148,6 +1235,7 @@ function AdminMemberList() {
             />
             <label>Username:</label>
             <input
+              id="eam_username"
               type="text"
               value={USERNAME}
               onChange={(e) => {
@@ -1912,6 +2000,19 @@ function AdminMemberList() {
             </div>
           </div> 
         </div>*/}
+        <div className="messageEventPopUpouter" id="messageEventPopUpouter">
+          <div className="messageEvent_Content" id="messageEvent_Content">
+            <h4 className="EventMsgTitle">PerSEEption Message</h4>
+            {/* <i className="fa fa-times" id="announcementX"></i> */}
+            <p className="EventMsg">Information Updated Successfully!</p>
+          </div>
+        </div>
+        <div id="popUpGetMsgCont">
+          <div id="popUpGetMsgInCont">
+            <h2>Message</h2>
+            <h1 id="popMsg_contactUS">Please enter a valid information!</h1>
+          </div>
+        </div>
       </div>
     </div>
   );
