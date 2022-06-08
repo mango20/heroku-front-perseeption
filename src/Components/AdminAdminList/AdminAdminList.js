@@ -302,6 +302,53 @@ function AdminAdminList() {
   };
 
   const insertNewAdmin = (e) => {
+    const addAdminName = document.getElementById("addAdminName").value;
+    const addAdminContact = document.getElementById("addAdminContact").value;
+    const addAdminAddress = document.getElementById("addAdminAddress").value;
+    const addAdminEmail = document.getElementById("addAdminEmail").value;
+    const addAdminUsername = document.getElementById("addAdminUsername").value;
+    const addAdminPassword = document.getElementById("addAdminPassword").value;
+
+    const addAdminName_ = document.getElementById("addAdminName");
+    const addAdminContact_ = document.getElementById("addAdminContact");
+    const addAdminAddress_ = document.getElementById("addAdminAddress");
+    const addAdminEmail_ = document.getElementById("addAdminEmail");
+    const addAdminUsername_ = document.getElementById("addAdminUsername");
+    const addAdminPassword_ = document.getElementById("addAdminPassword");
+
+    if (addAdminName === "") {
+      addAdminName_.style.borderColor = "red";
+    } else {
+      addAdminName_.style.borderColor = "green";
+    }
+
+    if (addAdminContact === "") {
+      addAdminContact_.style.borderColor = "red";
+    } else {
+      addAdminContact_.style.borderColor = "green";
+    }
+
+    if (addAdminAddress === "") {
+      addAdminAddress_.style.borderColor = "red";
+    } else {
+      addAdminAddress_.style.borderColor = "green";
+    }
+
+    if (addAdminEmail === "") {
+      addAdminEmail_.style.borderColor = "red";
+    } else {
+      addAdminEmail_.style.borderColor = "green";
+    }
+
+    if (addAdminUsername === "") {
+      addAdminUsername_.style.borderColor = "red";
+    } else {
+      addAdminUsername_.style.borderColor = "green";
+    }
+
+    if (addAdminPassword === "") {
+      addAdminPassword_.style.borderColor = "red";
+    }
     // console.log("sub");
     e.preventDefault();
     if (!selectedFile) return;
