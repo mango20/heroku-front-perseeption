@@ -6,8 +6,7 @@
       "X-Content-Type-Options": "nosniff",
       "X-Frame-Options": "DENY",
       "X-XSS-Protection": "1; mode=block",
-      "Referrer-Policy": "no referrer, strict-origin-when-cross-origin",
-      "Permissions-Policy": "geolocation=(self 'https://perseep-frontend.herokuapp.com/'), microphone=()"
+      "Referrer-Policy": "no referrer, strict-origin-when-cross-origin"
     }
   }
 }
