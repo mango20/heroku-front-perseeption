@@ -10,8 +10,7 @@
       "X-Content-Type-Options": "nosniff",
       "X-Frame-Options": "DENY",
       "Referrer-Policy": "no-referrer",
-      "Content-Security-Policy": "default-src https: 'unsafe-eval' 'unsafe-inline'",
-      "Permissions-Policy": "geolocation=(self 'https://perseep-frontend.herokuapp.com/'), microphone=()"
+      "Content-Security-Policy": "default-src https: 'unsafe-eval' 'unsafe-inline'"
     }
   }
 }
