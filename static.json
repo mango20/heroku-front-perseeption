@@ -10,9 +10,8 @@
       "X-Content-Type-Options": "nosniff",
       "X-Frame-Options": "DENY",
       "Referrer-Policy": "no-referrer",
-      "Content-Security-Policy": "default-src https: 'unsafe-inline'",
-      "X-XSS-Protection": "1; mode=block",
-      "Permissions-Policy": "fullscreen=(self 'https://perseep-frontend.herokuapp.com/'), geolocation=*, camera=()"
+      "Content-Security-Policy": "default-src https: 'unsafe-eval' 'unsafe-inline'",
+      "Permissions-Policy": "geolocation=(self 'https://perseep-frontend.herokuapp.com/'), microphone=()"
     }
   }
 }
