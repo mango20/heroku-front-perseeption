@@ -300,6 +300,7 @@ function AdminContactUs() {
                 <th>Email</th>
                 {/* <th>Date</th> */}
                 <th>Message</th>
+                <th>Date</th>
                 <th>Reply</th>
                 <th>Delete</th>
               </tr>
@@ -320,6 +321,9 @@ function AdminContactUs() {
                     </td>
                     <td>
                       <div className="messageComp">{val.contact_message}</div>
+                    </td>
+                    <td>
+                      <div className="messageComp">{val.contact_date}</div>
                     </td>
                     <td>
                       <button
