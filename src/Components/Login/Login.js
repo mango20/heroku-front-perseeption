@@ -17,22 +17,35 @@ function Login() {
   const history = useHistory();
 
   const login = () => {
-    
     Axios.post("https://perseeption-tromagade.herokuapp.com/login", {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
-      alert(response.data.message);
       // setloginMessage(response.data.message);
 
       // console.log(response.data);
       // console.log(response.data.result);
       var userDetails = response.data.result;
       localStorage.setItem("Client", JSON.stringify(userDetails));
-      if (response.data.result[0].USER_TYPE === "Admin") {
+
+      if (
+        response.data.result[0].USER_TYPE === "Admin" &&
+        response.data.result[0].STATUS === "logout"
+      ) {
+        alert(response.data.message);
         history.push("/AdminDashboard");
-      } else {
+      }
+
+      if (
+        response.data.result[0].USER_TYPE === "Member" &&
+        response.data.result[0].STATUS === "logout"
+      ) {
+        alert(response.data.message);
         history.push("/");
+      }
+
+      if (response.data.result[0].STATUS === "login") {
+        alert("You're currently login");
       }
     });
   };
