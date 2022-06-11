@@ -21,6 +21,7 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
+      //  alert(response.data.message);
       // setloginMessage(response.data.message);
 
       // console.log(response.data);
@@ -45,7 +46,9 @@ function Login() {
       }
 
       if (response.data.result[0].STATUS === "login") {
-        alert("You're currently login");
+        alert(
+          "Login Failed! The account is currently logged in to another device."
+        );
       }
     });
   };
