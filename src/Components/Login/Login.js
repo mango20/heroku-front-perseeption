@@ -21,7 +21,7 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
-      //  alert(response.data.message);
+      // alert(response.data);
       // setloginMessage(response.data.message);
 
       // console.log(response.data);
@@ -49,6 +49,10 @@ function Login() {
         alert(
           "Login Failed! The account is currently logged in to another device."
         );
+        localStorage.clear();
+      } else if (response.data[0] == undefined) {
+        alert("No Existing Account!");
+        localStorage.clear();
       }
     });
   };
