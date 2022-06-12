@@ -467,7 +467,13 @@ function Events() {
               : val;
           })
         );
-
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "block";
+        setTimeout(function () {
+          document.getElementById("popUpGetMsgAdminUpdate").style.display =
+            "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
         Axios.get(
           "https://perseeption-tromagade.herokuapp.com/api/getEvent"
         ).then((response) => {
@@ -514,7 +520,13 @@ function Events() {
               : val;
           })
         );
-
+        document.getElementById("popUpGetMsgAdminUpdate").style.display =
+          "block";
+        setTimeout(function () {
+          document.getElementById("popUpGetMsgAdminUpdate").style.display =
+            "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
         //   setNewReview("");
         //   document.getElementById("updateAnnouncementContentID").value = "";
 
@@ -580,7 +592,7 @@ function Events() {
         <div id="popUpGetMsgAdminUpdate">
           <div id="popUpGetMsgInAdminUpdate">
             <h2>PerSEEption Message</h2>
-            <h1>Announcement Updated Successfully!</h1>
+            <h1>Event Updated Successfully!</h1>
           </div>
         </div>
 

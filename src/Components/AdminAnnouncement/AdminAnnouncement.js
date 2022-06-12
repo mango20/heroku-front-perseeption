@@ -417,8 +417,9 @@ function AdminAnnouncement() {
     }
 
     if (updateAnnouncementContent_ !== "") {
-      document.getElementById("updateAnnouncementContent_").style.borderColor =
+      document.getElementById("updateAnnouncementContent").style.borderColor =
         "#c6c6c6";
+
       Axios.put(
         "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementContent",
         {

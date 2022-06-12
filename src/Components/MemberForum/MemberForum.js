@@ -99,7 +99,7 @@ function MemberForum() {
           // document.getElementById("iconForum").style.display = "none";
         } else if (response.data[0].USER_TYPE === "Member") {
           setFORUM_LIST(response.data);
-          // document.getElementById("iconForum_").style.display = "none";
+          // document.getElementById("iconForum_").style.de = "none";
           document.getElementById("iconForum").style.display = "block";
         }
         // console.log(response.data);
@@ -137,6 +137,7 @@ function MemberForum() {
       });
       document.getElementById("popUpGetMsgDeleteMember_").style.display =
         "block";
+      document.getElementById("changeMsg_DelBlank").innerHTML = "Forum Deleted";
       setTimeout(function () {
         document.getElementById("popUpGetMsgDeleteMember_").style.display =
           "none";
@@ -153,11 +154,13 @@ function MemberForum() {
       const name = JSON.parse(localStorage.getItem("Client"));
       const USER_ID_ = name[0].USER_ID;
       const NAME = name[0].NAME;
+      setUSER_ID(name[0].USER_ID);
 
       const replyId = document.getElementById("inputReplyForum").value;
+      const replyInput = document.getElementsByClassName("replyInput").value;
+      alert(replyId);
       // console.log(USER_ID_);
       // console.log(NAME);
-      setUSER_ID(name[0].USER_ID);
 
       if (replyId === "") {
         //changeMsg_DelBlank
@@ -173,6 +176,7 @@ function MemberForum() {
       }
 
       if (replyId !== "") {
+        alert("sdf");
         Axios.post(
           `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
           {

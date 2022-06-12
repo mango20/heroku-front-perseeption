@@ -167,6 +167,7 @@ function ContactUs() {
       contactus_contactNum_regex.test(_contactUsNumber) &&
       contactus_contactMessage_regex.test(_contactUsMessage)
     ) {
+      alert("fsdfs");
       Axios.post(
         "https://perseeption-tromagade.herokuapp.com/insertContactUsMsg",
         {
