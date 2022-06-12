@@ -42,9 +42,10 @@ function AdminProfile() {
     }
   }, []);
 
-  const logout = (USER_ID) => {
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     const stat = "logout";
-    alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -56,9 +57,9 @@ function AdminProfile() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
-    window.location.reload();
   };
 
   const hideUpdateProfile = () => {
@@ -210,12 +211,7 @@ function AdminProfile() {
             <i className="fa fa-comments"></i>Forum
           </Link>
           <div className="line"></div>
-          <p
-            className="logout_Admin"
-            onClick={() => {
-              logout(USER_ID);
-            }}
-          >
+          <p className="logout_Admin" onClick={logout}>
             <i className="fa fa-sign-out" id="adminLogout"></i> Logout
           </p>
         </div>

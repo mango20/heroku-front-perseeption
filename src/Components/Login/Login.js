@@ -22,7 +22,6 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
-      alert(response.data);
       // setloginMessage(response.data.message);
 
       // console.log(response.data);

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./TermsCondition.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function TermsCondition() {
   const [USER_ID, setUSER_ID] = useState("");
-
+  const history = useHistory();
   Axios.defaults.withCredentials = true;
-  const logout = (USER_ID) => {
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     const stat = "logout";
-    alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -21,6 +22,7 @@ function TermsCondition() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
@@ -86,13 +88,7 @@ function TermsCondition() {
             />
             <div className="dropdown-content" id="dropdown-content">
               <Link to="/MemberProfile">Profile</Link>
-              <p
-                onClick={() => {
-                  logout(USER_ID);
-                }}
-              >
-                Logout
-              </p>
+              <p onClick={logout}>Logout</p>
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>

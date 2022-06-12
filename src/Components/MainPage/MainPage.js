@@ -62,29 +62,28 @@ function MainPage() {
   };
 
   const history = useHistory();
-  const logout = (USER_ID) => {
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     const stat = "logout";
-    alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
         STATUS: stat,
       }
     );
-    // alert("logout");
-    // popUpGetMsgApprove_logout;
     document.getElementById("popUpGetMsgApprove_logout").style.display =
       "block";
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
-    window.location.reload();
   };
 
   const showMenuBar = () => {
@@ -162,13 +161,7 @@ function MainPage() {
                   <Link to="/AdminDashboard" id="portalDash">
                     Dashboard
                   </Link>
-                  <p
-                    onClick={() => {
-                      logout(USER_ID);
-                    }}
-                  >
-                    Logout
-                  </p>
+                  <p onClick={logout}>Logout</p>
                 </div>
               </div>
             </div>
@@ -216,12 +209,7 @@ function MainPage() {
               <a id="backtoWeb" onClick={backMain}>
                 Back
               </a>
-              <a
-                id="memberLogout"
-                onClick={() => {
-                  logout(USER_ID);
-                }}
-              >
+              <a id="memberLogout" onClick={logout}>
                 Logout
               </a>
             </div>

@@ -11,7 +11,6 @@ function AdminDashboard() {
 
   const [numCountApprove1, setnumCountApprove1] = useState([]);
   const [AVATAR, setAVATAR] = useState("");
-  const [USER_ID, setUSER_ID] = useState("");
   const [USERNAME_, setUSERNAME] = useState("");
 
   const history = useHistory();
@@ -24,7 +23,7 @@ function AdminDashboard() {
       history.push("/");
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
-      setUSER_ID(name[0].USER_ID);
+
       setUSERNAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
     }
@@ -45,9 +44,9 @@ function AdminDashboard() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
-    window.location.reload();
   };
 
   useEffect(() => {

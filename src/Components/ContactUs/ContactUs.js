@@ -52,9 +52,10 @@ function ContactUs() {
     }
   };
 
-  const logout = (USER_ID) => {
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     const stat = "logout";
-    alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -66,13 +67,13 @@ function ContactUs() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
-    window.location.reload();
   };
 
   const insertContactUsMsg = () => {
