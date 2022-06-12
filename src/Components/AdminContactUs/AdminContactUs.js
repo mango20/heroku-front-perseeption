@@ -70,7 +70,6 @@ function AdminContactUs() {
 
   const sendEmail = (contact_id) => {
     // console.log(contact_id);
-    alert(contact_id);
     const p = document.getElementById("email-id").value;
     const subjectInput = document.getElementById("nameAdmin-id").value;
     const messageInput = document.getElementById("messagesText").value;

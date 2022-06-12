@@ -24,17 +24,16 @@ function AdminDashboard() {
       history.push("/");
     } else {
       var name = JSON.parse(localStorage.getItem("Client"));
-
-      // console.log(name);
-      // console.log(name[0].ADMIN_NAME);
+      setUSER_ID(name[0].USER_ID);
       setUSERNAME(name[0].ADMIN_NAME);
       setAVATAR(name[0].AVATAR);
     }
   }, []);
 
-  const logout = (USER_ID) => {
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     const stat = "logout";
-    alert(USER_ID);
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -172,12 +171,7 @@ function AdminDashboard() {
               <i className="fa fa-comments"></i>Forum
             </Link>
             <div className="line"></div>
-            <p
-              className="logout_Admin"
-              onClick={() => {
-                logout(USER_ID);
-              }}
-            >
+            <p className="logout_Admin" onClick={logout}>
               <i className="fa fa-sign-out" id="adminLogout"></i> Logout
             </p>
           </div>
