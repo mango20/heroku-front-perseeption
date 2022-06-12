@@ -9,6 +9,7 @@ function Login() {
   Axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const [loginStatus, setLoginStatus] = useState(false);
   const [loginMessage, setloginMessage] = useState("");
 
@@ -21,7 +22,7 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
-      // alert(response.data);
+      alert(response.data);
       // setloginMessage(response.data.message);
 
       // console.log(response.data);
@@ -31,7 +32,8 @@ function Login() {
 
       if (
         response.data.result[0].USER_TYPE === "Admin" &&
-        response.data.result[0].STATUS === "logout"
+        response.data.result[0].STATUS === "logout" &&
+        response.data.result[0].USER_REQUEST === "Approve"
       ) {
         alert(response.data.message);
         history.push("/AdminDashboard");
@@ -39,18 +41,41 @@ function Login() {
 
       if (
         response.data.result[0].USER_TYPE === "Member" &&
-        response.data.result[0].STATUS === "logout"
+        response.data.result[0].STATUS === "logout" &&
+        response.data.result[0].USER_REQUEST === "Approve"
       ) {
         alert(response.data.message);
         history.push("/");
       }
 
-      if (response.data.result[0].STATUS === "login") {
+      if (response.data.result[0].USER_REQUEST === "Pending") {
+        var name1 = JSON.parse(localStorage.getItem("Client"));
+        const USER_ID = name1[0].USER_ID;
+        const stat = "logout";
+        Axios.put(
+          `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
+          {
+            STATUS: stat,
+          }
+        );
+        localStorage.clear();
+        alert(
+          "Login Failed! The account is Pending. Please wait until the Admin approves it"
+        );
+      } else if (response.data.result[0].STATUS === "login") {
         alert(
           "Login Failed! The account is currently logged in to another device."
         );
         localStorage.clear();
-      } else if (response.data[0] == undefined) {
+      } else if (
+        response.data[0] == undefined &&
+        response.data.result[0].USER_TYPE !== "Member" &&
+        response.data.result[0].STATUS !== "logout" &&
+        (response.data.result[0].USER_REQUEST !== "Approve") &
+          (response.data.result[0].USER_TYPE !== "Admin") &&
+        response.data.result[0].STATUS !== "logout" &&
+        response.data.result[0].USER_REQUEST !== "Approve"
+      ) {
         alert("No Existing Account!");
         localStorage.clear();
       }
