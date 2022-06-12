@@ -10,7 +10,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loginStatus, setLoginStatus] = useState(false);
+  const [loginStatus, setLoginStatus] = useState("");
   const [loginMessage, setloginMessage] = useState("");
 
   const [ForgotEmail, setForgotEmail] = useState("");
@@ -22,8 +22,8 @@ function Login() {
       USERNAME: username,
       USER_PASSWORD: password,
     }).then((response) => {
+      const k = response.data.message;
       // setloginMessage(response.data.message);
-
       // console.log(response.data);
       // console.log(response.data.result);
       var userDetails = response.data.result;
@@ -34,8 +34,13 @@ function Login() {
         response.data.result[0].STATUS === "logout" &&
         response.data.result[0].USER_REQUEST === "Approve"
       ) {
-        alert(response.data.message);
-        history.push("/AdminDashboard");
+        setloginMessage(response.data.message);
+        document.getElementById("bgLoginStats").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("bgLoginStats").style.display = "none";
+          history.push("/AdminDashboard");
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
       }
 
       if (
@@ -43,8 +48,13 @@ function Login() {
         response.data.result[0].STATUS === "logout" &&
         response.data.result[0].USER_REQUEST === "Approve"
       ) {
-        alert(response.data.message);
-        history.push("/");
+        setloginMessage(response.data.message);
+        document.getElementById("bgLoginStats").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("bgLoginStats").style.display = "none";
+          history.push("/");
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
       }
 
       if (response.data.result[0].USER_REQUEST === "Pending") {
@@ -58,13 +68,35 @@ function Login() {
           }
         );
         localStorage.clear();
-        alert(
+        setloginMessage(
           "Login Failed! The account is Pending. Please wait until the Admin approves it"
         );
+        document.getElementById("errorMsg").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("errorMsg").style.display = "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
       } else if (response.data.result[0].STATUS === "login") {
-        alert(
+        setloginMessage(
           "Login Failed! The account is currently logged in to another device."
         );
+        document.getElementById("errorMsg").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("errorMsg").style.display = "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
+
+        localStorage.clear();
+      } else if (
+        response.data[0] === undefined &&
+        k === "Wrong username and password combination"
+      ) {
+        setloginMessage("Wrong username and password combination");
+        document.getElementById("errorMsg").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("errorMsg").style.display = "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
         localStorage.clear();
       } else if (
         response.data[0] == undefined &&
@@ -75,7 +107,14 @@ function Login() {
         response.data.result[0].STATUS !== "logout" &&
         response.data.result[0].USER_REQUEST !== "Approve"
       ) {
-        alert("No Existing Account!");
+        //loginMessage errorMsg
+        setloginMessage("No Existing Account!");
+        document.getElementById("errorMsg").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("errorMsg").style.display = "none";
+          // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
+
         localStorage.clear();
       }
     });

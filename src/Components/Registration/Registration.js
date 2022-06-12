@@ -3377,7 +3377,7 @@ function Registration() {
                 {/* Child & Family Personal Data */}
                 Create Account
               </p>
-              <p onClick={scrollChildFam}>Child & Family Personal Data</p>
+              <p onClick={scrollChildFam}>Family Personal Data</p>
               <p onClick={scrollChildData}>Child's Data</p>
               <p onClick={scrollChildNeed}>Child Needs</p>
               <p onClick={scrollSubmit}>Submit Form</p>
