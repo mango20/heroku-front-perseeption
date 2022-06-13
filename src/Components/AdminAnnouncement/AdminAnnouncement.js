@@ -445,7 +445,7 @@ function AdminAnnouncement() {
             "none";
           // document.getElementById("popUpGetMsgInCont").style.display = "none";
         }, 3000);
-        console.log("fsdf");
+     
 
         //   setNewReview("");
         //   document.getElementById("updateAnnouncementContentID").value = "";
