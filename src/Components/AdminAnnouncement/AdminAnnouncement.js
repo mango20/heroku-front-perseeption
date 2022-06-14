@@ -12,6 +12,7 @@ function AdminAnnouncement() {
   const [NEW_ANNOUNCEMENT_CONTENT, setNewCONTENT] = useState("");
   const [NEW_ANNOUNCEMENT_TITLE, setNEW_ANNOUNCEMENT_TITLE] = useState("");
   const [USER_ID, setUSER_ID] = useState("");
+  const [loginMessage, setloginMessage] = useState("");
   const history = useHistory();
 
   // const submit = async () => {
@@ -151,6 +152,7 @@ function AdminAnnouncement() {
             ANNOUNCEMENT_CONTENT: ANNOUNCEMENT_CONTENT,
           }
         );
+
         document.getElementById("messageEventPopUpouter").style.display =
           "block";
         document.getElementById("messageEvent_Content").style.display = "block";
@@ -302,9 +304,18 @@ function AdminAnnouncement() {
     }
   };
 
-  const deleteAnnouncement_ = () => {
-    //cancel_event_
+  const deleteAnnouncement_ = (ANNOUNCEMENT_ID) => {
     document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+    ).then((response) => {
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.filter((val) => {
+          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
+        })
+      );
+    });
+    //cancel_event_
   };
 
   const cancel_event_ = () => {
@@ -318,7 +329,6 @@ function AdminAnnouncement() {
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/api/delete/${ANNOUNCEMENT_ID}`
     ).then((response) => {
-      // console.log(response);
       setANNOUNCEMENT_LIST(
         ANNOUNCEMENT_LIST.filter((val) => {
           return val.ANNOUNCEMENT_ID !== ANNOUNCEMENT_ID; // Filter/remove if it not equals to id
@@ -343,120 +353,87 @@ function AdminAnnouncement() {
 
   // Update Title
   const updateAnnouncementTitle = (ANNOUNCEMENT_ID) => {
-    //#c6c6c6
-    const updateAnnouncementTitle_ = document.getElementById(
-      "updateAnnouncementTitle"
-    ).value;
+    Axios.put(
+      "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementTitle",
+      {
+        ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
+        ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
+      }
+    ).then((response) => {
+      setloginMessage(response.data.message);
+      if (response.data.message === "Please don't leave the title empty!") {
+        document.getElementById("msg_pop_").style.backgroundColor = "red";
+      } else {
+        document.getElementById("msg_pop_").style.backgroundColor = "green";
+      }
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.map((val) => {
+          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
+            ? {
+                ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
+                ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
+              }
+            : val;
+        })
+      );
 
-    if (updateAnnouncementTitle_ === "") {
-      document.getElementById("updateAnnouncementTitle").style.borderColor =
-        "red";
-      document.getElementById("announcementRed").innerHTML =
-        "Please Enter Title";
-      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
       setTimeout(function () {
-        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
-          "none";
-      }, 3000);
-    }
-
-    if (updateAnnouncementTitle_ !== "") {
-      document.getElementById("updateAnnouncementTitle").style.borderColor =
-        "#c6c6c6";
-      Axios.put(
-        "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementTitle",
-        {
-          ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
-          ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
-        }
-      ).then((response) => {
-        setANNOUNCEMENT_LIST(
-          ANNOUNCEMENT_LIST.map((val) => {
-            return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
-              ? {
-                  ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
-                  ANNOUNCEMENT_TITLE: NEW_ANNOUNCEMENT_TITLE,
-                }
-              : val;
-          })
-        );
-
         document.getElementById("popUpGetMsgAdminUpdate").style.display =
-          "block";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgAdminUpdate").style.display =
-            "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
 
-        Axios.get(
-          "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
-        ).then((response) => {
-          setANNOUNCEMENT_LIST(response.data);
-        });
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+      ).then((response) => {
+        setANNOUNCEMENT_LIST(response.data);
       });
-    }
+    });
   };
 
   // Update Content
   const updateAnnouncementContent = (ANNOUNCEMENT_ID) => {
-    const updateAnnouncementContent_ = document.getElementById(
-      "updateAnnouncementContent"
-    ).value;
+    Axios.put(
+      "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementContent",
+      {
+        ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
+        ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
+      }
+    ).then((response) => {
+      setloginMessage(response.data.message);
+      if (response.data.message === "Please don't leave the content empty!") {
+        document.getElementById("msg_pop_").style.backgroundColor = "red";
+      } else {
+        document.getElementById("msg_pop_").style.backgroundColor = "green";
+      }
+      setANNOUNCEMENT_LIST(
+        ANNOUNCEMENT_LIST.map((val) => {
+          return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
+            ? {
+                ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
+                ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
+              }
+            : val;
+        })
+      );
 
-    if (updateAnnouncementContent_ === "") {
-      document.getElementById("updateAnnouncementContent").style.borderColor =
-        "red";
-      document.getElementById("announcementRed").innerHTML =
-        "Please Enter Content";
-      document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
+      document.getElementById("popUpGetMsgAdminUpdate").style.display = "block";
       setTimeout(function () {
-        document.getElementById("popUpGetMsgDeleteAdmin").style.display =
-          "none";
-      }, 3000);
-    }
-
-    if (updateAnnouncementContent_ !== "") {
-      document.getElementById("updateAnnouncementContent").style.borderColor =
-        "#c6c6c6";
-
-      Axios.put(
-        "https://perseeption-tromagade.herokuapp.com/api/updateAnnouncementContent",
-        {
-          ANNOUNCEMENT_ID: ANNOUNCEMENT_ID,
-          ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
-        }
-      ).then((response) => {
-        setANNOUNCEMENT_LIST(
-          ANNOUNCEMENT_LIST.map((val) => {
-            return val.ANNOUNCEMENT_ID === ANNOUNCEMENT_ID
-              ? {
-                  ANNOUNCEMENT_ID: val.ANNOUNCEMENT_ID,
-                  ANNOUNCEMENT_CONTENT: NEW_ANNOUNCEMENT_CONTENT,
-                }
-              : val;
-          })
-        );
-
         document.getElementById("popUpGetMsgAdminUpdate").style.display =
-          "block";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgAdminUpdate").style.display =
-            "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
-     
+          "none";
+        // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      }, 3000);
 
-        //   setNewReview("");
-        //   document.getElementById("updateAnnouncementContentID").value = "";
+      //   setNewReview("");
+      //   document.getElementById("updateAnnouncementContentID").value = "";
 
-        Axios.get(
-          "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
-        ).then((response) => {
-          setANNOUNCEMENT_LIST(response.data);
-        });
+      Axios.get(
+        "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+      ).then((response) => {
+        setANNOUNCEMENT_LIST(response.data);
       });
-    }
+    });
   };
 
   const logout = () => {
@@ -538,8 +515,8 @@ function AdminAnnouncement() {
         </div>
         <div id="popUpGetMsgAdminUpdate">
           <div id="popUpGetMsgInAdminUpdate">
-            <h2>PerSEEption Message</h2>
-            <h1>Announcement Updated Successfully!</h1>
+            <h2 id="msg_pop_">PerSEEption Message</h2>
+            <h1>{loginMessage}</h1>
           </div>
         </div>
 
@@ -709,6 +686,7 @@ function AdminAnnouncement() {
                     Update
                   </button>
                 </div>
+
                 <div>
                   <input
                     type="text"
@@ -729,31 +707,36 @@ function AdminAnnouncement() {
                   </button>{" "}
                   <button
                     className="delAdminButton"
-                    onClick={deleteAnnouncement_}
+                    onClick={() => {
+                      deleteAnnouncement_(val.ANNOUNCEMENT_ID);
+                    }}
                   >
                     DELETE
                   </button>
-                </div>
-                {/*sdas*/}
-                <div id="popUpGetMsgDeleteAdmin_">
-                  <div id="popUpGetMsgInDeleteAdmin_">
-                    <h2>PerSEEption Message</h2>
-                    <h1 id="announcementRed_">
-                      Are you sure you want to delete it?
-                    </h1>
-                    <button id="cancel_EveBtn" onClick={cancel_event_}>
-                      Cancel
-                    </button>
-                    <button
-                      className="delAdminButton"
-                      onClick={() => {
-                        deletAnnouncementButton(val.ANNOUNCEMENT_ID);
-                      }}
-                    >
-                      DELETE
-                    </button>
+                  
+                  <div id="popUpGetMsgDeleteAdmin_">
+                    <div id="popUpGetMsgInDeleteAdmin_">
+                      <h2>PerSEEption Message </h2>
+                      <h1 id="announcementRed_">
+                        {key}
+                        Are you sure you want to delete it?
+                      </h1>
+                      <button id="cancel_EveBtn" onClick={cancel_event_}>
+                        Cancel
+                      </button>
+                      <button
+                        className="delAdminButton"
+                        onClick={() => {
+                          deletAnnouncementButton(val.ANNOUNCEMENT_ID);
+                        }}
+                      >
+                        DELETE2
+                      </button>
+                    </div>
                   </div>
                 </div>
+
+                {/*sdas*/}
               </div>
             );
           })}

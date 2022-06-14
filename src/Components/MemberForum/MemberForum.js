@@ -15,7 +15,7 @@ function MemberForum() {
   const [FORUM_REPLY_CONTENT, setFORUM_REPLY_CONTENT] = useState("");
   const [FORUM_REPLY_LIST, setFORUM_REPLY_LIST] = useState([]);
   const [USER_ID, setUSER_ID] = useState("");
-
+  const [loginMessage, setloginMessage] = useState("");
   const history = useHistory();
   // const [USER_ID, setUSER_ID] = useState("");
   const [AVATAR, setAVATAR] = useState("");
@@ -157,51 +157,52 @@ function MemberForum() {
       setUSER_ID(name[0].USER_ID);
 
       const replyId = document.getElementById("inputReplyForum").value;
+
+      const replyId_ = document.getElementById("inputReplyForum");
+      const forum_input__ = document.getElementsByName("forum_input__");
+      //forum_input__
       const replyInput = document.getElementsByClassName("replyInput").value;
-      alert(replyId);
-      // console.log(USER_ID_);
+
       // console.log(NAME);
 
-      if (replyId === "") {
-        //changeMsg_DelBlank
-        document.getElementById("popUpGetMsgDeleteMember_").style.display =
-          "block";
-        document.getElementById("changeMsg_DelBlank").innerHTML =
-          "Please don't leave it blank";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgDeleteMember_").style.display =
-            "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
-      }
+      Axios.post(
+        `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
+        {
+          FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
+          FORUM_ID: FORUM_ID,
+          USER_ID: USER_ID_,
+        }
+      ).then((response) => {
+        setloginMessage(response.data.message);
+        if (response.data.message === "Please don't leave it blank!") {
+          document.getElementById("msg_pop_2").style.backgroundColor = "red";
+          document.getElementById("popUpGetMsgApprove").style.display = "block";
+          setTimeout(function () {
+            document.getElementById("popUpGetMsgApprove").style.display =
+              "none";
+            // document.getElementById("popUpGetMsgInCont").style.display = "none";
+          }, 3000);
+        } else {
+          document.getElementById("msg_pop_2").style.backgroundColor = "green";
+          document.getElementById("popUpGetMsgApprove").style.display = "block";
+          setTimeout(function () {
+            document.getElementById("popUpGetMsgApprove").style.display =
+              "none";
+            // document.getElementById("popUpGetMsgInCont").style.display = "none";
+          }, 3000);
+        }
+      });
+      // console.log(FORUM_REPLY_CONTENT);
+      // console.log(FORUM_ID);
+      // console.log(USER_ID_);
 
-      if (replyId !== "") {
-        alert("sdf");
-        Axios.post(
-          `https://perseeption-tromagade.herokuapp.com/insertForumReply/${FORUM_ID}`,
-          {
-            FORUM_REPLY_CONTENT: FORUM_REPLY_CONTENT,
-            FORUM_ID: FORUM_ID,
-            USER_ID: USER_ID_,
-          }
-        );
-        // console.log(FORUM_REPLY_CONTENT);
-        // console.log(FORUM_ID);
-        // console.log(USER_ID_);
+      Axios.get(
+        `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
+      ).then((response) => {
+        // console.log(response.data);
 
-        Axios.get(
-          `https://perseeption-tromagade.herokuapp.com/api/getForumReply_/${FORUM_ID}`
-        ).then((response) => {
-          // console.log(response.data);
-
-          setFORUM_REPLY_LIST(response.data);
-        });
-        document.getElementById("popUpGetMsgApprove").style.display = "block";
-        setTimeout(function () {
-          document.getElementById("popUpGetMsgApprove").style.display = "none";
-          // document.getElementById("popUpGetMsgInCont").style.display = "none";
-        }, 3000);
-      }
+        setFORUM_REPLY_LIST(response.data);
+      });
 
       // Axios.get("https://perseeption-tromagade.herokuapp.com/api/getForumTop").then((response) => {
       //   setFORUM_REPLY_LIST(response.data);
@@ -469,8 +470,8 @@ function MemberForum() {
       </div>
       <div id="popUpGetMsgApprove">
         <div id="popUpGetMsgInApprove">
-          <h2>PerSEEption Message</h2>
-          <h1>Forum Reply Posted Successfully!</h1>
+          <h2 id="msg_pop_2">PerSEEption Message</h2>
+          <h1>{loginMessage}</h1>
         </div>
       </div>
       <div id="popUpGetMsgApprove_">
@@ -583,7 +584,7 @@ function MemberForum() {
             <div className="scrollForum">
               {FORUM_LIST.map((val, key) => {
                 return (
-                  <div key={key} className="questionBox" d="questionBox">
+                  <div key={key} className="questionBox" id="questionBox">
                     <div className="forumQuestionHead" id="forumQuestionHead">
                       {/* <img
                         src="/images/avatar.png"
@@ -632,6 +633,7 @@ function MemberForum() {
                     <div className="replyBox" id="replyBox">
                       <input
                         type="text"
+                        name="forum_input__"
                         className="replyInput"
                         placeholder="Write a comment..."
                         id="inputReplyForum"
