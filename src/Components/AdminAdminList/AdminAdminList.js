@@ -172,8 +172,6 @@ function AdminAdminList() {
       document.getElementById("addAdminUsername").value = "";
       setUSER_PASSWORD("");
       document.getElementById("addAdminPassword").value = "";
-      setSelectedFile("");
-      document.getElementById("avatarIcon_").value = "";
 
       Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
         (response) => {
