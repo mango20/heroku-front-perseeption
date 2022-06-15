@@ -175,7 +175,7 @@ function AdminAdminList() {
       setSelectedFile("");
       document.getElementById("avatarIcon_").value = "";
 
-      document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
+     // document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
 
       // setTimeout(function () {
       //   document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
