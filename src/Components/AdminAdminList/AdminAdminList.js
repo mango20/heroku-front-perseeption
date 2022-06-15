@@ -177,10 +177,10 @@ function AdminAdminList() {
 
       document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
 
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
+      // setTimeout(function () {
+      //   document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
+      //   // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      // }, 3000);
 
       Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
         (response) => {
