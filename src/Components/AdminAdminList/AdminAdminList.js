@@ -22,170 +22,178 @@ function AdminAdminList() {
   const [selectedFile, setSelectedFile] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const uploadImage = (base64EncodedImage) => {
-    const addAdminName = document.getElementById("addAdminName").value;
-    const addAdminContact = document.getElementById("addAdminContact").value;
-    const addAdminAddress = document.getElementById("addAdminAddress").value;
-    const addAdminEmail = document.getElementById("addAdminEmail").value;
-    const addAdminUsername = document.getElementById("addAdminUsername").value;
-    const addAdminPassword = document.getElementById("addAdminPassword").value;
+    try {
+      const addAdminName = document.getElementById("addAdminName").value;
+      const addAdminContact = document.getElementById("addAdminContact").value;
+      const addAdminAddress = document.getElementById("addAdminAddress").value;
+      const addAdminEmail = document.getElementById("addAdminEmail").value;
+      const addAdminUsername =
+        document.getElementById("addAdminUsername").value;
+      const addAdminPassword =
+        document.getElementById("addAdminPassword").value;
 
-    const addAdminName_ = document.getElementById("addAdminName");
-    const addAdminContact_ = document.getElementById("addAdminContact");
-    const addAdminAddress_ = document.getElementById("addAdminAddress");
-    const addAdminEmail_ = document.getElementById("addAdminEmail");
-    const addAdminUsername_ = document.getElementById("addAdminUsername");
-    const addAdminPassword_ = document.getElementById("addAdminPassword");
-    const avatarIcon_ = document.getElementById("avatarIcon_").value;
-    const avatarIcon__ = document.getElementById("avatarIcon_");
+      const addAdminName_ = document.getElementById("addAdminName");
+      const addAdminContact_ = document.getElementById("addAdminContact");
+      const addAdminAddress_ = document.getElementById("addAdminAddress");
+      const addAdminEmail_ = document.getElementById("addAdminEmail");
+      const addAdminUsername_ = document.getElementById("addAdminUsername");
+      const addAdminPassword_ = document.getElementById("addAdminPassword");
+      const avatarIcon_ = document.getElementById("avatarIcon_").value;
+      const avatarIcon__ = document.getElementById("avatarIcon_");
 
-    const contactus_name_regex = /^([a-zA-Z\s\.]{1,50})$/;
+      const contactus_name_regex = /^([a-zA-Z\s\.]{1,50})$/;
 
-    if (addAdminName === "" || !contactus_name_regex.test(addAdminName)) {
-      document.getElementById("addAdminName").style.borderColor = "red";
-    }
-    if (addAdminName !== "" && contactus_name_regex.test(addAdminName)) {
-      addAdminName_.style.borderColor = "#c6c6c6";
-    }
+      if (addAdminName === "" || !contactus_name_regex.test(addAdminName)) {
+        document.getElementById("addAdminName").style.borderColor = "red";
+      }
+      if (addAdminName !== "" && contactus_name_regex.test(addAdminName)) {
+        addAdminName_.style.borderColor = "#c6c6c6";
+      }
 
-    // contact number
-    const contactus_contactNum_regex = /^([0-9]{11})$/;
-    if (
-      addAdminContact === "" ||
-      !contactus_contactNum_regex.test(addAdminContact)
-    ) {
-      addAdminContact_.style.borderColor = "red";
-    }
-    if (
-      addAdminContact !== "" &&
-      contactus_contactNum_regex.test(addAdminContact)
-    ) {
-      addAdminContact_.style.borderColor = "#c6c6c6";
-    }
+      // contact number
+      const contactus_contactNum_regex = /^([0-9]{11})$/;
+      if (
+        addAdminContact === "" ||
+        !contactus_contactNum_regex.test(addAdminContact)
+      ) {
+        addAdminContact_.style.borderColor = "red";
+      }
+      if (
+        addAdminContact !== "" &&
+        contactus_contactNum_regex.test(addAdminContact)
+      ) {
+        addAdminContact_.style.borderColor = "#c6c6c6";
+      }
 
-    var addressRegex_ = /^([a-zA-Z0-9\.-\s,#]+)$/;
-    if (addAdminAddress === "" || !addressRegex_.test(addAdminAddress)) {
-      addAdminAddress_.style.borderColor = "red";
-    }
-    if (addAdminAddress !== "" && addressRegex_.test(addAdminAddress)) {
-      addAdminAddress_.style.borderColor = "#c6c6c6";
-    }
+      var addressRegex_ = /^([a-zA-Z0-9\.-\s,#]+)$/;
+      if (addAdminAddress === "" || !addressRegex_.test(addAdminAddress)) {
+        addAdminAddress_.style.borderColor = "red";
+      }
+      if (addAdminAddress !== "" && addressRegex_.test(addAdminAddress)) {
+        addAdminAddress_.style.borderColor = "#c6c6c6";
+      }
 
-    var emailRegex_ =
-      /^([a-zA-Z0-9\.-]{5,})@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
-    if (addAdminEmail === "" || !emailRegex_.test(addAdminEmail)) {
-      addAdminEmail_.style.borderColor = "red";
-    }
+      var emailRegex_ =
+        /^([a-zA-Z0-9\.-]{5,})@([a-z0-9]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/;
+      if (addAdminEmail === "" || !emailRegex_.test(addAdminEmail)) {
+        addAdminEmail_.style.borderColor = "red";
+      }
 
-    if (addAdminEmail !== "" && emailRegex_.test(addAdminEmail)) {
-      addAdminEmail_.style.borderColor = "#c6c6c6";
-    }
+      if (addAdminEmail !== "" && emailRegex_.test(addAdminEmail)) {
+        addAdminEmail_.style.borderColor = "#c6c6c6";
+      }
 
-    var usernameReg = /^[A-Za-z][A-Za-z0-9_!@]{6,30}$/;
+      var usernameReg = /^[A-Za-z][A-Za-z0-9_!@]{6,30}$/;
 
-    if (addAdminUsername === "" || !usernameReg.test(addAdminUsername)) {
-      addAdminUsername_.style.borderColor = "red";
-    }
+      if (addAdminUsername === "" || !usernameReg.test(addAdminUsername)) {
+        addAdminUsername_.style.borderColor = "red";
+      }
 
-    if (usernameReg.test(addAdminUsername) || addAdminUsername !== "") {
-      addAdminUsername_.style.borderColor = "#c6c6c6";
-    }
+      if (usernameReg.test(addAdminUsername) || addAdminUsername !== "") {
+        addAdminUsername_.style.borderColor = "#c6c6c6";
+      }
 
-    const passwordRegex = new RegExp(
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16}$)"
-    );
-
-    if (addAdminPassword === "" || !passwordRegex.test(addAdminPassword)) {
-      addAdminPassword_.style.borderColor = "red";
-    }
-
-    if (addAdminPassword !== "" || passwordRegex.test(addAdminPassword)) {
-      addAdminPassword_.style.borderColor = "#c6c6c6";
-    }
-
-    if (avatarIcon_ === "") {
-      avatarIcon__.style.background = "red";
-    }
-
-    if (avatarIcon_ !== "") {
-      avatarIcon__.style.background = "none";
-    }
-
-    if (
-      addAdminName === "" ||
-      !contactus_name_regex.test(addAdminName) ||
-      addAdminContact === "" ||
-      !contactus_contactNum_regex.test(addAdminContact) ||
-      addAdminAddress === "" ||
-      !addressRegex_.test(addAdminAddress) ||
-      addAdminEmail === "" ||
-      !emailRegex_.test(addAdminEmail) ||
-      addAdminUsername === "" ||
-      !usernameReg.test(addAdminUsername) ||
-      addAdminPassword === "" ||
-      !passwordRegex.test(addAdminPassword) ||
-      avatarIcon_ === ""
-    ) {
-      document.getElementById("popUpGetMsgCont").style.display = "block";
-      document.getElementById("popUpGetMsgInCont").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgCont").style.display = "none";
-        document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
-    }
-
-    if (
-      addAdminName !== "" &&
-      contactus_name_regex.test(addAdminName) &&
-      addAdminContact !== "" &&
-      contactus_contactNum_regex.test(addAdminContact) &&
-      addAdminAddress !== "" &&
-      addressRegex_.test(addAdminAddress) &&
-      addAdminEmail !== "" &&
-      emailRegex_.test(addAdminEmail) &&
-      addAdminUsername !== "" &&
-      usernameReg.test(addAdminUsername) &&
-      addAdminPassword !== "" &&
-      passwordRegex.test(addAdminPassword) &&
-      avatarIcon_ !== ""
-    ) {
-      Axios.post("https://perseeption-tromagade.herokuapp.com/insertNewAdmin", {
-        data: base64EncodedImage,
-        USERNAME: USERNAME,
-        ADMIN_NAME: ADD_ADMIN,
-        ADMIN_CONTACT: ADMIN_CONTACT,
-        ADMIN_EMAIL: ADMIN_EMAIL,
-        ADMIN_ADDRESS: ADMIN_ADDRESS,
-        USER_PASSWORD: USER_PASSWORD,
-        // USER_ID: USER_ID,
-      });
-
-      document.getElementById("adminNewOuter").style.display = "none";
-      setADD_ADMIN("");
-      document.getElementById("addAdminName").value = "";
-      setADMIN_CONTACT("");
-      document.getElementById("addAdminContact").value = "";
-      setADMIN_ADDRESS("");
-      document.getElementById("addAdminAddress").value = "";
-      setADMIN_EMAIL("");
-      document.getElementById("addAdminEmail").value = "";
-      setUSERNAME("");
-      document.getElementById("addAdminUsername").value = "";
-      setUSER_PASSWORD("");
-      document.getElementById("addAdminPassword").value = "";
-
-      document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
-
-      // setTimeout(function () {
-      //   document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
-      //   // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      // }, 3000);
-
-      Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
-        (response) => {
-          setADMIN_LIST(response.data);
-        }
+      const passwordRegex = new RegExp(
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,16}$)"
       );
-    }
+
+      if (addAdminPassword === "" || !passwordRegex.test(addAdminPassword)) {
+        addAdminPassword_.style.borderColor = "red";
+      }
+
+      if (addAdminPassword !== "" || passwordRegex.test(addAdminPassword)) {
+        addAdminPassword_.style.borderColor = "#c6c6c6";
+      }
+
+      if (avatarIcon_ === "") {
+        avatarIcon__.style.background = "red";
+      }
+
+      if (avatarIcon_ !== "") {
+        avatarIcon__.style.background = "none";
+      }
+
+      if (
+        addAdminName === "" ||
+        !contactus_name_regex.test(addAdminName) ||
+        addAdminContact === "" ||
+        !contactus_contactNum_regex.test(addAdminContact) ||
+        addAdminAddress === "" ||
+        !addressRegex_.test(addAdminAddress) ||
+        addAdminEmail === "" ||
+        !emailRegex_.test(addAdminEmail) ||
+        addAdminUsername === "" ||
+        !usernameReg.test(addAdminUsername) ||
+        addAdminPassword === "" ||
+        !passwordRegex.test(addAdminPassword) ||
+        avatarIcon_ === ""
+      ) {
+        document.getElementById("popUpGetMsgCont").style.display = "block";
+        document.getElementById("popUpGetMsgInCont").style.display = "block";
+        setTimeout(function () {
+          document.getElementById("popUpGetMsgCont").style.display = "none";
+          document.getElementById("popUpGetMsgInCont").style.display = "none";
+        }, 3000);
+      }
+
+      if (
+        addAdminName !== "" &&
+        contactus_name_regex.test(addAdminName) &&
+        addAdminContact !== "" &&
+        contactus_contactNum_regex.test(addAdminContact) &&
+        addAdminAddress !== "" &&
+        addressRegex_.test(addAdminAddress) &&
+        addAdminEmail !== "" &&
+        emailRegex_.test(addAdminEmail) &&
+        addAdminUsername !== "" &&
+        usernameReg.test(addAdminUsername) &&
+        addAdminPassword !== "" &&
+        passwordRegex.test(addAdminPassword) &&
+        avatarIcon_ !== ""
+      ) {
+        Axios.post(
+          "https://perseeption-tromagade.herokuapp.com/insertNewAdmin",
+          {
+            data: base64EncodedImage,
+            USERNAME: USERNAME,
+            ADMIN_NAME: ADD_ADMIN,
+            ADMIN_CONTACT: ADMIN_CONTACT,
+            ADMIN_EMAIL: ADMIN_EMAIL,
+            ADMIN_ADDRESS: ADMIN_ADDRESS,
+            USER_PASSWORD: USER_PASSWORD,
+            // USER_ID: USER_ID,
+          }
+        );
+
+        document.getElementById("adminNewOuter").style.display = "none";
+        setADD_ADMIN("");
+        document.getElementById("addAdminName").value = "";
+        setADMIN_CONTACT("");
+        document.getElementById("addAdminContact").value = "";
+        setADMIN_ADDRESS("");
+        document.getElementById("addAdminAddress").value = "";
+        setADMIN_EMAIL("");
+        document.getElementById("addAdminEmail").value = "";
+        setUSERNAME("");
+        document.getElementById("addAdminUsername").value = "";
+        setUSER_PASSWORD("");
+        document.getElementById("addAdminPassword").value = "";
+
+        document.getElementById("popUpGetMsgAdminAdded").style.display =
+          "block";
+
+        // setTimeout(function () {
+        //   document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
+        //   // document.getElementById("popUpGetMsgInCont").style.display = "none";
+        // }, 3000);
+
+        Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+          (response) => {
+            setADMIN_LIST(response.data);
+          }
+        );
+      }
+    } catch (error) {}
   };
 
   const showAddNewAdmin = () => {
