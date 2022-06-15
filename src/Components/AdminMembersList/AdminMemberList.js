@@ -585,14 +585,23 @@ function AdminMemberList() {
     });
   };
 
-  const deletePendingMember_ = () => {
+  const deletePendingMember_ = (USER_ID) => {
     //cancel_event_
     document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getUpdatedMemberList"
+    ).then((response) => {
+      setMEMBER_PENDING_LIST(
+        MEMBER_PENDING_LIST.filter((val) => {
+          return val.USER_ID === USER_ID; // Filter/remove if it not equals to id
+        })
+      );
+    });
   };
 
   const cancel_deletePendingMember_ = () => {
     //cancel_event_
-    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
   };
 
   // Delete Pending Member
@@ -1102,10 +1111,34 @@ function AdminMemberList() {
                       <td>
                         <button
                           className="deleteMemberRequest"
-                          onClick={deletePendingMember_}
+                          onClick={() => {
+                            deletePendingMember_(val.USER_ID);
+                          }}
                         >
                           🗑
                         </button>
+                        <div id="popUpGetMsgDeleteAdmin_">
+                          <div id="popUpGetMsgInDeleteAdmin_">
+                            <h2>PerSEEption Message</h2>
+                            <h1 id="announcementRed_">
+                              Are you sure you want to delete it?
+                            </h1>
+                            <button
+                              id="cancel_EveBtn"
+                              onClick={cancel_deletePendingMember_}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              className="delAdminButton"
+                              onClick={() => {
+                                deletePendingMember(val.USER_ID);
+                              }}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   );
