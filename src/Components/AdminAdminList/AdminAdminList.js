@@ -172,14 +172,13 @@ function AdminAdminList() {
       document.getElementById("addAdminUsername").value = "";
       setUSER_PASSWORD("");
       document.getElementById("addAdminPassword").value = "";
-      
 
-     document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
+      document.getElementById("popUpGetMsgAdminAdded").style.display = "block";
 
-      setTimeout(function () {
-        document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
-        // document.getElementById("popUpGetMsgInCont").style.display = "none";
-      }, 3000);
+      // setTimeout(function () {
+      //   document.getElementById("popUpGetMsgAdminAdded").style.display = "none";
+      //   // document.getElementById("popUpGetMsgInCont").style.display = "none";
+      // }, 3000);
 
       Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
         (response) => {
@@ -230,7 +229,7 @@ function AdminAdminList() {
     document.getElementById("addAdminUsername").value = "";
     setUSER_PASSWORD("");
     document.getElementById("addAdminPassword").value = "";
-   
+
     Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
       (response) => {
         setADMIN_LIST(response.data);
