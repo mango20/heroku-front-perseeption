@@ -763,7 +763,7 @@ function AdminAdminList() {
         <div id="popUpGetMsgDeleteAdmin">
           <div id="popUpGetMsgInDeleteAdmin">
             <h2>PerSEEption Message</h2>
-            <h1>Admin Request Deleted</h1>
+            <h1>Admin Deleted Successfully!</h1>
           </div>
         </div>
         <div className="formBox">

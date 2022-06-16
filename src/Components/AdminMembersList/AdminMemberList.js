@@ -601,7 +601,12 @@ function AdminMemberList() {
 
   const cancel_deletePendingMember_ = () => {
     //cancel_event_
-    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getUpdatedMemberList"
+    ).then((response) => {
+      setMEMBER_PENDING_LIST(response.data);
+    });
   };
 
   // Delete Pending Member
