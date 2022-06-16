@@ -634,6 +634,30 @@ function AdminMemberList() {
     });
   };
 
+  const deleteAdmin_ = (USER_ID) => {
+    document.getElementById("popUpGetMsgDeleteAdmin__").style.display = "block";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getUpdatedApproveMemberList"
+    ).then((response) => {
+      setMEMBER_APPROVE_LIST(
+        MEMBER_APPROVE_LIST.filter((val) => {
+          return val.USER_ID === USER_ID; // Filter/remove if it not equals to id
+        })
+      );
+    });
+    //cancel_event_
+  };
+
+  const cancel_del__ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin__").style.display = "none";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getUpdatedApproveMemberList"
+    ).then((response) => {
+      setMEMBER_APPROVE_LIST(response.data);
+    });
+  };
+
   // Delete Pending Member
   const deleteApprovedMember = (USER_ID) => {
     document.getElementById("popUpGetMsgDeleteMember_").style.display = "block";
@@ -1207,11 +1231,30 @@ function AdminMemberList() {
                         <button
                           className="deleteMemberList"
                           onClick={() => {
-                            deleteApprovedMember(val.USER_ID);
+                            deleteAdmin_(val.USER_ID);
                           }}
                         >
                           🗑
                         </button>
+                        <div id="popUpGetMsgDeleteAdmin__">
+                          <div id="popUpGetMsgInDeleteAdmin__">
+                            <h2>PerSEEption Message </h2>
+                            <h1 id="announcementRed__">
+                              Are you sure you want to delete it?
+                            </h1>
+                            <button id="cancel_MemList_" onClick={cancel_del__}>
+                              Cancel
+                            </button>
+                            <button
+                              className="delAdminButton"
+                              onClick={() => {
+                                deleteApprovedMember(val.USER_ID);
+                              }}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
                   );
