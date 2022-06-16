@@ -460,6 +460,30 @@ function AdminAdminList() {
     );
   }, []);
 
+  const deleteadButton = (USER_ID) => {
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "block";
+    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+      (response) => {
+        setADMIN_LIST(
+          ADMIN_LIST.filter((val) => {
+            return val.USER_ID === USER_ID; // Filter/remove if it not equals to id
+          })
+        );
+      }
+    );
+    //cancel_event_
+  };
+
+  const cancel_del_ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+    Axios.get("https://perseeption-tromagade.herokuapp.com/AdminList").then(
+      (response) => {
+        setADMIN_LIST(response.data);
+      }
+    );
+  };
+
   const deleteAdmin = (USER_ID) => {
     document.getElementById("popUpGetMsgDeleteAdmin").style.display = "block";
     setTimeout(function () {
@@ -793,11 +817,30 @@ function AdminAdminList() {
                         <button
                           className="deleteAdmin"
                           onClick={() => {
-                            deleteAdmin(val.USER_ID);
+                            deleteadButton(val.USER_ID);
                           }}
                         >
                           🗑
                         </button>
+                        <div id="popUpGetMsgDeleteAdmin_">
+                          <div id="popUpGetMsgInDeleteAdmin_">
+                            <h2>PerSEEption Message </h2>
+                            <h1 id="announcementRed_">
+                              Are you sure you want to delete it?
+                            </h1>
+                            <button id="cancel_EveBtn" onClick={cancel_del_}>
+                              Cancel
+                            </button>
+                            <button
+                              className="delAdminButton"
+                              onClick={() => {
+                                deleteAdmin(val.USER_ID);
+                              }}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        </div>
                       </td>
                       <td></td>
                     </tr>
