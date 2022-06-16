@@ -411,6 +411,11 @@ function Events() {
   const cancel_event_ = () => {
     //cancel_event_
     document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+    Axios.get("https://perseeption-tromagade.herokuapp.com/api/getEvent").then(
+      (response) => {
+        setEVENT_LIST(response.data);
+      }
+    );
   };
 
   // Delete Announcement

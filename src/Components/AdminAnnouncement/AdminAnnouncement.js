@@ -321,6 +321,11 @@ function AdminAnnouncement() {
   const cancel_event_ = () => {
     //cancel_event_
     document.getElementById("popUpGetMsgDeleteAdmin_").style.display = "none";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/api/getAnnouncement"
+    ).then((response) => {
+      setANNOUNCEMENT_LIST(response.data);
+    });
   };
 
   // Delete Announcement
@@ -713,12 +718,10 @@ function AdminAnnouncement() {
                   >
                     DELETE
                   </button>
-                  
                   <div id="popUpGetMsgDeleteAdmin_">
                     <div id="popUpGetMsgInDeleteAdmin_">
                       <h2>PerSEEption Message </h2>
                       <h1 id="announcementRed_">
-                        {key}
                         Are you sure you want to delete it?
                       </h1>
                       <button id="cancel_EveBtn" onClick={cancel_event_}>
@@ -730,7 +733,7 @@ function AdminAnnouncement() {
                           deletAnnouncementButton(val.ANNOUNCEMENT_ID);
                         }}
                       >
-                        DELETE2
+                        DELETE
                       </button>
                     </div>
                   </div>
