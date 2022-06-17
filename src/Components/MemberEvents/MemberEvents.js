@@ -303,6 +303,7 @@ function MemberEvents() {
           <p className="event_ContentRM">{EVENT_CONTENT}</p>
         </div>
       </div>
+      <div id="sp_"></div>
       <Link to="/Registration" className="floatBtn" id="floatBtn">
         <p className="JoinUs"> Join Us!</p>
       </Link>

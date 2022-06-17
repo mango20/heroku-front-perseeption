@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./Registration.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Registration() {
   Axios.defaults.withCredentials = true;
+  const history = useHistory();
   const [LastMember, setLastMember] = useState([]);
   const [UsernameReg_Name, setUsernameReg_Name] = useState("");
   const [UsernameReg_Email, setUsernameReg_Email] = useState("");
@@ -2047,6 +2048,10 @@ function Registration() {
     }
   };
 
+  const back_reg_btn = () => {
+    history.push("/");
+  };
+
   const scrollCreateAcc = () => {
     window.scrollTo({
       top: 0,
@@ -2173,6 +2178,11 @@ function Registration() {
         <div className="regOuter">
           <div className="formRegContent">
             <div className="regBox">
+              <div id="bk_reg_">
+                <button id="bk_reg_btn" onClick={back_reg_btn}>
+                  back
+                </button>
+              </div>
               <div className="regCont">
                 {/* <p className="regTitle">Registration</p> */}
                 <div className="regUserData" id="regUserId">
@@ -2182,7 +2192,7 @@ function Registration() {
                   </p>
                   <div className="userInpPassUser">
                     <div className="inputNameBox">
-                      <p class="usernameTxt_name">Name:</p>
+                      <p className="usernameTxt_name">Name:</p>
                       <input
                         type="text"
                         id="regUsername_user"

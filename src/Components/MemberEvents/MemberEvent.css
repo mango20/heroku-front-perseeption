@@ -154,6 +154,12 @@
 
 #memberEventList_id_ {
   display: none;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#memberEventList_id_::-webkit-scrollbar {
+  display: none;
 }
 
 .announcement_Img_event {
@@ -162,4 +168,15 @@
   /* object-fit: cover; */
   height: 400px;
   margin-bottom: 20px;
+}
+
+#bk_reg_btn {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#bk_reg_btn:hover {
+  background: rgb(240, 240, 240);
 }

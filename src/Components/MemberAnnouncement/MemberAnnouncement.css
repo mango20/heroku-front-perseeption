@@ -1,5 +1,19 @@
 .AnnouncementBg {
   width: 100%;
+  height: 100vh;
+}
+
+#memberAnnouncementList_id_ {
+  overflow: scroll;
+}
+
+#memberAnnouncementList_id_::-webkit-scrollbar {
+  display: none;
+}
+
+#sp_ {
+  height: 100px;
+  background-color: #36a9e1;
 }
 .memberAnnouncementList {
   background-color: #36a9e1;
@@ -10,6 +24,7 @@
   height: 100%;
   text-align: center;
 }
+
 .announcementTitleHead {
   background-color: #36a9e1;
   text-align: center;
