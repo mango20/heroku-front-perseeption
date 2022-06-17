@@ -24,6 +24,30 @@ function AdminContactUs() {
     });
   }, []);
 
+  const delete_msg__ = (contact_id) => {
+    document.getElementById("popUpGetMsgDeleteAdmin__").style.display = "block";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/getContactUsMsg"
+    ).then((response) => {
+      setcontact_usList(
+        contact_usList.filter((val) => {
+          return val.contact_id === contact_id; // Filter/remove if it not equals to id
+        })
+      );
+    });
+    //cancel_event_
+  };
+
+  const cancel_del__ = () => {
+    //cancel_event_
+    document.getElementById("popUpGetMsgDeleteAdmin__").style.display = "none";
+    Axios.get(
+      "https://perseeption-tromagade.herokuapp.com/getContactUsMsg"
+    ).then((response) => {
+      setcontact_usList(response.data);
+    });
+  };
+
   // Delete Announcement
   const deleteContactMessage = (contact_id) => {
     // console.log(contact_id);
@@ -335,9 +359,28 @@ function AdminContactUs() {
                       <i
                         className="fa fa-trash deleteContactMessages"
                         onClick={() => {
-                          deleteContactMessage(val.contact_id);
+                          delete_msg__(val.contact_id);
                         }}
                       ></i>
+                      <div id="popUpGetMsgDeleteAdmin__">
+                        <div id="popUpGetMsgInDeleteAdmin__">
+                          <h2>PerSEEption Message </h2>
+                          <h1 id="announcementRed__">
+                            Are you sure you want to delete it?
+                          </h1>
+                          <button id="cancel_MemList_" onClick={cancel_del__}>
+                            Cancel
+                          </button>
+                          <button
+                            className="delAdminButton"
+                            onClick={() => {
+                              deleteContactMessage(val.contact_id);
+                            }}
+                          >
+                            DELETE
+                          </button>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 );
