@@ -94,7 +94,7 @@ function ContactUs() {
     // const specialStr = _contactUsMessage.charAt(0);
 
     // message regex
-    const contactus_contactMessage_regex = /^([a-zA-Z0-9\,\;\:\s\.\-\_]+)$/;
+    const contactus_contactMessage_regex = /^([a-zA-Z0-9\,\;\:\s\.\-\_@!?]+)$/;
 
     //else { }
 
@@ -138,9 +138,12 @@ function ContactUs() {
       document.getElementById("_Msg2").innerHTML = "";
     }
 
-    if (_contactUsMessage === "") {
+    if (
+      _contactUsMessage === "" ||
+      !contactus_contactMessage_regex.test(_contactUsMessage)
+    ) {
       document.getElementById("_contactUsMessage").style.borderColor = "red";
-      document.getElementById("_Msg4").innerHTML = "Please input message!";
+      document.getElementById("_Msg4").innerHTML = "Please your message!";
     } else {
       document.getElementById("_contactUsMessage").style.borderColor =
         "#c6c6c6";
