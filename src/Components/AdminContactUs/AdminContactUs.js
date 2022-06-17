@@ -237,7 +237,7 @@ function AdminContactUs() {
     <div className="AdminContactUsBg">
       <div className="AdminHeader">
         <div className="imgAdminContainer">
-          <p className="AdminHeaderTitle">inbox</p>
+          <p className="AdminHeaderTitle">Messages</p>
         </div>
         <Link to="/AdminProfile" className="profileIcon">
           <Image
