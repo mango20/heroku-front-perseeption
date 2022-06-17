@@ -25,11 +25,17 @@ function MemberAnnouncement() {
       document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
+      setAVATAR(name1[0].AVATAR);
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("LoginHeader_").style.display = "none";
+      document.getElementById("profileGo_").style.display = "block";
       if (name1[0].USER_TYPE === "Admin") {
         document.getElementById("loggedInImg").style.display = "block";
         document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
+        document.getElementById("profileGo_").style.display = "none";
         document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("loggedInImg_").style.display = "block";
@@ -37,11 +43,7 @@ function MemberAnnouncement() {
         document.getElementById("portalDash").style.display = "none";
         document.getElementById("portalDash_").style.display = "none";
       }
-      setAVATAR(name1[0].AVATAR);
-      document.getElementById("floatBtn").style.display = "none";
-      document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("LoginHeader_").style.display = "none";
-      document.getElementById("profileGo_").style.display = "block";
+
       // document.getElementById("loggedInImg").style.display = "block";
       // document.getElementById("LoginHeader_").style.display = "none";
       // document.getElementById("profileGo_").style.display = "block";
@@ -58,9 +60,11 @@ function MemberAnnouncement() {
     }
   };
 
-  const logout = (USER_ID) => {
-    const stat = "logout";
+  const logout = () => {
+    var client = JSON.parse(localStorage.getItem("Client"));
+    const USER_ID = client[0].USER_ID;
     alert(USER_ID);
+    const stat = "logout";
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
       {
@@ -72,13 +76,13 @@ function MemberAnnouncement() {
     setTimeout(function () {
       document.getElementById("popUpGetMsgApprove_logout").style.display =
         "none";
+      history.push("/");
     }, 3000);
     localStorage.clear();
     document.getElementById("floatBtn").style.display = "block";
     document.getElementById("LoginHeader").style.display = "block";
     document.getElementById("loggedInImg").style.display = "none";
     document.getElementById("dropdown-content").style.display = "none";
-    window.location.reload();
   };
 
   const [ANNOUNCEMENT_ID_, setANNOUNCEMENT_ID_] = useState("");
@@ -213,13 +217,7 @@ function MemberAnnouncement() {
               <Link to="/AdminDashboard" id="portalDash">
                 Dashboard
               </Link>
-              <p
-                onClick={() => {
-                  logout(USER_ID);
-                }}
-              >
-                Logout
-              </p>
+              <p onClick={logout}>Logout</p>
               {/* <a href="#">Sign In other Account</a> */}
             </div>
           </div>
@@ -266,12 +264,7 @@ function MemberAnnouncement() {
             <a id="backtoWeb" onClick={backMain}>
               Back
             </a>
-            <a
-              id="memberLogout"
-              onClick={() => {
-                logout(USER_ID);
-              }}
-            >
+            <a id="memberLogout" onClick={logout}>
               Logout
             </a>
           </div>

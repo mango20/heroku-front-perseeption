@@ -16,11 +16,18 @@ function MemberAbout() {
       document.getElementById("portalDash_").style.display = "none";
     } else {
       var name1 = JSON.parse(localStorage.getItem("Client"));
+      setAVATAR(name1[0].AVATAR);
+      document.getElementById("floatBtn").style.display = "none";
+      document.getElementById("LoginHeader").style.display = "none";
+      document.getElementById("LoginHeader_").style.display = "none";
+      document.getElementById("profileGo_").style.display = "block";
+
       if (name1[0].USER_TYPE === "Admin") {
         document.getElementById("loggedInImg").style.display = "block";
         document.getElementById("loggedInImg_").style.display = "none";
         document.getElementById("portalDash").style.display = "block";
         document.getElementById("profileGo").style.display = "none";
+        document.getElementById("profileGo_").style.display = "none";
         document.getElementById("portalDash_").style.display = "block";
       } else {
         document.getElementById("loggedInImg_").style.display = "block";
@@ -28,11 +35,6 @@ function MemberAbout() {
         document.getElementById("portalDash").style.display = "none";
         document.getElementById("portalDash_").style.display = "none";
       }
-      setAVATAR(name1[0].AVATAR);
-      document.getElementById("floatBtn").style.display = "none";
-      document.getElementById("LoginHeader").style.display = "none";
-      document.getElementById("LoginHeader_").style.display = "none";
-      document.getElementById("profileGo_").style.display = "block";
     }
   }, []);
 
@@ -47,6 +49,7 @@ function MemberAbout() {
   const logout = () => {
     var client = JSON.parse(localStorage.getItem("Client"));
     const USER_ID = client[0].USER_ID;
+ 
     const stat = "logout";
     Axios.put(
       `https://perseeption-tromagade.herokuapp.com/logoutUser/${USER_ID}`,
