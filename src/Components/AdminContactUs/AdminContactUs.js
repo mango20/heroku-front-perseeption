@@ -50,6 +50,7 @@ function AdminContactUs() {
 
   // Delete Announcement
   const deleteContactMessage = (contact_id) => {
+    document.getElementById("popUpGetMsgDeleteAdmin__").style.display = "none";
     // console.log(contact_id);
     Axios.delete(
       `https://perseeption-tromagade.herokuapp.com/deleteContactUsMsgt/${contact_id}`
