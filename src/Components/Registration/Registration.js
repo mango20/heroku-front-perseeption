@@ -636,10 +636,10 @@ function Registration() {
     }
 
     // inpYGL not empty and regex
-    if (inpYGL !== "" && nameNumRegex.test(inpYGL)) {
+    if (nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "#dddddd";
     }
-    if (inpYGL !== "" && !nameNumRegex.test(inpYGL)) {
+    if (!nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "red";
     }
     if (inpYGL === "") {
@@ -1083,7 +1083,7 @@ function Registration() {
 
     //Letter only
     var nameRegex = /^([a-zA-Z\s]{1,50})$/;
-    var numberRegex = /^([0-9]{1,11})$/;
+    var numberRegex = /^([0-9]{11})$/;
     var landRegex = /^([0-9 \-()]{9,20})$/;
     var nameNumRegex = /^([a-zA-Z0-9\s]{1,50})$/;
     var nameNumComRegex = /^([a-zA-Z\,0-9\s]{1,50})$/;
@@ -1389,10 +1389,10 @@ function Registration() {
     }
 
     // inpYGL not empty and regex
-    if (inpYGL !== "" && nameNumRegex.test(inpYGL)) {
+    if (nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "#dddddd";
     }
-    if (inpYGL !== "" && !nameNumRegex.test(inpYGL)) {
+    if (!nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "red";
     }
     if (inpYGL === "") {
@@ -1664,7 +1664,6 @@ function Registration() {
       nameRegex.test(mocc) &&
       focc !== "" &&
       nameRegex.test(focc) &&
-      inpYGL !== "" &&
       nameNumRegex.test(inpYGL) &&
       inpuSchAdd !== "" &&
       nameNumComRegex.test(inpuSchAdd) &&
