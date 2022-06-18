@@ -635,11 +635,10 @@ function Registration() {
       document.getElementById("focc").value = "none";
     }
 
-    // inpYGL not empty and regex
+    // inpYGL not empty and regex  (!nameNumRegex.test(inpYGL))
     if (nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "#dddddd";
-    }
-    if (!nameNumRegex.test(inpYGL)) {
+    } else {
       inpYGL1.style.borderColor = "red";
     }
     if (inpYGL === "") {
@@ -1391,8 +1390,7 @@ function Registration() {
     // inpYGL not empty and regex
     if (nameNumRegex.test(inpYGL)) {
       inpYGL1.style.borderColor = "#dddddd";
-    }
-    if (!nameNumRegex.test(inpYGL)) {
+    } else {
       inpYGL1.style.borderColor = "red";
     }
     if (inpYGL === "") {
