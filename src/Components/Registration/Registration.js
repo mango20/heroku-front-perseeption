@@ -636,7 +636,7 @@ function Registration() {
     }
 
     // inpYGL not empty and regex  (!nameNumRegex.test(inpYGL))
-    if (nameNumRegex.test(inpYGL)) {
+    if (inpYGL !== "") {
       inpYGL1.style.borderColor = "#dddddd";
     } else {
       inpYGL1.style.borderColor = "red";
@@ -1388,7 +1388,7 @@ function Registration() {
     }
 
     // inpYGL not empty and regex
-    if (nameNumRegex.test(inpYGL)) {
+    if (inpYGL !== "") {
       inpYGL1.style.borderColor = "#dddddd";
     } else {
       inpYGL1.style.borderColor = "red";
@@ -1662,7 +1662,7 @@ function Registration() {
       nameRegex.test(mocc) &&
       focc !== "" &&
       nameRegex.test(focc) &&
-      nameNumRegex.test(inpYGL) &&
+      inpYGL !== "" &&
       inpuSchAdd !== "" &&
       nameNumComRegex.test(inpuSchAdd) &&
       inpSch !== "" &&
