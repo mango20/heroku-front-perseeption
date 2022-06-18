@@ -1402,7 +1402,7 @@ function Registration() {
       inpuSchAdd1.style.borderColor = "#dddddd";
     }
     if (inpuSchAdd !== "" && !nameNumComRegex.test(inpuSchAdd)) {
-      inpYGL1.style.borderColor = "red";
+      inpuSchAdd1.style.borderColor = "red";
     }
     if (inpuSchAdd === "") {
       document.getElementById("inpuSchAdd").value = "none";
