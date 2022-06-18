@@ -2137,7 +2137,10 @@ function Registration() {
             Perseeption please wait to approve your request within 24hrs.
           </p>
           <button className="disclaimerBtn" onClick={hideDisclaimer}>
-            Proceed
+            Yes I'm In!
+          </button>
+          <button className="disclaimerBtn_" onClick={back_reg_btn}>
+            No, Back to Homepage
           </button>
         </div>
       </div>
@@ -3216,15 +3219,13 @@ function Registration() {
                       >
                         <tbody>
                           <tr>
-                            <th className="theraphyService">
-                              Theraphy Service
-                            </th>
+                            <th className="theraphyService">Therapy Service</th>
                             <th className="theraphyService">PAVIC Program</th>
                             <th className="theraphyService">Self Pay</th>
-                            <th className="theraphyService">No Theraphy</th>
+                            <th className="theraphyService">No Therapy</th>
                           </tr>
                           <tr>
-                            <td>Physical Theraphy</td>
+                            <td>Physical Therapy</td>
                             <td>
                               <input
                                 type="radio"
@@ -3257,7 +3258,7 @@ function Registration() {
                             </td>
                           </tr>
                           <tr>
-                            <td>Occupational Theraphy</td>
+                            <td>Occupational Therapy</td>
                             <td>
                               <input
                                 type="radio"
@@ -3290,7 +3291,7 @@ function Registration() {
                             </td>
                           </tr>
                           <tr>
-                            <td>Speech Theraphy</td>
+                            <td>Speech Therapy</td>
                             <td>
                               <input
                                 type="radio"
